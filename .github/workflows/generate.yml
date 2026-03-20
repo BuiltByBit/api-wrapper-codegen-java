@@ -1,0 +1,61 @@
+name: Generate
+
+on:
+  repository_dispatch:
+    types: [spec-updated]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'  # Daily check at 2 AM
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout wrapper repo
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Download OpenAPI spec
+        run: |
+          curl -o spec.yaml https://raw.githubusercontent.com/BuiltByBit/api-openapi-spec/main/spec.yaml
+          
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          
+      - name: Download OpenAPI Generator
+        run: |
+          wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.2.0/openapi-generator-cli-7.2.0.jar -O openapi-generator-cli.jar
+          
+      - name: Generate Java wrapper
+        run: |
+          java -jar openapi-generator-cli.jar generate \
+            -i spec.yaml \
+            -g java \
+            -o ./ \
+            --skip-validate-spec \
+            --git-repo-id api-wrapper-codegen-java \
+            --git-user-id BuiltByBit \
+            --package-name builtbybit/api-wrapper-codegen-java
+          
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "has-changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"  
+          git add .
+          git reset .gitignore
+          git reset -- $(git ls-files --ignored --exclude-standard) || true
+          git commit -m "Auto-generate wrapper from updated spec" || exit 0
+          git push  # Uses GITHUB_TOKEN automatically
