@@ -1,0 +1,3350 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: BuiltByBit (test)
+    url: https://builtbybit.com/ticket
+  description: "All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate)\
+    \ subscription or invite-only permissions."
+  termsOfService: https://builtbybit.com/wiki/terms
+  title: BuiltByBit API
+  version: v2
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- description: BuiltByBit
+  url: https://api.builtbybit.com/
+tags:
+- name: discovery
+- name: free
+- name: oauth2
+- name: resources
+paths:
+  /oauth2/token:
+    post:
+      description: "Supported grant types: authorization_code, refresh_token"
+      operationId: get-oauth2-token
+      parameters:
+      - description: OAuth2 client credentials in the Basic authorization format.
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/get_oauth2_token_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_oauth2_token_200_response'
+          description: OK
+      summary: Request an access token using an existing grant
+      tags:
+      - oauth2
+      x-stoplight:
+        id: e2kos61m784xx
+      x-content-type: application/x-www-form-urlencoded
+      x-accepts: application/json
+  /oauth2/token/revoke:
+    post:
+      operationId: get-oauth2-token-revoke
+      parameters:
+      - description: OAuth2 client credentials in the Basic authorization format.
+        explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/get_oauth2_token_revoke_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_oauth2_token_revoke_200_response'
+          description: OK
+      summary: Revoke an existing access or refresh token
+      tags:
+      - oauth2
+      x-stoplight:
+        id: amvjs8enfwm15
+      x-content-type: application/x-www-form-urlencoded
+      x-accepts: application/json
+  /v2/resources/discover/resources:
+    get:
+      description: "Supported 'with' hints:\r\n- `filters`: include dynamic filter\
+        \ information in the response.\r\n- See 'Resource' model for additional 'with'\
+        \ hints."
+      operationId: get-resources-discover-resources
+      parameters:
+      - allowEmptyValue: false
+        description: "A category ID to filter on. If the provided category is a parent,\
+          \ resources from subcategories will also be included."
+        explode: true
+        in: query
+        name: category_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A comma-separated list of additional data to include. See endpoint
+          documentation for more information.
+        explode: true
+        in: query
+        name: with
+        required: false
+        schema:
+          example: "Description,Creator"
+          type: string
+        style: form
+      - description: A list of dynamic filters to apply.
+        explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: object
+        style: deepObject
+      - description: A comma-separated list of resource IDs to filter on.
+        explode: true
+        in: query
+        name: resource_ids
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The page number to return.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          type: integer
+        style: form
+      - description: The number of resources to return per page.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: no_dependencies
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_resources_discover_resources_200_response'
+          description: OK
+        "4XX":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_resources_discover_resources_4XX_response'
+          description: ""
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_resources_discover_resources_4XX_response'
+          description: ""
+      security:
+      - token: []
+      summary: Fetch a list of resources
+      tags:
+      - discovery
+      x-stoplight:
+        id: p24j0imx0z6cc
+      x-accepts: application/json
+  /v2/resources/discover/categories:
+    get:
+      description: "Supported 'with' hints:\r\n- Children: includes all subcategories\
+        \ and their children"
+      operationId: get-resources-discover-categories
+      parameters:
+      - description: A category ID to filter on.
+        explode: true
+        in: query
+        name: category_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A comma-separated list of submodels to include.
+        explode: true
+        in: query
+        name: with
+        required: false
+        schema:
+          enum:
+          - SortOptions
+          - FilterOptions
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_resources_discover_categories_200_response'
+          description: OK
+        "4XX":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_resources_discover_resources_4XX_response'
+          description: ""
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_resources_discover_resources_4XX_response'
+          description: ""
+      summary: Fetch a list of categories
+      tags:
+      - discovery
+      x-stoplight:
+        id: 1wpuixx1xd8vo
+      x-accepts: application/json
+  /v2/resources/discover/licenses:
+    get:
+      description: "Supported 'with' hints:\r\n- Resource: the resource the license\
+        \ is for if content_type = `resource`"
+      operationId: get-v2-resources-discover-licenses
+      parameters:
+      - description: The page number/offset to return items for.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          minimum: 1
+          type: integer
+        style: form
+      - description: The number of items per page to return.
+        explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          default: 25
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: A comma-separated list of supported 'with hints'. See model &
+          endpoint-level docs for more info.
+        explode: true
+        in: query
+        name: with
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_discover_licenses_200_response'
+          description: OK
+        "4XX":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_resources_discover_resources_4XX_response'
+          description: ""
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_resources_discover_resources_4XX_response'
+          description: ""
+      summary: Fetch a list of the user's licenses
+      tags:
+      - discovery
+      x-stoplight:
+        id: 5ulsft847tbha
+      x-accepts: application/json
+  /v2/resources/discover/cart/view:
+    get:
+      description: 'Supported ''with hints'':'
+      operationId: get-v2-resources-discover-cart-view
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_discover_cart_view_200_response'
+          description: OK
+      summary: View the user's cart items
+      tags:
+      - discovery
+      x-stoplight:
+        id: eikr4b3wx2qem
+      x-accepts: application/json
+  /v2/resources/discover/cart/add:
+    post:
+      operationId: post-v2-resources-discover-cart-add
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_resources_discover_cart_add_request'
+        description: "A list of content to add to the user's cart. The outer list\
+          \ is keyed by the content type and the inner list are the content IDs.\r\
+          \n\r\nFor instance, if adding a resource with the ID 555, the body becomes:\r\
+          \n```json\r\n{\"add\": {\"resource\": [555]}}\r\n```"
+      responses:
+        "2XX":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_v2_resources_discover_cart_add_2XX_response'
+          description: Success
+      summary: Add items to a user's cart
+      tags:
+      - discovery
+      x-stoplight:
+        id: 91lnfa7dxz87w
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/resources/discover/cart/checkout:
+    post:
+      operationId: post-v2-resources-discover-cart-checkout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Empty'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_v2_resources_discover_cart_checkout_200_response'
+          description: OK
+      summary: Initiate a checkout of a user's cart
+      tags:
+      - discovery
+      x-stoplight:
+        id: 0x1pcudppx63b
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/resources/discover/cart/remove:
+    post:
+      operationId: post-v2-resources-discover-cart-remove
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_resources_discover_cart_remove_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_v2_resources_discover_cart_remove_200_response'
+          description: OK
+      summary: Remove an item from the user's cart
+      tags:
+      - discovery
+      x-stoplight:
+        id: 12m9v5ctkpynt
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/resources/discover/cart/coupon/add:
+    post:
+      operationId: post-v2-resources-discover-cart-coupon-add
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_resources_discover_cart_coupon_add_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_v2_resources_discover_cart_coupon_add_200_response'
+          description: OK
+      summary: Add a coupon to the user's cart
+      tags:
+      - discovery
+      x-stoplight:
+        id: g2gmfc32a3a14
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/resources/discover/cart/coupon/remove:
+    post:
+      operationId: post-v2-resources-discover-cart-coupon-remove
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_resources_discover_cart_coupon_remove_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_v2_resources_discover_cart_coupon_remove_200_response'
+          description: OK
+      summary: Remove a coupon from the user's cart
+      tags:
+      - discovery
+      x-stoplight:
+        id: bbvokgafxl9nf
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/events:
+    get:
+      operationId: get-v2-events
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_events_200_response'
+          description: OK
+      summary: Fetch a list of pending events
+      tags: []
+      x-stoplight:
+        id: 00f4ahftly4s2
+      x-accepts: application/json
+  /v2/events/complete:
+    post:
+      operationId: post-v2-events-complete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_events_complete_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_v2_events_complete_200_response'
+          description: OK
+      summary: Mark events as complete
+      tags: []
+      x-stoplight:
+        id: f2lqrdli45xul
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/analytics:
+    get:
+      operationId: get-v2-analytics
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_analytics_200_response'
+          description: OK
+      summary: Fetch a list of analytics definitions
+      tags: []
+      x-stoplight:
+        id: au6y5fszotgtf
+      x-accepts: application/json
+  /v2/analytics/graph:
+    get:
+      operationId: get-v2-analytics-graph
+      parameters:
+      - explode: true
+        in: query
+        name: analytics
+        required: false
+        schema:
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: grouping
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Only respected when 'period' = 'custom_range'.
+        explode: true
+        in: query
+        name: start_date
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Only respected when 'period' = 'custom_range'.
+        explode: true
+        in: query
+        name: end_date
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_analytics_graph_200_response'
+          description: OK
+      summary: Fetch analytics graph data
+      tags: []
+      x-stoplight:
+        id: 10brpg6zlz0yv
+      x-accepts: application/json
+  /v2/resources/creator/update:
+    post:
+      description: "Creates a new version for the resource and optionally posts a\
+        \ public update message. The uploaded file must be encoded using base64 as\
+        \ part of the JSON request body shown below.\r\n\r\nThe request body (including\
+        \ the base64 encoded file data) cannot exceed 100MB. This roughly equates\
+        \ to a 67MB upload limit for the raw file when taking into account base64\
+        \ encoding losses."
+      operationId: post-v2-resources-creator-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_resources_creator_update_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_v2_resources_creator_update_200_response'
+          description: OK
+      summary: Post a resource update
+      tags: []
+      x-stoplight:
+        id: wowhoeszq2hjg
+      x-content-type: application/json
+      x-accepts: application/json
+components:
+  examples: {}
+  parameters:
+    Authorization:
+      description: OAuth2 client credentials in the Basic authorization format.
+      explode: false
+      in: header
+      name: Authorization
+      required: true
+      schema:
+        type: string
+      style: simple
+    page:
+      description: The page number/offset to return items for.
+      explode: true
+      in: query
+      name: page
+      required: false
+      schema:
+        minimum: 1
+        type: integer
+      style: form
+    per_page:
+      description: The number of items per page to return.
+      explode: true
+      in: query
+      name: per_page
+      required: false
+      schema:
+        default: 25
+        maximum: 100
+        minimum: 1
+        type: integer
+      style: form
+    with:
+      description: A comma-separated list of supported 'with hints'. See model & endpoint-level
+        docs for more info.
+      explode: true
+      in: query
+      name: with
+      required: false
+      schema:
+        type: string
+      style: form
+  requestBodies: {}
+  responses:
+    Error:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/get_resources_discover_resources_4XX_response'
+      description: ""
+  schemas:
+    Resource:
+      description: "Supported 'with' values:\n- 'Creator': the resource creator/owner\n\
+        - 'Category': the resource category \n- 'Description': the resource description\
+        \ (rendered HTML and BBCode)\n- 'LatestReviews': list of the 10 latest reviews\n\
+        - 'Filter values': filter values set by the creator"
+      example:
+        Description:
+          bbcode: bbcode
+          html: html
+        Category:
+          fa_icon: fa_icon
+          category_url: category_url
+          category_id: 1
+          description: description
+          platform_image_url: platform_image_url
+          Children:
+          - null
+          - null
+          title: title
+        cover_image_url: cover_image_url
+        Addons:
+          key:
+          - list_price_formatted: list_price_formatted
+            default: true
+            final_price: 1.1730742509559433
+            display_order: 4
+            description: description
+            state: visible
+            list_price: 7.457744773683766
+            title: title
+            type: type
+            final_price_formatted: final_price_formatted
+            price_currency: price_currency
+            addon_id: 6
+          - list_price_formatted: list_price_formatted
+            default: true
+            final_price: 1.1730742509559433
+            display_order: 4
+            description: description
+            state: visible
+            list_price: 7.457744773683766
+            title: title
+            type: type
+            final_price_formatted: final_price_formatted
+            price_currency: price_currency
+            addon_id: 6
+        review_count: 3
+        Creator:
+          registered_at: registered_at
+          avatar_url: avatar_url
+          user_id: user_id
+          username: username
+        title: title
+        list_price_formatted: list_price_formatted
+        downloads: 2
+        final_price: 9.301444243932576
+        currency: currency
+        LatestUpdate:
+          resource_id: resource_id
+          version_id: version_id
+        published_at: 1
+        summary: summary
+        purchases: 5
+        LatestReviews:
+        - review_id: review_id
+          written_by_id: written_by_id
+          resource_id: resource_id
+        - review_id: review_id
+          written_by_id: written_by_id
+          resource_id: resource_id
+        list_price: 7.061401241503109
+        review_average: 2.027123023002322
+        url: url
+        LatestVersion:
+          resource_id: resource_id
+          version_id: version_id
+        last_updated_at: 5
+        creator_id: 6
+        SaleEventEntry:
+          event_id: 7
+          content_type: content_type
+          content_id: 1
+          discount: 1.0246457001441578
+          SaleEvent:
+            event_id: event_id
+            started_at: started_at
+            title: title
+            ended_at: ended_at
+          entry_id: 4
+        resource_id: 0
+        carousel_image_urls:
+        - carousel_image_urls
+        - carousel_image_urls
+        final_price_formatted: final_price_formatted
+      properties:
+        resource_id:
+          type: integer
+        title:
+          type: string
+        summary:
+          type: string
+        url:
+          type: string
+          x-stoplight:
+            id: j0kfd8dneoz28
+        creator_id:
+          type: integer
+        published_at:
+          type: integer
+        last_updated_at:
+          type: integer
+        currency:
+          type: string
+        purchases:
+          type: integer
+        downloads:
+          type: integer
+        list_price:
+          type: number
+          x-stoplight:
+            id: 6nvbsui4s8jl9
+        cover_image_url:
+          type: string
+          x-stoplight:
+            id: y7ga85b3lc17q
+        final_price:
+          type: number
+          x-stoplight:
+            id: b2medhzkptziy
+        final_price_formatted:
+          type: string
+          x-stoplight:
+            id: seeo2tuqppvfy
+        list_price_formatted:
+          type: string
+          x-stoplight:
+            id: 95pfh9uv4h1hb
+        carousel_image_urls:
+          items:
+            type: string
+            x-stoplight:
+              id: cosmqkjrtvkyy
+          type: array
+          x-stoplight:
+            id: mzrwh9m4c7hn6
+        review_count:
+          type: integer
+          x-stoplight:
+            id: 8s289vxet37m3
+        review_average:
+          type: number
+          x-stoplight:
+            id: h72cfjwc1hvtw
+        SaleEventEntry:
+          $ref: '#/components/schemas/SaleEventEntry'
+        Creator:
+          $ref: '#/components/schemas/Member'
+        LatestVersion:
+          $ref: '#/components/schemas/Version'
+        LatestUpdate:
+          $ref: '#/components/schemas/Version'
+        LatestReviews:
+          items:
+            $ref: '#/components/schemas/Review'
+          type: array
+          x-stoplight:
+            id: yezfazxyrfotj
+        Description:
+          $ref: '#/components/schemas/Description'
+        Category:
+          $ref: '#/components/schemas/Category'
+        Addons:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/Addon'
+            type: array
+            x-stoplight:
+              id: rn2wzjjlm7yl7
+          type: object
+          x-stoplight:
+            id: nw0fuu0htjc3r
+      title: Resource
+      type: object
+      x-stoplight:
+        id: zmcimzer1b1jr
+      x-examples:
+        Example 1:
+          resource_id: 16682
+          title: NameGradient
+          summary: Sleek-looking and fully customisable HEX/RGB username gradients
+            for your players with PAPI support.
+          creator_id: 87939
+          description: string
+          description_raw: string
+          description_html: string
+          published_at: 0
+          last_updated_at: 0
+          price: 0
+          currency: string
+          purchases: 0
+          downloads: 0
+          reviews: 0
+          cover_image_url: string
+          carousel_image_urls:
+          - string
+          SaleEventEntry:
+            entry_id: 0
+            event_id: 0
+            content_type: string
+            content_id: 0
+            discount: 0
+            SaleEvent:
+              event_id: string
+              title: string
+              started_at: string
+              ended_at: string
+          Creator:
+            user_id: string
+            username: string
+            registered_at: string
+          ? ""
+          : string
+    Member:
+      example:
+        registered_at: registered_at
+        avatar_url: avatar_url
+        user_id: user_id
+        username: username
+      properties:
+        user_id:
+          type: string
+        username:
+          type: string
+          x-stoplight:
+            id: yzcth62ycexs0
+        registered_at:
+          type: string
+          x-stoplight:
+            id: kfuewsgtcuq74
+        avatar_url:
+          type: string
+          x-stoplight:
+            id: 6l5qmbkfzte0c
+      title: User
+      type: object
+      x-stoplight:
+        id: 7sp14wi7arb08
+    SaleEventEntry:
+      example:
+        event_id: 7
+        content_type: content_type
+        content_id: 1
+        discount: 1.0246457001441578
+        SaleEvent:
+          event_id: event_id
+          started_at: started_at
+          title: title
+          ended_at: ended_at
+        entry_id: 4
+      properties:
+        entry_id:
+          type: integer
+        event_id:
+          type: integer
+          x-stoplight:
+            id: lm30shuyr3z6c
+        content_type:
+          type: string
+          x-stoplight:
+            id: osmnw0wzr159m
+        content_id:
+          type: integer
+          x-stoplight:
+            id: a8mbe1vh1zs2j
+        discount:
+          type: number
+          x-stoplight:
+            id: 2mgm9awat9wwx
+        SaleEvent:
+          $ref: '#/components/schemas/SaleEvent'
+      title: SaleEventEntry
+      type: object
+      x-stoplight:
+        id: aothfswa474u9
+    SaleEvent:
+      example:
+        event_id: event_id
+        started_at: started_at
+        title: title
+        ended_at: ended_at
+      properties:
+        event_id:
+          type: string
+        title:
+          type: string
+          x-stoplight:
+            id: jxr9eg8jphwjc
+        started_at:
+          type: string
+          x-stoplight:
+            id: 4c5qybqyvaisx
+        ended_at:
+          type: string
+          x-stoplight:
+            id: qvyo8pizo0d9c
+      title: SaleEvent
+      type: object
+      x-stoplight:
+        id: 9s2wuunj794c3
+    Review:
+      example:
+        review_id: review_id
+        written_by_id: written_by_id
+        resource_id: resource_id
+      properties:
+        review_id:
+          type: string
+        resource_id:
+          type: string
+          x-stoplight:
+            id: stsa2cb4s307b
+        written_by_id:
+          type: string
+          x-stoplight:
+            id: 5s74618zab9sx
+      title: Review
+      type: object
+      x-stoplight:
+        id: pg0jfhod8x7p9
+    Update:
+      properties:
+        update_id:
+          type: string
+        resource_id:
+          type: string
+          x-stoplight:
+            id: qhg4ucudmv0xy
+      title: Update
+      type: object
+      x-stoplight:
+        id: ellmdilqjtnpb
+    Version:
+      example:
+        resource_id: resource_id
+        version_id: version_id
+      properties:
+        version_id:
+          type: string
+        resource_id:
+          type: string
+          x-stoplight:
+            id: 45vrbew3ivt8o
+      title: Version
+      type: object
+      x-stoplight:
+        id: bmt8gkywmk32d
+    Filter:
+      example:
+        filter_id: filter_id
+        query_field: query_field
+        title: title
+        type: type
+        choices:
+        - query_field: query_field
+          count: 9
+          title: title
+          key: key
+          selected: true
+        - query_field: query_field
+          count: 9
+          title: title
+          key: key
+          selected: true
+        value: value
+        order: 5
+        primary: true
+      properties:
+        filter_id:
+          type: string
+          x-stoplight:
+            id: nn8ae8gyqr43q
+        order:
+          description: 'The display order of this filter. Filters on BuiltByBit are
+            displayed in ascending order of their order value. '
+          type: integer
+          x-stoplight:
+            id: nyubx0l148ysg
+        primary:
+          description: Whether or not BuiltByBit considers this a primary filter.
+            Primary filters are displayed more prominently.
+          type: boolean
+          x-stoplight:
+            id: u0axd5t576mbx
+        title:
+          type: string
+          x-stoplight:
+            id: od4r4eq60xl4i
+        type:
+          description: "Supported types:  \r\n'choice': a finite choice set (see `options`).\
+            \  \r\n'text': user text input"
+          type: string
+          x-stoplight:
+            id: rdwntahbpyw72
+        choices:
+          items:
+            $ref: '#/components/schemas/FilterChoice'
+          type: array
+          x-stoplight:
+            id: jlg4vk2ej8n2u
+        query_field:
+          type: string
+          x-stoplight:
+            id: 86ys0rmz1tivj
+        value:
+          description: "The pass-through value of this filter, only applicable where\
+            \ type = `text`."
+          type: string
+          x-stoplight:
+            id: pnfspxktvikb9
+      required:
+      - filter_id
+      - order
+      - primary
+      - title
+      - type
+      title: Filter
+      type: object
+      x-stoplight:
+        id: kkfwv2lsdg2u4
+      x-examples:
+        Search:
+          filter_id: __keywords
+          order: 0
+          primary: true
+          title: Search
+          options: []
+        Type:
+          filter_id: type
+          order: 0
+          primary: true
+          title: Price
+          options:
+          - option_key: ""
+            count: 0
+            query_field: type
+            title: Any
+          - option_key: free
+            count: 0
+            query_field: type
+            title: Free
+          - option_key: paid
+            count: 0
+            query_field: type
+            title: Paid
+    FilterChoice:
+      example:
+        query_field: query_field
+        count: 9
+        title: title
+        key: key
+        selected: true
+      properties:
+        key:
+          type: string
+          x-stoplight:
+            id: j2zic0ayp4ygl
+        count:
+          description: "The dynamic count of relevant resources based on the already-applied\
+            \ filter options.\r\nThis may be *null* if we're unable to provide a count\
+            \ for a specific filter combination."
+          type: integer
+          x-stoplight:
+            id: jk9mreifb9ivb
+        query_field:
+          description: "This is the query string field name to use when attempting\
+            \ to filter on this option. Pass this name as the query string field name\
+            \ and the 'option_key' value as the query string field key.\r\n\r\nEg,\
+            \ if 'option_key' = 'action' and 'query_field' = 'rf[genre]', you should\
+            \ be the query string as `?rf[genre]=action`."
+          type: string
+          x-stoplight:
+            id: jqmsdtrbbvpof
+        title:
+          type: string
+          x-stoplight:
+            id: kwmqhc9nqp3ub
+        selected:
+          description: "Whether or not this option was selected, but only applicable\
+            \ where type = `radio` or `checkbox`."
+          type: boolean
+          x-stoplight:
+            id: jwaeqo2uf1aht
+      required:
+      - key
+      - query_field
+      - title
+      title: FilterOption
+      type: object
+      x-stoplight:
+        id: elfdgagrdwhix
+    FilterValue:
+      properties:
+        filter_id:
+          type: string
+          x-stoplight:
+            id: nxewujomzbhql
+        filter_value:
+          type: string
+          x-stoplight:
+            id: vyhp69mlih9or
+      title: FilterValue
+      type: object
+      x-stoplight:
+        id: r7elnl4qkegda
+    Description:
+      example:
+        bbcode: bbcode
+        html: html
+      properties:
+        html:
+          type: string
+          x-stoplight:
+            id: xoe2x54v4o8ju
+        bbcode:
+          type: string
+          x-stoplight:
+            id: miylq4pxfxay5
+      title: Description
+      type: object
+      x-stoplight:
+        id: t4fr7ogjm9zkt
+    Empty:
+      title: Empty
+      type: object
+      x-stoplight:
+        id: vgcuawlmev6cq
+    CartItem:
+      example:
+        content_title: content_title
+        content_summary: content_summary
+        list_price_formatted: list_price_formatted
+        content_type: content_type
+        discounts:
+        - amount: 5.962133916683182
+          formatted: formatted
+        - amount: 5.962133916683182
+          formatted: formatted
+        content_id: 0
+        final_price: 1.4658129805029452
+        cart_item_id: cart_item_id
+        list_price: 6.027456183070403
+        content_cover_image_url: content_cover_image_url
+        final_price_formatted: final_price_formatted
+      properties:
+        cart_item_id:
+          type: string
+          x-stoplight:
+            id: p6ujg1bv3o3ih
+        content_type:
+          type: string
+          x-stoplight:
+            id: m4asqoij5d0z9
+        content_id:
+          type: integer
+          x-stoplight:
+            id: mt6cjyfnk484h
+        content_title:
+          type: string
+          x-stoplight:
+            id: sv2e43i5w09un
+        content_summary:
+          type: string
+          x-stoplight:
+            id: 7owpp4c9c87yj
+        content_cover_image_url:
+          type: string
+          x-stoplight:
+            id: 6imus6gmqu7tn
+        list_price:
+          type: number
+          x-stoplight:
+            id: ccxb6cl670du8
+        list_price_formatted:
+          type: string
+          x-stoplight:
+            id: zvgipr34l9yv7
+        final_price:
+          type: number
+          x-stoplight:
+            id: yo4zke2lcac6l
+        final_price_formatted:
+          type: string
+          x-stoplight:
+            id: bypnjlevon8u9
+        discounts:
+          items:
+            $ref: '#/components/schemas/CartItem_discounts_inner'
+          type: array
+          x-stoplight:
+            id: g4djxkdvgkxuu
+      title: CartItem
+      type: object
+      x-stoplight:
+        id: 56j3817scrzh1
+    CartSummary:
+      example:
+        list_price_formatted: list_price_formatted
+        final_price: 2.3021358869347655
+        currency: USD
+        list_price: 5.637376656633329
+        final_price_formatted: final_price_formatted
+        notice: notice
+      properties:
+        list_price:
+          description: The combined listed price of all items in the cart (ie. the
+            original prices without any discounts applied).
+          type: number
+          x-stoplight:
+            id: cb3jp1b4c7o60
+        list_price_formatted:
+          description: "The list price formatted as a string using the given currency.\r\
+            \nA list price of 5 would be formatted as `$5.00`."
+          type: string
+          x-stoplight:
+            id: viqvi29vgo81h
+        final_price:
+          description: "The combined final price of all items in the cart (ie. with\
+            \ discounts applied). This is the subtotal the user would pay upon checkout\
+            \ initiation, minus any applicable sales tax."
+          type: number
+          x-stoplight:
+            id: 2ary8hl7lag9s
+        final_price_formatted:
+          description: "The final price formatted as a string using the given currency.\r\
+            \nA final price of 5 would be formatted as `$5.00`."
+          type: string
+          x-stoplight:
+            id: clz01pfy72j3o
+        currency:
+          description: "The currency code (ISO 4217) of the prices in this summary.\r\
+            \nWill be USD for all transactions through BuiltByBit."
+          example: USD
+          type: string
+          x-stoplight:
+            id: vhcjzo79pzldi
+        notice:
+          description: A message to display to the user as a notice regarding their
+            current cart items. We may use this to inform the user that they have
+            a previous pending checkout which is yet to be fulfilled (either because
+            the payment is still pending or because they closed out of the checkout).
+          type: string
+          x-stoplight:
+            id: arvcnn9amx7ok
+      required:
+      - currency
+      - final_price
+      - final_price_formatted
+      - list_price
+      - list_price_formatted
+      title: CartSummary
+      type: object
+      x-stoplight:
+        id: 7vftixajz8wum
+    ListStats:
+      example:
+        per_page: 8
+        total: 9
+        page: 6
+        max_page: 9
+      properties:
+        total:
+          type: integer
+          x-stoplight:
+            id: 8204i9quj03ow
+        page:
+          type: integer
+          x-stoplight:
+            id: 49avq4sg099mn
+        per_page:
+          type: integer
+          x-stoplight:
+            id: wx7qu5pxu7fkk
+        max_page:
+          type: integer
+          x-stoplight:
+            id: pwbxrblm8j3f2
+      title: ListStats
+      type: object
+      x-stoplight:
+        id: 2u45ylcsrl3nm
+    License:
+      example:
+        end_date: 1
+        content_type: content_type
+        content_id: 0
+        permanent: true
+        Resource:
+          Description:
+            bbcode: bbcode
+            html: html
+          Category:
+            fa_icon: fa_icon
+            category_url: category_url
+            category_id: 1
+            description: description
+            platform_image_url: platform_image_url
+            Children:
+            - null
+            - null
+            title: title
+          cover_image_url: cover_image_url
+          Addons:
+            key:
+            - list_price_formatted: list_price_formatted
+              default: true
+              final_price: 1.1730742509559433
+              display_order: 4
+              description: description
+              state: visible
+              list_price: 7.457744773683766
+              title: title
+              type: type
+              final_price_formatted: final_price_formatted
+              price_currency: price_currency
+              addon_id: 6
+            - list_price_formatted: list_price_formatted
+              default: true
+              final_price: 1.1730742509559433
+              display_order: 4
+              description: description
+              state: visible
+              list_price: 7.457744773683766
+              title: title
+              type: type
+              final_price_formatted: final_price_formatted
+              price_currency: price_currency
+              addon_id: 6
+          review_count: 3
+          Creator:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          title: title
+          list_price_formatted: list_price_formatted
+          downloads: 2
+          final_price: 9.301444243932576
+          currency: currency
+          LatestUpdate:
+            resource_id: resource_id
+            version_id: version_id
+          published_at: 1
+          summary: summary
+          purchases: 5
+          LatestReviews:
+          - review_id: review_id
+            written_by_id: written_by_id
+            resource_id: resource_id
+          - review_id: review_id
+            written_by_id: written_by_id
+            resource_id: resource_id
+          list_price: 7.061401241503109
+          review_average: 2.027123023002322
+          url: url
+          LatestVersion:
+            resource_id: resource_id
+            version_id: version_id
+          last_updated_at: 5
+          creator_id: 6
+          SaleEventEntry:
+            event_id: 7
+            content_type: content_type
+            content_id: 1
+            discount: 1.0246457001441578
+            SaleEvent:
+              event_id: event_id
+              started_at: started_at
+              title: title
+              ended_at: ended_at
+            entry_id: 4
+          resource_id: 0
+          carousel_image_urls:
+          - carousel_image_urls
+          - carousel_image_urls
+          final_price_formatted: final_price_formatted
+        active: true
+        start_date: 6
+      properties:
+        content_type:
+          type: string
+          x-stoplight:
+            id: rlc1ysbnqmp7n
+        content_id:
+          type: integer
+          x-stoplight:
+            id: 88psm3zjyyfxf
+        permanent:
+          description: Whether or not this license is permanent.
+          type: boolean
+          x-stoplight:
+            id: x1wh8p1szumhf
+        active:
+          description: Only respected when permanent = `true`.
+          type: boolean
+          x-stoplight:
+            id: uredi55fdcnxe
+        start_date:
+          description: Only respected when permanent = `false`.
+          type: integer
+          x-stoplight:
+            id: 8ht4uxswipjq8
+        end_date:
+          description: Only respected when permanent = `false`.
+          type: integer
+          x-stoplight:
+            id: 2878h1ojln4yv
+        Resource:
+          $ref: '#/components/schemas/Resource'
+      required:
+      - content_id
+      - content_type
+      title: License
+      type: object
+      x-stoplight:
+        id: o9u5p45v5rb7i
+    Category:
+      example:
+        fa_icon: fa_icon
+        category_url: category_url
+        category_id: 1
+        description: description
+        platform_image_url: platform_image_url
+        Children:
+        - null
+        - null
+        title: title
+      properties:
+        category_id:
+          type: integer
+          x-stoplight:
+            id: g6i2pnor4ut2n
+        category_url:
+          type: string
+          x-stoplight:
+            id: na2gbq2evth2l
+        description:
+          type: string
+          x-stoplight:
+            id: 1soqon5vi9j7v
+        fa_icon:
+          type: string
+          x-stoplight:
+            id: 3ebq76co0fah0
+        platform_image_url:
+          type: string
+          x-stoplight:
+            id: fzvocd1ll8ag6
+        title:
+          type: string
+          x-stoplight:
+            id: hr3v1dvkfhp0a
+        Children:
+          items:
+            $ref: '#/components/schemas/Category'
+          type: array
+          x-stoplight:
+            id: pckprpjczzouq
+      required:
+      - category_id
+      - category_url
+      - title
+      title: Category
+      type: object
+      x-stoplight:
+        id: 3y3jqix6hbt0l
+    Addon:
+      example:
+        list_price_formatted: list_price_formatted
+        default: true
+        final_price: 1.1730742509559433
+        display_order: 4
+        description: description
+        state: visible
+        list_price: 7.457744773683766
+        title: title
+        type: type
+        final_price_formatted: final_price_formatted
+        price_currency: price_currency
+        addon_id: 6
+      properties:
+        addon_id:
+          type: integer
+          x-stoplight:
+            id: il7su36pygfzx
+        title:
+          type: string
+          x-stoplight:
+            id: u5mht7bdoepzg
+        description:
+          type: string
+          x-stoplight:
+            id: admdd9quz6dmq
+        type:
+          type: string
+          x-stoplight:
+            id: 3d33acfl1lv7r
+        state:
+          enum:
+          - visible
+          - disabled
+          type: string
+          x-stoplight:
+            id: 9ckmm8mg8kxk2
+        list_price:
+          type: number
+          x-stoplight:
+            id: 2fdks528f64lr
+        list_price_formatted:
+          type: string
+          x-stoplight:
+            id: hzewr5kcciggw
+        final_price:
+          type: number
+          x-stoplight:
+            id: xdkooesdnx9nt
+        final_price_formatted:
+          type: string
+          x-stoplight:
+            id: q3iw5uiygxz87
+        price_currency:
+          type: string
+          x-stoplight:
+            id: ln1svamlzdy61
+        display_order:
+          type: integer
+          x-stoplight:
+            id: ok474nzyh3w9q
+        default:
+          type: boolean
+          x-stoplight:
+            id: 1o17r7mnuny38
+      title: Addon
+      type: object
+      x-stoplight:
+        id: nyfzf8yo4xr80
+    Event:
+      example:
+        event_id: 0
+        listener_id: 6
+        trigger_type: trigger_type
+        created_at: 1
+        trigger_data: "{}"
+      properties:
+        event_id:
+          type: integer
+          x-stoplight:
+            id: rvyudn0oeaf4c
+        listener_id:
+          type: integer
+          x-stoplight:
+            id: tdv1hu24fg6ew
+        created_at:
+          type: integer
+          x-stoplight:
+            id: qq4izs03gliqk
+        trigger_type:
+          type: string
+          x-stoplight:
+            id: bf893lysx1xat
+        trigger_data:
+          type: object
+          x-stoplight:
+            id: ukdnh6uvx3dbz
+      required:
+      - created_at
+      - event_id
+      - listener_id
+      - trigger_data
+      - trigger_type
+      title: Event
+      type: object
+      x-stoplight:
+        id: r5v42rgdqdw28
+    Analytic:
+      example:
+        single: true
+        label: label
+        filters: filters
+        graph: true
+        desc: desc
+      properties:
+        label:
+          type: string
+          x-stoplight:
+            id: vroghnn1n0sje
+        desc:
+          type: string
+          x-stoplight:
+            id: b8haikhkg54b9
+        graph:
+          description: Whether or not this analytic can be requested via the /v2/analytics/graph
+            endpoint.
+          type: boolean
+          x-stoplight:
+            id: ttl1kmqn1roxd
+        single:
+          description: Whether or not this analytic can be requested via the /v2/analytics/single
+            endpoint.
+          type: boolean
+          x-stoplight:
+            id: 0fudal91tc4uk
+        filters:
+          type: string
+          x-stoplight:
+            id: u7qomukz00gik
+      title: Analytic
+      type: object
+      x-stoplight:
+        id: du2qh49t7r2aj
+    AnalyticGraphData:
+      example:
+        period:
+          end_date: end_date
+          period: period
+          period_display: period_display
+          start_date: start_date
+        data:
+          key:
+            values:
+              key: 5.962133916683182
+            count: 0
+            averages:
+              key: 5.637376656633329
+            days: 1
+            label: label
+            ts: 6
+        label: label
+        grouping: grouping
+      properties:
+        data:
+          additionalProperties:
+            $ref: '#/components/schemas/AnalyticGraphDataPoint'
+          type: object
+          x-stoplight:
+            id: o8849z3b8fyuy
+        grouping:
+          type: string
+          x-stoplight:
+            id: g8zpusqf9g9ql
+        label:
+          type: string
+          x-stoplight:
+            id: 0lulkkwyfm1l5
+        period:
+          $ref: '#/components/schemas/AnalyticGraphData_period'
+      title: AnalyticGraphData
+      type: object
+      x-stoplight:
+        id: sqs7fuqvaup2y
+    AnalyticGraphDataPoint:
+      example:
+        values:
+          key: 5.962133916683182
+        count: 0
+        averages:
+          key: 5.637376656633329
+        days: 1
+        label: label
+        ts: 6
+      properties:
+        label:
+          type: string
+          x-stoplight:
+            id: z24oka172rv9g
+        count:
+          type: integer
+          x-stoplight:
+            id: 5gzu6ctl746uh
+        ts:
+          type: integer
+          x-stoplight:
+            id: czfl5wz2ju5eh
+        days:
+          type: integer
+          x-stoplight:
+            id: 1f7d4eagb2d0i
+        values:
+          additionalProperties:
+            type: number
+            x-stoplight:
+              id: irm0618am9i2d
+          type: object
+          x-stoplight:
+            id: 73ijgb3mknlad
+        averages:
+          additionalProperties:
+            type: number
+            x-stoplight:
+              id: oud9zl7csn7r6
+          type: object
+          x-stoplight:
+            id: eyh6ty5q9nwvy
+      title: AnalyticGraphDataPoint
+      type: object
+      x-stoplight:
+        id: ybm62r91xo1kj
+    get_oauth2_token_request:
+      properties:
+        grant_type:
+          example: authorization_code
+          type: string
+          x-stoplight:
+            id: fel1kseew6q2q
+        code:
+          description: Required if grant_type = `authorization_code`.
+          type: string
+          x-stoplight:
+            id: k4hmw14e1sycl
+        refresh_token:
+          description: Required if grant_type = `refresh_token`.
+          type: string
+          x-stoplight:
+            id: x37pvqrf2ewd8
+      required:
+      - grant_type
+      type: object
+    get_oauth2_token_200_response:
+      example:
+        access_token: access_token
+        refresh_token: refresh_token
+        scope: scope
+        token_type: token_type
+        expires_in: 0
+      properties:
+        access_token:
+          type: string
+          x-stoplight:
+            id: zsjt9ii4bl4p4
+        expires_in:
+          type: integer
+          x-stoplight:
+            id: w9gxdiz9y15yk
+        refresh_token:
+          type: string
+          x-stoplight:
+            id: c6b0c5o05iuva
+        scope:
+          type: string
+          x-stoplight:
+            id: th4bm8n8ri8yv
+        token_type:
+          type: string
+          x-stoplight:
+            id: 45ci7b7ac94e0
+      type: object
+    get_oauth2_token_revoke_request:
+      properties:
+        token:
+          type: string
+          x-stoplight:
+            id: e5346lawffc2i
+        token_hint:
+          type: string
+          x-stoplight:
+            id: gpg14sbbeovih
+      required:
+      - token
+      type: object
+    get_oauth2_token_revoke_200_response:
+      example:
+        revoked: true
+      properties:
+        revoked:
+          default: true
+          type: boolean
+          x-stoplight:
+            id: rk9152aczpg27
+      required:
+      - revoked
+      type: object
+    get_resources_discover_resources_200_response_data:
+      example:
+        stats:
+          per_page: 8
+          total: 9
+          page: 6
+          max_page: 9
+        resources:
+        - Description:
+            bbcode: bbcode
+            html: html
+          Category:
+            fa_icon: fa_icon
+            category_url: category_url
+            category_id: 1
+            description: description
+            platform_image_url: platform_image_url
+            Children:
+            - null
+            - null
+            title: title
+          cover_image_url: cover_image_url
+          Addons:
+            key:
+            - list_price_formatted: list_price_formatted
+              default: true
+              final_price: 1.1730742509559433
+              display_order: 4
+              description: description
+              state: visible
+              list_price: 7.457744773683766
+              title: title
+              type: type
+              final_price_formatted: final_price_formatted
+              price_currency: price_currency
+              addon_id: 6
+            - list_price_formatted: list_price_formatted
+              default: true
+              final_price: 1.1730742509559433
+              display_order: 4
+              description: description
+              state: visible
+              list_price: 7.457744773683766
+              title: title
+              type: type
+              final_price_formatted: final_price_formatted
+              price_currency: price_currency
+              addon_id: 6
+          review_count: 3
+          Creator:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          title: title
+          list_price_formatted: list_price_formatted
+          downloads: 2
+          final_price: 9.301444243932576
+          currency: currency
+          LatestUpdate:
+            resource_id: resource_id
+            version_id: version_id
+          published_at: 1
+          summary: summary
+          purchases: 5
+          LatestReviews:
+          - review_id: review_id
+            written_by_id: written_by_id
+            resource_id: resource_id
+          - review_id: review_id
+            written_by_id: written_by_id
+            resource_id: resource_id
+          list_price: 7.061401241503109
+          review_average: 2.027123023002322
+          url: url
+          LatestVersion:
+            resource_id: resource_id
+            version_id: version_id
+          last_updated_at: 5
+          creator_id: 6
+          SaleEventEntry:
+            event_id: 7
+            content_type: content_type
+            content_id: 1
+            discount: 1.0246457001441578
+            SaleEvent:
+              event_id: event_id
+              started_at: started_at
+              title: title
+              ended_at: ended_at
+            entry_id: 4
+          resource_id: 0
+          carousel_image_urls:
+          - carousel_image_urls
+          - carousel_image_urls
+          final_price_formatted: final_price_formatted
+        - Description:
+            bbcode: bbcode
+            html: html
+          Category:
+            fa_icon: fa_icon
+            category_url: category_url
+            category_id: 1
+            description: description
+            platform_image_url: platform_image_url
+            Children:
+            - null
+            - null
+            title: title
+          cover_image_url: cover_image_url
+          Addons:
+            key:
+            - list_price_formatted: list_price_formatted
+              default: true
+              final_price: 1.1730742509559433
+              display_order: 4
+              description: description
+              state: visible
+              list_price: 7.457744773683766
+              title: title
+              type: type
+              final_price_formatted: final_price_formatted
+              price_currency: price_currency
+              addon_id: 6
+            - list_price_formatted: list_price_formatted
+              default: true
+              final_price: 1.1730742509559433
+              display_order: 4
+              description: description
+              state: visible
+              list_price: 7.457744773683766
+              title: title
+              type: type
+              final_price_formatted: final_price_formatted
+              price_currency: price_currency
+              addon_id: 6
+          review_count: 3
+          Creator:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          title: title
+          list_price_formatted: list_price_formatted
+          downloads: 2
+          final_price: 9.301444243932576
+          currency: currency
+          LatestUpdate:
+            resource_id: resource_id
+            version_id: version_id
+          published_at: 1
+          summary: summary
+          purchases: 5
+          LatestReviews:
+          - review_id: review_id
+            written_by_id: written_by_id
+            resource_id: resource_id
+          - review_id: review_id
+            written_by_id: written_by_id
+            resource_id: resource_id
+          list_price: 7.061401241503109
+          review_average: 2.027123023002322
+          url: url
+          LatestVersion:
+            resource_id: resource_id
+            version_id: version_id
+          last_updated_at: 5
+          creator_id: 6
+          SaleEventEntry:
+            event_id: 7
+            content_type: content_type
+            content_id: 1
+            discount: 1.0246457001441578
+            SaleEvent:
+              event_id: event_id
+              started_at: started_at
+              title: title
+              ended_at: ended_at
+            entry_id: 4
+          resource_id: 0
+          carousel_image_urls:
+          - carousel_image_urls
+          - carousel_image_urls
+          final_price_formatted: final_price_formatted
+        filters:
+        - filter_id: filter_id
+          query_field: query_field
+          title: title
+          type: type
+          choices:
+          - query_field: query_field
+            count: 9
+            title: title
+            key: key
+            selected: true
+          - query_field: query_field
+            count: 9
+            title: title
+            key: key
+            selected: true
+          value: value
+          order: 5
+          primary: true
+        - filter_id: filter_id
+          query_field: query_field
+          title: title
+          type: type
+          choices:
+          - query_field: query_field
+            count: 9
+            title: title
+            key: key
+            selected: true
+          - query_field: query_field
+            count: 9
+            title: title
+            key: key
+            selected: true
+          value: value
+          order: 5
+          primary: true
+      properties:
+        resources:
+          items:
+            $ref: '#/components/schemas/Resource'
+          type: array
+          x-stoplight:
+            id: o8puq9d5e8lrd
+        filters:
+          items:
+            $ref: '#/components/schemas/Filter'
+          type: array
+          x-stoplight:
+            id: 0o7us2ki57uke
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      required:
+      - resources
+      - stats
+      type: object
+      x-stoplight:
+        id: 2vibxcaob4nm2
+    get_resources_discover_resources_200_response:
+      example:
+        result: success
+        data:
+          stats:
+            per_page: 8
+            total: 9
+            page: 6
+            max_page: 9
+          resources:
+          - Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 1
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - list_price_formatted: list_price_formatted
+                default: true
+                final_price: 1.1730742509559433
+                display_order: 4
+                description: description
+                state: visible
+                list_price: 7.457744773683766
+                title: title
+                type: type
+                final_price_formatted: final_price_formatted
+                price_currency: price_currency
+                addon_id: 6
+              - list_price_formatted: list_price_formatted
+                default: true
+                final_price: 1.1730742509559433
+                display_order: 4
+                description: description
+                state: visible
+                list_price: 7.457744773683766
+                title: title
+                type: type
+                final_price_formatted: final_price_formatted
+                price_currency: price_currency
+                addon_id: 6
+            review_count: 3
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            list_price_formatted: list_price_formatted
+            downloads: 2
+            final_price: 9.301444243932576
+            currency: currency
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
+            summary: summary
+            purchases: 5
+            LatestReviews:
+            - review_id: review_id
+              written_by_id: written_by_id
+              resource_id: resource_id
+            - review_id: review_id
+              written_by_id: written_by_id
+              resource_id: resource_id
+            list_price: 7.061401241503109
+            review_average: 2.027123023002322
+            url: url
+            LatestVersion:
+              resource_id: resource_id
+              version_id: version_id
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 7
+              content_type: content_type
+              content_id: 1
+              discount: 1.0246457001441578
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 4
+            resource_id: 0
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            final_price_formatted: final_price_formatted
+          - Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 1
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - list_price_formatted: list_price_formatted
+                default: true
+                final_price: 1.1730742509559433
+                display_order: 4
+                description: description
+                state: visible
+                list_price: 7.457744773683766
+                title: title
+                type: type
+                final_price_formatted: final_price_formatted
+                price_currency: price_currency
+                addon_id: 6
+              - list_price_formatted: list_price_formatted
+                default: true
+                final_price: 1.1730742509559433
+                display_order: 4
+                description: description
+                state: visible
+                list_price: 7.457744773683766
+                title: title
+                type: type
+                final_price_formatted: final_price_formatted
+                price_currency: price_currency
+                addon_id: 6
+            review_count: 3
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            list_price_formatted: list_price_formatted
+            downloads: 2
+            final_price: 9.301444243932576
+            currency: currency
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
+            summary: summary
+            purchases: 5
+            LatestReviews:
+            - review_id: review_id
+              written_by_id: written_by_id
+              resource_id: resource_id
+            - review_id: review_id
+              written_by_id: written_by_id
+              resource_id: resource_id
+            list_price: 7.061401241503109
+            review_average: 2.027123023002322
+            url: url
+            LatestVersion:
+              resource_id: resource_id
+              version_id: version_id
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 7
+              content_type: content_type
+              content_id: 1
+              discount: 1.0246457001441578
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 4
+            resource_id: 0
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            final_price_formatted: final_price_formatted
+          filters:
+          - filter_id: filter_id
+            query_field: query_field
+            title: title
+            type: type
+            choices:
+            - query_field: query_field
+              count: 9
+              title: title
+              key: key
+              selected: true
+            - query_field: query_field
+              count: 9
+              title: title
+              key: key
+              selected: true
+            value: value
+            order: 5
+            primary: true
+          - filter_id: filter_id
+            query_field: query_field
+            title: title
+            type: type
+            choices:
+            - query_field: query_field
+              count: 9
+              title: title
+              key: key
+              selected: true
+            - query_field: query_field
+              count: 9
+              title: title
+              key: key
+              selected: true
+            value: value
+            order: 5
+            primary: true
+      properties:
+        result:
+          default: sucess
+          example: success
+          type: string
+          x-stoplight:
+            id: dglyjliykl8du
+        data:
+          $ref: '#/components/schemas/get_resources_discover_resources_200_response_data'
+      type: object
+    get_resources_discover_resources_4XX_response_error:
+      properties:
+        code:
+          type: string
+          x-stoplight:
+            id: y0tck5k6wcwte
+        message:
+          type: string
+          x-stoplight:
+            id: rgueqs4b55t18
+      type: object
+      x-stoplight:
+        id: f84vet5rax17r
+    get_resources_discover_resources_4XX_response:
+      properties:
+        result:
+          enum:
+          - error
+          type: string
+          x-stoplight:
+            id: yuhdqyggund1v
+        error:
+          $ref: '#/components/schemas/get_resources_discover_resources_4XX_response_error'
+      type: object
+    get_resources_discover_categories_200_response_data:
+      example:
+        categories:
+        - fa_icon: fa_icon
+          category_url: category_url
+          category_id: 1
+          description: description
+          platform_image_url: platform_image_url
+          Children:
+          - null
+          - null
+          title: title
+        - fa_icon: fa_icon
+          category_url: category_url
+          category_id: 1
+          description: description
+          platform_image_url: platform_image_url
+          Children:
+          - null
+          - null
+          title: title
+      properties:
+        categories:
+          items:
+            $ref: '#/components/schemas/Category'
+          type: array
+          x-stoplight:
+            id: ypy1uslznrrg8
+      type: object
+      x-stoplight:
+        id: qzpl0xc49xbqn
+    get_resources_discover_categories_200_response:
+      example:
+        result: success
+        data:
+          categories:
+          - fa_icon: fa_icon
+            category_url: category_url
+            category_id: 1
+            description: description
+            platform_image_url: platform_image_url
+            Children:
+            - null
+            - null
+            title: title
+          - fa_icon: fa_icon
+            category_url: category_url
+            category_id: 1
+            description: description
+            platform_image_url: platform_image_url
+            Children:
+            - null
+            - null
+            title: title
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: xlgju922zbakq
+        data:
+          $ref: '#/components/schemas/get_resources_discover_categories_200_response_data'
+      type: object
+    get_v2_resources_discover_licenses_200_response_data:
+      example:
+        licenses:
+        - end_date: 1
+          content_type: content_type
+          content_id: 0
+          permanent: true
+          Resource:
+            Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 1
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - list_price_formatted: list_price_formatted
+                default: true
+                final_price: 1.1730742509559433
+                display_order: 4
+                description: description
+                state: visible
+                list_price: 7.457744773683766
+                title: title
+                type: type
+                final_price_formatted: final_price_formatted
+                price_currency: price_currency
+                addon_id: 6
+              - list_price_formatted: list_price_formatted
+                default: true
+                final_price: 1.1730742509559433
+                display_order: 4
+                description: description
+                state: visible
+                list_price: 7.457744773683766
+                title: title
+                type: type
+                final_price_formatted: final_price_formatted
+                price_currency: price_currency
+                addon_id: 6
+            review_count: 3
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            list_price_formatted: list_price_formatted
+            downloads: 2
+            final_price: 9.301444243932576
+            currency: currency
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
+            summary: summary
+            purchases: 5
+            LatestReviews:
+            - review_id: review_id
+              written_by_id: written_by_id
+              resource_id: resource_id
+            - review_id: review_id
+              written_by_id: written_by_id
+              resource_id: resource_id
+            list_price: 7.061401241503109
+            review_average: 2.027123023002322
+            url: url
+            LatestVersion:
+              resource_id: resource_id
+              version_id: version_id
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 7
+              content_type: content_type
+              content_id: 1
+              discount: 1.0246457001441578
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 4
+            resource_id: 0
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            final_price_formatted: final_price_formatted
+          active: true
+          start_date: 6
+        - end_date: 1
+          content_type: content_type
+          content_id: 0
+          permanent: true
+          Resource:
+            Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 1
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - list_price_formatted: list_price_formatted
+                default: true
+                final_price: 1.1730742509559433
+                display_order: 4
+                description: description
+                state: visible
+                list_price: 7.457744773683766
+                title: title
+                type: type
+                final_price_formatted: final_price_formatted
+                price_currency: price_currency
+                addon_id: 6
+              - list_price_formatted: list_price_formatted
+                default: true
+                final_price: 1.1730742509559433
+                display_order: 4
+                description: description
+                state: visible
+                list_price: 7.457744773683766
+                title: title
+                type: type
+                final_price_formatted: final_price_formatted
+                price_currency: price_currency
+                addon_id: 6
+            review_count: 3
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            list_price_formatted: list_price_formatted
+            downloads: 2
+            final_price: 9.301444243932576
+            currency: currency
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
+            summary: summary
+            purchases: 5
+            LatestReviews:
+            - review_id: review_id
+              written_by_id: written_by_id
+              resource_id: resource_id
+            - review_id: review_id
+              written_by_id: written_by_id
+              resource_id: resource_id
+            list_price: 7.061401241503109
+            review_average: 2.027123023002322
+            url: url
+            LatestVersion:
+              resource_id: resource_id
+              version_id: version_id
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 7
+              content_type: content_type
+              content_id: 1
+              discount: 1.0246457001441578
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 4
+            resource_id: 0
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            final_price_formatted: final_price_formatted
+          active: true
+          start_date: 6
+        stats:
+          per_page: 8
+          total: 9
+          page: 6
+          max_page: 9
+      properties:
+        licenses:
+          items:
+            $ref: '#/components/schemas/License'
+          type: array
+          x-stoplight:
+            id: ukpndrnv7kx4k
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: ok6y9x8fnujrs
+    get_v2_resources_discover_licenses_200_response:
+      example:
+        result: success
+        data:
+          licenses:
+          - end_date: 1
+            content_type: content_type
+            content_id: 0
+            permanent: true
+            Resource:
+              Description:
+                bbcode: bbcode
+                html: html
+              Category:
+                fa_icon: fa_icon
+                category_url: category_url
+                category_id: 1
+                description: description
+                platform_image_url: platform_image_url
+                Children:
+                - null
+                - null
+                title: title
+              cover_image_url: cover_image_url
+              Addons:
+                key:
+                - list_price_formatted: list_price_formatted
+                  default: true
+                  final_price: 1.1730742509559433
+                  display_order: 4
+                  description: description
+                  state: visible
+                  list_price: 7.457744773683766
+                  title: title
+                  type: type
+                  final_price_formatted: final_price_formatted
+                  price_currency: price_currency
+                  addon_id: 6
+                - list_price_formatted: list_price_formatted
+                  default: true
+                  final_price: 1.1730742509559433
+                  display_order: 4
+                  description: description
+                  state: visible
+                  list_price: 7.457744773683766
+                  title: title
+                  type: type
+                  final_price_formatted: final_price_formatted
+                  price_currency: price_currency
+                  addon_id: 6
+              review_count: 3
+              Creator:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+              title: title
+              list_price_formatted: list_price_formatted
+              downloads: 2
+              final_price: 9.301444243932576
+              currency: currency
+              LatestUpdate:
+                resource_id: resource_id
+                version_id: version_id
+              published_at: 1
+              summary: summary
+              purchases: 5
+              LatestReviews:
+              - review_id: review_id
+                written_by_id: written_by_id
+                resource_id: resource_id
+              - review_id: review_id
+                written_by_id: written_by_id
+                resource_id: resource_id
+              list_price: 7.061401241503109
+              review_average: 2.027123023002322
+              url: url
+              LatestVersion:
+                resource_id: resource_id
+                version_id: version_id
+              last_updated_at: 5
+              creator_id: 6
+              SaleEventEntry:
+                event_id: 7
+                content_type: content_type
+                content_id: 1
+                discount: 1.0246457001441578
+                SaleEvent:
+                  event_id: event_id
+                  started_at: started_at
+                  title: title
+                  ended_at: ended_at
+                entry_id: 4
+              resource_id: 0
+              carousel_image_urls:
+              - carousel_image_urls
+              - carousel_image_urls
+              final_price_formatted: final_price_formatted
+            active: true
+            start_date: 6
+          - end_date: 1
+            content_type: content_type
+            content_id: 0
+            permanent: true
+            Resource:
+              Description:
+                bbcode: bbcode
+                html: html
+              Category:
+                fa_icon: fa_icon
+                category_url: category_url
+                category_id: 1
+                description: description
+                platform_image_url: platform_image_url
+                Children:
+                - null
+                - null
+                title: title
+              cover_image_url: cover_image_url
+              Addons:
+                key:
+                - list_price_formatted: list_price_formatted
+                  default: true
+                  final_price: 1.1730742509559433
+                  display_order: 4
+                  description: description
+                  state: visible
+                  list_price: 7.457744773683766
+                  title: title
+                  type: type
+                  final_price_formatted: final_price_formatted
+                  price_currency: price_currency
+                  addon_id: 6
+                - list_price_formatted: list_price_formatted
+                  default: true
+                  final_price: 1.1730742509559433
+                  display_order: 4
+                  description: description
+                  state: visible
+                  list_price: 7.457744773683766
+                  title: title
+                  type: type
+                  final_price_formatted: final_price_formatted
+                  price_currency: price_currency
+                  addon_id: 6
+              review_count: 3
+              Creator:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+              title: title
+              list_price_formatted: list_price_formatted
+              downloads: 2
+              final_price: 9.301444243932576
+              currency: currency
+              LatestUpdate:
+                resource_id: resource_id
+                version_id: version_id
+              published_at: 1
+              summary: summary
+              purchases: 5
+              LatestReviews:
+              - review_id: review_id
+                written_by_id: written_by_id
+                resource_id: resource_id
+              - review_id: review_id
+                written_by_id: written_by_id
+                resource_id: resource_id
+              list_price: 7.061401241503109
+              review_average: 2.027123023002322
+              url: url
+              LatestVersion:
+                resource_id: resource_id
+                version_id: version_id
+              last_updated_at: 5
+              creator_id: 6
+              SaleEventEntry:
+                event_id: 7
+                content_type: content_type
+                content_id: 1
+                discount: 1.0246457001441578
+                SaleEvent:
+                  event_id: event_id
+                  started_at: started_at
+                  title: title
+                  ended_at: ended_at
+                entry_id: 4
+              resource_id: 0
+              carousel_image_urls:
+              - carousel_image_urls
+              - carousel_image_urls
+              final_price_formatted: final_price_formatted
+            active: true
+            start_date: 6
+          stats:
+            per_page: 8
+            total: 9
+            page: 6
+            max_page: 9
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: n6seyo7ctng3b
+        data:
+          $ref: '#/components/schemas/get_v2_resources_discover_licenses_200_response_data'
+      type: object
+    get_v2_resources_discover_cart_view_200_response_data:
+      example:
+        summary:
+          list_price_formatted: list_price_formatted
+          final_price: 2.3021358869347655
+          currency: USD
+          list_price: 5.637376656633329
+          final_price_formatted: final_price_formatted
+          notice: notice
+        items:
+        - content_title: content_title
+          content_summary: content_summary
+          list_price_formatted: list_price_formatted
+          content_type: content_type
+          discounts:
+          - amount: 5.962133916683182
+            formatted: formatted
+          - amount: 5.962133916683182
+            formatted: formatted
+          content_id: 0
+          final_price: 1.4658129805029452
+          cart_item_id: cart_item_id
+          list_price: 6.027456183070403
+          content_cover_image_url: content_cover_image_url
+          final_price_formatted: final_price_formatted
+        - content_title: content_title
+          content_summary: content_summary
+          list_price_formatted: list_price_formatted
+          content_type: content_type
+          discounts:
+          - amount: 5.962133916683182
+            formatted: formatted
+          - amount: 5.962133916683182
+            formatted: formatted
+          content_id: 0
+          final_price: 1.4658129805029452
+          cart_item_id: cart_item_id
+          list_price: 6.027456183070403
+          content_cover_image_url: content_cover_image_url
+          final_price_formatted: final_price_formatted
+        user:
+          registered_at: registered_at
+          avatar_url: avatar_url
+          user_id: user_id
+          username: username
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/CartItem'
+          type: array
+          x-stoplight:
+            id: y5uutu1pll4ju
+        summary:
+          $ref: '#/components/schemas/CartSummary'
+        user:
+          $ref: '#/components/schemas/Member'
+      required:
+      - items
+      - summary
+      type: object
+      x-stoplight:
+        id: s9eu4del2jl1o
+    get_v2_resources_discover_cart_view_200_response:
+      example:
+        result: success
+        data:
+          summary:
+            list_price_formatted: list_price_formatted
+            final_price: 2.3021358869347655
+            currency: USD
+            list_price: 5.637376656633329
+            final_price_formatted: final_price_formatted
+            notice: notice
+          items:
+          - content_title: content_title
+            content_summary: content_summary
+            list_price_formatted: list_price_formatted
+            content_type: content_type
+            discounts:
+            - amount: 5.962133916683182
+              formatted: formatted
+            - amount: 5.962133916683182
+              formatted: formatted
+            content_id: 0
+            final_price: 1.4658129805029452
+            cart_item_id: cart_item_id
+            list_price: 6.027456183070403
+            content_cover_image_url: content_cover_image_url
+            final_price_formatted: final_price_formatted
+          - content_title: content_title
+            content_summary: content_summary
+            list_price_formatted: list_price_formatted
+            content_type: content_type
+            discounts:
+            - amount: 5.962133916683182
+              formatted: formatted
+            - amount: 5.962133916683182
+              formatted: formatted
+            content_id: 0
+            final_price: 1.4658129805029452
+            cart_item_id: cart_item_id
+            list_price: 6.027456183070403
+            content_cover_image_url: content_cover_image_url
+            final_price_formatted: final_price_formatted
+          user:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: nh2gpyez71rg4
+        data:
+          $ref: '#/components/schemas/get_v2_resources_discover_cart_view_200_response_data'
+      required:
+      - data
+      - result
+      type: object
+    post_v2_resources_discover_cart_add_request:
+      properties:
+        add:
+          items:
+            items:
+              type: integer
+              x-stoplight:
+                id: c1m7a3oenkptw
+            type: array
+            x-stoplight:
+              id: 17j3u2gvgn73u
+          type: array
+          x-stoplight:
+            id: rypnfui87uxpw
+      type: object
+    post_v2_resources_discover_cart_add_2XX_response:
+      example:
+        result: result
+        data: data
+      properties:
+        result:
+          type: string
+          x-stoplight:
+            id: 2frwalk3e6cdk
+        data:
+          type: string
+          x-stoplight:
+            id: oofrp2lorahcv
+      type: object
+    post_v2_resources_discover_cart_checkout_200_response_data:
+      example:
+        ident: ident
+        url: url
+        status: initiated
+      properties:
+        status:
+          description: "`initiated` - the checkout request was successful and returned\
+            \ a Tebex basket identifier stored in the `ident` field.\r\n\r\n`bypassed`\
+            \ - the checkout was successful but no Tebex basket identifier was generated\
+            \ as it was not needed (perhaps because the buyer used a 100% off coupon)."
+          enum:
+          - initiated
+          - bypassed
+          type: string
+          x-stoplight:
+            id: cltailjstvwne
+        ident:
+          description: The Tebex cart identifier which you can use to redirect to
+            or open a Tebex.js overlay.
+          type: string
+          x-stoplight:
+            id: 2dgphdqq1plwd
+        url:
+          description: The Tebex checkout link to redirect to if not using Tebex.js
+            (built from the included ident).
+          type: string
+          x-stoplight:
+            id: e3gsxaj64agkm
+      required:
+      - status
+      type: object
+      x-stoplight:
+        id: t03u8ehqrfbfm
+    post_v2_resources_discover_cart_checkout_200_response:
+      example:
+        result: success
+        data:
+          ident: ident
+          url: url
+          status: initiated
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: 0bq17xcx6sasp
+        data:
+          $ref: '#/components/schemas/post_v2_resources_discover_cart_checkout_200_response_data'
+      required:
+      - data
+      - result
+      type: object
+    post_v2_resources_discover_cart_remove_request:
+      properties:
+        cart_item_id:
+          type: integer
+          x-stoplight:
+            id: ja4uc5cg03559
+      type: object
+    post_v2_resources_discover_cart_remove_200_response:
+      example:
+        result: success
+        data: data
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: p1mprt5irhvp4
+        data:
+          type: string
+          x-stoplight:
+            id: rrk17ep6tjvee
+      type: object
+    post_v2_resources_discover_cart_coupon_add_request:
+      properties:
+        code:
+          type: string
+          x-stoplight:
+            id: 4ojoigmv6ehl1
+      type: object
+    post_v2_resources_discover_cart_coupon_add_200_response:
+      example:
+        result: success
+        data: data
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: ih2ptsykg2zfp
+        data:
+          type: string
+          x-stoplight:
+            id: wy1y5k6tyj66w
+      type: object
+    post_v2_resources_discover_cart_coupon_remove_request:
+      properties:
+        code:
+          type: string
+          x-stoplight:
+            id: mlueurz12lym0
+      type: object
+    post_v2_resources_discover_cart_coupon_remove_200_response:
+      example:
+        result: success
+        data: data
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: zn9dfmuqpf8do
+        data:
+          type: string
+          x-stoplight:
+            id: aw8s9itfrpeei
+      type: object
+    get_v2_events_200_response_data:
+      example:
+        stats:
+          per_page: 8
+          total: 9
+          page: 6
+          max_page: 9
+        events:
+        - event_id: 0
+          listener_id: 6
+          trigger_type: trigger_type
+          created_at: 1
+          trigger_data: "{}"
+        - event_id: 0
+          listener_id: 6
+          trigger_type: trigger_type
+          created_at: 1
+          trigger_data: "{}"
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/Event'
+          type: array
+          x-stoplight:
+            id: uhm6rqy1zeb93
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: 4o0sz1pv0blqo
+    get_v2_events_200_response:
+      example:
+        result: success
+        data:
+          stats:
+            per_page: 8
+            total: 9
+            page: 6
+            max_page: 9
+          events:
+          - event_id: 0
+            listener_id: 6
+            trigger_type: trigger_type
+            created_at: 1
+            trigger_data: "{}"
+          - event_id: 0
+            listener_id: 6
+            trigger_type: trigger_type
+            created_at: 1
+            trigger_data: "{}"
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: 3tmrr5vfrkfif
+        data:
+          $ref: '#/components/schemas/get_v2_events_200_response_data'
+      type: object
+    post_v2_events_complete_request:
+      properties:
+        event_ids:
+          items:
+            type: integer
+            x-stoplight:
+              id: 9ykv6yr4xaldk
+          type: array
+          x-stoplight:
+            id: k95upgj82o2zf
+      required:
+      - event_ids
+      type: object
+    post_v2_events_complete_200_response:
+      example:
+        result: success
+        data: data
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: 43yhqm08jdpp7
+        data:
+          type: string
+          x-stoplight:
+            id: kx5hd2kwivu68
+      type: object
+    get_v2_analytics_200_response_data:
+      example:
+        analytics:
+          single: true
+          label: label
+          filters: filters
+          graph: true
+          desc: desc
+      properties:
+        analytics:
+          $ref: '#/components/schemas/Analytic'
+      type: object
+      x-stoplight:
+        id: ylaffyg9gv5g0
+    get_v2_analytics_200_response:
+      example:
+        result: success
+        data:
+          analytics:
+            single: true
+            label: label
+            filters: filters
+            graph: true
+            desc: desc
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: qh5difwvjoizq
+        data:
+          $ref: '#/components/schemas/get_v2_analytics_200_response_data'
+      type: object
+    get_v2_analytics_graph_200_response:
+      example:
+        result: success
+        data:
+          period:
+            end_date: end_date
+            period: period
+            period_display: period_display
+            start_date: start_date
+          data:
+            key:
+              values:
+                key: 5.962133916683182
+              count: 0
+              averages:
+                key: 5.637376656633329
+              days: 1
+              label: label
+              ts: 6
+          label: label
+          grouping: grouping
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: 2bq9is0ilhv95
+        data:
+          $ref: '#/components/schemas/AnalyticGraphData'
+      type: object
+    post_v2_resources_creator_update_request_file:
+      properties:
+        name:
+          description: The name of the file (including extension).
+          type: string
+          x-stoplight:
+            id: zbo1xazef8cb9
+        data:
+          description: The base64 encoded file data.
+          type: string
+          x-stoplight:
+            id: fw3l64sgufj9g
+      required:
+      - data
+      - name
+      type: object
+      x-stoplight:
+        id: 5u46zlge0nj6e
+    post_v2_resources_creator_update_request_update:
+      properties:
+        post:
+          description: Whether or not to post an update alongside the new version.
+          type: boolean
+          x-stoplight:
+            id: z62rbhal57j9a
+        title:
+          type: string
+          x-stoplight:
+            id: odpb2hragka52
+        message:
+          description: The BBCode-formatted body of the update.
+          type: string
+          x-stoplight:
+            id: nb28gbi9jdlg3
+      type: object
+      x-stoplight:
+        id: n2gw4000dvmce
+    post_v2_resources_creator_update_request:
+      properties:
+        resource_id:
+          type: integer
+          x-stoplight:
+            id: cmtmq6rbwu7qg
+        version_name:
+          description: "The version name as a string (eg. 5.0, 5.0-stable). The final\
+            \ version name will be prepended with 'v' (eg. v5.0, v5.0-stable)."
+          type: string
+          x-stoplight:
+            id: 8hv9lq3frpql9
+        file:
+          $ref: '#/components/schemas/post_v2_resources_creator_update_request_file'
+        update:
+          $ref: '#/components/schemas/post_v2_resources_creator_update_request_update'
+      required:
+      - file
+      - resource_id
+      - version_name
+      type: object
+    post_v2_resources_creator_update_200_response_data:
+      example:
+        update_id: 0
+        version_id: 6
+      properties:
+        update_id:
+          type: integer
+          x-stoplight:
+            id: dbrrg2c8zn7gp
+        version_id:
+          type: integer
+          x-stoplight:
+            id: dc1zs3jwc4eam
+      required:
+      - version_id
+      type: object
+      x-stoplight:
+        id: 344b8t2v40q02
+    post_v2_resources_creator_update_200_response:
+      example:
+        result: success
+        data:
+          update_id: 0
+          version_id: 6
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: exqnprziiwvbp
+        data:
+          $ref: '#/components/schemas/post_v2_resources_creator_update_200_response_data'
+      required:
+      - data
+      - result
+      type: object
+    CartItem_discounts_inner:
+      example:
+        amount: 5.962133916683182
+        formatted: formatted
+      properties:
+        amount:
+          type: number
+          x-stoplight:
+            id: xferie0tbawb8
+        formatted:
+          type: string
+          x-stoplight:
+            id: r3zlzx1omaqc8
+      type: object
+      x-stoplight:
+        id: r6x6zbrv6s90q
+    AnalyticGraphData_period:
+      example:
+        end_date: end_date
+        period: period
+        period_display: period_display
+        start_date: start_date
+      properties:
+        period:
+          type: string
+          x-stoplight:
+            id: xf4hakxfnd2c0
+        period_display:
+          type: string
+          x-stoplight:
+            id: dcsdfmggx6vd4
+        start_date:
+          type: string
+          x-stoplight:
+            id: oae0lct5fsyah
+        end_date:
+          type: string
+          x-stoplight:
+            id: t9lc0rcpkesbu
+      type: object
+      x-stoplight:
+        id: gnjtob0nyvzgo
+  securitySchemes:
+    token:
+      description: "See documentation on authorization: https://builtbybit.com/wiki/api"
+      in: header
+      name: Authorization
+      type: apiKey
+x-stoplight:
+  id: yu7gslmw7p8dt
+
