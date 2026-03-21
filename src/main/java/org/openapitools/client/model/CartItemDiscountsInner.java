@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * CartItemDiscountsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-20T12:28:55.155368Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-21T03:55:49.937753Z[Etc/UTC]")
 public class CartItemDiscountsInner {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
