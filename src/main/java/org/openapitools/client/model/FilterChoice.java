@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * FilterChoice
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-21T03:55:49.937753Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-22T04:10:23.001281Z[Etc/UTC]")
 public class FilterChoice {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
