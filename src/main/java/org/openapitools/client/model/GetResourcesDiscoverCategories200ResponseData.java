@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * GetResourcesDiscoverCategories200ResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-22T04:10:23.001281Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-23T04:18:26.266268Z[Etc/UTC]")
 public class GetResourcesDiscoverCategories200ResponseData {
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
