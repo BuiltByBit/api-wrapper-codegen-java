@@ -1,6 +1,6 @@
 /*
  * BuiltByBit API
- * All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
+ * All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.    V2 documentation: https://builtbybit.com/wiki/api-v2/ \\  OAuth2 documentation: https://builtbybit.com/wiki/oauth2/
  *
  * The version of the OpenAPI document: v2
  * 
@@ -75,7 +75,6 @@ public class Oauth2Api {
 
     /**
      * Build call for getOauth2Token
-     * @param authorization OAuth2 client credentials in the Basic authorization format. (required)
      * @param grantType  (required)
      * @param code Required if grant_type &#x3D; &#x60;authorization_code&#x60;. (optional)
      * @param refreshToken Required if grant_type &#x3D; &#x60;refresh_token&#x60;. (optional)
@@ -88,7 +87,7 @@ public class Oauth2Api {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getOauth2TokenCall(String authorization, String grantType, String code, String refreshToken, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getOauth2TokenCall(String grantType, String code, String refreshToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -125,10 +124,6 @@ public class Oauth2Api {
             localVarFormParams.put("refresh_token", refreshToken);
         }
 
-        if (authorization != null) {
-            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -145,30 +140,24 @@ public class Oauth2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getOauth2TokenValidateBeforeCall(String authorization, String grantType, String code, String refreshToken, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'authorization' is set
-        if (authorization == null) {
-            throw new ApiException("Missing the required parameter 'authorization' when calling getOauth2Token(Async)");
-        }
-
+    private okhttp3.Call getOauth2TokenValidateBeforeCall(String grantType, String code, String refreshToken, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'grantType' is set
         if (grantType == null) {
             throw new ApiException("Missing the required parameter 'grantType' when calling getOauth2Token(Async)");
         }
 
-        return getOauth2TokenCall(authorization, grantType, code, refreshToken, _callback);
+        return getOauth2TokenCall(grantType, code, refreshToken, _callback);
 
     }
 
     /**
      * Request an access token using an existing grant
-     * Supported grant types: authorization_code, refresh_token
-     * @param authorization OAuth2 client credentials in the Basic authorization format. (required)
+     * Supported grant types: &#x60;authorization_code&#x60;, and &#x60;refresh_token&#x60;.  Must authenticate via HTTP Basic Authentication, using your OAuth2 client credentials.
      * @param grantType  (required)
      * @param code Required if grant_type &#x3D; &#x60;authorization_code&#x60;. (optional)
      * @param refreshToken Required if grant_type &#x3D; &#x60;refresh_token&#x60;. (optional)
@@ -180,15 +169,14 @@ public class Oauth2Api {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public GetOauth2Token200Response getOauth2Token(String authorization, String grantType, String code, String refreshToken) throws ApiException {
-        ApiResponse<GetOauth2Token200Response> localVarResp = getOauth2TokenWithHttpInfo(authorization, grantType, code, refreshToken);
+    public GetOauth2Token200Response getOauth2Token(String grantType, String code, String refreshToken) throws ApiException {
+        ApiResponse<GetOauth2Token200Response> localVarResp = getOauth2TokenWithHttpInfo(grantType, code, refreshToken);
         return localVarResp.getData();
     }
 
     /**
      * Request an access token using an existing grant
-     * Supported grant types: authorization_code, refresh_token
-     * @param authorization OAuth2 client credentials in the Basic authorization format. (required)
+     * Supported grant types: &#x60;authorization_code&#x60;, and &#x60;refresh_token&#x60;.  Must authenticate via HTTP Basic Authentication, using your OAuth2 client credentials.
      * @param grantType  (required)
      * @param code Required if grant_type &#x3D; &#x60;authorization_code&#x60;. (optional)
      * @param refreshToken Required if grant_type &#x3D; &#x60;refresh_token&#x60;. (optional)
@@ -200,16 +188,15 @@ public class Oauth2Api {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetOauth2Token200Response> getOauth2TokenWithHttpInfo(String authorization, String grantType, String code, String refreshToken) throws ApiException {
-        okhttp3.Call localVarCall = getOauth2TokenValidateBeforeCall(authorization, grantType, code, refreshToken, null);
+    public ApiResponse<GetOauth2Token200Response> getOauth2TokenWithHttpInfo(String grantType, String code, String refreshToken) throws ApiException {
+        okhttp3.Call localVarCall = getOauth2TokenValidateBeforeCall(grantType, code, refreshToken, null);
         Type localVarReturnType = new TypeToken<GetOauth2Token200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Request an access token using an existing grant (asynchronously)
-     * Supported grant types: authorization_code, refresh_token
-     * @param authorization OAuth2 client credentials in the Basic authorization format. (required)
+     * Supported grant types: &#x60;authorization_code&#x60;, and &#x60;refresh_token&#x60;.  Must authenticate via HTTP Basic Authentication, using your OAuth2 client credentials.
      * @param grantType  (required)
      * @param code Required if grant_type &#x3D; &#x60;authorization_code&#x60;. (optional)
      * @param refreshToken Required if grant_type &#x3D; &#x60;refresh_token&#x60;. (optional)
@@ -222,9 +209,9 @@ public class Oauth2Api {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getOauth2TokenAsync(String authorization, String grantType, String code, String refreshToken, final ApiCallback<GetOauth2Token200Response> _callback) throws ApiException {
+    public okhttp3.Call getOauth2TokenAsync(String grantType, String code, String refreshToken, final ApiCallback<GetOauth2Token200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getOauth2TokenValidateBeforeCall(authorization, grantType, code, refreshToken, _callback);
+        okhttp3.Call localVarCall = getOauth2TokenValidateBeforeCall(grantType, code, refreshToken, _callback);
         Type localVarReturnType = new TypeToken<GetOauth2Token200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -296,7 +283,7 @@ public class Oauth2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -318,7 +305,7 @@ public class Oauth2Api {
 
     /**
      * Revoke an existing access or refresh token
-     * 
+     * Must authenticate via HTTP Basic Authentication, using your OAuth2 client credentials.
      * @param authorization OAuth2 client credentials in the Basic authorization format. (required)
      * @param token  (required)
      * @param tokenHint  (optional)
@@ -337,7 +324,7 @@ public class Oauth2Api {
 
     /**
      * Revoke an existing access or refresh token
-     * 
+     * Must authenticate via HTTP Basic Authentication, using your OAuth2 client credentials.
      * @param authorization OAuth2 client credentials in the Basic authorization format. (required)
      * @param token  (required)
      * @param tokenHint  (optional)
@@ -357,7 +344,7 @@ public class Oauth2Api {
 
     /**
      * Revoke an existing access or refresh token (asynchronously)
-     * 
+     * Must authenticate via HTTP Basic Authentication, using your OAuth2 client credentials.
      * @param authorization OAuth2 client credentials in the Basic authorization format. (required)
      * @param token  (required)
      * @param tokenHint  (optional)

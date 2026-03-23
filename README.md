@@ -2,9 +2,12 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-03-23T12:13:15.121442Z[Etc/UTC]
+  - Build date: 2026-03-23T18:13:05.976474Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
+
+V2 documentation: https://builtbybit.com/wiki/api-v2/ \\
+OAuth2 documentation: https://builtbybit.com/wiki/oauth2/
 
   For more information, please visit [https://builtbybit.com/ticket](https://builtbybit.com/ticket)
 
@@ -84,20 +87,27 @@ Please follow the [installation](#installation) instruction and execute the foll
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.DefaultApi;
+import org.openapitools.client.api.GlobalApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.builtbybit.com");
+    
+    // Configure API key authorization: token
+    ApiKeyAuth token = (ApiKeyAuth) defaultClient.getAuthentication("token");
+    token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //token.setApiKeyPrefix("Token");
 
-    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    GlobalApi apiInstance = new GlobalApi(defaultClient);
     try {
       GetV2Analytics200Response result = apiInstance.getV2Analytics();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#getV2Analytics");
+      System.err.println("Exception when calling GlobalApi#getV2Analytics");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -114,28 +124,30 @@ All URIs are relative to *https://api.builtbybit.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**getV2Analytics**](docs/DefaultApi.md#getV2Analytics) | **GET** /v2/analytics | Fetch a list of analytics definitions
-*DefaultApi* | [**getV2AnalyticsGraph**](docs/DefaultApi.md#getV2AnalyticsGraph) | **GET** /v2/analytics/graph | Fetch analytics graph data
-*DefaultApi* | [**getV2Events**](docs/DefaultApi.md#getV2Events) | **GET** /v2/events | Fetch a list of pending events
-*DefaultApi* | [**postV2EventsComplete**](docs/DefaultApi.md#postV2EventsComplete) | **POST** /v2/events/complete | Mark events as complete
-*DefaultApi* | [**postV2ResourcesCreatorUpdate**](docs/DefaultApi.md#postV2ResourcesCreatorUpdate) | **POST** /v2/resources/creator/update | Post a resource update
-*DiscoveryApi* | [**getResourcesDiscoverCategories**](docs/DiscoveryApi.md#getResourcesDiscoverCategories) | **GET** /v2/resources/discover/categories | Fetch a list of categories
-*DiscoveryApi* | [**getResourcesDiscoverResources**](docs/DiscoveryApi.md#getResourcesDiscoverResources) | **GET** /v2/resources/discover/resources | Fetch a list of resources
-*DiscoveryApi* | [**getV2ResourcesDiscoverCartView**](docs/DiscoveryApi.md#getV2ResourcesDiscoverCartView) | **GET** /v2/resources/discover/cart/view | View the user&#39;s cart items
-*DiscoveryApi* | [**getV2ResourcesDiscoverLicenses**](docs/DiscoveryApi.md#getV2ResourcesDiscoverLicenses) | **GET** /v2/resources/discover/licenses | Fetch a list of the user&#39;s licenses
-*DiscoveryApi* | [**postV2ResourcesDiscoverCartAdd**](docs/DiscoveryApi.md#postV2ResourcesDiscoverCartAdd) | **POST** /v2/resources/discover/cart/add | Add items to a user&#39;s cart
-*DiscoveryApi* | [**postV2ResourcesDiscoverCartCheckout**](docs/DiscoveryApi.md#postV2ResourcesDiscoverCartCheckout) | **POST** /v2/resources/discover/cart/checkout | Initiate a checkout of a user&#39;s cart
-*DiscoveryApi* | [**postV2ResourcesDiscoverCartCouponAdd**](docs/DiscoveryApi.md#postV2ResourcesDiscoverCartCouponAdd) | **POST** /v2/resources/discover/cart/coupon/add | Add a coupon to the user&#39;s cart
-*DiscoveryApi* | [**postV2ResourcesDiscoverCartCouponRemove**](docs/DiscoveryApi.md#postV2ResourcesDiscoverCartCouponRemove) | **POST** /v2/resources/discover/cart/coupon/remove | Remove a coupon from the user&#39;s cart
-*DiscoveryApi* | [**postV2ResourcesDiscoverCartRemove**](docs/DiscoveryApi.md#postV2ResourcesDiscoverCartRemove) | **POST** /v2/resources/discover/cart/remove | Remove an item from the user&#39;s cart
+*GlobalApi* | [**getV2Analytics**](docs/GlobalApi.md#getV2Analytics) | **GET** /v2/analytics | Fetch a list of analytics definitions
+*GlobalApi* | [**getV2AnalyticsGraph**](docs/GlobalApi.md#getV2AnalyticsGraph) | **GET** /v2/analytics/graph | Fetch analytics graph data
+*GlobalApi* | [**getV2AnalyticsSingle**](docs/GlobalApi.md#getV2AnalyticsSingle) | **GET** /v2/analytics/single | Fetch a single analytics value
+*GlobalApi* | [**getV2Events**](docs/GlobalApi.md#getV2Events) | **GET** /v2/events | Fetch a list of pending events
+*GlobalApi* | [**postV2EventsComplete**](docs/GlobalApi.md#postV2EventsComplete) | **POST** /v2/events/complete | Mark events as complete
 *Oauth2Api* | [**getOauth2Token**](docs/Oauth2Api.md#getOauth2Token) | **POST** /oauth2/token | Request an access token using an existing grant
 *Oauth2Api* | [**getOauth2TokenRevoke**](docs/Oauth2Api.md#getOauth2TokenRevoke) | **POST** /oauth2/token/revoke | Revoke an existing access or refresh token
+*ResourcesCreatorApi* | [**postV2ResourcesCreatorUpdate**](docs/ResourcesCreatorApi.md#postV2ResourcesCreatorUpdate) | **POST** /v2/resources/creator/update | Post a resource update
+*ResourcesDiscoveryApi* | [**getResourcesDiscoverCategories**](docs/ResourcesDiscoveryApi.md#getResourcesDiscoverCategories) | **GET** /v2/resources/discover/categories | Fetch a list of categories
+*ResourcesDiscoveryApi* | [**getResourcesDiscoverResources**](docs/ResourcesDiscoveryApi.md#getResourcesDiscoverResources) | **GET** /v2/resources/discover/resources | Fetch a list of resources
+*ResourcesDiscoveryApi* | [**getV2ResourcesDiscoverCartView**](docs/ResourcesDiscoveryApi.md#getV2ResourcesDiscoverCartView) | **GET** /v2/resources/discover/cart/view | View the user&#39;s cart items
+*ResourcesDiscoveryApi* | [**getV2ResourcesDiscoverLicenses**](docs/ResourcesDiscoveryApi.md#getV2ResourcesDiscoverLicenses) | **GET** /v2/resources/discover/licenses | Fetch a list of the user&#39;s licenses
+*ResourcesDiscoveryApi* | [**postV2ResourcesDiscoverCartAdd**](docs/ResourcesDiscoveryApi.md#postV2ResourcesDiscoverCartAdd) | **POST** /v2/resources/discover/cart/add | Add items to a user&#39;s cart
+*ResourcesDiscoveryApi* | [**postV2ResourcesDiscoverCartCheckout**](docs/ResourcesDiscoveryApi.md#postV2ResourcesDiscoverCartCheckout) | **POST** /v2/resources/discover/cart/checkout | Initiate a checkout of a user&#39;s cart
+*ResourcesDiscoveryApi* | [**postV2ResourcesDiscoverCartCouponAdd**](docs/ResourcesDiscoveryApi.md#postV2ResourcesDiscoverCartCouponAdd) | **POST** /v2/resources/discover/cart/coupon/add | Add a coupon to the user&#39;s cart
+*ResourcesDiscoveryApi* | [**postV2ResourcesDiscoverCartCouponRemove**](docs/ResourcesDiscoveryApi.md#postV2ResourcesDiscoverCartCouponRemove) | **POST** /v2/resources/discover/cart/coupon/remove | Remove a coupon from the user&#39;s cart
+*ResourcesDiscoveryApi* | [**postV2ResourcesDiscoverCartRemove**](docs/ResourcesDiscoveryApi.md#postV2ResourcesDiscoverCartRemove) | **POST** /v2/resources/discover/cart/remove | Remove an item from the user&#39;s cart
 
 
 ## Documentation for Models
 
  - [Addon](docs/Addon.md)
  - [Analytic](docs/Analytic.md)
+ - [AnalyticFiltersValue](docs/AnalyticFiltersValue.md)
  - [AnalyticGraphData](docs/AnalyticGraphData.md)
  - [AnalyticGraphDataPeriod](docs/AnalyticGraphDataPeriod.md)
  - [AnalyticGraphDataPoint](docs/AnalyticGraphDataPoint.md)
@@ -159,6 +171,9 @@ Class | Method | HTTP request | Description
  - [GetV2Analytics200Response](docs/GetV2Analytics200Response.md)
  - [GetV2Analytics200ResponseData](docs/GetV2Analytics200ResponseData.md)
  - [GetV2AnalyticsGraph200Response](docs/GetV2AnalyticsGraph200Response.md)
+ - [GetV2AnalyticsSingle200Response](docs/GetV2AnalyticsSingle200Response.md)
+ - [GetV2AnalyticsSingle200ResponseData](docs/GetV2AnalyticsSingle200ResponseData.md)
+ - [GetV2AnalyticsSingle200ResponseDataPeriod](docs/GetV2AnalyticsSingle200ResponseDataPeriod.md)
  - [GetV2Events200Response](docs/GetV2Events200Response.md)
  - [GetV2Events200ResponseData](docs/GetV2Events200ResponseData.md)
  - [GetV2ResourcesDiscoverCartView200Response](docs/GetV2ResourcesDiscoverCartView200Response.md)
@@ -204,6 +219,14 @@ Authentication schemes defined for the API:
 - **Type**: API key
 - **API key parameter name**: Authorization
 - **Location**: HTTP header
+
+<a id="oauth2"></a>
+### oauth2
+
+- **Type**: OAuth
+- **Flow**: accessCode
+- **Authorization URL**: https://builtbybit.com/account/external/authorize
+- **Scopes**: N/A
 
 
 ## Recommendation

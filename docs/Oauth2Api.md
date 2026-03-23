@@ -10,11 +10,11 @@ All URIs are relative to *https://api.builtbybit.com*
 
 <a id="getOauth2Token"></a>
 # **getOauth2Token**
-> GetOauth2Token200Response getOauth2Token(authorization, grantType, code, refreshToken)
+> GetOauth2Token200Response getOauth2Token(grantType, code, refreshToken)
 
 Request an access token using an existing grant
 
-Supported grant types: authorization_code, refresh_token
+Supported grant types: &#x60;authorization_code&#x60;, and &#x60;refresh_token&#x60;.  Must authenticate via HTTP Basic Authentication, using your OAuth2 client credentials.
 
 ### Example
 ```java
@@ -22,6 +22,7 @@ Supported grant types: authorization_code, refresh_token
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
 import org.openapitools.client.models.*;
 import org.openapitools.client.api.Oauth2Api;
 
@@ -29,14 +30,19 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.builtbybit.com");
+    
+    // Configure API key authorization: token
+    ApiKeyAuth token = (ApiKeyAuth) defaultClient.getAuthentication("token");
+    token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //token.setApiKeyPrefix("Token");
 
     Oauth2Api apiInstance = new Oauth2Api(defaultClient);
-    String authorization = "authorization_example"; // String | OAuth2 client credentials in the Basic authorization format.
     String grantType = "grantType_example"; // String | 
     String code = "code_example"; // String | Required if grant_type = `authorization_code`.
     String refreshToken = "refreshToken_example"; // String | Required if grant_type = `refresh_token`.
     try {
-      GetOauth2Token200Response result = apiInstance.getOauth2Token(authorization, grantType, code, refreshToken);
+      GetOauth2Token200Response result = apiInstance.getOauth2Token(grantType, code, refreshToken);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling Oauth2Api#getOauth2Token");
@@ -53,7 +59,6 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **authorization** | **String**| OAuth2 client credentials in the Basic authorization format. | |
 | **grantType** | **String**|  | |
 | **code** | **String**| Required if grant_type &#x3D; &#x60;authorization_code&#x60;. | [optional] |
 | **refreshToken** | **String**| Required if grant_type &#x3D; &#x60;refresh_token&#x60;. | [optional] |
@@ -64,7 +69,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[token](../README.md#token)
 
 ### HTTP request headers
 
@@ -82,12 +87,15 @@ No authorization required
 
 Revoke an existing access or refresh token
 
+Must authenticate via HTTP Basic Authentication, using your OAuth2 client credentials.
+
 ### Example
 ```java
 // Import classes:
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
 import org.openapitools.client.models.*;
 import org.openapitools.client.api.Oauth2Api;
 
@@ -95,6 +103,12 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.builtbybit.com");
+    
+    // Configure API key authorization: token
+    ApiKeyAuth token = (ApiKeyAuth) defaultClient.getAuthentication("token");
+    token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //token.setApiKeyPrefix("Token");
 
     Oauth2Api apiInstance = new Oauth2Api(defaultClient);
     String authorization = "authorization_example"; // String | OAuth2 client credentials in the Basic authorization format.
@@ -128,7 +142,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[token](../README.md#token)
 
 ### HTTP request headers
 

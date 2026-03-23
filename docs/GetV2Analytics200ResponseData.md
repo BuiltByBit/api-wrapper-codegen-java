@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**analytics** | [**Analytic**](Analytic.md) |  |  [optional] |
+|**analytics** | [**Map&lt;String, Analytic&gt;**](Analytic.md) |  |  [optional] |
 
 
 

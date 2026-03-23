@@ -1,6 +1,6 @@
 /*
  * BuiltByBit API
- * All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
+ * All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.    V2 documentation: https://builtbybit.com/wiki/api-v2/ \\  OAuth2 documentation: https://builtbybit.com/wiki/oauth2/
  *
  * The version of the OpenAPI document: v2
  * 
@@ -20,7 +20,12 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.openapitools.client.model.AnalyticFiltersValue;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Analytic
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-23T12:13:15.121442Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-23T18:13:05.976474Z[Etc/UTC]")
 public class Analytic {
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
@@ -69,7 +74,11 @@ public class Analytic {
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
-  private String filters;
+  private Map<String, AnalyticFiltersValue> filters = new HashMap<>();
+
+  public static final String SERIALIZED_NAME_PERIODS = "periods";
+  @SerializedName(SERIALIZED_NAME_PERIODS)
+  private List<String> periods;
 
   public Analytic() {
   }
@@ -150,8 +159,16 @@ public class Analytic {
   }
 
 
-  public Analytic filters(String filters) {
+  public Analytic filters(Map<String, AnalyticFiltersValue> filters) {
     this.filters = filters;
+    return this;
+  }
+
+  public Analytic putFiltersItem(String key, AnalyticFiltersValue filtersItem) {
+    if (this.filters == null) {
+      this.filters = new HashMap<>();
+    }
+    this.filters.put(key, filtersItem);
     return this;
   }
 
@@ -160,12 +177,39 @@ public class Analytic {
    * @return filters
   **/
   @javax.annotation.Nullable
-  public String getFilters() {
+  public Map<String, AnalyticFiltersValue> getFilters() {
     return filters;
   }
 
-  public void setFilters(String filters) {
+  public void setFilters(Map<String, AnalyticFiltersValue> filters) {
     this.filters = filters;
+  }
+
+
+  public Analytic periods(List<String> periods) {
+    this.periods = periods;
+    return this;
+  }
+
+  public Analytic addPeriodsItem(String periodsItem) {
+    if (this.periods == null) {
+      this.periods = new ArrayList<>();
+    }
+    this.periods.add(periodsItem);
+    return this;
+  }
+
+   /**
+   * Get periods
+   * @return periods
+  **/
+  @javax.annotation.Nullable
+  public List<String> getPeriods() {
+    return periods;
+  }
+
+  public void setPeriods(List<String> periods) {
+    this.periods = periods;
   }
 
 
@@ -183,12 +227,13 @@ public class Analytic {
         Objects.equals(this.desc, analytic.desc) &&
         Objects.equals(this.graph, analytic.graph) &&
         Objects.equals(this.single, analytic.single) &&
-        Objects.equals(this.filters, analytic.filters);
+        Objects.equals(this.filters, analytic.filters) &&
+        Objects.equals(this.periods, analytic.periods);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, desc, graph, single, filters);
+    return Objects.hash(label, desc, graph, single, filters, periods);
   }
 
   @Override
@@ -200,6 +245,7 @@ public class Analytic {
     sb.append("    graph: ").append(toIndentedString(graph)).append("\n");
     sb.append("    single: ").append(toIndentedString(single)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    periods: ").append(toIndentedString(periods)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -227,6 +273,7 @@ public class Analytic {
     openapiFields.add("graph");
     openapiFields.add("single");
     openapiFields.add("filters");
+    openapiFields.add("periods");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -259,8 +306,9 @@ public class Analytic {
       if ((jsonObj.get("desc") != null && !jsonObj.get("desc").isJsonNull()) && !jsonObj.get("desc").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `desc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("desc").toString()));
       }
-      if ((jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) && !jsonObj.get("filters").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `filters` to be a primitive type in the JSON string but got `%s`", jsonObj.get("filters").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("periods") != null && !jsonObj.get("periods").isJsonNull() && !jsonObj.get("periods").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `periods` to be an array in the JSON string but got `%s`", jsonObj.get("periods").toString()));
       }
   }
 

@@ -1,10 +1,11 @@
 openapi: 3.0.0
 info:
   contact:
-    name: BuiltByBit (test)
+    name: BuiltByBit
     url: https://builtbybit.com/ticket
   description: "All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate)\
-    \ subscription or invite-only permissions."
+    \ subscription or invite-only permissions.\r\n\r\nV2 documentation: https://builtbybit.com/wiki/api-v2/\
+    \ \\\r\nOAuth2 documentation: https://builtbybit.com/wiki/oauth2/"
   termsOfService: https://builtbybit.com/wiki/terms
   title: BuiltByBit API
   version: v2
@@ -15,24 +16,19 @@ servers:
 - description: BuiltByBit
   url: https://api.builtbybit.com/
 tags:
-- name: discovery
 - name: free
+- name: global
 - name: oauth2
-- name: resources
+- name: resources/creator
+- name: resources/discovery
 paths:
   /oauth2/token:
     post:
-      description: "Supported grant types: authorization_code, refresh_token"
+      description: "Supported grant types: `authorization_code`, and `refresh_token`.\r\
+        \nMust authenticate via HTTP Basic Authentication, using your OAuth2 client\
+        \ credentials."
       operationId: get-oauth2-token
-      parameters:
-      - description: OAuth2 client credentials in the Basic authorization format.
-        explode: false
-        in: header
-        name: Authorization
-        required: true
-        schema:
-          type: string
-        style: simple
+      parameters: []
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -45,6 +41,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/get_oauth2_token_200_response'
           description: OK
+      security:
+      - token: []
       summary: Request an access token using an existing grant
       tags:
       - oauth2
@@ -54,6 +52,8 @@ paths:
       x-accepts: application/json
   /oauth2/token/revoke:
     post:
+      description: "Must authenticate via HTTP Basic Authentication, using your OAuth2\
+        \ client credentials."
       operationId: get-oauth2-token-revoke
       parameters:
       - description: OAuth2 client credentials in the Basic authorization format.
@@ -76,6 +76,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/get_oauth2_token_revoke_200_response'
           description: OK
+      security:
+      - token: []
       summary: Revoke an existing access or refresh token
       tags:
       - oauth2
@@ -175,7 +177,7 @@ paths:
       - token: []
       summary: Fetch a list of resources
       tags:
-      - discovery
+      - resources/discovery
       x-stoplight:
         id: p24j0imx0z6cc
       x-accepts: application/json
@@ -223,9 +225,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/get_resources_discover_resources_4XX_response'
           description: ""
+      security:
+      - token: []
       summary: Fetch a list of categories
       tags:
-      - discovery
+      - resources/discovery
       x-stoplight:
         id: 1wpuixx1xd8vo
       x-accepts: application/json
@@ -283,15 +287,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/get_resources_discover_resources_4XX_response'
           description: ""
+      security:
+      - oauth2: []
       summary: Fetch a list of the user's licenses
       tags:
-      - discovery
+      - resources/discovery
       x-stoplight:
         id: 5ulsft847tbha
       x-accepts: application/json
   /v2/resources/discover/cart/view:
     get:
-      description: 'Supported ''with hints'':'
+      description: ""
       operationId: get-v2-resources-discover-cart-view
       responses:
         "200":
@@ -300,9 +306,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/get_v2_resources_discover_cart_view_200_response'
           description: OK
+      security:
+      - oauth2: []
       summary: View the user's cart items
       tags:
-      - discovery
+      - resources/discovery
       x-stoplight:
         id: eikr4b3wx2qem
       x-accepts: application/json
@@ -325,9 +333,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/post_v2_resources_discover_cart_add_2XX_response'
           description: Success
+      security:
+      - oauth2: []
       summary: Add items to a user's cart
       tags:
-      - discovery
+      - resources/discovery
       x-stoplight:
         id: 91lnfa7dxz87w
       x-content-type: application/json
@@ -347,9 +357,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/post_v2_resources_discover_cart_checkout_200_response'
           description: OK
+      security:
+      - oauth2: []
       summary: Initiate a checkout of a user's cart
       tags:
-      - discovery
+      - resources/discovery
       x-stoplight:
         id: 0x1pcudppx63b
       x-content-type: application/json
@@ -369,9 +381,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/post_v2_resources_discover_cart_remove_200_response'
           description: OK
+      security:
+      - oauth2: []
       summary: Remove an item from the user's cart
       tags:
-      - discovery
+      - resources/discovery
       x-stoplight:
         id: 12m9v5ctkpynt
       x-content-type: application/json
@@ -391,9 +405,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/post_v2_resources_discover_cart_coupon_add_200_response'
           description: OK
+      security:
+      - oauth2: []
       summary: Add a coupon to the user's cart
       tags:
-      - discovery
+      - resources/discovery
       x-stoplight:
         id: g2gmfc32a3a14
       x-content-type: application/json
@@ -413,9 +429,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/post_v2_resources_discover_cart_coupon_remove_200_response'
           description: OK
+      security:
+      - oauth2: []
       summary: Remove a coupon from the user's cart
       tags:
-      - discovery
+      - resources/discovery
       x-stoplight:
         id: bbvokgafxl9nf
       x-content-type: application/json
@@ -430,8 +448,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/get_v2_events_200_response'
           description: OK
+      security:
+      - token: []
       summary: Fetch a list of pending events
-      tags: []
+      tags:
+      - global
       x-stoplight:
         id: 00f4ahftly4s2
       x-accepts: application/json
@@ -451,7 +472,8 @@ paths:
                 $ref: '#/components/schemas/post_v2_events_complete_200_response'
           description: OK
       summary: Mark events as complete
-      tags: []
+      tags:
+      - global
       x-stoplight:
         id: f2lqrdli45xul
       x-content-type: application/json
@@ -466,8 +488,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/get_v2_analytics_200_response'
           description: OK
+      security:
+      - token: []
       summary: Fetch a list of analytics definitions
-      tags: []
+      tags:
+      - global
       x-stoplight:
         id: au6y5fszotgtf
       x-accepts: application/json
@@ -475,35 +500,32 @@ paths:
     get:
       operationId: get-v2-analytics-graph
       parameters:
-      - explode: true
+      - description: A list of analytic IDs to fetch data for.
+        explode: true
         in: query
         name: analytics
         required: false
         schema:
           type: array
         style: form
-      - explode: true
+      - description: The time period to fetch data over.
+        explode: true
         in: query
         name: period
         required: false
         schema:
           type: string
         style: form
-      - explode: true
-        in: query
-        name: grouping
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
+      - description: A set of filters which may be used for the analytics.
+        explode: true
         in: query
         name: filters
         required: false
         schema:
-          type: string
+          type: array
         style: form
-      - description: Only respected when 'period' = 'custom_range'.
+      - description: "Only respected when 'period' = 'custom_range', in the format\
+          \ 'YYYY-MM-DD'."
         explode: true
         in: query
         name: start_date
@@ -511,7 +533,8 @@ paths:
         schema:
           type: string
         style: form
-      - description: Only respected when 'period' = 'custom_range'.
+      - description: "Only respected when 'period' = 'custom_range', in the format\
+          \ 'YYYY-MM-DD'."
         explode: true
         in: query
         name: end_date
@@ -526,10 +549,74 @@ paths:
               schema:
                 $ref: '#/components/schemas/get_v2_analytics_graph_200_response'
           description: OK
+      security:
+      - token: []
       summary: Fetch analytics graph data
-      tags: []
+      tags:
+      - global
       x-stoplight:
         id: 10brpg6zlz0yv
+      x-accepts: application/json
+  /v2/analytics/single:
+    get:
+      operationId: get-v2-analytics-single
+      parameters:
+      - description: A list of analytic IDs to fetch data for.
+        explode: false
+        in: query
+        name: analytics
+        required: false
+        schema:
+          type: array
+        style: form
+      - description: The time period to fetch data over.
+        explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A set of filters which may be used for the analytics.
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: array
+        style: form
+      - description: "Only respected when 'period' = 'custom_range', in the format\
+          \ 'YYYY-MM-DD'."
+        explode: true
+        in: query
+        name: start_date
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Only respected when 'period' = 'custom_range', in the format\
+          \ 'YYYY-MM-DD'."
+        explode: true
+        in: query
+        name: end_date
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_analytics_single_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a single analytics value
+      tags:
+      - global
+      x-stoplight:
+        id: z0mpisnpeuegq
       x-accepts: application/json
   /v2/resources/creator/update:
     post:
@@ -552,8 +639,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/post_v2_resources_creator_update_200_response'
           description: OK
+      security:
+      - token: []
       summary: Post a resource update
-      tags: []
+      tags:
+      - resources/creator
       x-stoplight:
         id: wowhoeszq2hjg
       x-content-type: application/json
@@ -1009,8 +1099,10 @@ components:
           x-stoplight:
             id: od4r4eq60xl4i
         type:
-          description: "Supported types:  \r\n'choice': a finite choice set (see `options`).\
-            \  \r\n'text': user text input"
+          description: "Supported types:  \r\n'radio': a finite choice set (see `choices`).\
+            \ You'll likely want to use the radio HTML tag.  \r\n'select': a finite\
+            \ choice set (see `choices`). You'll likely want to use the select HTML\
+            \ tag.\r\n'text': user text input."
           type: string
           x-stoplight:
             id: rdwntahbpyw72
@@ -1597,8 +1689,14 @@ components:
     Analytic:
       example:
         single: true
+        periods:
+        - periods
+        - periods
         label: label
-        filters: filters
+        filters:
+          key:
+            type: type
+            desc: desc
         graph: true
         desc: desc
       properties:
@@ -1623,9 +1721,19 @@ components:
           x-stoplight:
             id: 0fudal91tc4uk
         filters:
-          type: string
+          additionalProperties:
+            $ref: '#/components/schemas/Analytic_filters_value'
+          type: object
           x-stoplight:
             id: u7qomukz00gik
+        periods:
+          items:
+            type: string
+            x-stoplight:
+              id: 1m4mpre89qqkc
+          type: array
+          x-stoplight:
+            id: zjy6b2cnimzac
       title: Analytic
       type: object
       x-stoplight:
@@ -3140,14 +3248,23 @@ components:
     get_v2_analytics_200_response_data:
       example:
         analytics:
-          single: true
-          label: label
-          filters: filters
-          graph: true
-          desc: desc
+          key:
+            single: true
+            periods:
+            - periods
+            - periods
+            label: label
+            filters:
+              key:
+                type: type
+                desc: desc
+            graph: true
+            desc: desc
       properties:
         analytics:
-          $ref: '#/components/schemas/Analytic'
+          additionalProperties:
+            $ref: '#/components/schemas/Analytic'
+          type: object
       type: object
       x-stoplight:
         id: ylaffyg9gv5g0
@@ -3156,11 +3273,18 @@ components:
         result: success
         data:
           analytics:
-            single: true
-            label: label
-            filters: filters
-            graph: true
-            desc: desc
+            key:
+              single: true
+              periods:
+              - periods
+              - periods
+              label: label
+              filters:
+                key:
+                  type: type
+                  desc: desc
+              graph: true
+              desc: desc
       properties:
         result:
           enum:
@@ -3201,6 +3325,76 @@ components:
             id: 2bq9is0ilhv95
         data:
           $ref: '#/components/schemas/AnalyticGraphData'
+      type: object
+    get_v2_analytics_single_200_response_data_period:
+      example:
+        end_date: end_date
+        period: period
+        period_display: period_display
+        start_date: start_date
+      properties:
+        period:
+          type: string
+          x-stoplight:
+            id: 8z61la6a08nvr
+        period_display:
+          type: string
+          x-stoplight:
+            id: uymu5p1qrdb8m
+        start_date:
+          type: string
+          x-stoplight:
+            id: 9tqnam1yqeh1v
+        end_date:
+          type: string
+          x-stoplight:
+            id: 9clfd4oneqi2b
+      type: object
+      x-stoplight:
+        id: 0ignatns1rheq
+    get_v2_analytics_single_200_response_data:
+      example:
+        analytics:
+          key: 0.8008281904610115
+        period:
+          end_date: end_date
+          period: period
+          period_display: period_display
+          start_date: start_date
+      properties:
+        analytics:
+          additionalProperties:
+            type: number
+            x-stoplight:
+              id: 7sqdxmtvvhdpe
+          type: object
+          x-stoplight:
+            id: jkvxuc40f3y2k
+        period:
+          $ref: '#/components/schemas/get_v2_analytics_single_200_response_data_period'
+      type: object
+      x-stoplight:
+        id: ufpaq01g3dtbb
+    get_v2_analytics_single_200_response:
+      example:
+        result: success
+        data:
+          analytics:
+            key: 0.8008281904610115
+          period:
+            end_date: end_date
+            period: period
+            period_display: period_display
+            start_date: start_date
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: xmfb8ky1vzpnt
+        data:
+          $ref: '#/components/schemas/get_v2_analytics_single_200_response_data'
       type: object
     post_v2_resources_creator_update_request_file:
       properties:
@@ -3313,6 +3507,22 @@ components:
       type: object
       x-stoplight:
         id: r6x6zbrv6s90q
+    Analytic_filters_value:
+      example:
+        type: type
+        desc: desc
+      properties:
+        desc:
+          type: string
+          x-stoplight:
+            id: gimswv4g2ufnl
+        type:
+          type: string
+          x-stoplight:
+            id: 60qhc5xwnk1yl
+      type: object
+      x-stoplight:
+        id: 4bpzzswrx9vf4
     AnalyticGraphData_period:
       example:
         end_date: end_date
@@ -3341,10 +3551,19 @@ components:
         id: gnjtob0nyvzgo
   securitySchemes:
     token:
-      description: "See documentation on authorization: https://builtbybit.com/wiki/api"
+      description: "See documentation on authorization: https://builtbybit.com/wiki/api-v2/"
       in: header
       name: Authorization
       type: apiKey
+    oauth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://builtbybit.com/account/external/authorize
+          refreshUrl: https://api.builtbybit.com/oauth2/token
+          scopes: {}
+          tokenUrl: https://api.builtbybit.com/oauth2/token
+      type: oauth2
 x-stoplight:
   id: yu7gslmw7p8dt
+x-internal: false
 
