@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * GetV2ResourcesDiscoverLicenses200ResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-23T04:18:26.266268Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-23T10:10:12.038539Z[Etc/UTC]")
 public class GetV2ResourcesDiscoverLicenses200ResponseData {
   public static final String SERIALIZED_NAME_LICENSES = "licenses";
   @SerializedName(SERIALIZED_NAME_LICENSES)

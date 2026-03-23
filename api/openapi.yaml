@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   contact:
-    name: BuiltByBit (test)
+    name: BuiltByBit
     url: https://builtbybit.com/ticket
   description: "All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate)\
     \ subscription or invite-only permissions."
