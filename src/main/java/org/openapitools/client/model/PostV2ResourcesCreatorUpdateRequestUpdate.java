@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2ResourcesCreatorUpdateRequestUpdate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-24T04:08:39.198430Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-25T04:10:25.962594Z[Etc/UTC]")
 public class PostV2ResourcesCreatorUpdateRequestUpdate {
   public static final String SERIALIZED_NAME_POST = "post";
   @SerializedName(SERIALIZED_NAME_POST)
