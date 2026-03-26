@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2EventsCompleteRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-25T04:10:25.962594Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-26T04:24:59.464698Z[Etc/UTC]")
 public class PostV2EventsCompleteRequest {
   public static final String SERIALIZED_NAME_EVENT_IDS = "event_ids";
   @SerializedName(SERIALIZED_NAME_EVENT_IDS)
