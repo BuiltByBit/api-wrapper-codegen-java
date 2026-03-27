@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * GetV2AnalyticsSingle200ResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-26T04:24:59.464698Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-27T04:25:49.598987Z[Etc/UTC]")
 public class GetV2AnalyticsSingle200ResponseData {
   public static final String SERIALIZED_NAME_ANALYTICS = "analytics";
   @SerializedName(SERIALIZED_NAME_ANALYTICS)

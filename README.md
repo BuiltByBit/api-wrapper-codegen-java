@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-03-26T04:24:59.464698Z[Etc/UTC]
+  - Build date: 2026-03-27T04:25:49.598987Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
