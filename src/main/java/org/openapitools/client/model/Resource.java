@@ -61,7 +61,7 @@ import org.openapitools.client.JSON;
 /**
  * Supported &#39;with&#39; values: - &#39;Creator&#39;: the resource creator/owner - &#39;Category&#39;: the resource category  - &#39;Description&#39;: the resource description (rendered HTML and BBCode) - &#39;LatestReviews&#39;: list of the 10 latest reviews - &#39;Filter values&#39;: filter values set by the creator
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-28T04:10:08.820979Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-29T04:29:20.003815Z[Etc/UTC]")
 public class Resource {
   public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
