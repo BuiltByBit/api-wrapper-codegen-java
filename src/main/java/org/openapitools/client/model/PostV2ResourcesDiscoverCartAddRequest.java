@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2ResourcesDiscoverCartAddRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-29T04:29:20.003815Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-30T04:36:57.988646Z[Etc/UTC]")
 public class PostV2ResourcesDiscoverCartAddRequest {
   public static final String SERIALIZED_NAME_ADD = "add";
   @SerializedName(SERIALIZED_NAME_ADD)
