@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * CartItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-30T04:36:57.988646Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-31T04:27:59.542038Z[Etc/UTC]")
 public class CartItem {
   public static final String SERIALIZED_NAME_CART_ITEM_ID = "cart_item_id";
   @SerializedName(SERIALIZED_NAME_CART_ITEM_ID)

@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * GetOauth2TokenRevoke200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-30T04:36:57.988646Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-31T04:27:59.542038Z[Etc/UTC]")
 public class GetOauth2TokenRevoke200Response {
   public static final String SERIALIZED_NAME_REVOKED = "revoked";
   @SerializedName(SERIALIZED_NAME_REVOKED)
