@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**reviewId** | **String** |  |  [optional] |
 |**resourceId** | **String** |  |  [optional] |
-|**writtenById** | **String** |  |  [optional] |
+|**reviewerId** | **String** |  |  [optional] |
 
 
 

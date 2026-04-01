@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * Review
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-01T04:39:53.356183Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-01T12:11:54.200613Z[Etc/UTC]")
 public class Review {
   public static final String SERIALIZED_NAME_REVIEW_ID = "review_id";
   @SerializedName(SERIALIZED_NAME_REVIEW_ID)
@@ -59,9 +59,9 @@ public class Review {
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
   private String resourceId;
 
-  public static final String SERIALIZED_NAME_WRITTEN_BY_ID = "written_by_id";
-  @SerializedName(SERIALIZED_NAME_WRITTEN_BY_ID)
-  private String writtenById;
+  public static final String SERIALIZED_NAME_REVIEWER_ID = "reviewer_id";
+  @SerializedName(SERIALIZED_NAME_REVIEWER_ID)
+  private String reviewerId;
 
   public Review() {
   }
@@ -104,22 +104,22 @@ public class Review {
   }
 
 
-  public Review writtenById(String writtenById) {
-    this.writtenById = writtenById;
+  public Review reviewerId(String reviewerId) {
+    this.reviewerId = reviewerId;
     return this;
   }
 
    /**
-   * Get writtenById
-   * @return writtenById
+   * Get reviewerId
+   * @return reviewerId
   **/
   @javax.annotation.Nullable
-  public String getWrittenById() {
-    return writtenById;
+  public String getReviewerId() {
+    return reviewerId;
   }
 
-  public void setWrittenById(String writtenById) {
-    this.writtenById = writtenById;
+  public void setReviewerId(String reviewerId) {
+    this.reviewerId = reviewerId;
   }
 
 
@@ -135,12 +135,12 @@ public class Review {
     Review review = (Review) o;
     return Objects.equals(this.reviewId, review.reviewId) &&
         Objects.equals(this.resourceId, review.resourceId) &&
-        Objects.equals(this.writtenById, review.writtenById);
+        Objects.equals(this.reviewerId, review.reviewerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reviewId, resourceId, writtenById);
+    return Objects.hash(reviewId, resourceId, reviewerId);
   }
 
   @Override
@@ -149,7 +149,7 @@ public class Review {
     sb.append("class Review {\n");
     sb.append("    reviewId: ").append(toIndentedString(reviewId)).append("\n");
     sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
-    sb.append("    writtenById: ").append(toIndentedString(writtenById)).append("\n");
+    sb.append("    reviewerId: ").append(toIndentedString(reviewerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -174,7 +174,7 @@ public class Review {
     openapiFields = new HashSet<String>();
     openapiFields.add("review_id");
     openapiFields.add("resource_id");
-    openapiFields.add("written_by_id");
+    openapiFields.add("reviewer_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -207,8 +207,8 @@ public class Review {
       if ((jsonObj.get("resource_id") != null && !jsonObj.get("resource_id").isJsonNull()) && !jsonObj.get("resource_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `resource_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource_id").toString()));
       }
-      if ((jsonObj.get("written_by_id") != null && !jsonObj.get("written_by_id").isJsonNull()) && !jsonObj.get("written_by_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `written_by_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("written_by_id").toString()));
+      if ((jsonObj.get("reviewer_id") != null && !jsonObj.get("reviewer_id").isJsonNull()) && !jsonObj.get("reviewer_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reviewer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reviewer_id").toString()));
       }
   }
 

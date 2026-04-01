@@ -19,6 +19,7 @@ tags:
 - name: free
 - name: global
 - name: oauth2
+- name: resources/buyer
 - name: resources/creator
 - name: resources/discovery
 paths:
@@ -648,6 +649,266 @@ paths:
         id: wowhoeszq2hjg
       x-content-type: application/json
       x-accepts: application/json
+  /v2/resources/creator/resources:
+    get:
+      operationId: get-v2-resources-creator-resources
+      parameters:
+      - description: A comma-separated list of resource IDs to filter on. No filter
+          is applied if empty.
+        explode: true
+        in: query
+        name: resource_ids
+        required: false
+        schema:
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_resources_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a list of your resources
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: 103bx8jeqlgb9
+      x-accepts: application/json
+  /v2/resources/creator/purchases:
+    get:
+      operationId: get-v2-resources-creator-purchases
+      parameters:
+      - description: A comma-separated list of resource IDs to filter on. No filter
+          is applied if empty.
+        explode: true
+        in: query
+        name: resource_ids
+        required: false
+        schema:
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_purchases_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a list of your resources' purchases
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: b84urq8cyo0x5
+      x-accepts: application/json
+  /v2/resources/creator/licenses:
+    get:
+      operationId: get-v2-resources-creator-licenses
+      parameters:
+      - description: A comma-separated list of resource IDs to filter on. No filter
+          is applied if empty.
+        explode: true
+        in: query
+        name: resource_ids
+        required: false
+        schema:
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_licenses_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a list of your resources' licenses
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: rcej7mxxk7qj0
+      x-accepts: application/json
+  /v2/resources/creator/versions:
+    get:
+      operationId: get-v2-resources-creator-versions
+      parameters:
+      - description: A comma-separated list of resource IDs to filter on. No filter
+          is applied if empty.
+        explode: true
+        in: query
+        name: resource_ids
+        required: false
+        schema:
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_versions_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a list of your resources' versions
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: n8na44g7vgvh8
+      x-accepts: application/json
+  /v2/resources/creator/updates:
+    get:
+      operationId: get-v2-resources-creator-updates
+      parameters:
+      - description: A comma-separated list of resource IDs to filter on. No filter
+          is applied if empty.
+        explode: true
+        in: query
+        name: resource_ids
+        required: false
+        schema:
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_updates_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a list of your resource's updates
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: r8yez7mkav2pj
+      x-accepts: application/json
+  /v2/resources/creator/addons:
+    get:
+      operationId: get-v2-resources-creator-addons
+      parameters:
+      - description: A comma-separated list of resource IDs to filter on. No filter
+          is applied if empty.
+        explode: true
+        in: query
+        name: resource_ids
+        required: false
+        schema:
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_addons_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a list of your resources' addons
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: s7sgtrw72qto1
+      x-accepts: application/json
+  /v2/resources/creator/bundles:
+    get:
+      operationId: get-v2-resources-creator-bundles
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_bundles_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a list of your bundles
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: 8rr5mssb968xc
+      x-accepts: application/json
+  /v2/resources/creator/sale-events:
+    get:
+      operationId: get-v2-resources-creator-sale-events
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_sale_events_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a list of your sale events
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: e153a7jk4duox
+      x-accepts: application/json
+  /v2/resources/creator/reviews:
+    get:
+      operationId: get-v2-resources-creator-reviews
+      parameters:
+      - description: A comma-separated list of resource IDs to filter on. No filter
+          is applied if empty.
+        explode: true
+        in: query
+        name: resource_ids
+        required: false
+        schema:
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_reviews_200_response'
+          description: OK
+      summary: Fetch a list of your resources' reviews
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: 2srju4vu6icgb
+      x-accepts: application/json
+  /v2/resources/buyer/latest:
+    get:
+      operationId: get-v2-resources-buyer-latest
+      parameters:
+      - description: "32 character hash provided by an anti-piracy placeholder of\
+          \ the NONCE type. Must be from a resource download (cannot be an addon download’\
+          s nonce, etc)."
+        explode: true
+        in: query
+        name: nonce
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_buyer_latest_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetches the latest versions & license information
+      tags:
+      - resources/buyer
+      x-stoplight:
+        id: z2obo5xmlssl1
+      x-accepts: application/json
 components:
   examples: {}
   parameters:
@@ -707,6 +968,7 @@ components:
         \ (rendered HTML and BBCode)\n- 'LatestReviews': list of the 10 latest reviews\n\
         - 'Filter values': filter values set by the creator"
       example:
+        summary: summary
         Description:
           bbcode: bbcode
           html: html
@@ -720,81 +982,89 @@ components:
           - null
           - null
           title: title
+        purchases: 5
         cover_image_url: cover_image_url
         Addons:
           key:
-          - list_price_formatted: list_price_formatted
-            default: true
-            final_price: 1.1730742509559433
-            display_order: 4
+          - default: true
+            display_order: 6
             description: description
             state: visible
-            list_price: 7.457744773683766
             title: title
             type: type
-            final_price_formatted: final_price_formatted
-            price_currency: price_currency
-            addon_id: 6
-          - list_price_formatted: list_price_formatted
-            default: true
-            final_price: 1.1730742509559433
-            display_order: 4
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            addon_id: 1
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          - default: true
+            display_order: 6
             description: description
             state: visible
-            list_price: 7.457744773683766
             title: title
             type: type
-            final_price_formatted: final_price_formatted
-            price_currency: price_currency
-            addon_id: 6
-        review_count: 3
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            addon_id: 1
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+        review_count: 7
+        LatestReviews:
+        - review_id: review_id
+          reviewer_id: reviewer_id
+          resource_id: resource_id
+        - review_id: review_id
+          reviewer_id: reviewer_id
+          resource_id: resource_id
         Creator:
           registered_at: registered_at
           avatar_url: avatar_url
           user_id: user_id
           username: username
         title: title
-        list_price_formatted: list_price_formatted
-        downloads: 2
-        final_price: 9.301444243932576
-        currency: currency
-        LatestUpdate:
-          resource_id: resource_id
-          version_id: version_id
-        published_at: 1
-        summary: summary
-        purchases: 5
-        LatestReviews:
-        - review_id: review_id
-          written_by_id: written_by_id
-          resource_id: resource_id
-        - review_id: review_id
-          written_by_id: written_by_id
-          resource_id: resource_id
-        list_price: 7.061401241503109
-        review_average: 2.027123023002322
+        review_average: 9.301444243932576
+        ListPrice:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
         url: url
+        downloads: 2
         LatestVersion:
           resource_id: resource_id
           version_id: version_id
         last_updated_at: 5
         creator_id: 6
         SaleEventEntry:
-          event_id: 7
+          event_id: 4
           content_type: content_type
-          content_id: 1
-          discount: 1.0246457001441578
+          content_id: 7
+          discount: 1.2315135367772556
           SaleEvent:
             event_id: event_id
             started_at: started_at
             title: title
             ended_at: ended_at
-          entry_id: 4
+          entry_id: 2
         resource_id: 0
+        LatestUpdate:
+          resource_id: resource_id
+          version_id: version_id
+        published_at: 1
         carousel_image_urls:
         - carousel_image_urls
         - carousel_image_urls
-        final_price_formatted: final_price_formatted
+        FinalPrice:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
       properties:
         resource_id:
           type: integer
@@ -812,32 +1082,14 @@ components:
           type: integer
         last_updated_at:
           type: integer
-        currency:
-          type: string
         purchases:
           type: integer
         downloads:
           type: integer
-        list_price:
-          type: number
-          x-stoplight:
-            id: 6nvbsui4s8jl9
         cover_image_url:
           type: string
           x-stoplight:
             id: y7ga85b3lc17q
-        final_price:
-          type: number
-          x-stoplight:
-            id: b2medhzkptziy
-        final_price_formatted:
-          type: string
-          x-stoplight:
-            id: seeo2tuqppvfy
-        list_price_formatted:
-          type: string
-          x-stoplight:
-            id: 95pfh9uv4h1hb
         carousel_image_urls:
           items:
             type: string
@@ -854,6 +1106,10 @@ components:
           type: number
           x-stoplight:
             id: h72cfjwc1hvtw
+        ListPrice:
+          $ref: '#/components/schemas/Price'
+        FinalPrice:
+          $ref: '#/components/schemas/Price'
         SaleEventEntry:
           $ref: '#/components/schemas/SaleEventEntry'
         Creator:
@@ -950,16 +1206,16 @@ components:
         id: 7sp14wi7arb08
     SaleEventEntry:
       example:
-        event_id: 7
+        event_id: 4
         content_type: content_type
-        content_id: 1
-        discount: 1.0246457001441578
+        content_id: 7
+        discount: 1.2315135367772556
         SaleEvent:
           event_id: event_id
           started_at: started_at
           title: title
           ended_at: ended_at
-        entry_id: 4
+        entry_id: 2
       properties:
         entry_id:
           type: integer
@@ -1013,7 +1269,7 @@ components:
     Review:
       example:
         review_id: review_id
-        written_by_id: written_by_id
+        reviewer_id: reviewer_id
         resource_id: resource_id
       properties:
         review_id:
@@ -1022,15 +1278,18 @@ components:
           type: string
           x-stoplight:
             id: stsa2cb4s307b
-        written_by_id:
+        reviewer_id:
           type: string
           x-stoplight:
-            id: 5s74618zab9sx
+            id: q37yrlvbloxbd
       title: Review
       type: object
       x-stoplight:
         id: pg0jfhod8x7p9
     Update:
+      example:
+        update_id: update_id
+        resource_id: resource_id
       properties:
         update_id:
           type: string
@@ -1065,17 +1324,17 @@ components:
         type: type
         choices:
         - query_field: query_field
-          count: 9
+          count: 1
           title: title
           key: key
           selected: true
         - query_field: query_field
-          count: 9
+          count: 1
           title: title
           key: key
           selected: true
         value: value
-        order: 5
+        order: 7
         primary: true
       properties:
         filter_id:
@@ -1160,7 +1419,7 @@ components:
     FilterChoice:
       example:
         query_field: query_field
-        count: 9
+        count: 1
         title: title
         key: key
         selected: true
@@ -1368,9 +1627,9 @@ components:
         id: 7vftixajz8wum
     ListStats:
       example:
-        per_page: 8
-        total: 9
-        page: 6
+        per_page: 9
+        total: 4
+        page: 5
         max_page: 9
       properties:
         total:
@@ -1400,6 +1659,7 @@ components:
         content_id: 0
         permanent: true
         Resource:
+          summary: summary
           Description:
             bbcode: bbcode
             html: html
@@ -1413,81 +1673,89 @@ components:
             - null
             - null
             title: title
+          purchases: 5
           cover_image_url: cover_image_url
           Addons:
             key:
-            - list_price_formatted: list_price_formatted
-              default: true
-              final_price: 1.1730742509559433
-              display_order: 4
+            - default: true
+              display_order: 6
               description: description
               state: visible
-              list_price: 7.457744773683766
               title: title
               type: type
-              final_price_formatted: final_price_formatted
-              price_currency: price_currency
-              addon_id: 6
-            - list_price_formatted: list_price_formatted
-              default: true
-              final_price: 1.1730742509559433
-              display_order: 4
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 1
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            - default: true
+              display_order: 6
               description: description
               state: visible
-              list_price: 7.457744773683766
               title: title
               type: type
-              final_price_formatted: final_price_formatted
-              price_currency: price_currency
-              addon_id: 6
-          review_count: 3
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 1
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+          review_count: 7
+          LatestReviews:
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
           Creator:
             registered_at: registered_at
             avatar_url: avatar_url
             user_id: user_id
             username: username
           title: title
-          list_price_formatted: list_price_formatted
-          downloads: 2
-          final_price: 9.301444243932576
-          currency: currency
-          LatestUpdate:
-            resource_id: resource_id
-            version_id: version_id
-          published_at: 1
-          summary: summary
-          purchases: 5
-          LatestReviews:
-          - review_id: review_id
-            written_by_id: written_by_id
-            resource_id: resource_id
-          - review_id: review_id
-            written_by_id: written_by_id
-            resource_id: resource_id
-          list_price: 7.061401241503109
-          review_average: 2.027123023002322
+          review_average: 9.301444243932576
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
           url: url
+          downloads: 2
           LatestVersion:
             resource_id: resource_id
             version_id: version_id
           last_updated_at: 5
           creator_id: 6
           SaleEventEntry:
-            event_id: 7
+            event_id: 4
             content_type: content_type
-            content_id: 1
-            discount: 1.0246457001441578
+            content_id: 7
+            discount: 1.2315135367772556
             SaleEvent:
               event_id: event_id
               started_at: started_at
               title: title
               ended_at: ended_at
-            entry_id: 4
+            entry_id: 2
           resource_id: 0
+          LatestUpdate:
+            resource_id: resource_id
+            version_id: version_id
+          published_at: 1
           carousel_image_urls:
           - carousel_image_urls
           - carousel_image_urls
-          final_price_formatted: final_price_formatted
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
         active: true
         start_date: 6
       properties:
@@ -1580,18 +1848,21 @@ components:
         id: 3y3jqix6hbt0l
     Addon:
       example:
-        list_price_formatted: list_price_formatted
         default: true
-        final_price: 1.1730742509559433
-        display_order: 4
+        display_order: 6
         description: description
         state: visible
-        list_price: 7.457744773683766
         title: title
         type: type
-        final_price_formatted: final_price_formatted
-        price_currency: price_currency
-        addon_id: 6
+        ListPrice:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
+        addon_id: 1
+        FinalPrice:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
       properties:
         addon_id:
           type: integer
@@ -1616,26 +1887,6 @@ components:
           type: string
           x-stoplight:
             id: 9ckmm8mg8kxk2
-        list_price:
-          type: number
-          x-stoplight:
-            id: 2fdks528f64lr
-        list_price_formatted:
-          type: string
-          x-stoplight:
-            id: hzewr5kcciggw
-        final_price:
-          type: number
-          x-stoplight:
-            id: xdkooesdnx9nt
-        final_price_formatted:
-          type: string
-          x-stoplight:
-            id: q3iw5uiygxz87
-        price_currency:
-          type: string
-          x-stoplight:
-            id: ln1svamlzdy61
         display_order:
           type: integer
           x-stoplight:
@@ -1644,6 +1895,10 @@ components:
           type: boolean
           x-stoplight:
             id: 1o17r7mnuny38
+        ListPrice:
+          $ref: '#/components/schemas/Price'
+        FinalPrice:
+          $ref: '#/components/schemas/Price'
       title: Addon
       type: object
       x-stoplight:
@@ -1825,6 +2080,57 @@ components:
       type: object
       x-stoplight:
         id: ybm62r91xo1kj
+    Purchase:
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: 7wwg44yyl1ls0
+      title: Purchase
+      type: object
+      x-stoplight:
+        id: tusa0f8v6z0ha
+    Price:
+      example:
+        formatted: formatted
+        currency: currency
+        value: 3.616076749251911
+      properties:
+        value:
+          type: number
+          x-stoplight:
+            id: lgyl2su1du3tx
+        currency:
+          type: string
+          x-stoplight:
+            id: kix6d7k0mwkjp
+        formatted:
+          type: string
+          x-stoplight:
+            id: vajqt3ds49a6s
+      title: Price
+      type: object
+      x-stoplight:
+        id: opbh0uexp7ako
+      x-examples:
+        Example 1:
+          value: 5.99
+          currency: USD
+          formatted: $5.99
+    Bundle:
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: 3xhww5gy29r94
+      title: Bundle
+      type: object
+      x-stoplight:
+        id: 1yae2oj7q83n9
     get_oauth2_token_request:
       properties:
         grant_type:
@@ -1902,12 +2208,13 @@ components:
     get_resources_discover_resources_200_response_data:
       example:
         stats:
-          per_page: 8
-          total: 9
-          page: 6
+          per_page: 9
+          total: 4
+          page: 5
           max_page: 9
         resources:
-        - Description:
+        - summary: summary
+          Description:
             bbcode: bbcode
             html: html
           Category:
@@ -1920,82 +2227,91 @@ components:
             - null
             - null
             title: title
+          purchases: 5
           cover_image_url: cover_image_url
           Addons:
             key:
-            - list_price_formatted: list_price_formatted
-              default: true
-              final_price: 1.1730742509559433
-              display_order: 4
+            - default: true
+              display_order: 6
               description: description
               state: visible
-              list_price: 7.457744773683766
               title: title
               type: type
-              final_price_formatted: final_price_formatted
-              price_currency: price_currency
-              addon_id: 6
-            - list_price_formatted: list_price_formatted
-              default: true
-              final_price: 1.1730742509559433
-              display_order: 4
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 1
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            - default: true
+              display_order: 6
               description: description
               state: visible
-              list_price: 7.457744773683766
               title: title
               type: type
-              final_price_formatted: final_price_formatted
-              price_currency: price_currency
-              addon_id: 6
-          review_count: 3
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 1
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+          review_count: 7
+          LatestReviews:
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
           Creator:
             registered_at: registered_at
             avatar_url: avatar_url
             user_id: user_id
             username: username
           title: title
-          list_price_formatted: list_price_formatted
-          downloads: 2
-          final_price: 9.301444243932576
-          currency: currency
-          LatestUpdate:
-            resource_id: resource_id
-            version_id: version_id
-          published_at: 1
-          summary: summary
-          purchases: 5
-          LatestReviews:
-          - review_id: review_id
-            written_by_id: written_by_id
-            resource_id: resource_id
-          - review_id: review_id
-            written_by_id: written_by_id
-            resource_id: resource_id
-          list_price: 7.061401241503109
-          review_average: 2.027123023002322
+          review_average: 9.301444243932576
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
           url: url
+          downloads: 2
           LatestVersion:
             resource_id: resource_id
             version_id: version_id
           last_updated_at: 5
           creator_id: 6
           SaleEventEntry:
-            event_id: 7
+            event_id: 4
             content_type: content_type
-            content_id: 1
-            discount: 1.0246457001441578
+            content_id: 7
+            discount: 1.2315135367772556
             SaleEvent:
               event_id: event_id
               started_at: started_at
               title: title
               ended_at: ended_at
-            entry_id: 4
+            entry_id: 2
           resource_id: 0
+          LatestUpdate:
+            resource_id: resource_id
+            version_id: version_id
+          published_at: 1
           carousel_image_urls:
           - carousel_image_urls
           - carousel_image_urls
-          final_price_formatted: final_price_formatted
-        - Description:
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+        - summary: summary
+          Description:
             bbcode: bbcode
             html: html
           Category:
@@ -2008,81 +2324,89 @@ components:
             - null
             - null
             title: title
+          purchases: 5
           cover_image_url: cover_image_url
           Addons:
             key:
-            - list_price_formatted: list_price_formatted
-              default: true
-              final_price: 1.1730742509559433
-              display_order: 4
+            - default: true
+              display_order: 6
               description: description
               state: visible
-              list_price: 7.457744773683766
               title: title
               type: type
-              final_price_formatted: final_price_formatted
-              price_currency: price_currency
-              addon_id: 6
-            - list_price_formatted: list_price_formatted
-              default: true
-              final_price: 1.1730742509559433
-              display_order: 4
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 1
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            - default: true
+              display_order: 6
               description: description
               state: visible
-              list_price: 7.457744773683766
               title: title
               type: type
-              final_price_formatted: final_price_formatted
-              price_currency: price_currency
-              addon_id: 6
-          review_count: 3
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 1
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+          review_count: 7
+          LatestReviews:
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
           Creator:
             registered_at: registered_at
             avatar_url: avatar_url
             user_id: user_id
             username: username
           title: title
-          list_price_formatted: list_price_formatted
-          downloads: 2
-          final_price: 9.301444243932576
-          currency: currency
-          LatestUpdate:
-            resource_id: resource_id
-            version_id: version_id
-          published_at: 1
-          summary: summary
-          purchases: 5
-          LatestReviews:
-          - review_id: review_id
-            written_by_id: written_by_id
-            resource_id: resource_id
-          - review_id: review_id
-            written_by_id: written_by_id
-            resource_id: resource_id
-          list_price: 7.061401241503109
-          review_average: 2.027123023002322
+          review_average: 9.301444243932576
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
           url: url
+          downloads: 2
           LatestVersion:
             resource_id: resource_id
             version_id: version_id
           last_updated_at: 5
           creator_id: 6
           SaleEventEntry:
-            event_id: 7
+            event_id: 4
             content_type: content_type
-            content_id: 1
-            discount: 1.0246457001441578
+            content_id: 7
+            discount: 1.2315135367772556
             SaleEvent:
               event_id: event_id
               started_at: started_at
               title: title
               ended_at: ended_at
-            entry_id: 4
+            entry_id: 2
           resource_id: 0
+          LatestUpdate:
+            resource_id: resource_id
+            version_id: version_id
+          published_at: 1
           carousel_image_urls:
           - carousel_image_urls
           - carousel_image_urls
-          final_price_formatted: final_price_formatted
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
         filters:
         - filter_id: filter_id
           query_field: query_field
@@ -2090,17 +2414,17 @@ components:
           type: type
           choices:
           - query_field: query_field
-            count: 9
+            count: 1
             title: title
             key: key
             selected: true
           - query_field: query_field
-            count: 9
+            count: 1
             title: title
             key: key
             selected: true
           value: value
-          order: 5
+          order: 7
           primary: true
         - filter_id: filter_id
           query_field: query_field
@@ -2108,17 +2432,17 @@ components:
           type: type
           choices:
           - query_field: query_field
-            count: 9
+            count: 1
             title: title
             key: key
             selected: true
           - query_field: query_field
-            count: 9
+            count: 1
             title: title
             key: key
             selected: true
           value: value
-          order: 5
+          order: 7
           primary: true
       properties:
         resources:
@@ -2146,12 +2470,13 @@ components:
         result: success
         data:
           stats:
-            per_page: 8
-            total: 9
-            page: 6
+            per_page: 9
+            total: 4
+            page: 5
             max_page: 9
           resources:
-          - Description:
+          - summary: summary
+            Description:
               bbcode: bbcode
               html: html
             Category:
@@ -2164,82 +2489,91 @@ components:
               - null
               - null
               title: title
+            purchases: 5
             cover_image_url: cover_image_url
             Addons:
               key:
-              - list_price_formatted: list_price_formatted
-                default: true
-                final_price: 1.1730742509559433
-                display_order: 4
+              - default: true
+                display_order: 6
                 description: description
                 state: visible
-                list_price: 7.457744773683766
                 title: title
                 type: type
-                final_price_formatted: final_price_formatted
-                price_currency: price_currency
-                addon_id: 6
-              - list_price_formatted: list_price_formatted
-                default: true
-                final_price: 1.1730742509559433
-                display_order: 4
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
                 description: description
                 state: visible
-                list_price: 7.457744773683766
                 title: title
                 type: type
-                final_price_formatted: final_price_formatted
-                price_currency: price_currency
-                addon_id: 6
-            review_count: 3
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
               user_id: user_id
               username: username
             title: title
-            list_price_formatted: list_price_formatted
-            downloads: 2
-            final_price: 9.301444243932576
-            currency: currency
-            LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
-            published_at: 1
-            summary: summary
-            purchases: 5
-            LatestReviews:
-            - review_id: review_id
-              written_by_id: written_by_id
-              resource_id: resource_id
-            - review_id: review_id
-              written_by_id: written_by_id
-              resource_id: resource_id
-            list_price: 7.061401241503109
-            review_average: 2.027123023002322
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
             url: url
+            downloads: 2
             LatestVersion:
               resource_id: resource_id
               version_id: version_id
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
-              event_id: 7
+              event_id: 4
               content_type: content_type
-              content_id: 1
-              discount: 1.0246457001441578
+              content_id: 7
+              discount: 1.2315135367772556
               SaleEvent:
                 event_id: event_id
                 started_at: started_at
                 title: title
                 ended_at: ended_at
-              entry_id: 4
+              entry_id: 2
             resource_id: 0
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
             carousel_image_urls:
             - carousel_image_urls
             - carousel_image_urls
-            final_price_formatted: final_price_formatted
-          - Description:
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          - summary: summary
+            Description:
               bbcode: bbcode
               html: html
             Category:
@@ -2252,81 +2586,89 @@ components:
               - null
               - null
               title: title
+            purchases: 5
             cover_image_url: cover_image_url
             Addons:
               key:
-              - list_price_formatted: list_price_formatted
-                default: true
-                final_price: 1.1730742509559433
-                display_order: 4
+              - default: true
+                display_order: 6
                 description: description
                 state: visible
-                list_price: 7.457744773683766
                 title: title
                 type: type
-                final_price_formatted: final_price_formatted
-                price_currency: price_currency
-                addon_id: 6
-              - list_price_formatted: list_price_formatted
-                default: true
-                final_price: 1.1730742509559433
-                display_order: 4
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
                 description: description
                 state: visible
-                list_price: 7.457744773683766
                 title: title
                 type: type
-                final_price_formatted: final_price_formatted
-                price_currency: price_currency
-                addon_id: 6
-            review_count: 3
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
               user_id: user_id
               username: username
             title: title
-            list_price_formatted: list_price_formatted
-            downloads: 2
-            final_price: 9.301444243932576
-            currency: currency
-            LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
-            published_at: 1
-            summary: summary
-            purchases: 5
-            LatestReviews:
-            - review_id: review_id
-              written_by_id: written_by_id
-              resource_id: resource_id
-            - review_id: review_id
-              written_by_id: written_by_id
-              resource_id: resource_id
-            list_price: 7.061401241503109
-            review_average: 2.027123023002322
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
             url: url
+            downloads: 2
             LatestVersion:
               resource_id: resource_id
               version_id: version_id
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
-              event_id: 7
+              event_id: 4
               content_type: content_type
-              content_id: 1
-              discount: 1.0246457001441578
+              content_id: 7
+              discount: 1.2315135367772556
               SaleEvent:
                 event_id: event_id
                 started_at: started_at
                 title: title
                 ended_at: ended_at
-              entry_id: 4
+              entry_id: 2
             resource_id: 0
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
             carousel_image_urls:
             - carousel_image_urls
             - carousel_image_urls
-            final_price_formatted: final_price_formatted
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
           filters:
           - filter_id: filter_id
             query_field: query_field
@@ -2334,17 +2676,17 @@ components:
             type: type
             choices:
             - query_field: query_field
-              count: 9
+              count: 1
               title: title
               key: key
               selected: true
             - query_field: query_field
-              count: 9
+              count: 1
               title: title
               key: key
               selected: true
             value: value
-            order: 5
+            order: 7
             primary: true
           - filter_id: filter_id
             query_field: query_field
@@ -2352,17 +2694,17 @@ components:
             type: type
             choices:
             - query_field: query_field
-              count: 9
+              count: 1
               title: title
               key: key
               selected: true
             - query_field: query_field
-              count: 9
+              count: 1
               title: title
               key: key
               selected: true
             value: value
-            order: 5
+            order: 7
             primary: true
       properties:
         result:
@@ -2470,6 +2812,7 @@ components:
           content_id: 0
           permanent: true
           Resource:
+            summary: summary
             Description:
               bbcode: bbcode
               html: html
@@ -2483,81 +2826,89 @@ components:
               - null
               - null
               title: title
+            purchases: 5
             cover_image_url: cover_image_url
             Addons:
               key:
-              - list_price_formatted: list_price_formatted
-                default: true
-                final_price: 1.1730742509559433
-                display_order: 4
+              - default: true
+                display_order: 6
                 description: description
                 state: visible
-                list_price: 7.457744773683766
                 title: title
                 type: type
-                final_price_formatted: final_price_formatted
-                price_currency: price_currency
-                addon_id: 6
-              - list_price_formatted: list_price_formatted
-                default: true
-                final_price: 1.1730742509559433
-                display_order: 4
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
                 description: description
                 state: visible
-                list_price: 7.457744773683766
                 title: title
                 type: type
-                final_price_formatted: final_price_formatted
-                price_currency: price_currency
-                addon_id: 6
-            review_count: 3
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
               user_id: user_id
               username: username
             title: title
-            list_price_formatted: list_price_formatted
-            downloads: 2
-            final_price: 9.301444243932576
-            currency: currency
-            LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
-            published_at: 1
-            summary: summary
-            purchases: 5
-            LatestReviews:
-            - review_id: review_id
-              written_by_id: written_by_id
-              resource_id: resource_id
-            - review_id: review_id
-              written_by_id: written_by_id
-              resource_id: resource_id
-            list_price: 7.061401241503109
-            review_average: 2.027123023002322
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
             url: url
+            downloads: 2
             LatestVersion:
               resource_id: resource_id
               version_id: version_id
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
-              event_id: 7
+              event_id: 4
               content_type: content_type
-              content_id: 1
-              discount: 1.0246457001441578
+              content_id: 7
+              discount: 1.2315135367772556
               SaleEvent:
                 event_id: event_id
                 started_at: started_at
                 title: title
                 ended_at: ended_at
-              entry_id: 4
+              entry_id: 2
             resource_id: 0
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
             carousel_image_urls:
             - carousel_image_urls
             - carousel_image_urls
-            final_price_formatted: final_price_formatted
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
           active: true
           start_date: 6
         - end_date: 1
@@ -2565,6 +2916,7 @@ components:
           content_id: 0
           permanent: true
           Resource:
+            summary: summary
             Description:
               bbcode: bbcode
               html: html
@@ -2578,87 +2930,95 @@ components:
               - null
               - null
               title: title
+            purchases: 5
             cover_image_url: cover_image_url
             Addons:
               key:
-              - list_price_formatted: list_price_formatted
-                default: true
-                final_price: 1.1730742509559433
-                display_order: 4
+              - default: true
+                display_order: 6
                 description: description
                 state: visible
-                list_price: 7.457744773683766
                 title: title
                 type: type
-                final_price_formatted: final_price_formatted
-                price_currency: price_currency
-                addon_id: 6
-              - list_price_formatted: list_price_formatted
-                default: true
-                final_price: 1.1730742509559433
-                display_order: 4
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
                 description: description
                 state: visible
-                list_price: 7.457744773683766
                 title: title
                 type: type
-                final_price_formatted: final_price_formatted
-                price_currency: price_currency
-                addon_id: 6
-            review_count: 3
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
               user_id: user_id
               username: username
             title: title
-            list_price_formatted: list_price_formatted
-            downloads: 2
-            final_price: 9.301444243932576
-            currency: currency
-            LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
-            published_at: 1
-            summary: summary
-            purchases: 5
-            LatestReviews:
-            - review_id: review_id
-              written_by_id: written_by_id
-              resource_id: resource_id
-            - review_id: review_id
-              written_by_id: written_by_id
-              resource_id: resource_id
-            list_price: 7.061401241503109
-            review_average: 2.027123023002322
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
             url: url
+            downloads: 2
             LatestVersion:
               resource_id: resource_id
               version_id: version_id
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
-              event_id: 7
+              event_id: 4
               content_type: content_type
-              content_id: 1
-              discount: 1.0246457001441578
+              content_id: 7
+              discount: 1.2315135367772556
               SaleEvent:
                 event_id: event_id
                 started_at: started_at
                 title: title
                 ended_at: ended_at
-              entry_id: 4
+              entry_id: 2
             resource_id: 0
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
             carousel_image_urls:
             - carousel_image_urls
             - carousel_image_urls
-            final_price_formatted: final_price_formatted
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
           active: true
           start_date: 6
         stats:
-          per_page: 8
-          total: 9
-          page: 6
+          per_page: 9
+          total: 4
+          page: 5
           max_page: 9
       properties:
         licenses:
@@ -2682,6 +3042,7 @@ components:
             content_id: 0
             permanent: true
             Resource:
+              summary: summary
               Description:
                 bbcode: bbcode
                 html: html
@@ -2695,81 +3056,89 @@ components:
                 - null
                 - null
                 title: title
+              purchases: 5
               cover_image_url: cover_image_url
               Addons:
                 key:
-                - list_price_formatted: list_price_formatted
-                  default: true
-                  final_price: 1.1730742509559433
-                  display_order: 4
+                - default: true
+                  display_order: 6
                   description: description
                   state: visible
-                  list_price: 7.457744773683766
                   title: title
                   type: type
-                  final_price_formatted: final_price_formatted
-                  price_currency: price_currency
-                  addon_id: 6
-                - list_price_formatted: list_price_formatted
-                  default: true
-                  final_price: 1.1730742509559433
-                  display_order: 4
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 1
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                - default: true
+                  display_order: 6
                   description: description
                   state: visible
-                  list_price: 7.457744773683766
                   title: title
                   type: type
-                  final_price_formatted: final_price_formatted
-                  price_currency: price_currency
-                  addon_id: 6
-              review_count: 3
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 1
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+              review_count: 7
+              LatestReviews:
+              - review_id: review_id
+                reviewer_id: reviewer_id
+                resource_id: resource_id
+              - review_id: review_id
+                reviewer_id: reviewer_id
+                resource_id: resource_id
               Creator:
                 registered_at: registered_at
                 avatar_url: avatar_url
                 user_id: user_id
                 username: username
               title: title
-              list_price_formatted: list_price_formatted
-              downloads: 2
-              final_price: 9.301444243932576
-              currency: currency
-              LatestUpdate:
-                resource_id: resource_id
-                version_id: version_id
-              published_at: 1
-              summary: summary
-              purchases: 5
-              LatestReviews:
-              - review_id: review_id
-                written_by_id: written_by_id
-                resource_id: resource_id
-              - review_id: review_id
-                written_by_id: written_by_id
-                resource_id: resource_id
-              list_price: 7.061401241503109
-              review_average: 2.027123023002322
+              review_average: 9.301444243932576
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
               url: url
+              downloads: 2
               LatestVersion:
                 resource_id: resource_id
                 version_id: version_id
               last_updated_at: 5
               creator_id: 6
               SaleEventEntry:
-                event_id: 7
+                event_id: 4
                 content_type: content_type
-                content_id: 1
-                discount: 1.0246457001441578
+                content_id: 7
+                discount: 1.2315135367772556
                 SaleEvent:
                   event_id: event_id
                   started_at: started_at
                   title: title
                   ended_at: ended_at
-                entry_id: 4
+                entry_id: 2
               resource_id: 0
+              LatestUpdate:
+                resource_id: resource_id
+                version_id: version_id
+              published_at: 1
               carousel_image_urls:
               - carousel_image_urls
               - carousel_image_urls
-              final_price_formatted: final_price_formatted
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
             active: true
             start_date: 6
           - end_date: 1
@@ -2777,6 +3146,7 @@ components:
             content_id: 0
             permanent: true
             Resource:
+              summary: summary
               Description:
                 bbcode: bbcode
                 html: html
@@ -2790,87 +3160,95 @@ components:
                 - null
                 - null
                 title: title
+              purchases: 5
               cover_image_url: cover_image_url
               Addons:
                 key:
-                - list_price_formatted: list_price_formatted
-                  default: true
-                  final_price: 1.1730742509559433
-                  display_order: 4
+                - default: true
+                  display_order: 6
                   description: description
                   state: visible
-                  list_price: 7.457744773683766
                   title: title
                   type: type
-                  final_price_formatted: final_price_formatted
-                  price_currency: price_currency
-                  addon_id: 6
-                - list_price_formatted: list_price_formatted
-                  default: true
-                  final_price: 1.1730742509559433
-                  display_order: 4
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 1
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                - default: true
+                  display_order: 6
                   description: description
                   state: visible
-                  list_price: 7.457744773683766
                   title: title
                   type: type
-                  final_price_formatted: final_price_formatted
-                  price_currency: price_currency
-                  addon_id: 6
-              review_count: 3
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 1
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+              review_count: 7
+              LatestReviews:
+              - review_id: review_id
+                reviewer_id: reviewer_id
+                resource_id: resource_id
+              - review_id: review_id
+                reviewer_id: reviewer_id
+                resource_id: resource_id
               Creator:
                 registered_at: registered_at
                 avatar_url: avatar_url
                 user_id: user_id
                 username: username
               title: title
-              list_price_formatted: list_price_formatted
-              downloads: 2
-              final_price: 9.301444243932576
-              currency: currency
-              LatestUpdate:
-                resource_id: resource_id
-                version_id: version_id
-              published_at: 1
-              summary: summary
-              purchases: 5
-              LatestReviews:
-              - review_id: review_id
-                written_by_id: written_by_id
-                resource_id: resource_id
-              - review_id: review_id
-                written_by_id: written_by_id
-                resource_id: resource_id
-              list_price: 7.061401241503109
-              review_average: 2.027123023002322
+              review_average: 9.301444243932576
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
               url: url
+              downloads: 2
               LatestVersion:
                 resource_id: resource_id
                 version_id: version_id
               last_updated_at: 5
               creator_id: 6
               SaleEventEntry:
-                event_id: 7
+                event_id: 4
                 content_type: content_type
-                content_id: 1
-                discount: 1.0246457001441578
+                content_id: 7
+                discount: 1.2315135367772556
                 SaleEvent:
                   event_id: event_id
                   started_at: started_at
                   title: title
                   ended_at: ended_at
-                entry_id: 4
+                entry_id: 2
               resource_id: 0
+              LatestUpdate:
+                resource_id: resource_id
+                version_id: version_id
+              published_at: 1
               carousel_image_urls:
               - carousel_image_urls
               - carousel_image_urls
-              final_price_formatted: final_price_formatted
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
             active: true
             start_date: 6
           stats:
-            per_page: 8
-            total: 9
-            page: 6
+            per_page: 9
+            total: 4
+            page: 5
             max_page: 9
       properties:
         result:
@@ -3159,9 +3537,9 @@ components:
     get_v2_events_200_response_data:
       example:
         stats:
-          per_page: 8
-          total: 9
-          page: 6
+          per_page: 9
+          total: 4
+          page: 5
           max_page: 9
         events:
         - event_id: 0
@@ -3191,9 +3569,9 @@ components:
         result: success
         data:
           stats:
-            per_page: 8
-            total: 9
-            page: 6
+            per_page: 9
+            total: 4
+            page: 5
             max_page: 9
           events:
           - event_id: 0
@@ -3490,6 +3868,1324 @@ components:
       required:
       - data
       - result
+      type: object
+    get_v2_resources_creator_resources_200_response_data:
+      example:
+        stats:
+          per_page: 9
+          total: 4
+          page: 5
+          max_page: 9
+        resources:
+        - summary: summary
+          Description:
+            bbcode: bbcode
+            html: html
+          Category:
+            fa_icon: fa_icon
+            category_url: category_url
+            category_id: 1
+            description: description
+            platform_image_url: platform_image_url
+            Children:
+            - null
+            - null
+            title: title
+          purchases: 5
+          cover_image_url: cover_image_url
+          Addons:
+            key:
+            - default: true
+              display_order: 6
+              description: description
+              state: visible
+              title: title
+              type: type
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 1
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            - default: true
+              display_order: 6
+              description: description
+              state: visible
+              title: title
+              type: type
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 1
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+          review_count: 7
+          LatestReviews:
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
+          Creator:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          title: title
+          review_average: 9.301444243932576
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          url: url
+          downloads: 2
+          LatestVersion:
+            resource_id: resource_id
+            version_id: version_id
+          last_updated_at: 5
+          creator_id: 6
+          SaleEventEntry:
+            event_id: 4
+            content_type: content_type
+            content_id: 7
+            discount: 1.2315135367772556
+            SaleEvent:
+              event_id: event_id
+              started_at: started_at
+              title: title
+              ended_at: ended_at
+            entry_id: 2
+          resource_id: 0
+          LatestUpdate:
+            resource_id: resource_id
+            version_id: version_id
+          published_at: 1
+          carousel_image_urls:
+          - carousel_image_urls
+          - carousel_image_urls
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+        - summary: summary
+          Description:
+            bbcode: bbcode
+            html: html
+          Category:
+            fa_icon: fa_icon
+            category_url: category_url
+            category_id: 1
+            description: description
+            platform_image_url: platform_image_url
+            Children:
+            - null
+            - null
+            title: title
+          purchases: 5
+          cover_image_url: cover_image_url
+          Addons:
+            key:
+            - default: true
+              display_order: 6
+              description: description
+              state: visible
+              title: title
+              type: type
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 1
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            - default: true
+              display_order: 6
+              description: description
+              state: visible
+              title: title
+              type: type
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 1
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+          review_count: 7
+          LatestReviews:
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
+          Creator:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          title: title
+          review_average: 9.301444243932576
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          url: url
+          downloads: 2
+          LatestVersion:
+            resource_id: resource_id
+            version_id: version_id
+          last_updated_at: 5
+          creator_id: 6
+          SaleEventEntry:
+            event_id: 4
+            content_type: content_type
+            content_id: 7
+            discount: 1.2315135367772556
+            SaleEvent:
+              event_id: event_id
+              started_at: started_at
+              title: title
+              ended_at: ended_at
+            entry_id: 2
+          resource_id: 0
+          LatestUpdate:
+            resource_id: resource_id
+            version_id: version_id
+          published_at: 1
+          carousel_image_urls:
+          - carousel_image_urls
+          - carousel_image_urls
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+      properties:
+        resources:
+          items:
+            $ref: '#/components/schemas/Resource'
+          type: array
+          x-stoplight:
+            id: d0f9nn42b377b
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: dabofrq969z2z
+    get_v2_resources_creator_resources_200_response:
+      example:
+        result: success
+        data:
+          stats:
+            per_page: 9
+            total: 4
+            page: 5
+            max_page: 9
+          resources:
+          - summary: summary
+            Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 1
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            purchases: 5
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            url: url
+            downloads: 2
+            LatestVersion:
+              resource_id: resource_id
+              version_id: version_id
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 4
+              content_type: content_type
+              content_id: 7
+              discount: 1.2315135367772556
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 2
+            resource_id: 0
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          - summary: summary
+            Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 1
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            purchases: 5
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            url: url
+            downloads: 2
+            LatestVersion:
+              resource_id: resource_id
+              version_id: version_id
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 4
+              content_type: content_type
+              content_id: 7
+              discount: 1.2315135367772556
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 2
+            resource_id: 0
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: v5r96kr9dqwuo
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_resources_200_response_data'
+      type: object
+    get_v2_resources_creator_purchases_200_response_data:
+      example:
+        purchases:
+        - id: id
+        - id: id
+        stats:
+          per_page: 9
+          total: 4
+          page: 5
+          max_page: 9
+      properties:
+        purchases:
+          items:
+            $ref: '#/components/schemas/Purchase'
+          type: array
+          x-stoplight:
+            id: okjk5uwg60bob
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: rn50qk5cictkz
+    get_v2_resources_creator_purchases_200_response:
+      example:
+        result: success
+        data:
+          purchases:
+          - id: id
+          - id: id
+          stats:
+            per_page: 9
+            total: 4
+            page: 5
+            max_page: 9
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: ijrkvq7e55lk7
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_purchases_200_response_data'
+      type: object
+    get_v2_resources_creator_licenses_200_response_data:
+      example:
+        licenses:
+        - end_date: 1
+          content_type: content_type
+          content_id: 0
+          permanent: true
+          Resource:
+            summary: summary
+            Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 1
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            purchases: 5
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            url: url
+            downloads: 2
+            LatestVersion:
+              resource_id: resource_id
+              version_id: version_id
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 4
+              content_type: content_type
+              content_id: 7
+              discount: 1.2315135367772556
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 2
+            resource_id: 0
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          active: true
+          start_date: 6
+        - end_date: 1
+          content_type: content_type
+          content_id: 0
+          permanent: true
+          Resource:
+            summary: summary
+            Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 1
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            purchases: 5
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 1
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            - review_id: review_id
+              reviewer_id: reviewer_id
+              resource_id: resource_id
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            url: url
+            downloads: 2
+            LatestVersion:
+              resource_id: resource_id
+              version_id: version_id
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 4
+              content_type: content_type
+              content_id: 7
+              discount: 1.2315135367772556
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 2
+            resource_id: 0
+            LatestUpdate:
+              resource_id: resource_id
+              version_id: version_id
+            published_at: 1
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          active: true
+          start_date: 6
+        stats:
+          per_page: 9
+          total: 4
+          page: 5
+          max_page: 9
+      properties:
+        licenses:
+          items:
+            $ref: '#/components/schemas/License'
+          type: array
+          x-stoplight:
+            id: 86775q3w9qsjf
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: cgzp5shxla1bp
+    get_v2_resources_creator_licenses_200_response:
+      example:
+        result: success
+        data:
+          licenses:
+          - end_date: 1
+            content_type: content_type
+            content_id: 0
+            permanent: true
+            Resource:
+              summary: summary
+              Description:
+                bbcode: bbcode
+                html: html
+              Category:
+                fa_icon: fa_icon
+                category_url: category_url
+                category_id: 1
+                description: description
+                platform_image_url: platform_image_url
+                Children:
+                - null
+                - null
+                title: title
+              purchases: 5
+              cover_image_url: cover_image_url
+              Addons:
+                key:
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 1
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 1
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+              review_count: 7
+              LatestReviews:
+              - review_id: review_id
+                reviewer_id: reviewer_id
+                resource_id: resource_id
+              - review_id: review_id
+                reviewer_id: reviewer_id
+                resource_id: resource_id
+              Creator:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+              title: title
+              review_average: 9.301444243932576
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              url: url
+              downloads: 2
+              LatestVersion:
+                resource_id: resource_id
+                version_id: version_id
+              last_updated_at: 5
+              creator_id: 6
+              SaleEventEntry:
+                event_id: 4
+                content_type: content_type
+                content_id: 7
+                discount: 1.2315135367772556
+                SaleEvent:
+                  event_id: event_id
+                  started_at: started_at
+                  title: title
+                  ended_at: ended_at
+                entry_id: 2
+              resource_id: 0
+              LatestUpdate:
+                resource_id: resource_id
+                version_id: version_id
+              published_at: 1
+              carousel_image_urls:
+              - carousel_image_urls
+              - carousel_image_urls
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            active: true
+            start_date: 6
+          - end_date: 1
+            content_type: content_type
+            content_id: 0
+            permanent: true
+            Resource:
+              summary: summary
+              Description:
+                bbcode: bbcode
+                html: html
+              Category:
+                fa_icon: fa_icon
+                category_url: category_url
+                category_id: 1
+                description: description
+                platform_image_url: platform_image_url
+                Children:
+                - null
+                - null
+                title: title
+              purchases: 5
+              cover_image_url: cover_image_url
+              Addons:
+                key:
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 1
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 1
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+              review_count: 7
+              LatestReviews:
+              - review_id: review_id
+                reviewer_id: reviewer_id
+                resource_id: resource_id
+              - review_id: review_id
+                reviewer_id: reviewer_id
+                resource_id: resource_id
+              Creator:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+              title: title
+              review_average: 9.301444243932576
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              url: url
+              downloads: 2
+              LatestVersion:
+                resource_id: resource_id
+                version_id: version_id
+              last_updated_at: 5
+              creator_id: 6
+              SaleEventEntry:
+                event_id: 4
+                content_type: content_type
+                content_id: 7
+                discount: 1.2315135367772556
+                SaleEvent:
+                  event_id: event_id
+                  started_at: started_at
+                  title: title
+                  ended_at: ended_at
+                entry_id: 2
+              resource_id: 0
+              LatestUpdate:
+                resource_id: resource_id
+                version_id: version_id
+              published_at: 1
+              carousel_image_urls:
+              - carousel_image_urls
+              - carousel_image_urls
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            active: true
+            start_date: 6
+          stats:
+            per_page: 9
+            total: 4
+            page: 5
+            max_page: 9
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: yued3506i8yd7
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_licenses_200_response_data'
+      type: object
+    get_v2_resources_creator_versions_200_response_data:
+      example:
+        versions:
+        - resource_id: resource_id
+          version_id: version_id
+        - resource_id: resource_id
+          version_id: version_id
+        stats:
+          per_page: 9
+          total: 4
+          page: 5
+          max_page: 9
+      properties:
+        versions:
+          items:
+            $ref: '#/components/schemas/Version'
+          type: array
+          x-stoplight:
+            id: 5xsmn3zl7ql9j
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: i0n4ifg6mb2ap
+    get_v2_resources_creator_versions_200_response:
+      example:
+        result: success
+        data:
+          versions:
+          - resource_id: resource_id
+            version_id: version_id
+          - resource_id: resource_id
+            version_id: version_id
+          stats:
+            per_page: 9
+            total: 4
+            page: 5
+            max_page: 9
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: cb6g4wyeuti1z
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_versions_200_response_data'
+      type: object
+    get_v2_resources_creator_updates_200_response_data:
+      example:
+        stats:
+          per_page: 9
+          total: 4
+          page: 5
+          max_page: 9
+        updates:
+        - update_id: update_id
+          resource_id: resource_id
+        - update_id: update_id
+          resource_id: resource_id
+      properties:
+        updates:
+          items:
+            $ref: '#/components/schemas/Update'
+          type: array
+          x-stoplight:
+            id: hqwtf5ifmumfm
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: 26us85leinnbx
+    get_v2_resources_creator_updates_200_response:
+      example:
+        result: success
+        data:
+          stats:
+            per_page: 9
+            total: 4
+            page: 5
+            max_page: 9
+          updates:
+          - update_id: update_id
+            resource_id: resource_id
+          - update_id: update_id
+            resource_id: resource_id
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: czmpzo1mlvgl6
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_updates_200_response_data'
+      type: object
+    get_v2_resources_creator_addons_200_response_data:
+      example:
+        addons:
+        - default: true
+          display_order: 6
+          description: description
+          state: visible
+          title: title
+          type: type
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          addon_id: 1
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+        - default: true
+          display_order: 6
+          description: description
+          state: visible
+          title: title
+          type: type
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          addon_id: 1
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+        stats:
+          per_page: 9
+          total: 4
+          page: 5
+          max_page: 9
+      properties:
+        addons:
+          items:
+            $ref: '#/components/schemas/Addon'
+          type: array
+          x-stoplight:
+            id: k8k4v8oottf7n
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: tu2owy0jz4gyk
+    get_v2_resources_creator_addons_200_response:
+      example:
+        result: success
+        data:
+          addons:
+          - default: true
+            display_order: 6
+            description: description
+            state: visible
+            title: title
+            type: type
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            addon_id: 1
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          - default: true
+            display_order: 6
+            description: description
+            state: visible
+            title: title
+            type: type
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            addon_id: 1
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          stats:
+            per_page: 9
+            total: 4
+            page: 5
+            max_page: 9
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: d29obwisl899k
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_addons_200_response_data'
+      type: object
+    get_v2_resources_creator_bundles_200_response_data:
+      example:
+        stats:
+          per_page: 9
+          total: 4
+          page: 5
+          max_page: 9
+        bundles:
+        - id: id
+        - id: id
+      properties:
+        bundles:
+          items:
+            $ref: '#/components/schemas/Bundle'
+          type: array
+          x-stoplight:
+            id: imgfa19670je6
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: ximx0zfmcd10v
+    get_v2_resources_creator_bundles_200_response:
+      example:
+        result: success
+        data:
+          stats:
+            per_page: 9
+            total: 4
+            page: 5
+            max_page: 9
+          bundles:
+          - id: id
+          - id: id
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: uekjh2zy30qos
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_bundles_200_response_data'
+      type: object
+    get_v2_resources_creator_sale_events_200_response_data:
+      example:
+        stats:
+          per_page: 9
+          total: 4
+          page: 5
+          max_page: 9
+        sale-events:
+        - event_id: event_id
+          started_at: started_at
+          title: title
+          ended_at: ended_at
+        - event_id: event_id
+          started_at: started_at
+          title: title
+          ended_at: ended_at
+      properties:
+        sale-events:
+          items:
+            $ref: '#/components/schemas/SaleEvent'
+          type: array
+          x-stoplight:
+            id: o4a7auwr3061f
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: qeoxpyy2ztz5t
+    get_v2_resources_creator_sale_events_200_response:
+      example:
+        result: success
+        data:
+          stats:
+            per_page: 9
+            total: 4
+            page: 5
+            max_page: 9
+          sale-events:
+          - event_id: event_id
+            started_at: started_at
+            title: title
+            ended_at: ended_at
+          - event_id: event_id
+            started_at: started_at
+            title: title
+            ended_at: ended_at
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: ag6mqz29r275c
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_sale_events_200_response_data'
+      type: object
+    get_v2_resources_creator_reviews_200_response_data:
+      example:
+        reviews:
+        - review_id: review_id
+          reviewer_id: reviewer_id
+          resource_id: resource_id
+        - review_id: review_id
+          reviewer_id: reviewer_id
+          resource_id: resource_id
+        stats:
+          per_page: 9
+          total: 4
+          page: 5
+          max_page: 9
+      properties:
+        reviews:
+          items:
+            $ref: '#/components/schemas/Review'
+          type: array
+          x-stoplight:
+            id: 3l0reizzph448
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: 60x4ap13u6qz3
+    get_v2_resources_creator_reviews_200_response:
+      example:
+        result: success
+        data:
+          reviews:
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
+          - review_id: review_id
+            reviewer_id: reviewer_id
+            resource_id: resource_id
+          stats:
+            per_page: 9
+            total: 4
+            page: 5
+            max_page: 9
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: gq3h8u5vh5xj4
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_reviews_200_response_data'
+      type: object
+    get_v2_resources_buyer_latest_200_response_data:
+      example:
+        current:
+          resource_id: resource_id
+          version_id: version_id
+        has_usage_rights: true
+        latest:
+          resource_id: resource_id
+          version_id: version_id
+      properties:
+        current:
+          $ref: '#/components/schemas/Version'
+        latest:
+          $ref: '#/components/schemas/Version'
+        has_usage_rights:
+          type: boolean
+          x-stoplight:
+            id: l5kjdeuasezzj
+      type: object
+      x-stoplight:
+        id: 086gai3wsenos
+    get_v2_resources_buyer_latest_200_response:
+      example:
+        result: success
+        data:
+          current:
+            resource_id: resource_id
+            version_id: version_id
+          has_usage_rights: true
+          latest:
+            resource_id: resource_id
+            version_id: version_id
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: xe86bnx44ra3f
+        data:
+          $ref: '#/components/schemas/get_v2_resources_buyer_latest_200_response_data'
       type: object
     CartItem_discounts_inner:
       example:

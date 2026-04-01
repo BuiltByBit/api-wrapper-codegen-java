@@ -20,8 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
+import org.openapitools.client.model.Price;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Addon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-01T04:39:53.356183Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-01T12:11:54.200613Z[Etc/UTC]")
 public class Addon {
   public static final String SERIALIZED_NAME_ADDON_ID = "addon_id";
   @SerializedName(SERIALIZED_NAME_ADDON_ID)
@@ -124,26 +124,6 @@ public class Addon {
   @SerializedName(SERIALIZED_NAME_STATE)
   private StateEnum state;
 
-  public static final String SERIALIZED_NAME_LIST_PRICE = "list_price";
-  @SerializedName(SERIALIZED_NAME_LIST_PRICE)
-  private BigDecimal listPrice;
-
-  public static final String SERIALIZED_NAME_LIST_PRICE_FORMATTED = "list_price_formatted";
-  @SerializedName(SERIALIZED_NAME_LIST_PRICE_FORMATTED)
-  private String listPriceFormatted;
-
-  public static final String SERIALIZED_NAME_FINAL_PRICE = "final_price";
-  @SerializedName(SERIALIZED_NAME_FINAL_PRICE)
-  private BigDecimal finalPrice;
-
-  public static final String SERIALIZED_NAME_FINAL_PRICE_FORMATTED = "final_price_formatted";
-  @SerializedName(SERIALIZED_NAME_FINAL_PRICE_FORMATTED)
-  private String finalPriceFormatted;
-
-  public static final String SERIALIZED_NAME_PRICE_CURRENCY = "price_currency";
-  @SerializedName(SERIALIZED_NAME_PRICE_CURRENCY)
-  private String priceCurrency;
-
   public static final String SERIALIZED_NAME_DISPLAY_ORDER = "display_order";
   @SerializedName(SERIALIZED_NAME_DISPLAY_ORDER)
   private Integer displayOrder;
@@ -151,6 +131,14 @@ public class Addon {
   public static final String SERIALIZED_NAME_DEFAULT = "default";
   @SerializedName(SERIALIZED_NAME_DEFAULT)
   private Boolean _default;
+
+  public static final String SERIALIZED_NAME_LIST_PRICE = "ListPrice";
+  @SerializedName(SERIALIZED_NAME_LIST_PRICE)
+  private Price listPrice;
+
+  public static final String SERIALIZED_NAME_FINAL_PRICE = "FinalPrice";
+  @SerializedName(SERIALIZED_NAME_FINAL_PRICE)
+  private Price finalPrice;
 
   public Addon() {
   }
@@ -250,101 +238,6 @@ public class Addon {
   }
 
 
-  public Addon listPrice(BigDecimal listPrice) {
-    this.listPrice = listPrice;
-    return this;
-  }
-
-   /**
-   * Get listPrice
-   * @return listPrice
-  **/
-  @javax.annotation.Nullable
-  public BigDecimal getListPrice() {
-    return listPrice;
-  }
-
-  public void setListPrice(BigDecimal listPrice) {
-    this.listPrice = listPrice;
-  }
-
-
-  public Addon listPriceFormatted(String listPriceFormatted) {
-    this.listPriceFormatted = listPriceFormatted;
-    return this;
-  }
-
-   /**
-   * Get listPriceFormatted
-   * @return listPriceFormatted
-  **/
-  @javax.annotation.Nullable
-  public String getListPriceFormatted() {
-    return listPriceFormatted;
-  }
-
-  public void setListPriceFormatted(String listPriceFormatted) {
-    this.listPriceFormatted = listPriceFormatted;
-  }
-
-
-  public Addon finalPrice(BigDecimal finalPrice) {
-    this.finalPrice = finalPrice;
-    return this;
-  }
-
-   /**
-   * Get finalPrice
-   * @return finalPrice
-  **/
-  @javax.annotation.Nullable
-  public BigDecimal getFinalPrice() {
-    return finalPrice;
-  }
-
-  public void setFinalPrice(BigDecimal finalPrice) {
-    this.finalPrice = finalPrice;
-  }
-
-
-  public Addon finalPriceFormatted(String finalPriceFormatted) {
-    this.finalPriceFormatted = finalPriceFormatted;
-    return this;
-  }
-
-   /**
-   * Get finalPriceFormatted
-   * @return finalPriceFormatted
-  **/
-  @javax.annotation.Nullable
-  public String getFinalPriceFormatted() {
-    return finalPriceFormatted;
-  }
-
-  public void setFinalPriceFormatted(String finalPriceFormatted) {
-    this.finalPriceFormatted = finalPriceFormatted;
-  }
-
-
-  public Addon priceCurrency(String priceCurrency) {
-    this.priceCurrency = priceCurrency;
-    return this;
-  }
-
-   /**
-   * Get priceCurrency
-   * @return priceCurrency
-  **/
-  @javax.annotation.Nullable
-  public String getPriceCurrency() {
-    return priceCurrency;
-  }
-
-  public void setPriceCurrency(String priceCurrency) {
-    this.priceCurrency = priceCurrency;
-  }
-
-
   public Addon displayOrder(Integer displayOrder) {
     this.displayOrder = displayOrder;
     return this;
@@ -383,6 +276,44 @@ public class Addon {
   }
 
 
+  public Addon listPrice(Price listPrice) {
+    this.listPrice = listPrice;
+    return this;
+  }
+
+   /**
+   * Get listPrice
+   * @return listPrice
+  **/
+  @javax.annotation.Nullable
+  public Price getListPrice() {
+    return listPrice;
+  }
+
+  public void setListPrice(Price listPrice) {
+    this.listPrice = listPrice;
+  }
+
+
+  public Addon finalPrice(Price finalPrice) {
+    this.finalPrice = finalPrice;
+    return this;
+  }
+
+   /**
+   * Get finalPrice
+   * @return finalPrice
+  **/
+  @javax.annotation.Nullable
+  public Price getFinalPrice() {
+    return finalPrice;
+  }
+
+  public void setFinalPrice(Price finalPrice) {
+    this.finalPrice = finalPrice;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -398,18 +329,15 @@ public class Addon {
         Objects.equals(this.description, addon.description) &&
         Objects.equals(this.type, addon.type) &&
         Objects.equals(this.state, addon.state) &&
-        Objects.equals(this.listPrice, addon.listPrice) &&
-        Objects.equals(this.listPriceFormatted, addon.listPriceFormatted) &&
-        Objects.equals(this.finalPrice, addon.finalPrice) &&
-        Objects.equals(this.finalPriceFormatted, addon.finalPriceFormatted) &&
-        Objects.equals(this.priceCurrency, addon.priceCurrency) &&
         Objects.equals(this.displayOrder, addon.displayOrder) &&
-        Objects.equals(this._default, addon._default);
+        Objects.equals(this._default, addon._default) &&
+        Objects.equals(this.listPrice, addon.listPrice) &&
+        Objects.equals(this.finalPrice, addon.finalPrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addonId, title, description, type, state, listPrice, listPriceFormatted, finalPrice, finalPriceFormatted, priceCurrency, displayOrder, _default);
+    return Objects.hash(addonId, title, description, type, state, displayOrder, _default, listPrice, finalPrice);
   }
 
   @Override
@@ -421,13 +349,10 @@ public class Addon {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    listPrice: ").append(toIndentedString(listPrice)).append("\n");
-    sb.append("    listPriceFormatted: ").append(toIndentedString(listPriceFormatted)).append("\n");
-    sb.append("    finalPrice: ").append(toIndentedString(finalPrice)).append("\n");
-    sb.append("    finalPriceFormatted: ").append(toIndentedString(finalPriceFormatted)).append("\n");
-    sb.append("    priceCurrency: ").append(toIndentedString(priceCurrency)).append("\n");
     sb.append("    displayOrder: ").append(toIndentedString(displayOrder)).append("\n");
     sb.append("    _default: ").append(toIndentedString(_default)).append("\n");
+    sb.append("    listPrice: ").append(toIndentedString(listPrice)).append("\n");
+    sb.append("    finalPrice: ").append(toIndentedString(finalPrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -455,13 +380,10 @@ public class Addon {
     openapiFields.add("description");
     openapiFields.add("type");
     openapiFields.add("state");
-    openapiFields.add("list_price");
-    openapiFields.add("list_price_formatted");
-    openapiFields.add("final_price");
-    openapiFields.add("final_price_formatted");
-    openapiFields.add("price_currency");
     openapiFields.add("display_order");
     openapiFields.add("default");
+    openapiFields.add("ListPrice");
+    openapiFields.add("FinalPrice");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -504,14 +426,13 @@ public class Addon {
       if (jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) {
         StateEnum.validateJsonElement(jsonObj.get("state"));
       }
-      if ((jsonObj.get("list_price_formatted") != null && !jsonObj.get("list_price_formatted").isJsonNull()) && !jsonObj.get("list_price_formatted").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `list_price_formatted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("list_price_formatted").toString()));
+      // validate the optional field `ListPrice`
+      if (jsonObj.get("ListPrice") != null && !jsonObj.get("ListPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("ListPrice"));
       }
-      if ((jsonObj.get("final_price_formatted") != null && !jsonObj.get("final_price_formatted").isJsonNull()) && !jsonObj.get("final_price_formatted").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `final_price_formatted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("final_price_formatted").toString()));
-      }
-      if ((jsonObj.get("price_currency") != null && !jsonObj.get("price_currency").isJsonNull()) && !jsonObj.get("price_currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `price_currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("price_currency").toString()));
+      // validate the optional field `FinalPrice`
+      if (jsonObj.get("FinalPrice") != null && !jsonObj.get("FinalPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("FinalPrice"));
       }
   }
 

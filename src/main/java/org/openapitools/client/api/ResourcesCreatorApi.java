@@ -27,6 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import org.openapitools.client.model.GetV2ResourcesCreatorAddons200Response;
+import org.openapitools.client.model.GetV2ResourcesCreatorBundles200Response;
+import org.openapitools.client.model.GetV2ResourcesCreatorLicenses200Response;
+import org.openapitools.client.model.GetV2ResourcesCreatorPurchases200Response;
+import org.openapitools.client.model.GetV2ResourcesCreatorResources200Response;
+import org.openapitools.client.model.GetV2ResourcesCreatorReviews200Response;
+import org.openapitools.client.model.GetV2ResourcesCreatorSaleEvents200Response;
+import org.openapitools.client.model.GetV2ResourcesCreatorUpdates200Response;
+import org.openapitools.client.model.GetV2ResourcesCreatorVersions200Response;
 import org.openapitools.client.model.PostV2ResourcesCreatorUpdate200Response;
 import org.openapitools.client.model.PostV2ResourcesCreatorUpdateRequest;
 
@@ -73,6 +82,1079 @@ public class ResourcesCreatorApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for getV2ResourcesCreatorAddons
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorAddonsCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/addons";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (resourceIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("resource_ids", resourceIds));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesCreatorAddonsValidateBeforeCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorAddonsCall(resourceIds, _callback);
+
+    }
+
+    /**
+     * Fetch a list of your resources&#39; addons
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return GetV2ResourcesCreatorAddons200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesCreatorAddons200Response getV2ResourcesCreatorAddons(List resourceIds) throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorAddons200Response> localVarResp = getV2ResourcesCreatorAddonsWithHttpInfo(resourceIds);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Fetch a list of your resources&#39; addons
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return ApiResponse&lt;GetV2ResourcesCreatorAddons200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesCreatorAddons200Response> getV2ResourcesCreatorAddonsWithHttpInfo(List resourceIds) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorAddonsValidateBeforeCall(resourceIds, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorAddons200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Fetch a list of your resources&#39; addons (asynchronously)
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorAddonsAsync(List resourceIds, final ApiCallback<GetV2ResourcesCreatorAddons200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesCreatorAddonsValidateBeforeCall(resourceIds, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorAddons200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesCreatorBundles
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorBundlesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/bundles";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesCreatorBundlesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorBundlesCall(_callback);
+
+    }
+
+    /**
+     * Fetch a list of your bundles
+     * 
+     * @return GetV2ResourcesCreatorBundles200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesCreatorBundles200Response getV2ResourcesCreatorBundles() throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorBundles200Response> localVarResp = getV2ResourcesCreatorBundlesWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Fetch a list of your bundles
+     * 
+     * @return ApiResponse&lt;GetV2ResourcesCreatorBundles200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesCreatorBundles200Response> getV2ResourcesCreatorBundlesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorBundlesValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorBundles200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Fetch a list of your bundles (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorBundlesAsync(final ApiCallback<GetV2ResourcesCreatorBundles200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesCreatorBundlesValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorBundles200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesCreatorLicenses
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorLicensesCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/licenses";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (resourceIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("resource_ids", resourceIds));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesCreatorLicensesValidateBeforeCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorLicensesCall(resourceIds, _callback);
+
+    }
+
+    /**
+     * Fetch a list of your resources&#39; licenses
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return GetV2ResourcesCreatorLicenses200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesCreatorLicenses200Response getV2ResourcesCreatorLicenses(List resourceIds) throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorLicenses200Response> localVarResp = getV2ResourcesCreatorLicensesWithHttpInfo(resourceIds);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Fetch a list of your resources&#39; licenses
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return ApiResponse&lt;GetV2ResourcesCreatorLicenses200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesCreatorLicenses200Response> getV2ResourcesCreatorLicensesWithHttpInfo(List resourceIds) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorLicensesValidateBeforeCall(resourceIds, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorLicenses200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Fetch a list of your resources&#39; licenses (asynchronously)
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorLicensesAsync(List resourceIds, final ApiCallback<GetV2ResourcesCreatorLicenses200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesCreatorLicensesValidateBeforeCall(resourceIds, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorLicenses200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesCreatorPurchases
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorPurchasesCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/purchases";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (resourceIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("resource_ids", resourceIds));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesCreatorPurchasesValidateBeforeCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorPurchasesCall(resourceIds, _callback);
+
+    }
+
+    /**
+     * Fetch a list of your resources&#39; purchases
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return GetV2ResourcesCreatorPurchases200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesCreatorPurchases200Response getV2ResourcesCreatorPurchases(List resourceIds) throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorPurchases200Response> localVarResp = getV2ResourcesCreatorPurchasesWithHttpInfo(resourceIds);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Fetch a list of your resources&#39; purchases
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return ApiResponse&lt;GetV2ResourcesCreatorPurchases200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesCreatorPurchases200Response> getV2ResourcesCreatorPurchasesWithHttpInfo(List resourceIds) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorPurchasesValidateBeforeCall(resourceIds, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorPurchases200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Fetch a list of your resources&#39; purchases (asynchronously)
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorPurchasesAsync(List resourceIds, final ApiCallback<GetV2ResourcesCreatorPurchases200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesCreatorPurchasesValidateBeforeCall(resourceIds, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorPurchases200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesCreatorResources
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorResourcesCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/resources";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (resourceIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("resource_ids", resourceIds));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesCreatorResourcesValidateBeforeCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorResourcesCall(resourceIds, _callback);
+
+    }
+
+    /**
+     * Fetch a list of your resources
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return GetV2ResourcesCreatorResources200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesCreatorResources200Response getV2ResourcesCreatorResources(List resourceIds) throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorResources200Response> localVarResp = getV2ResourcesCreatorResourcesWithHttpInfo(resourceIds);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Fetch a list of your resources
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return ApiResponse&lt;GetV2ResourcesCreatorResources200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesCreatorResources200Response> getV2ResourcesCreatorResourcesWithHttpInfo(List resourceIds) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorResourcesValidateBeforeCall(resourceIds, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorResources200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Fetch a list of your resources (asynchronously)
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorResourcesAsync(List resourceIds, final ApiCallback<GetV2ResourcesCreatorResources200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesCreatorResourcesValidateBeforeCall(resourceIds, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorResources200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesCreatorReviews
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorReviewsCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/reviews";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (resourceIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("resource_ids", resourceIds));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesCreatorReviewsValidateBeforeCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorReviewsCall(resourceIds, _callback);
+
+    }
+
+    /**
+     * Fetch a list of your resources&#39; reviews
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return GetV2ResourcesCreatorReviews200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesCreatorReviews200Response getV2ResourcesCreatorReviews(List resourceIds) throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorReviews200Response> localVarResp = getV2ResourcesCreatorReviewsWithHttpInfo(resourceIds);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Fetch a list of your resources&#39; reviews
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return ApiResponse&lt;GetV2ResourcesCreatorReviews200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesCreatorReviews200Response> getV2ResourcesCreatorReviewsWithHttpInfo(List resourceIds) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorReviewsValidateBeforeCall(resourceIds, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorReviews200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Fetch a list of your resources&#39; reviews (asynchronously)
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorReviewsAsync(List resourceIds, final ApiCallback<GetV2ResourcesCreatorReviews200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesCreatorReviewsValidateBeforeCall(resourceIds, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorReviews200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesCreatorSaleEvents
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorSaleEventsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/sale-events";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesCreatorSaleEventsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorSaleEventsCall(_callback);
+
+    }
+
+    /**
+     * Fetch a list of your sale events
+     * 
+     * @return GetV2ResourcesCreatorSaleEvents200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesCreatorSaleEvents200Response getV2ResourcesCreatorSaleEvents() throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorSaleEvents200Response> localVarResp = getV2ResourcesCreatorSaleEventsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Fetch a list of your sale events
+     * 
+     * @return ApiResponse&lt;GetV2ResourcesCreatorSaleEvents200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesCreatorSaleEvents200Response> getV2ResourcesCreatorSaleEventsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorSaleEventsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorSaleEvents200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Fetch a list of your sale events (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorSaleEventsAsync(final ApiCallback<GetV2ResourcesCreatorSaleEvents200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesCreatorSaleEventsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorSaleEvents200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesCreatorUpdates
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorUpdatesCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/updates";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (resourceIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("resource_ids", resourceIds));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesCreatorUpdatesValidateBeforeCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorUpdatesCall(resourceIds, _callback);
+
+    }
+
+    /**
+     * Fetch a list of your resource&#39;s updates
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return GetV2ResourcesCreatorUpdates200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesCreatorUpdates200Response getV2ResourcesCreatorUpdates(List resourceIds) throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorUpdates200Response> localVarResp = getV2ResourcesCreatorUpdatesWithHttpInfo(resourceIds);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Fetch a list of your resource&#39;s updates
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return ApiResponse&lt;GetV2ResourcesCreatorUpdates200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesCreatorUpdates200Response> getV2ResourcesCreatorUpdatesWithHttpInfo(List resourceIds) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorUpdatesValidateBeforeCall(resourceIds, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorUpdates200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Fetch a list of your resource&#39;s updates (asynchronously)
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorUpdatesAsync(List resourceIds, final ApiCallback<GetV2ResourcesCreatorUpdates200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesCreatorUpdatesValidateBeforeCall(resourceIds, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorUpdates200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesCreatorVersions
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorVersionsCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/versions";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (resourceIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("resource_ids", resourceIds));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesCreatorVersionsValidateBeforeCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorVersionsCall(resourceIds, _callback);
+
+    }
+
+    /**
+     * Fetch a list of your resources&#39; versions
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return GetV2ResourcesCreatorVersions200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesCreatorVersions200Response getV2ResourcesCreatorVersions(List resourceIds) throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorVersions200Response> localVarResp = getV2ResourcesCreatorVersionsWithHttpInfo(resourceIds);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Fetch a list of your resources&#39; versions
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @return ApiResponse&lt;GetV2ResourcesCreatorVersions200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesCreatorVersions200Response> getV2ResourcesCreatorVersionsWithHttpInfo(List resourceIds) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorVersionsValidateBeforeCall(resourceIds, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorVersions200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Fetch a list of your resources&#39; versions (asynchronously)
+     * 
+     * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesCreatorVersionsAsync(List resourceIds, final ApiCallback<GetV2ResourcesCreatorVersions200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesCreatorVersionsValidateBeforeCall(resourceIds, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorVersions200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for postV2ResourcesCreatorUpdate
      * @param postV2ResourcesCreatorUpdateRequest  (optional)

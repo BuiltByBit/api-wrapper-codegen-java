@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * AnalyticFiltersValue
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-01T04:39:53.356183Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-01T12:11:54.200613Z[Etc/UTC]")
 public class AnalyticFiltersValue {
   public static final String SERIALIZED_NAME_DESC = "desc";
   @SerializedName(SERIALIZED_NAME_DESC)

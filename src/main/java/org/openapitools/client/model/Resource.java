@@ -30,6 +30,7 @@ import org.openapitools.client.model.Addon;
 import org.openapitools.client.model.Category;
 import org.openapitools.client.model.Description;
 import org.openapitools.client.model.Member;
+import org.openapitools.client.model.Price;
 import org.openapitools.client.model.Review;
 import org.openapitools.client.model.SaleEventEntry;
 import org.openapitools.client.model.Version;
@@ -61,7 +62,7 @@ import org.openapitools.client.JSON;
 /**
  * Supported &#39;with&#39; values: - &#39;Creator&#39;: the resource creator/owner - &#39;Category&#39;: the resource category  - &#39;Description&#39;: the resource description (rendered HTML and BBCode) - &#39;LatestReviews&#39;: list of the 10 latest reviews - &#39;Filter values&#39;: filter values set by the creator
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-01T04:39:53.356183Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-01T12:11:54.200613Z[Etc/UTC]")
 public class Resource {
   public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
@@ -91,10 +92,6 @@ public class Resource {
   @SerializedName(SERIALIZED_NAME_LAST_UPDATED_AT)
   private Integer lastUpdatedAt;
 
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
-
   public static final String SERIALIZED_NAME_PURCHASES = "purchases";
   @SerializedName(SERIALIZED_NAME_PURCHASES)
   private Integer purchases;
@@ -103,25 +100,9 @@ public class Resource {
   @SerializedName(SERIALIZED_NAME_DOWNLOADS)
   private Integer downloads;
 
-  public static final String SERIALIZED_NAME_LIST_PRICE = "list_price";
-  @SerializedName(SERIALIZED_NAME_LIST_PRICE)
-  private BigDecimal listPrice;
-
   public static final String SERIALIZED_NAME_COVER_IMAGE_URL = "cover_image_url";
   @SerializedName(SERIALIZED_NAME_COVER_IMAGE_URL)
   private String coverImageUrl;
-
-  public static final String SERIALIZED_NAME_FINAL_PRICE = "final_price";
-  @SerializedName(SERIALIZED_NAME_FINAL_PRICE)
-  private BigDecimal finalPrice;
-
-  public static final String SERIALIZED_NAME_FINAL_PRICE_FORMATTED = "final_price_formatted";
-  @SerializedName(SERIALIZED_NAME_FINAL_PRICE_FORMATTED)
-  private String finalPriceFormatted;
-
-  public static final String SERIALIZED_NAME_LIST_PRICE_FORMATTED = "list_price_formatted";
-  @SerializedName(SERIALIZED_NAME_LIST_PRICE_FORMATTED)
-  private String listPriceFormatted;
 
   public static final String SERIALIZED_NAME_CAROUSEL_IMAGE_URLS = "carousel_image_urls";
   @SerializedName(SERIALIZED_NAME_CAROUSEL_IMAGE_URLS)
@@ -134,6 +115,14 @@ public class Resource {
   public static final String SERIALIZED_NAME_REVIEW_AVERAGE = "review_average";
   @SerializedName(SERIALIZED_NAME_REVIEW_AVERAGE)
   private BigDecimal reviewAverage;
+
+  public static final String SERIALIZED_NAME_LIST_PRICE = "ListPrice";
+  @SerializedName(SERIALIZED_NAME_LIST_PRICE)
+  private Price listPrice;
+
+  public static final String SERIALIZED_NAME_FINAL_PRICE = "FinalPrice";
+  @SerializedName(SERIALIZED_NAME_FINAL_PRICE)
+  private Price finalPrice;
 
   public static final String SERIALIZED_NAME_SALE_EVENT_ENTRY = "SaleEventEntry";
   @SerializedName(SERIALIZED_NAME_SALE_EVENT_ENTRY)
@@ -303,25 +292,6 @@ public class Resource {
   }
 
 
-  public Resource currency(String currency) {
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * Get currency
-   * @return currency
-  **/
-  @javax.annotation.Nullable
-  public String getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
-  }
-
-
   public Resource purchases(Integer purchases) {
     this.purchases = purchases;
     return this;
@@ -360,25 +330,6 @@ public class Resource {
   }
 
 
-  public Resource listPrice(BigDecimal listPrice) {
-    this.listPrice = listPrice;
-    return this;
-  }
-
-   /**
-   * Get listPrice
-   * @return listPrice
-  **/
-  @javax.annotation.Nullable
-  public BigDecimal getListPrice() {
-    return listPrice;
-  }
-
-  public void setListPrice(BigDecimal listPrice) {
-    this.listPrice = listPrice;
-  }
-
-
   public Resource coverImageUrl(String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
     return this;
@@ -395,63 +346,6 @@ public class Resource {
 
   public void setCoverImageUrl(String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
-  }
-
-
-  public Resource finalPrice(BigDecimal finalPrice) {
-    this.finalPrice = finalPrice;
-    return this;
-  }
-
-   /**
-   * Get finalPrice
-   * @return finalPrice
-  **/
-  @javax.annotation.Nullable
-  public BigDecimal getFinalPrice() {
-    return finalPrice;
-  }
-
-  public void setFinalPrice(BigDecimal finalPrice) {
-    this.finalPrice = finalPrice;
-  }
-
-
-  public Resource finalPriceFormatted(String finalPriceFormatted) {
-    this.finalPriceFormatted = finalPriceFormatted;
-    return this;
-  }
-
-   /**
-   * Get finalPriceFormatted
-   * @return finalPriceFormatted
-  **/
-  @javax.annotation.Nullable
-  public String getFinalPriceFormatted() {
-    return finalPriceFormatted;
-  }
-
-  public void setFinalPriceFormatted(String finalPriceFormatted) {
-    this.finalPriceFormatted = finalPriceFormatted;
-  }
-
-
-  public Resource listPriceFormatted(String listPriceFormatted) {
-    this.listPriceFormatted = listPriceFormatted;
-    return this;
-  }
-
-   /**
-   * Get listPriceFormatted
-   * @return listPriceFormatted
-  **/
-  @javax.annotation.Nullable
-  public String getListPriceFormatted() {
-    return listPriceFormatted;
-  }
-
-  public void setListPriceFormatted(String listPriceFormatted) {
-    this.listPriceFormatted = listPriceFormatted;
   }
 
 
@@ -517,6 +411,44 @@ public class Resource {
 
   public void setReviewAverage(BigDecimal reviewAverage) {
     this.reviewAverage = reviewAverage;
+  }
+
+
+  public Resource listPrice(Price listPrice) {
+    this.listPrice = listPrice;
+    return this;
+  }
+
+   /**
+   * Get listPrice
+   * @return listPrice
+  **/
+  @javax.annotation.Nullable
+  public Price getListPrice() {
+    return listPrice;
+  }
+
+  public void setListPrice(Price listPrice) {
+    this.listPrice = listPrice;
+  }
+
+
+  public Resource finalPrice(Price finalPrice) {
+    this.finalPrice = finalPrice;
+    return this;
+  }
+
+   /**
+   * Get finalPrice
+   * @return finalPrice
+  **/
+  @javax.annotation.Nullable
+  public Price getFinalPrice() {
+    return finalPrice;
+  }
+
+  public void setFinalPrice(Price finalPrice) {
+    this.finalPrice = finalPrice;
   }
 
 
@@ -705,17 +637,14 @@ public class Resource {
         Objects.equals(this.creatorId, resource.creatorId) &&
         Objects.equals(this.publishedAt, resource.publishedAt) &&
         Objects.equals(this.lastUpdatedAt, resource.lastUpdatedAt) &&
-        Objects.equals(this.currency, resource.currency) &&
         Objects.equals(this.purchases, resource.purchases) &&
         Objects.equals(this.downloads, resource.downloads) &&
-        Objects.equals(this.listPrice, resource.listPrice) &&
         Objects.equals(this.coverImageUrl, resource.coverImageUrl) &&
-        Objects.equals(this.finalPrice, resource.finalPrice) &&
-        Objects.equals(this.finalPriceFormatted, resource.finalPriceFormatted) &&
-        Objects.equals(this.listPriceFormatted, resource.listPriceFormatted) &&
         Objects.equals(this.carouselImageUrls, resource.carouselImageUrls) &&
         Objects.equals(this.reviewCount, resource.reviewCount) &&
         Objects.equals(this.reviewAverage, resource.reviewAverage) &&
+        Objects.equals(this.listPrice, resource.listPrice) &&
+        Objects.equals(this.finalPrice, resource.finalPrice) &&
         Objects.equals(this.saleEventEntry, resource.saleEventEntry) &&
         Objects.equals(this.creator, resource.creator) &&
         Objects.equals(this.latestVersion, resource.latestVersion) &&
@@ -728,7 +657,7 @@ public class Resource {
 
   @Override
   public int hashCode() {
-    return Objects.hash(resourceId, title, summary, url, creatorId, publishedAt, lastUpdatedAt, currency, purchases, downloads, listPrice, coverImageUrl, finalPrice, finalPriceFormatted, listPriceFormatted, carouselImageUrls, reviewCount, reviewAverage, saleEventEntry, creator, latestVersion, latestUpdate, latestReviews, description, category, addons);
+    return Objects.hash(resourceId, title, summary, url, creatorId, publishedAt, lastUpdatedAt, purchases, downloads, coverImageUrl, carouselImageUrls, reviewCount, reviewAverage, listPrice, finalPrice, saleEventEntry, creator, latestVersion, latestUpdate, latestReviews, description, category, addons);
   }
 
   @Override
@@ -742,17 +671,14 @@ public class Resource {
     sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
     sb.append("    publishedAt: ").append(toIndentedString(publishedAt)).append("\n");
     sb.append("    lastUpdatedAt: ").append(toIndentedString(lastUpdatedAt)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    purchases: ").append(toIndentedString(purchases)).append("\n");
     sb.append("    downloads: ").append(toIndentedString(downloads)).append("\n");
-    sb.append("    listPrice: ").append(toIndentedString(listPrice)).append("\n");
     sb.append("    coverImageUrl: ").append(toIndentedString(coverImageUrl)).append("\n");
-    sb.append("    finalPrice: ").append(toIndentedString(finalPrice)).append("\n");
-    sb.append("    finalPriceFormatted: ").append(toIndentedString(finalPriceFormatted)).append("\n");
-    sb.append("    listPriceFormatted: ").append(toIndentedString(listPriceFormatted)).append("\n");
     sb.append("    carouselImageUrls: ").append(toIndentedString(carouselImageUrls)).append("\n");
     sb.append("    reviewCount: ").append(toIndentedString(reviewCount)).append("\n");
     sb.append("    reviewAverage: ").append(toIndentedString(reviewAverage)).append("\n");
+    sb.append("    listPrice: ").append(toIndentedString(listPrice)).append("\n");
+    sb.append("    finalPrice: ").append(toIndentedString(finalPrice)).append("\n");
     sb.append("    saleEventEntry: ").append(toIndentedString(saleEventEntry)).append("\n");
     sb.append("    creator: ").append(toIndentedString(creator)).append("\n");
     sb.append("    latestVersion: ").append(toIndentedString(latestVersion)).append("\n");
@@ -790,17 +716,14 @@ public class Resource {
     openapiFields.add("creator_id");
     openapiFields.add("published_at");
     openapiFields.add("last_updated_at");
-    openapiFields.add("currency");
     openapiFields.add("purchases");
     openapiFields.add("downloads");
-    openapiFields.add("list_price");
     openapiFields.add("cover_image_url");
-    openapiFields.add("final_price");
-    openapiFields.add("final_price_formatted");
-    openapiFields.add("list_price_formatted");
     openapiFields.add("carousel_image_urls");
     openapiFields.add("review_count");
     openapiFields.add("review_average");
+    openapiFields.add("ListPrice");
+    openapiFields.add("FinalPrice");
     openapiFields.add("SaleEventEntry");
     openapiFields.add("Creator");
     openapiFields.add("LatestVersion");
@@ -844,21 +767,20 @@ public class Resource {
       if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
       }
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
-      }
       if ((jsonObj.get("cover_image_url") != null && !jsonObj.get("cover_image_url").isJsonNull()) && !jsonObj.get("cover_image_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cover_image_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cover_image_url").toString()));
-      }
-      if ((jsonObj.get("final_price_formatted") != null && !jsonObj.get("final_price_formatted").isJsonNull()) && !jsonObj.get("final_price_formatted").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `final_price_formatted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("final_price_formatted").toString()));
-      }
-      if ((jsonObj.get("list_price_formatted") != null && !jsonObj.get("list_price_formatted").isJsonNull()) && !jsonObj.get("list_price_formatted").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `list_price_formatted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("list_price_formatted").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("carousel_image_urls") != null && !jsonObj.get("carousel_image_urls").isJsonNull() && !jsonObj.get("carousel_image_urls").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `carousel_image_urls` to be an array in the JSON string but got `%s`", jsonObj.get("carousel_image_urls").toString()));
+      }
+      // validate the optional field `ListPrice`
+      if (jsonObj.get("ListPrice") != null && !jsonObj.get("ListPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("ListPrice"));
+      }
+      // validate the optional field `FinalPrice`
+      if (jsonObj.get("FinalPrice") != null && !jsonObj.get("FinalPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("FinalPrice"));
       }
       // validate the optional field `SaleEventEntry`
       if (jsonObj.get("SaleEventEntry") != null && !jsonObj.get("SaleEventEntry").isJsonNull()) {
