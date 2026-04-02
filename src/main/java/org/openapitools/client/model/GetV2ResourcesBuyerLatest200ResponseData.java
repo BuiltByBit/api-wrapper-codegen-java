@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * GetV2ResourcesBuyerLatest200ResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T04:20:08.760795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T14:45:48.336798Z[Etc/UTC]")
 public class GetV2ResourcesBuyerLatest200ResponseData {
   public static final String SERIALIZED_NAME_CURRENT = "current";
   @SerializedName(SERIALIZED_NAME_CURRENT)

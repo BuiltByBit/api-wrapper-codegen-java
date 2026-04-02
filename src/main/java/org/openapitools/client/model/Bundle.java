@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -49,31 +50,146 @@ import org.openapitools.client.JSON;
 /**
  * Bundle
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T04:20:08.760795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T14:45:48.336798Z[Etc/UTC]")
 public class Bundle {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+  public static final String SERIALIZED_NAME_BUNDLE_ID = "bundle_id";
+  @SerializedName(SERIALIZED_NAME_BUNDLE_ID)
+  private Integer bundleId;
+
+  public static final String SERIALIZED_NAME_USER_ID = "user_id";
+  @SerializedName(SERIALIZED_NAME_USER_ID)
+  private Integer userId;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_DISCOUNT = "discount";
+  @SerializedName(SERIALIZED_NAME_DISCOUNT)
+  private BigDecimal discount;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private Integer createdAt;
 
   public Bundle() {
   }
 
-  public Bundle id(String id) {
-    this.id = id;
+  public Bundle bundleId(Integer bundleId) {
+    this.bundleId = bundleId;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get bundleId
+   * @return bundleId
   **/
   @javax.annotation.Nullable
-  public String getId() {
-    return id;
+  public Integer getBundleId() {
+    return bundleId;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setBundleId(Integer bundleId) {
+    this.bundleId = bundleId;
+  }
+
+
+  public Bundle userId(Integer userId) {
+    this.userId = userId;
+    return this;
+  }
+
+   /**
+   * Get userId
+   * @return userId
+  **/
+  @javax.annotation.Nullable
+  public Integer getUserId() {
+    return userId;
+  }
+
+  public void setUserId(Integer userId) {
+    this.userId = userId;
+  }
+
+
+  public Bundle title(String title) {
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @javax.annotation.Nullable
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
+  public Bundle description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public Bundle discount(BigDecimal discount) {
+    this.discount = discount;
+    return this;
+  }
+
+   /**
+   * Get discount
+   * @return discount
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getDiscount() {
+    return discount;
+  }
+
+  public void setDiscount(BigDecimal discount) {
+    this.discount = discount;
+  }
+
+
+  public Bundle createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+  public Integer getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
   }
 
 
@@ -87,19 +203,29 @@ public class Bundle {
       return false;
     }
     Bundle bundle = (Bundle) o;
-    return Objects.equals(this.id, bundle.id);
+    return Objects.equals(this.bundleId, bundle.bundleId) &&
+        Objects.equals(this.userId, bundle.userId) &&
+        Objects.equals(this.title, bundle.title) &&
+        Objects.equals(this.description, bundle.description) &&
+        Objects.equals(this.discount, bundle.discount) &&
+        Objects.equals(this.createdAt, bundle.createdAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(bundleId, userId, title, description, discount, createdAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Bundle {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    bundleId: ").append(toIndentedString(bundleId)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -122,7 +248,12 @@ public class Bundle {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
+    openapiFields.add("bundle_id");
+    openapiFields.add("user_id");
+    openapiFields.add("title");
+    openapiFields.add("description");
+    openapiFields.add("discount");
+    openapiFields.add("created_at");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -149,8 +280,11 @@ public class Bundle {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
   }
 

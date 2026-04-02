@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.client.model.Member;
 import org.openapitools.client.model.Resource;
 
 import com.google.gson.Gson;
@@ -48,9 +49,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * License
+ * Supported &#39;with&#39; hints: - &#39;Resource&#39;: the resource this license is for, if content_type &#x3D; &#39;resource&#39; - &#39;Buyer&#39;: the buyer this license is for
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T04:20:08.760795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T14:45:48.336798Z[Etc/UTC]")
 public class License {
   public static final String SERIALIZED_NAME_CONTENT_TYPE = "content_type";
   @SerializedName(SERIALIZED_NAME_CONTENT_TYPE)
@@ -59,6 +60,10 @@ public class License {
   public static final String SERIALIZED_NAME_CONTENT_ID = "content_id";
   @SerializedName(SERIALIZED_NAME_CONTENT_ID)
   private Integer contentId;
+
+  public static final String SERIALIZED_NAME_BUYER_ID = "buyer_id";
+  @SerializedName(SERIALIZED_NAME_BUYER_ID)
+  private Integer buyerId;
 
   public static final String SERIALIZED_NAME_PERMANENT = "permanent";
   @SerializedName(SERIALIZED_NAME_PERMANENT)
@@ -79,6 +84,10 @@ public class License {
   public static final String SERIALIZED_NAME_RESOURCE = "Resource";
   @SerializedName(SERIALIZED_NAME_RESOURCE)
   private Resource resource;
+
+  public static final String SERIALIZED_NAME_BUYER = "Buyer";
+  @SerializedName(SERIALIZED_NAME_BUYER)
+  private Member buyer;
 
   public License() {
   }
@@ -118,6 +127,25 @@ public class License {
 
   public void setContentId(Integer contentId) {
     this.contentId = contentId;
+  }
+
+
+  public License buyerId(Integer buyerId) {
+    this.buyerId = buyerId;
+    return this;
+  }
+
+   /**
+   * Get buyerId
+   * @return buyerId
+  **/
+  @javax.annotation.Nullable
+  public Integer getBuyerId() {
+    return buyerId;
+  }
+
+  public void setBuyerId(Integer buyerId) {
+    this.buyerId = buyerId;
   }
 
 
@@ -216,6 +244,25 @@ public class License {
   }
 
 
+  public License buyer(Member buyer) {
+    this.buyer = buyer;
+    return this;
+  }
+
+   /**
+   * Get buyer
+   * @return buyer
+  **/
+  @javax.annotation.Nullable
+  public Member getBuyer() {
+    return buyer;
+  }
+
+  public void setBuyer(Member buyer) {
+    this.buyer = buyer;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -228,16 +275,18 @@ public class License {
     License license = (License) o;
     return Objects.equals(this.contentType, license.contentType) &&
         Objects.equals(this.contentId, license.contentId) &&
+        Objects.equals(this.buyerId, license.buyerId) &&
         Objects.equals(this.permanent, license.permanent) &&
         Objects.equals(this.active, license.active) &&
         Objects.equals(this.startDate, license.startDate) &&
         Objects.equals(this.endDate, license.endDate) &&
-        Objects.equals(this.resource, license.resource);
+        Objects.equals(this.resource, license.resource) &&
+        Objects.equals(this.buyer, license.buyer);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contentType, contentId, permanent, active, startDate, endDate, resource);
+    return Objects.hash(contentType, contentId, buyerId, permanent, active, startDate, endDate, resource, buyer);
   }
 
   @Override
@@ -246,11 +295,13 @@ public class License {
     sb.append("class License {\n");
     sb.append("    contentType: ").append(toIndentedString(contentType)).append("\n");
     sb.append("    contentId: ").append(toIndentedString(contentId)).append("\n");
+    sb.append("    buyerId: ").append(toIndentedString(buyerId)).append("\n");
     sb.append("    permanent: ").append(toIndentedString(permanent)).append("\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
+    sb.append("    buyer: ").append(toIndentedString(buyer)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -275,11 +326,13 @@ public class License {
     openapiFields = new HashSet<String>();
     openapiFields.add("content_type");
     openapiFields.add("content_id");
+    openapiFields.add("buyer_id");
     openapiFields.add("permanent");
     openapiFields.add("active");
     openapiFields.add("start_date");
     openapiFields.add("end_date");
     openapiFields.add("Resource");
+    openapiFields.add("Buyer");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -321,6 +374,10 @@ public class License {
       // validate the optional field `Resource`
       if (jsonObj.get("Resource") != null && !jsonObj.get("Resource").isJsonNull()) {
         Resource.validateJsonElement(jsonObj.get("Resource"));
+      }
+      // validate the optional field `Buyer`
+      if (jsonObj.get("Buyer") != null && !jsonObj.get("Buyer").isJsonNull()) {
+        Member.validateJsonElement(jsonObj.get("Buyer"));
       }
   }
 

@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Price
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T04:20:08.760795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T14:45:48.336798Z[Etc/UTC]")
 public class Price {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
@@ -92,7 +92,7 @@ public class Price {
   }
 
    /**
-   * Get currency
+   * The currency code (ISO 4217) of the currency.
    * @return currency
   **/
   @javax.annotation.Nullable
@@ -111,7 +111,7 @@ public class Price {
   }
 
    /**
-   * Get formatted
+   * A formatted version of the value, including any prefix/postfix currency symbols.
    * @return formatted
   **/
   @javax.annotation.Nullable

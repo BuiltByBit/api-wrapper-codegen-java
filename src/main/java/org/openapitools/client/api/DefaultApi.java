@@ -1,6 +1,6 @@
 /*
  * BuiltByBit API
- * All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
+ * All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.    V2 documentation: https://builtbybit.com/wiki/api-v2/ \\  OAuth2 documentation: https://builtbybit.com/wiki/oauth2/
  *
  * The version of the OpenAPI document: v2
  * 
@@ -27,13 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.GetV2Analytics200Response;
-import org.openapitools.client.model.GetV2AnalyticsGraph200Response;
-import org.openapitools.client.model.GetV2Events200Response;
-import org.openapitools.client.model.PostV2EventsComplete200Response;
-import org.openapitools.client.model.PostV2EventsCompleteRequest;
-import org.openapitools.client.model.PostV2ResourcesCreatorUpdate200Response;
-import org.openapitools.client.model.PostV2ResourcesCreatorUpdateRequest;
+import org.openapitools.client.model.GetV2Health200Response;
+import org.openapitools.client.model.GetV2ResourcesCreatorCoupons200Response;
+import org.openapitools.client.model.GetV2ResourcesCreatorStores200Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -79,7 +75,7 @@ public class DefaultApi {
     }
 
     /**
-     * Build call for getV2Analytics
+     * Build call for getV2Health
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -89,7 +85,7 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2AnalyticsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getV2HealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -106,7 +102,7 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/analytics";
+        String localVarPath = "/v2/health";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -129,20 +125,20 @@ public class DefaultApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV2AnalyticsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV2AnalyticsCall(_callback);
+    private okhttp3.Call getV2HealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getV2HealthCall(_callback);
 
     }
 
     /**
-     * Fetch a list of analytics definitions
+     * Retrieve a health status
      * 
-     * @return GetV2Analytics200Response
+     * @return GetV2Health200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -150,15 +146,15 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public GetV2Analytics200Response getV2Analytics() throws ApiException {
-        ApiResponse<GetV2Analytics200Response> localVarResp = getV2AnalyticsWithHttpInfo();
+    public GetV2Health200Response getV2Health() throws ApiException {
+        ApiResponse<GetV2Health200Response> localVarResp = getV2HealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Fetch a list of analytics definitions
+     * Retrieve a health status
      * 
-     * @return ApiResponse&lt;GetV2Analytics200Response&gt;
+     * @return ApiResponse&lt;GetV2Health200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -166,14 +162,14 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetV2Analytics200Response> getV2AnalyticsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV2AnalyticsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetV2Analytics200Response>(){}.getType();
+    public ApiResponse<GetV2Health200Response> getV2HealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getV2HealthValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetV2Health200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Fetch a list of analytics definitions (asynchronously)
+     * Retrieve a health status (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -184,21 +180,15 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2AnalyticsAsync(final ApiCallback<GetV2Analytics200Response> _callback) throws ApiException {
+    public okhttp3.Call getV2HealthAsync(final ApiCallback<GetV2Health200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV2AnalyticsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetV2Analytics200Response>(){}.getType();
+        okhttp3.Call localVarCall = getV2HealthValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetV2Health200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV2AnalyticsGraph
-     * @param analytics  (optional)
-     * @param period  (optional)
-     * @param grouping  (optional)
-     * @param filters  (optional)
-     * @param startDate Only respected when &#39;period&#39; &#x3D; &#39;custom_range&#39;. (optional)
-     * @param endDate Only respected when &#39;period&#39; &#x3D; &#39;custom_range&#39;. (optional)
+     * Build call for getV2ResourcesCreatorCoupons
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -208,7 +198,7 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2AnalyticsGraphCall(List analytics, String period, String grouping, String filters, String startDate, String endDate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getV2ResourcesCreatorCouponsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -225,37 +215,13 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/analytics/graph";
+        String localVarPath = "/v2/resources/creator/coupons";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (analytics != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("analytics", analytics));
-        }
-
-        if (period != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("period", period));
-        }
-
-        if (grouping != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("grouping", grouping));
-        }
-
-        if (filters != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filters", filters));
-        }
-
-        if (startDate != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start_date", startDate));
-        }
-
-        if (endDate != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("end_date", endDate));
-        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -272,26 +238,20 @@ public class DefaultApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV2AnalyticsGraphValidateBeforeCall(List analytics, String period, String grouping, String filters, String startDate, String endDate, final ApiCallback _callback) throws ApiException {
-        return getV2AnalyticsGraphCall(analytics, period, grouping, filters, startDate, endDate, _callback);
+    private okhttp3.Call getV2ResourcesCreatorCouponsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorCouponsCall(_callback);
 
     }
 
     /**
-     * Fetch analytics graph data
+     * Fetch a list of your coupons
      * 
-     * @param analytics  (optional)
-     * @param period  (optional)
-     * @param grouping  (optional)
-     * @param filters  (optional)
-     * @param startDate Only respected when &#39;period&#39; &#x3D; &#39;custom_range&#39;. (optional)
-     * @param endDate Only respected when &#39;period&#39; &#x3D; &#39;custom_range&#39;. (optional)
-     * @return GetV2AnalyticsGraph200Response
+     * @return GetV2ResourcesCreatorCoupons200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -299,21 +259,15 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public GetV2AnalyticsGraph200Response getV2AnalyticsGraph(List analytics, String period, String grouping, String filters, String startDate, String endDate) throws ApiException {
-        ApiResponse<GetV2AnalyticsGraph200Response> localVarResp = getV2AnalyticsGraphWithHttpInfo(analytics, period, grouping, filters, startDate, endDate);
+    public GetV2ResourcesCreatorCoupons200Response getV2ResourcesCreatorCoupons() throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorCoupons200Response> localVarResp = getV2ResourcesCreatorCouponsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Fetch analytics graph data
+     * Fetch a list of your coupons
      * 
-     * @param analytics  (optional)
-     * @param period  (optional)
-     * @param grouping  (optional)
-     * @param filters  (optional)
-     * @param startDate Only respected when &#39;period&#39; &#x3D; &#39;custom_range&#39;. (optional)
-     * @param endDate Only respected when &#39;period&#39; &#x3D; &#39;custom_range&#39;. (optional)
-     * @return ApiResponse&lt;GetV2AnalyticsGraph200Response&gt;
+     * @return ApiResponse&lt;GetV2ResourcesCreatorCoupons200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -321,21 +275,15 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetV2AnalyticsGraph200Response> getV2AnalyticsGraphWithHttpInfo(List analytics, String period, String grouping, String filters, String startDate, String endDate) throws ApiException {
-        okhttp3.Call localVarCall = getV2AnalyticsGraphValidateBeforeCall(analytics, period, grouping, filters, startDate, endDate, null);
-        Type localVarReturnType = new TypeToken<GetV2AnalyticsGraph200Response>(){}.getType();
+    public ApiResponse<GetV2ResourcesCreatorCoupons200Response> getV2ResourcesCreatorCouponsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorCouponsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorCoupons200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Fetch analytics graph data (asynchronously)
+     * Fetch a list of your coupons (asynchronously)
      * 
-     * @param analytics  (optional)
-     * @param period  (optional)
-     * @param grouping  (optional)
-     * @param filters  (optional)
-     * @param startDate Only respected when &#39;period&#39; &#x3D; &#39;custom_range&#39;. (optional)
-     * @param endDate Only respected when &#39;period&#39; &#x3D; &#39;custom_range&#39;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -345,15 +293,15 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2AnalyticsGraphAsync(List analytics, String period, String grouping, String filters, String startDate, String endDate, final ApiCallback<GetV2AnalyticsGraph200Response> _callback) throws ApiException {
+    public okhttp3.Call getV2ResourcesCreatorCouponsAsync(final ApiCallback<GetV2ResourcesCreatorCoupons200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV2AnalyticsGraphValidateBeforeCall(analytics, period, grouping, filters, startDate, endDate, _callback);
-        Type localVarReturnType = new TypeToken<GetV2AnalyticsGraph200Response>(){}.getType();
+        okhttp3.Call localVarCall = getV2ResourcesCreatorCouponsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorCoupons200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV2Events
+     * Build call for getV2ResourcesCreatorStores
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -363,7 +311,7 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2EventsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getV2ResourcesCreatorStoresCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -380,7 +328,7 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/events";
+        String localVarPath = "/v2/resources/creator/stores";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -403,20 +351,20 @@ public class DefaultApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "token" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV2EventsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV2EventsCall(_callback);
+    private okhttp3.Call getV2ResourcesCreatorStoresValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorStoresCall(_callback);
 
     }
 
     /**
-     * Fetch a list of pending events
+     * Fetch a list of your stores
      * 
-     * @return GetV2Events200Response
+     * @return GetV2ResourcesCreatorStores200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -424,15 +372,15 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public GetV2Events200Response getV2Events() throws ApiException {
-        ApiResponse<GetV2Events200Response> localVarResp = getV2EventsWithHttpInfo();
+    public GetV2ResourcesCreatorStores200Response getV2ResourcesCreatorStores() throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorStores200Response> localVarResp = getV2ResourcesCreatorStoresWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Fetch a list of pending events
+     * Fetch a list of your stores
      * 
-     * @return ApiResponse&lt;GetV2Events200Response&gt;
+     * @return ApiResponse&lt;GetV2ResourcesCreatorStores200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -440,14 +388,14 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetV2Events200Response> getV2EventsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV2EventsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetV2Events200Response>(){}.getType();
+    public ApiResponse<GetV2ResourcesCreatorStores200Response> getV2ResourcesCreatorStoresWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorStoresValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorStores200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Fetch a list of pending events (asynchronously)
+     * Fetch a list of your stores (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -458,246 +406,10 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2EventsAsync(final ApiCallback<GetV2Events200Response> _callback) throws ApiException {
+    public okhttp3.Call getV2ResourcesCreatorStoresAsync(final ApiCallback<GetV2ResourcesCreatorStores200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV2EventsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetV2Events200Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postV2EventsComplete
-     * @param postV2EventsCompleteRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postV2EventsCompleteCall(PostV2EventsCompleteRequest postV2EventsCompleteRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = postV2EventsCompleteRequest;
-
-        // create path and map variables
-        String localVarPath = "/v2/events/complete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV2EventsCompleteValidateBeforeCall(PostV2EventsCompleteRequest postV2EventsCompleteRequest, final ApiCallback _callback) throws ApiException {
-        return postV2EventsCompleteCall(postV2EventsCompleteRequest, _callback);
-
-    }
-
-    /**
-     * Mark events as complete
-     * 
-     * @param postV2EventsCompleteRequest  (optional)
-     * @return PostV2EventsComplete200Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public PostV2EventsComplete200Response postV2EventsComplete(PostV2EventsCompleteRequest postV2EventsCompleteRequest) throws ApiException {
-        ApiResponse<PostV2EventsComplete200Response> localVarResp = postV2EventsCompleteWithHttpInfo(postV2EventsCompleteRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Mark events as complete
-     * 
-     * @param postV2EventsCompleteRequest  (optional)
-     * @return ApiResponse&lt;PostV2EventsComplete200Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PostV2EventsComplete200Response> postV2EventsCompleteWithHttpInfo(PostV2EventsCompleteRequest postV2EventsCompleteRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV2EventsCompleteValidateBeforeCall(postV2EventsCompleteRequest, null);
-        Type localVarReturnType = new TypeToken<PostV2EventsComplete200Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Mark events as complete (asynchronously)
-     * 
-     * @param postV2EventsCompleteRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postV2EventsCompleteAsync(PostV2EventsCompleteRequest postV2EventsCompleteRequest, final ApiCallback<PostV2EventsComplete200Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postV2EventsCompleteValidateBeforeCall(postV2EventsCompleteRequest, _callback);
-        Type localVarReturnType = new TypeToken<PostV2EventsComplete200Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postV2ResourcesCreatorUpdate
-     * @param postV2ResourcesCreatorUpdateRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postV2ResourcesCreatorUpdateCall(PostV2ResourcesCreatorUpdateRequest postV2ResourcesCreatorUpdateRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = postV2ResourcesCreatorUpdateRequest;
-
-        // create path and map variables
-        String localVarPath = "/v2/resources/creator/update";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV2ResourcesCreatorUpdateValidateBeforeCall(PostV2ResourcesCreatorUpdateRequest postV2ResourcesCreatorUpdateRequest, final ApiCallback _callback) throws ApiException {
-        return postV2ResourcesCreatorUpdateCall(postV2ResourcesCreatorUpdateRequest, _callback);
-
-    }
-
-    /**
-     * Post a resource update
-     * Creates a new version for the resource and optionally posts a public update message. The uploaded file must be encoded using base64 as part of the JSON request body shown below.    The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses.
-     * @param postV2ResourcesCreatorUpdateRequest  (optional)
-     * @return PostV2ResourcesCreatorUpdate200Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public PostV2ResourcesCreatorUpdate200Response postV2ResourcesCreatorUpdate(PostV2ResourcesCreatorUpdateRequest postV2ResourcesCreatorUpdateRequest) throws ApiException {
-        ApiResponse<PostV2ResourcesCreatorUpdate200Response> localVarResp = postV2ResourcesCreatorUpdateWithHttpInfo(postV2ResourcesCreatorUpdateRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Post a resource update
-     * Creates a new version for the resource and optionally posts a public update message. The uploaded file must be encoded using base64 as part of the JSON request body shown below.    The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses.
-     * @param postV2ResourcesCreatorUpdateRequest  (optional)
-     * @return ApiResponse&lt;PostV2ResourcesCreatorUpdate200Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PostV2ResourcesCreatorUpdate200Response> postV2ResourcesCreatorUpdateWithHttpInfo(PostV2ResourcesCreatorUpdateRequest postV2ResourcesCreatorUpdateRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV2ResourcesCreatorUpdateValidateBeforeCall(postV2ResourcesCreatorUpdateRequest, null);
-        Type localVarReturnType = new TypeToken<PostV2ResourcesCreatorUpdate200Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Post a resource update (asynchronously)
-     * Creates a new version for the resource and optionally posts a public update message. The uploaded file must be encoded using base64 as part of the JSON request body shown below.    The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses.
-     * @param postV2ResourcesCreatorUpdateRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postV2ResourcesCreatorUpdateAsync(PostV2ResourcesCreatorUpdateRequest postV2ResourcesCreatorUpdateRequest, final ApiCallback<PostV2ResourcesCreatorUpdate200Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postV2ResourcesCreatorUpdateValidateBeforeCall(postV2ResourcesCreatorUpdateRequest, _callback);
-        Type localVarReturnType = new TypeToken<PostV2ResourcesCreatorUpdate200Response>(){}.getType();
+        okhttp3.Call localVarCall = getV2ResourcesCreatorStoresValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorStores200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

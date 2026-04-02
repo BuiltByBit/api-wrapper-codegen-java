@@ -20,7 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
+import org.openapitools.client.model.Resource;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,22 +49,46 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Version
+ * Supported &#39;with&#39; hints: - &#39;Resource&#39;: the resource this version relates to
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T04:20:08.760795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T14:45:48.336798Z[Etc/UTC]")
 public class Version {
   public static final String SERIALIZED_NAME_VERSION_ID = "version_id";
   @SerializedName(SERIALIZED_NAME_VERSION_ID)
-  private String versionId;
+  private Integer versionId;
+
+  public static final String SERIALIZED_NAME_VERSION_STRING = "version_string";
+  @SerializedName(SERIALIZED_NAME_VERSION_STRING)
+  private String versionString;
 
   public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
-  private String resourceId;
+  private Integer resourceId;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private Integer createdAt;
+
+  public static final String SERIALIZED_NAME_DOWNLOAD_COUNT = "download_count";
+  @SerializedName(SERIALIZED_NAME_DOWNLOAD_COUNT)
+  private Integer downloadCount;
+
+  public static final String SERIALIZED_NAME_REVIEW_COUNT = "review_count";
+  @SerializedName(SERIALIZED_NAME_REVIEW_COUNT)
+  private Integer reviewCount;
+
+  public static final String SERIALIZED_NAME_REVIEW_AVERAGE = "review_average";
+  @SerializedName(SERIALIZED_NAME_REVIEW_AVERAGE)
+  private BigDecimal reviewAverage;
+
+  public static final String SERIALIZED_NAME_RESOURCE = "Resource";
+  @SerializedName(SERIALIZED_NAME_RESOURCE)
+  private Resource resource;
 
   public Version() {
   }
 
-  public Version versionId(String versionId) {
+  public Version versionId(Integer versionId) {
     this.versionId = versionId;
     return this;
   }
@@ -72,16 +98,35 @@ public class Version {
    * @return versionId
   **/
   @javax.annotation.Nullable
-  public String getVersionId() {
+  public Integer getVersionId() {
     return versionId;
   }
 
-  public void setVersionId(String versionId) {
+  public void setVersionId(Integer versionId) {
     this.versionId = versionId;
   }
 
 
-  public Version resourceId(String resourceId) {
+  public Version versionString(String versionString) {
+    this.versionString = versionString;
+    return this;
+  }
+
+   /**
+   * Get versionString
+   * @return versionString
+  **/
+  @javax.annotation.Nullable
+  public String getVersionString() {
+    return versionString;
+  }
+
+  public void setVersionString(String versionString) {
+    this.versionString = versionString;
+  }
+
+
+  public Version resourceId(Integer resourceId) {
     this.resourceId = resourceId;
     return this;
   }
@@ -91,12 +136,107 @@ public class Version {
    * @return resourceId
   **/
   @javax.annotation.Nullable
-  public String getResourceId() {
+  public Integer getResourceId() {
     return resourceId;
   }
 
-  public void setResourceId(String resourceId) {
+  public void setResourceId(Integer resourceId) {
     this.resourceId = resourceId;
+  }
+
+
+  public Version createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+  public Integer getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public Version downloadCount(Integer downloadCount) {
+    this.downloadCount = downloadCount;
+    return this;
+  }
+
+   /**
+   * Get downloadCount
+   * @return downloadCount
+  **/
+  @javax.annotation.Nullable
+  public Integer getDownloadCount() {
+    return downloadCount;
+  }
+
+  public void setDownloadCount(Integer downloadCount) {
+    this.downloadCount = downloadCount;
+  }
+
+
+  public Version reviewCount(Integer reviewCount) {
+    this.reviewCount = reviewCount;
+    return this;
+  }
+
+   /**
+   * Get reviewCount
+   * @return reviewCount
+  **/
+  @javax.annotation.Nullable
+  public Integer getReviewCount() {
+    return reviewCount;
+  }
+
+  public void setReviewCount(Integer reviewCount) {
+    this.reviewCount = reviewCount;
+  }
+
+
+  public Version reviewAverage(BigDecimal reviewAverage) {
+    this.reviewAverage = reviewAverage;
+    return this;
+  }
+
+   /**
+   * Get reviewAverage
+   * @return reviewAverage
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getReviewAverage() {
+    return reviewAverage;
+  }
+
+  public void setReviewAverage(BigDecimal reviewAverage) {
+    this.reviewAverage = reviewAverage;
+  }
+
+
+  public Version resource(Resource resource) {
+    this.resource = resource;
+    return this;
+  }
+
+   /**
+   * Get resource
+   * @return resource
+  **/
+  @javax.annotation.Nullable
+  public Resource getResource() {
+    return resource;
+  }
+
+  public void setResource(Resource resource) {
+    this.resource = resource;
   }
 
 
@@ -111,12 +251,18 @@ public class Version {
     }
     Version version = (Version) o;
     return Objects.equals(this.versionId, version.versionId) &&
-        Objects.equals(this.resourceId, version.resourceId);
+        Objects.equals(this.versionString, version.versionString) &&
+        Objects.equals(this.resourceId, version.resourceId) &&
+        Objects.equals(this.createdAt, version.createdAt) &&
+        Objects.equals(this.downloadCount, version.downloadCount) &&
+        Objects.equals(this.reviewCount, version.reviewCount) &&
+        Objects.equals(this.reviewAverage, version.reviewAverage) &&
+        Objects.equals(this.resource, version.resource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(versionId, resourceId);
+    return Objects.hash(versionId, versionString, resourceId, createdAt, downloadCount, reviewCount, reviewAverage, resource);
   }
 
   @Override
@@ -124,7 +270,13 @@ public class Version {
     StringBuilder sb = new StringBuilder();
     sb.append("class Version {\n");
     sb.append("    versionId: ").append(toIndentedString(versionId)).append("\n");
+    sb.append("    versionString: ").append(toIndentedString(versionString)).append("\n");
     sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    downloadCount: ").append(toIndentedString(downloadCount)).append("\n");
+    sb.append("    reviewCount: ").append(toIndentedString(reviewCount)).append("\n");
+    sb.append("    reviewAverage: ").append(toIndentedString(reviewAverage)).append("\n");
+    sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -148,7 +300,13 @@ public class Version {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("version_id");
+    openapiFields.add("version_string");
     openapiFields.add("resource_id");
+    openapiFields.add("created_at");
+    openapiFields.add("download_count");
+    openapiFields.add("review_count");
+    openapiFields.add("review_average");
+    openapiFields.add("Resource");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -175,11 +333,12 @@ public class Version {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("version_id") != null && !jsonObj.get("version_id").isJsonNull()) && !jsonObj.get("version_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `version_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version_id").toString()));
+      if ((jsonObj.get("version_string") != null && !jsonObj.get("version_string").isJsonNull()) && !jsonObj.get("version_string").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `version_string` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version_string").toString()));
       }
-      if ((jsonObj.get("resource_id") != null && !jsonObj.get("resource_id").isJsonNull()) && !jsonObj.get("resource_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `resource_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource_id").toString()));
+      // validate the optional field `Resource`
+      if (jsonObj.get("Resource") != null && !jsonObj.get("Resource").isJsonNull()) {
+        Resource.validateJsonElement(jsonObj.get("Resource"));
       }
   }
 

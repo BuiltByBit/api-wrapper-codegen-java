@@ -21,6 +21,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.client.model.Addon;
+import org.openapitools.client.model.Member;
+import org.openapitools.client.model.Price;
+import org.openapitools.client.model.Resource;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,33 +51,470 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Purchase
+ * Supported &#39;with&#39; hints: - &#39;Buyer&#39;: the buyer of the purchase - &#39;Seller&#39;: the seller of the purchase - &#39;Resource&#39;: the resource purchased, if content_type &#x3D; &#39;resource&#39; - &#39;Addon&#39;: the addon purchased, if content_type &#x3D; &#39;addon&#39;
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T04:20:08.760795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T14:45:48.336798Z[Etc/UTC]")
 public class Purchase {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+  public static final String SERIALIZED_NAME_PURCHASE_ID = "purchase_id";
+  @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
+  private Integer purchaseId;
+
+  public static final String SERIALIZED_NAME_CONTENT_TYPE = "content_type";
+  @SerializedName(SERIALIZED_NAME_CONTENT_TYPE)
+  private String contentType;
+
+  public static final String SERIALIZED_NAME_CONTENT_ID = "content_id";
+  @SerializedName(SERIALIZED_NAME_CONTENT_ID)
+  private Integer contentId;
+
+  public static final String SERIALIZED_NAME_BUYER_ID = "buyer_id";
+  @SerializedName(SERIALIZED_NAME_BUYER_ID)
+  private Integer buyerId;
+
+  public static final String SERIALIZED_NAME_SELLER_ID = "seller_id";
+  @SerializedName(SERIALIZED_NAME_SELLER_ID)
+  private Integer sellerId;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private Integer createdAt;
+
+  public static final String SERIALIZED_NAME_VALIDATED_AT = "validated_at";
+  @SerializedName(SERIALIZED_NAME_VALIDATED_AT)
+  private Integer validatedAt;
+
+  public static final String SERIALIZED_NAME_BUNDLE_ID = "bundle_id";
+  @SerializedName(SERIALIZED_NAME_BUNDLE_ID)
+  private Integer bundleId;
+
+  public static final String SERIALIZED_NAME_SALE_EVENT_ID = "sale_event_id";
+  @SerializedName(SERIALIZED_NAME_SALE_EVENT_ID)
+  private Integer saleEventId;
+
+  public static final String SERIALIZED_NAME_EXTERNAL_TID = "external_tid";
+  @SerializedName(SERIALIZED_NAME_EXTERNAL_TID)
+  private String externalTid;
+
+  public static final String SERIALIZED_NAME_GATEWAY = "gateway";
+  @SerializedName(SERIALIZED_NAME_GATEWAY)
+  private String gateway;
+
+  public static final String SERIALIZED_NAME_LIST_PRICE = "ListPrice";
+  @SerializedName(SERIALIZED_NAME_LIST_PRICE)
+  private Price listPrice;
+
+  public static final String SERIALIZED_NAME_FINAL_PRICE = "FinalPrice";
+  @SerializedName(SERIALIZED_NAME_FINAL_PRICE)
+  private Price finalPrice;
+
+  public static final String SERIALIZED_NAME_PLATFORM_FEE = "PlatformFee";
+  @SerializedName(SERIALIZED_NAME_PLATFORM_FEE)
+  private Price platformFee;
+
+  public static final String SERIALIZED_NAME_AD_FEE_PAYMENT = "AdFeePayment";
+  @SerializedName(SERIALIZED_NAME_AD_FEE_PAYMENT)
+  private Price adFeePayment;
+
+  public static final String SERIALIZED_NAME_AD_FEE_CREDIT = "AdFeeCredit";
+  @SerializedName(SERIALIZED_NAME_AD_FEE_CREDIT)
+  private Price adFeeCredit;
+
+  public static final String SERIALIZED_NAME_RESOURCE = "Resource";
+  @SerializedName(SERIALIZED_NAME_RESOURCE)
+  private Resource resource;
+
+  public static final String SERIALIZED_NAME_ADDON = "Addon";
+  @SerializedName(SERIALIZED_NAME_ADDON)
+  private Addon addon;
+
+  public static final String SERIALIZED_NAME_BUYER = "Buyer";
+  @SerializedName(SERIALIZED_NAME_BUYER)
+  private Member buyer;
+
+  public static final String SERIALIZED_NAME_SELLER = "Seller";
+  @SerializedName(SERIALIZED_NAME_SELLER)
+  private Member seller;
 
   public Purchase() {
   }
 
-  public Purchase id(String id) {
-    this.id = id;
+  public Purchase purchaseId(Integer purchaseId) {
+    this.purchaseId = purchaseId;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get purchaseId
+   * @return purchaseId
   **/
   @javax.annotation.Nullable
-  public String getId() {
-    return id;
+  public Integer getPurchaseId() {
+    return purchaseId;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setPurchaseId(Integer purchaseId) {
+    this.purchaseId = purchaseId;
+  }
+
+
+  public Purchase contentType(String contentType) {
+    this.contentType = contentType;
+    return this;
+  }
+
+   /**
+   * Get contentType
+   * @return contentType
+  **/
+  @javax.annotation.Nullable
+  public String getContentType() {
+    return contentType;
+  }
+
+  public void setContentType(String contentType) {
+    this.contentType = contentType;
+  }
+
+
+  public Purchase contentId(Integer contentId) {
+    this.contentId = contentId;
+    return this;
+  }
+
+   /**
+   * Get contentId
+   * @return contentId
+  **/
+  @javax.annotation.Nullable
+  public Integer getContentId() {
+    return contentId;
+  }
+
+  public void setContentId(Integer contentId) {
+    this.contentId = contentId;
+  }
+
+
+  public Purchase buyerId(Integer buyerId) {
+    this.buyerId = buyerId;
+    return this;
+  }
+
+   /**
+   * Get buyerId
+   * @return buyerId
+  **/
+  @javax.annotation.Nullable
+  public Integer getBuyerId() {
+    return buyerId;
+  }
+
+  public void setBuyerId(Integer buyerId) {
+    this.buyerId = buyerId;
+  }
+
+
+  public Purchase sellerId(Integer sellerId) {
+    this.sellerId = sellerId;
+    return this;
+  }
+
+   /**
+   * Get sellerId
+   * @return sellerId
+  **/
+  @javax.annotation.Nullable
+  public Integer getSellerId() {
+    return sellerId;
+  }
+
+  public void setSellerId(Integer sellerId) {
+    this.sellerId = sellerId;
+  }
+
+
+  public Purchase createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+  public Integer getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public Purchase validatedAt(Integer validatedAt) {
+    this.validatedAt = validatedAt;
+    return this;
+  }
+
+   /**
+   * Get validatedAt
+   * @return validatedAt
+  **/
+  @javax.annotation.Nullable
+  public Integer getValidatedAt() {
+    return validatedAt;
+  }
+
+  public void setValidatedAt(Integer validatedAt) {
+    this.validatedAt = validatedAt;
+  }
+
+
+  public Purchase bundleId(Integer bundleId) {
+    this.bundleId = bundleId;
+    return this;
+  }
+
+   /**
+   * Get bundleId
+   * @return bundleId
+  **/
+  @javax.annotation.Nullable
+  public Integer getBundleId() {
+    return bundleId;
+  }
+
+  public void setBundleId(Integer bundleId) {
+    this.bundleId = bundleId;
+  }
+
+
+  public Purchase saleEventId(Integer saleEventId) {
+    this.saleEventId = saleEventId;
+    return this;
+  }
+
+   /**
+   * Get saleEventId
+   * @return saleEventId
+  **/
+  @javax.annotation.Nullable
+  public Integer getSaleEventId() {
+    return saleEventId;
+  }
+
+  public void setSaleEventId(Integer saleEventId) {
+    this.saleEventId = saleEventId;
+  }
+
+
+  public Purchase externalTid(String externalTid) {
+    this.externalTid = externalTid;
+    return this;
+  }
+
+   /**
+   * Get externalTid
+   * @return externalTid
+  **/
+  @javax.annotation.Nullable
+  public String getExternalTid() {
+    return externalTid;
+  }
+
+  public void setExternalTid(String externalTid) {
+    this.externalTid = externalTid;
+  }
+
+
+  public Purchase gateway(String gateway) {
+    this.gateway = gateway;
+    return this;
+  }
+
+   /**
+   * Get gateway
+   * @return gateway
+  **/
+  @javax.annotation.Nullable
+  public String getGateway() {
+    return gateway;
+  }
+
+  public void setGateway(String gateway) {
+    this.gateway = gateway;
+  }
+
+
+  public Purchase listPrice(Price listPrice) {
+    this.listPrice = listPrice;
+    return this;
+  }
+
+   /**
+   * Get listPrice
+   * @return listPrice
+  **/
+  @javax.annotation.Nullable
+  public Price getListPrice() {
+    return listPrice;
+  }
+
+  public void setListPrice(Price listPrice) {
+    this.listPrice = listPrice;
+  }
+
+
+  public Purchase finalPrice(Price finalPrice) {
+    this.finalPrice = finalPrice;
+    return this;
+  }
+
+   /**
+   * Get finalPrice
+   * @return finalPrice
+  **/
+  @javax.annotation.Nullable
+  public Price getFinalPrice() {
+    return finalPrice;
+  }
+
+  public void setFinalPrice(Price finalPrice) {
+    this.finalPrice = finalPrice;
+  }
+
+
+  public Purchase platformFee(Price platformFee) {
+    this.platformFee = platformFee;
+    return this;
+  }
+
+   /**
+   * Get platformFee
+   * @return platformFee
+  **/
+  @javax.annotation.Nullable
+  public Price getPlatformFee() {
+    return platformFee;
+  }
+
+  public void setPlatformFee(Price platformFee) {
+    this.platformFee = platformFee;
+  }
+
+
+  public Purchase adFeePayment(Price adFeePayment) {
+    this.adFeePayment = adFeePayment;
+    return this;
+  }
+
+   /**
+   * Get adFeePayment
+   * @return adFeePayment
+  **/
+  @javax.annotation.Nullable
+  public Price getAdFeePayment() {
+    return adFeePayment;
+  }
+
+  public void setAdFeePayment(Price adFeePayment) {
+    this.adFeePayment = adFeePayment;
+  }
+
+
+  public Purchase adFeeCredit(Price adFeeCredit) {
+    this.adFeeCredit = adFeeCredit;
+    return this;
+  }
+
+   /**
+   * Get adFeeCredit
+   * @return adFeeCredit
+  **/
+  @javax.annotation.Nullable
+  public Price getAdFeeCredit() {
+    return adFeeCredit;
+  }
+
+  public void setAdFeeCredit(Price adFeeCredit) {
+    this.adFeeCredit = adFeeCredit;
+  }
+
+
+  public Purchase resource(Resource resource) {
+    this.resource = resource;
+    return this;
+  }
+
+   /**
+   * Get resource
+   * @return resource
+  **/
+  @javax.annotation.Nullable
+  public Resource getResource() {
+    return resource;
+  }
+
+  public void setResource(Resource resource) {
+    this.resource = resource;
+  }
+
+
+  public Purchase addon(Addon addon) {
+    this.addon = addon;
+    return this;
+  }
+
+   /**
+   * Get addon
+   * @return addon
+  **/
+  @javax.annotation.Nullable
+  public Addon getAddon() {
+    return addon;
+  }
+
+  public void setAddon(Addon addon) {
+    this.addon = addon;
+  }
+
+
+  public Purchase buyer(Member buyer) {
+    this.buyer = buyer;
+    return this;
+  }
+
+   /**
+   * Get buyer
+   * @return buyer
+  **/
+  @javax.annotation.Nullable
+  public Member getBuyer() {
+    return buyer;
+  }
+
+  public void setBuyer(Member buyer) {
+    this.buyer = buyer;
+  }
+
+
+  public Purchase seller(Member seller) {
+    this.seller = seller;
+    return this;
+  }
+
+   /**
+   * Get seller
+   * @return seller
+  **/
+  @javax.annotation.Nullable
+  public Member getSeller() {
+    return seller;
+  }
+
+  public void setSeller(Member seller) {
+    this.seller = seller;
   }
 
 
@@ -87,19 +528,57 @@ public class Purchase {
       return false;
     }
     Purchase purchase = (Purchase) o;
-    return Objects.equals(this.id, purchase.id);
+    return Objects.equals(this.purchaseId, purchase.purchaseId) &&
+        Objects.equals(this.contentType, purchase.contentType) &&
+        Objects.equals(this.contentId, purchase.contentId) &&
+        Objects.equals(this.buyerId, purchase.buyerId) &&
+        Objects.equals(this.sellerId, purchase.sellerId) &&
+        Objects.equals(this.createdAt, purchase.createdAt) &&
+        Objects.equals(this.validatedAt, purchase.validatedAt) &&
+        Objects.equals(this.bundleId, purchase.bundleId) &&
+        Objects.equals(this.saleEventId, purchase.saleEventId) &&
+        Objects.equals(this.externalTid, purchase.externalTid) &&
+        Objects.equals(this.gateway, purchase.gateway) &&
+        Objects.equals(this.listPrice, purchase.listPrice) &&
+        Objects.equals(this.finalPrice, purchase.finalPrice) &&
+        Objects.equals(this.platformFee, purchase.platformFee) &&
+        Objects.equals(this.adFeePayment, purchase.adFeePayment) &&
+        Objects.equals(this.adFeeCredit, purchase.adFeeCredit) &&
+        Objects.equals(this.resource, purchase.resource) &&
+        Objects.equals(this.addon, purchase.addon) &&
+        Objects.equals(this.buyer, purchase.buyer) &&
+        Objects.equals(this.seller, purchase.seller);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(purchaseId, contentType, contentId, buyerId, sellerId, createdAt, validatedAt, bundleId, saleEventId, externalTid, gateway, listPrice, finalPrice, platformFee, adFeePayment, adFeeCredit, resource, addon, buyer, seller);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Purchase {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    purchaseId: ").append(toIndentedString(purchaseId)).append("\n");
+    sb.append("    contentType: ").append(toIndentedString(contentType)).append("\n");
+    sb.append("    contentId: ").append(toIndentedString(contentId)).append("\n");
+    sb.append("    buyerId: ").append(toIndentedString(buyerId)).append("\n");
+    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    validatedAt: ").append(toIndentedString(validatedAt)).append("\n");
+    sb.append("    bundleId: ").append(toIndentedString(bundleId)).append("\n");
+    sb.append("    saleEventId: ").append(toIndentedString(saleEventId)).append("\n");
+    sb.append("    externalTid: ").append(toIndentedString(externalTid)).append("\n");
+    sb.append("    gateway: ").append(toIndentedString(gateway)).append("\n");
+    sb.append("    listPrice: ").append(toIndentedString(listPrice)).append("\n");
+    sb.append("    finalPrice: ").append(toIndentedString(finalPrice)).append("\n");
+    sb.append("    platformFee: ").append(toIndentedString(platformFee)).append("\n");
+    sb.append("    adFeePayment: ").append(toIndentedString(adFeePayment)).append("\n");
+    sb.append("    adFeeCredit: ").append(toIndentedString(adFeeCredit)).append("\n");
+    sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
+    sb.append("    addon: ").append(toIndentedString(addon)).append("\n");
+    sb.append("    buyer: ").append(toIndentedString(buyer)).append("\n");
+    sb.append("    seller: ").append(toIndentedString(seller)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -122,7 +601,26 @@ public class Purchase {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
+    openapiFields.add("purchase_id");
+    openapiFields.add("content_type");
+    openapiFields.add("content_id");
+    openapiFields.add("buyer_id");
+    openapiFields.add("seller_id");
+    openapiFields.add("created_at");
+    openapiFields.add("validated_at");
+    openapiFields.add("bundle_id");
+    openapiFields.add("sale_event_id");
+    openapiFields.add("external_tid");
+    openapiFields.add("gateway");
+    openapiFields.add("ListPrice");
+    openapiFields.add("FinalPrice");
+    openapiFields.add("PlatformFee");
+    openapiFields.add("AdFeePayment");
+    openapiFields.add("AdFeeCredit");
+    openapiFields.add("Resource");
+    openapiFields.add("Addon");
+    openapiFields.add("Buyer");
+    openapiFields.add("Seller");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -149,8 +647,50 @@ public class Purchase {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("content_type") != null && !jsonObj.get("content_type").isJsonNull()) && !jsonObj.get("content_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `content_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("content_type").toString()));
+      }
+      if ((jsonObj.get("external_tid") != null && !jsonObj.get("external_tid").isJsonNull()) && !jsonObj.get("external_tid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `external_tid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("external_tid").toString()));
+      }
+      if ((jsonObj.get("gateway") != null && !jsonObj.get("gateway").isJsonNull()) && !jsonObj.get("gateway").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `gateway` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gateway").toString()));
+      }
+      // validate the optional field `ListPrice`
+      if (jsonObj.get("ListPrice") != null && !jsonObj.get("ListPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("ListPrice"));
+      }
+      // validate the optional field `FinalPrice`
+      if (jsonObj.get("FinalPrice") != null && !jsonObj.get("FinalPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("FinalPrice"));
+      }
+      // validate the optional field `PlatformFee`
+      if (jsonObj.get("PlatformFee") != null && !jsonObj.get("PlatformFee").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("PlatformFee"));
+      }
+      // validate the optional field `AdFeePayment`
+      if (jsonObj.get("AdFeePayment") != null && !jsonObj.get("AdFeePayment").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("AdFeePayment"));
+      }
+      // validate the optional field `AdFeeCredit`
+      if (jsonObj.get("AdFeeCredit") != null && !jsonObj.get("AdFeeCredit").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("AdFeeCredit"));
+      }
+      // validate the optional field `Resource`
+      if (jsonObj.get("Resource") != null && !jsonObj.get("Resource").isJsonNull()) {
+        Resource.validateJsonElement(jsonObj.get("Resource"));
+      }
+      // validate the optional field `Addon`
+      if (jsonObj.get("Addon") != null && !jsonObj.get("Addon").isJsonNull()) {
+        Addon.validateJsonElement(jsonObj.get("Addon"));
+      }
+      // validate the optional field `Buyer`
+      if (jsonObj.get("Buyer") != null && !jsonObj.get("Buyer").isJsonNull()) {
+        Member.validateJsonElement(jsonObj.get("Buyer"));
+      }
+      // validate the optional field `Seller`
+      if (jsonObj.get("Seller") != null && !jsonObj.get("Seller").isJsonNull()) {
+        Member.validateJsonElement(jsonObj.get("Seller"));
       }
   }
 

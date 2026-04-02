@@ -215,7 +215,7 @@ public class Example {
 
 <a id="getV2ResourcesCreatorPurchases"></a>
 # **getV2ResourcesCreatorPurchases**
-> GetV2ResourcesCreatorPurchases200Response getV2ResourcesCreatorPurchases(resourceIds)
+> GetV2ResourcesCreatorPurchases200Response getV2ResourcesCreatorPurchases(resourceIds, buyerIds, externalTids)
 
 Fetch a list of your resources&#39; purchases
 
@@ -242,8 +242,10 @@ public class Example {
 
     ResourcesCreatorApi apiInstance = new ResourcesCreatorApi(defaultClient);
     List resourceIds = new List(); // List | A comma-separated list of resource IDs to filter on. No filter is applied if empty.
+    List buyerIds = new List(); // List | A comma-separated list of buyer IDs to filter on. No filter is applied if empty
+    List externalTids = new List(); // List | A comma-separated list of external transaction IDs (TIDs) to filter on. No filter is applied if empty.
     try {
-      GetV2ResourcesCreatorPurchases200Response result = apiInstance.getV2ResourcesCreatorPurchases(resourceIds);
+      GetV2ResourcesCreatorPurchases200Response result = apiInstance.getV2ResourcesCreatorPurchases(resourceIds, buyerIds, externalTids);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ResourcesCreatorApi#getV2ResourcesCreatorPurchases");
@@ -261,6 +263,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **resourceIds** | [**List**](.md)| A comma-separated list of resource IDs to filter on. No filter is applied if empty. | [optional] |
+| **buyerIds** | [**List**](.md)| A comma-separated list of buyer IDs to filter on. No filter is applied if empty | [optional] |
+| **externalTids** | [**List**](.md)| A comma-separated list of external transaction IDs (TIDs) to filter on. No filter is applied if empty. | [optional] |
 
 ### Return type
 

@@ -21,6 +21,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.client.model.Resource;
+import org.openapitools.client.model.RichText;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,22 +49,38 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Update
+ * Supported &#39;with&#39; hints: - &#39;Resource&#39;: the resource this update relates to - &#39;Description&#39;: the rendered description of the update
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T04:20:08.760795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T14:45:48.336798Z[Etc/UTC]")
 public class Update {
   public static final String SERIALIZED_NAME_UPDATE_ID = "update_id";
   @SerializedName(SERIALIZED_NAME_UPDATE_ID)
-  private String updateId;
+  private Integer updateId;
 
   public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
-  private String resourceId;
+  private Integer resourceId;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private Integer createdAt;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "Description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private RichText description;
+
+  public static final String SERIALIZED_NAME_RESOURCE = "Resource";
+  @SerializedName(SERIALIZED_NAME_RESOURCE)
+  private Resource resource;
 
   public Update() {
   }
 
-  public Update updateId(String updateId) {
+  public Update updateId(Integer updateId) {
     this.updateId = updateId;
     return this;
   }
@@ -72,16 +90,16 @@ public class Update {
    * @return updateId
   **/
   @javax.annotation.Nullable
-  public String getUpdateId() {
+  public Integer getUpdateId() {
     return updateId;
   }
 
-  public void setUpdateId(String updateId) {
+  public void setUpdateId(Integer updateId) {
     this.updateId = updateId;
   }
 
 
-  public Update resourceId(String resourceId) {
+  public Update resourceId(Integer resourceId) {
     this.resourceId = resourceId;
     return this;
   }
@@ -91,12 +109,88 @@ public class Update {
    * @return resourceId
   **/
   @javax.annotation.Nullable
-  public String getResourceId() {
+  public Integer getResourceId() {
     return resourceId;
   }
 
-  public void setResourceId(String resourceId) {
+  public void setResourceId(Integer resourceId) {
     this.resourceId = resourceId;
+  }
+
+
+  public Update createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+  public Integer getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public Update title(String title) {
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @javax.annotation.Nullable
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
+  public Update description(RichText description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  public RichText getDescription() {
+    return description;
+  }
+
+  public void setDescription(RichText description) {
+    this.description = description;
+  }
+
+
+  public Update resource(Resource resource) {
+    this.resource = resource;
+    return this;
+  }
+
+   /**
+   * Get resource
+   * @return resource
+  **/
+  @javax.annotation.Nullable
+  public Resource getResource() {
+    return resource;
+  }
+
+  public void setResource(Resource resource) {
+    this.resource = resource;
   }
 
 
@@ -111,12 +205,16 @@ public class Update {
     }
     Update update = (Update) o;
     return Objects.equals(this.updateId, update.updateId) &&
-        Objects.equals(this.resourceId, update.resourceId);
+        Objects.equals(this.resourceId, update.resourceId) &&
+        Objects.equals(this.createdAt, update.createdAt) &&
+        Objects.equals(this.title, update.title) &&
+        Objects.equals(this.description, update.description) &&
+        Objects.equals(this.resource, update.resource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(updateId, resourceId);
+    return Objects.hash(updateId, resourceId, createdAt, title, description, resource);
   }
 
   @Override
@@ -125,6 +223,10 @@ public class Update {
     sb.append("class Update {\n");
     sb.append("    updateId: ").append(toIndentedString(updateId)).append("\n");
     sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -149,6 +251,10 @@ public class Update {
     openapiFields = new HashSet<String>();
     openapiFields.add("update_id");
     openapiFields.add("resource_id");
+    openapiFields.add("created_at");
+    openapiFields.add("title");
+    openapiFields.add("Description");
+    openapiFields.add("Resource");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -175,11 +281,16 @@ public class Update {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("update_id") != null && !jsonObj.get("update_id").isJsonNull()) && !jsonObj.get("update_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `update_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("update_id").toString()));
+      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
       }
-      if ((jsonObj.get("resource_id") != null && !jsonObj.get("resource_id").isJsonNull()) && !jsonObj.get("resource_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `resource_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource_id").toString()));
+      // validate the optional field `Description`
+      if (jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) {
+        RichText.validateJsonElement(jsonObj.get("Description"));
+      }
+      // validate the optional field `Resource`
+      if (jsonObj.get("Resource") != null && !jsonObj.get("Resource").isJsonNull()) {
+        Resource.validateJsonElement(jsonObj.get("Resource"));
       }
   }
 

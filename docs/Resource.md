@@ -2,7 +2,7 @@
 
 # Resource
 
-Supported 'with' values: - 'Creator': the resource creator/owner - 'Category': the resource category  - 'Description': the resource description (rendered HTML and BBCode) - 'LatestReviews': list of the 10 latest reviews - 'Filter values': filter values set by the creator
+Supported 'with' hints: - 'Creator': the resource creator/owner - 'Category': the resource category  - 'Description': the resource description (rendered HTML and BBCode) - 'LatestReviews': list of the 10 latest reviews - 'Filter values': filter values set by the creator
 
 ## Properties
 
@@ -28,7 +28,7 @@ Supported 'with' values: - 'Creator': the resource creator/owner - 'Category': t
 |**latestVersion** | [**Version**](Version.md) |  |  [optional] |
 |**latestUpdate** | [**Version**](Version.md) |  |  [optional] |
 |**latestReviews** | [**List&lt;Review&gt;**](Review.md) |  |  [optional] |
-|**description** | [**Description**](Description.md) |  |  [optional] |
+|**description** | [**RichText**](RichText.md) |  |  [optional] |
 |**category** | [**Category**](Category.md) |  |  [optional] |
 |**addons** | **Map&lt;String, List&lt;Addon&gt;&gt;** |  |  [optional] |
 

@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-04-02T04:20:08.760795Z[Etc/UTC]
+  - Build date: 2026-04-02T14:45:48.336798Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
@@ -89,7 +89,7 @@ import org.openapitools.client.ApiException;
 import org.openapitools.client.Configuration;
 import org.openapitools.client.auth.*;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.GlobalApi;
+import org.openapitools.client.api.DefaultApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -102,12 +102,12 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //token.setApiKeyPrefix("Token");
 
-    GlobalApi apiInstance = new GlobalApi(defaultClient);
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
     try {
-      GetV2Analytics200Response result = apiInstance.getV2Analytics();
+      GetV2Health200Response result = apiInstance.getV2Health();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling GlobalApi#getV2Analytics");
+      System.err.println("Exception when calling DefaultApi#getV2Health");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -124,6 +124,9 @@ All URIs are relative to *https://api.builtbybit.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**getV2Health**](docs/DefaultApi.md#getV2Health) | **GET** /v2/health | Retrieve a health status
+*DefaultApi* | [**getV2ResourcesCreatorCoupons**](docs/DefaultApi.md#getV2ResourcesCreatorCoupons) | **GET** /v2/resources/creator/coupons | Fetch a list of your coupons
+*DefaultApi* | [**getV2ResourcesCreatorStores**](docs/DefaultApi.md#getV2ResourcesCreatorStores) | **GET** /v2/resources/creator/stores | Fetch a list of your stores
 *GlobalApi* | [**getV2Analytics**](docs/GlobalApi.md#getV2Analytics) | **GET** /v2/analytics | Fetch a list of analytics definitions
 *GlobalApi* | [**getV2AnalyticsGraph**](docs/GlobalApi.md#getV2AnalyticsGraph) | **GET** /v2/analytics/graph | Fetch analytics graph data
 *GlobalApi* | [**getV2AnalyticsSingle**](docs/GlobalApi.md#getV2AnalyticsSingle) | **GET** /v2/analytics/single | Fetch a single analytics value
@@ -166,7 +169,7 @@ Class | Method | HTTP request | Description
  - [CartItemDiscountsInner](docs/CartItemDiscountsInner.md)
  - [CartSummary](docs/CartSummary.md)
  - [Category](docs/Category.md)
- - [Description](docs/Description.md)
+ - [Coupon](docs/Coupon.md)
  - [Event](docs/Event.md)
  - [Filter](docs/Filter.md)
  - [FilterChoice](docs/FilterChoice.md)
@@ -187,12 +190,15 @@ Class | Method | HTTP request | Description
  - [GetV2AnalyticsSingle200ResponseDataPeriod](docs/GetV2AnalyticsSingle200ResponseDataPeriod.md)
  - [GetV2Events200Response](docs/GetV2Events200Response.md)
  - [GetV2Events200ResponseData](docs/GetV2Events200ResponseData.md)
+ - [GetV2Health200Response](docs/GetV2Health200Response.md)
  - [GetV2ResourcesBuyerLatest200Response](docs/GetV2ResourcesBuyerLatest200Response.md)
  - [GetV2ResourcesBuyerLatest200ResponseData](docs/GetV2ResourcesBuyerLatest200ResponseData.md)
  - [GetV2ResourcesCreatorAddons200Response](docs/GetV2ResourcesCreatorAddons200Response.md)
  - [GetV2ResourcesCreatorAddons200ResponseData](docs/GetV2ResourcesCreatorAddons200ResponseData.md)
  - [GetV2ResourcesCreatorBundles200Response](docs/GetV2ResourcesCreatorBundles200Response.md)
  - [GetV2ResourcesCreatorBundles200ResponseData](docs/GetV2ResourcesCreatorBundles200ResponseData.md)
+ - [GetV2ResourcesCreatorCoupons200Response](docs/GetV2ResourcesCreatorCoupons200Response.md)
+ - [GetV2ResourcesCreatorCoupons200ResponseData](docs/GetV2ResourcesCreatorCoupons200ResponseData.md)
  - [GetV2ResourcesCreatorLicenses200Response](docs/GetV2ResourcesCreatorLicenses200Response.md)
  - [GetV2ResourcesCreatorLicenses200ResponseData](docs/GetV2ResourcesCreatorLicenses200ResponseData.md)
  - [GetV2ResourcesCreatorPurchases200Response](docs/GetV2ResourcesCreatorPurchases200Response.md)
@@ -203,6 +209,8 @@ Class | Method | HTTP request | Description
  - [GetV2ResourcesCreatorReviews200ResponseData](docs/GetV2ResourcesCreatorReviews200ResponseData.md)
  - [GetV2ResourcesCreatorSaleEvents200Response](docs/GetV2ResourcesCreatorSaleEvents200Response.md)
  - [GetV2ResourcesCreatorSaleEvents200ResponseData](docs/GetV2ResourcesCreatorSaleEvents200ResponseData.md)
+ - [GetV2ResourcesCreatorStores200Response](docs/GetV2ResourcesCreatorStores200Response.md)
+ - [GetV2ResourcesCreatorStores200ResponseData](docs/GetV2ResourcesCreatorStores200ResponseData.md)
  - [GetV2ResourcesCreatorUpdates200Response](docs/GetV2ResourcesCreatorUpdates200Response.md)
  - [GetV2ResourcesCreatorUpdates200ResponseData](docs/GetV2ResourcesCreatorUpdates200ResponseData.md)
  - [GetV2ResourcesCreatorVersions200Response](docs/GetV2ResourcesCreatorVersions200Response.md)
@@ -235,8 +243,10 @@ Class | Method | HTTP request | Description
  - [Purchase](docs/Purchase.md)
  - [Resource](docs/Resource.md)
  - [Review](docs/Review.md)
+ - [RichText](docs/RichText.md)
  - [SaleEvent](docs/SaleEvent.md)
  - [SaleEventEntry](docs/SaleEventEntry.md)
+ - [Store](docs/Store.md)
  - [Update](docs/Update.md)
  - [Version](docs/Version.md)
 

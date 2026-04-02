@@ -690,6 +690,24 @@ paths:
         schema:
           type: array
         style: form
+      - description: A comma-separated list of buyer IDs to filter on. No filter is
+          applied if empty
+        explode: true
+        in: query
+        name: buyer_ids
+        required: false
+        schema:
+          type: array
+        style: form
+      - description: A comma-separated list of external transaction IDs (TIDs) to
+          filter on. No filter is applied if empty.
+        explode: true
+        in: query
+        name: external_tids
+        required: false
+        schema:
+          type: array
+        style: form
       responses:
         "200":
           content:
@@ -909,6 +927,57 @@ paths:
       x-stoplight:
         id: z2obo5xmlssl1
       x-accepts: application/json
+  /v2/resources/creator/coupons:
+    get:
+      operationId: get-v2-resources-creator-coupons
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_coupons_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a list of your coupons
+      tags: []
+      x-stoplight:
+        id: w4lgpl86j65rj
+      x-accepts: application/json
+  /v2/health:
+    get:
+      operationId: get-v2-health
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_health_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Retrieve a health status
+      tags: []
+      x-stoplight:
+        id: t839xv25nj4y1
+      x-accepts: application/json
+  /v2/resources/creator/stores:
+    get:
+      operationId: get-v2-resources-creator-stores
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_stores_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a list of your stores
+      tags: []
+      x-stoplight:
+        id: z941xq9jbm1ki
+      x-accepts: application/json
 components:
   examples: {}
   parameters:
@@ -963,7 +1032,7 @@ components:
       description: ""
   schemas:
     Resource:
-      description: "Supported 'with' values:\n- 'Creator': the resource creator/owner\n\
+      description: "Supported 'with' hints:\n- 'Creator': the resource creator/owner\n\
         - 'Category': the resource category \n- 'Description': the resource description\
         \ (rendered HTML and BBCode)\n- 'LatestReviews': list of the 10 latest reviews\n\
         - 'Filter values': filter values set by the creator"
@@ -975,7 +1044,7 @@ components:
         Category:
           fa_icon: fa_icon
           category_url: category_url
-          category_id: 1
+          category_id: 6
           description: description
           platform_image_url: platform_image_url
           Children:
@@ -996,7 +1065,7 @@ components:
               formatted: formatted
               currency: currency
               value: 3.616076749251911
-            addon_id: 1
+            addon_id: 3
             FinalPrice:
               formatted: formatted
               currency: currency
@@ -1011,19 +1080,59 @@ components:
               formatted: formatted
               currency: currency
               value: 3.616076749251911
-            addon_id: 1
+            addon_id: 3
             FinalPrice:
               formatted: formatted
               currency: currency
               value: 3.616076749251911
         review_count: 7
         LatestReviews:
-        - review_id: review_id
-          reviewer_id: reviewer_id
-          resource_id: resource_id
-        - review_id: review_id
-          reviewer_id: reviewer_id
-          resource_id: resource_id
+        - review_id: 5
+          Version:
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
+          response: response
+          reviewer_id: 9
+          Resource: null
+          resource_id: 9
+          created_at: 9
+          version_id: 6
+          stars: 8.762042012749001
+          message: message
+          Reviewer:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+        - review_id: 5
+          Version:
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
+          response: response
+          reviewer_id: 9
+          Resource: null
+          resource_id: 9
+          created_at: 9
+          version_id: 6
+          stars: 8.762042012749001
+          message: message
+          Reviewer:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
         Creator:
           registered_at: registered_at
           avatar_url: avatar_url
@@ -1038,8 +1147,14 @@ components:
         url: url
         downloads: 2
         LatestVersion:
-          resource_id: resource_id
-          version_id: version_id
+          Resource: null
+          resource_id: 1
+          created_at: 6
+          review_count: 1
+          version_id: 1
+          review_average: 4.965218492984954
+          version_string: version_string
+          download_count: 7
         last_updated_at: 5
         creator_id: 6
         SaleEventEntry:
@@ -1055,8 +1170,14 @@ components:
           entry_id: 2
         resource_id: 0
         LatestUpdate:
-          resource_id: resource_id
-          version_id: version_id
+          Resource: null
+          resource_id: 1
+          created_at: 6
+          review_count: 1
+          version_id: 1
+          review_average: 4.965218492984954
+          version_string: version_string
+          download_count: 7
         published_at: 1
         carousel_image_urls:
         - carousel_image_urls
@@ -1125,7 +1246,7 @@ components:
           x-stoplight:
             id: yezfazxyrfotj
         Description:
-          $ref: '#/components/schemas/Description'
+          $ref: '#/components/schemas/RichText'
         Category:
           $ref: '#/components/schemas/Category'
         Addons:
@@ -1267,51 +1388,304 @@ components:
       x-stoplight:
         id: 9s2wuunj794c3
     Review:
+      description: |-
+        Supported 'with' hints:
+        - 'Resource': the resource this review relates to
+        - 'Version': the version this review relates to
+        - 'Reviewer': the member who gave this review
       example:
-        review_id: review_id
-        reviewer_id: reviewer_id
-        resource_id: resource_id
+        review_id: 5
+        Version:
+          Resource: null
+          resource_id: 1
+          created_at: 6
+          review_count: 1
+          version_id: 1
+          review_average: 4.965218492984954
+          version_string: version_string
+          download_count: 7
+        response: response
+        reviewer_id: 9
+        Resource: null
+        resource_id: 9
+        created_at: 9
+        version_id: 6
+        stars: 8.762042012749001
+        message: message
+        Reviewer:
+          registered_at: registered_at
+          avatar_url: avatar_url
+          user_id: user_id
+          username: username
       properties:
         review_id:
-          type: string
+          type: integer
         resource_id:
-          type: string
+          type: integer
           x-stoplight:
             id: stsa2cb4s307b
         reviewer_id:
-          type: string
+          type: integer
           x-stoplight:
             id: q37yrlvbloxbd
+        version_id:
+          type: integer
+          x-stoplight:
+            id: bk0vuzsq5x36g
+        stars:
+          type: number
+          x-stoplight:
+            id: uhj1cq2cu1fw3
+        message:
+          type: string
+          x-stoplight:
+            id: o8kx26ggy0hnx
+        created_at:
+          type: integer
+          x-stoplight:
+            id: zql6vg2pg4z21
+        response:
+          type: string
+          x-stoplight:
+            id: tcxyqugk4m0me
+        Resource:
+          $ref: '#/components/schemas/Resource'
+        Version:
+          $ref: '#/components/schemas/Version'
+        Reviewer:
+          $ref: '#/components/schemas/Member'
       title: Review
       type: object
       x-stoplight:
         id: pg0jfhod8x7p9
     Update:
+      description: |-
+        Supported 'with' hints:
+        - 'Resource': the resource this update relates to
+        - 'Description': the rendered description of the update
       example:
-        update_id: update_id
-        resource_id: resource_id
+        update_id: 0
+        Description:
+          bbcode: bbcode
+          html: html
+        Resource:
+          summary: summary
+          Description:
+            bbcode: bbcode
+            html: html
+          Category:
+            fa_icon: fa_icon
+            category_url: category_url
+            category_id: 6
+            description: description
+            platform_image_url: platform_image_url
+            Children:
+            - null
+            - null
+            title: title
+          purchases: 5
+          cover_image_url: cover_image_url
+          Addons:
+            key:
+            - default: true
+              display_order: 6
+              description: description
+              state: visible
+              title: title
+              type: type
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 3
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            - default: true
+              display_order: 6
+              description: description
+              state: visible
+              title: title
+              type: type
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 3
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+          review_count: 7
+          LatestReviews:
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+          Creator:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          title: title
+          review_average: 9.301444243932576
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          url: url
+          downloads: 2
+          LatestVersion:
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
+          last_updated_at: 5
+          creator_id: 6
+          SaleEventEntry:
+            event_id: 4
+            content_type: content_type
+            content_id: 7
+            discount: 1.2315135367772556
+            SaleEvent:
+              event_id: event_id
+              started_at: started_at
+              title: title
+              ended_at: ended_at
+            entry_id: 2
+          resource_id: 0
+          LatestUpdate:
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
+          published_at: 1
+          carousel_image_urls:
+          - carousel_image_urls
+          - carousel_image_urls
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+        resource_id: 6
+        created_at: 1
+        title: title
       properties:
         update_id:
-          type: string
+          type: integer
         resource_id:
-          type: string
+          type: integer
           x-stoplight:
             id: qhg4ucudmv0xy
+        created_at:
+          type: integer
+          x-stoplight:
+            id: pk4kyw7aqvu2t
+        title:
+          type: string
+          x-stoplight:
+            id: ttty2nc1hjun1
+        Description:
+          $ref: '#/components/schemas/RichText'
+        Resource:
+          $ref: '#/components/schemas/Resource'
       title: Update
       type: object
       x-stoplight:
         id: ellmdilqjtnpb
     Version:
+      description: |-
+        Supported 'with' hints:
+        - 'Resource': the resource this version relates to
       example:
-        resource_id: resource_id
-        version_id: version_id
+        Resource: null
+        resource_id: 1
+        created_at: 6
+        review_count: 1
+        version_id: 1
+        review_average: 4.965218492984954
+        version_string: version_string
+        download_count: 7
       properties:
         version_id:
-          type: string
-        resource_id:
+          type: integer
+        version_string:
           type: string
           x-stoplight:
+            id: 3qnk9id9sjg19
+        resource_id:
+          type: integer
+          x-stoplight:
             id: 45vrbew3ivt8o
+        created_at:
+          type: integer
+          x-stoplight:
+            id: lps1yiijixnxy
+        download_count:
+          type: integer
+          x-stoplight:
+            id: s1c2g2ascd8qo
+        review_count:
+          type: integer
+          x-stoplight:
+            id: xowzon45piiq8
+        review_average:
+          type: number
+          x-stoplight:
+            id: nmri97ii2j57m
+        Resource:
+          $ref: '#/components/schemas/Resource'
       title: Version
       type: object
       x-stoplight:
@@ -1324,17 +1698,17 @@ components:
         type: type
         choices:
         - query_field: query_field
-          count: 1
+          count: 2
           title: title
           key: key
           selected: true
         - query_field: query_field
-          count: 1
+          count: 2
           title: title
           key: key
           selected: true
         value: value
-        order: 7
+        order: 1
         primary: true
       properties:
         filter_id:
@@ -1419,7 +1793,7 @@ components:
     FilterChoice:
       example:
         query_field: query_field
-        count: 1
+        count: 2
         title: title
         key: key
         selected: true
@@ -1476,23 +1850,6 @@ components:
       type: object
       x-stoplight:
         id: r7elnl4qkegda
-    Description:
-      example:
-        bbcode: bbcode
-        html: html
-      properties:
-        html:
-          type: string
-          x-stoplight:
-            id: xoe2x54v4o8ju
-        bbcode:
-          type: string
-          x-stoplight:
-            id: miylq4pxfxay5
-      title: Description
-      type: object
-      x-stoplight:
-        id: t4fr7ogjm9zkt
     Empty:
       title: Empty
       type: object
@@ -1627,10 +1984,10 @@ components:
         id: 7vftixajz8wum
     ListStats:
       example:
-        per_page: 9
-        total: 4
-        page: 5
-        max_page: 9
+        per_page: 5
+        total: 6
+        page: 6
+        max_page: 6
       properties:
         total:
           type: integer
@@ -1653,8 +2010,12 @@ components:
       x-stoplight:
         id: 2u45ylcsrl3nm
     License:
+      description: |-
+        Supported 'with' hints:
+        - 'Resource': the resource this license is for, if content_type = 'resource'
+        - 'Buyer': the buyer this license is for
       example:
-        end_date: 1
+        end_date: 5
         content_type: content_type
         content_id: 0
         permanent: true
@@ -1666,7 +2027,7 @@ components:
           Category:
             fa_icon: fa_icon
             category_url: category_url
-            category_id: 1
+            category_id: 6
             description: description
             platform_image_url: platform_image_url
             Children:
@@ -1687,7 +2048,7 @@ components:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
-              addon_id: 1
+              addon_id: 3
               FinalPrice:
                 formatted: formatted
                 currency: currency
@@ -1702,19 +2063,59 @@ components:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
-              addon_id: 1
+              addon_id: 3
               FinalPrice:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
           review_count: 7
           LatestReviews:
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
           Creator:
             registered_at: registered_at
             avatar_url: avatar_url
@@ -1729,8 +2130,14 @@ components:
           url: url
           downloads: 2
           LatestVersion:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           last_updated_at: 5
           creator_id: 6
           SaleEventEntry:
@@ -1746,8 +2153,14 @@ components:
             entry_id: 2
           resource_id: 0
           LatestUpdate:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -1757,7 +2170,13 @@ components:
             currency: currency
             value: 3.616076749251911
         active: true
-        start_date: 6
+        Buyer:
+          registered_at: registered_at
+          avatar_url: avatar_url
+          user_id: user_id
+          username: username
+        buyer_id: 6
+        start_date: 1
       properties:
         content_type:
           type: string
@@ -1767,6 +2186,10 @@ components:
           type: integer
           x-stoplight:
             id: 88psm3zjyyfxf
+        buyer_id:
+          type: integer
+          x-stoplight:
+            id: 1dglyy2qk4hcr
         permanent:
           description: Whether or not this license is permanent.
           type: boolean
@@ -1789,6 +2212,8 @@ components:
             id: 2878h1ojln4yv
         Resource:
           $ref: '#/components/schemas/Resource'
+        Buyer:
+          $ref: '#/components/schemas/Member'
       required:
       - content_id
       - content_type
@@ -1800,7 +2225,7 @@ components:
       example:
         fa_icon: fa_icon
         category_url: category_url
-        category_id: 1
+        category_id: 6
         description: description
         platform_image_url: platform_image_url
         Children:
@@ -1858,7 +2283,7 @@ components:
           formatted: formatted
           currency: currency
           value: 3.616076749251911
-        addon_id: 1
+        addon_id: 3
         FinalPrice:
           formatted: formatted
           currency: currency
@@ -2081,13 +2506,283 @@ components:
       x-stoplight:
         id: ybm62r91xo1kj
     Purchase:
+      description: |-
+        Supported 'with' hints:
+        - 'Buyer': the buyer of the purchase
+        - 'Seller': the seller of the purchase
+        - 'Resource': the resource purchased, if content_type = 'resource'
+        - 'Addon': the addon purchased, if content_type = 'addon'
       example:
-        id: id
+        sale_event_id: 9
+        Addon:
+          default: true
+          display_order: 6
+          description: description
+          state: visible
+          title: title
+          type: type
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          addon_id: 3
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+        content_id: 6
+        purchase_id: 0
+        Resource:
+          summary: summary
+          Description:
+            bbcode: bbcode
+            html: html
+          Category:
+            fa_icon: fa_icon
+            category_url: category_url
+            category_id: 6
+            description: description
+            platform_image_url: platform_image_url
+            Children:
+            - null
+            - null
+            title: title
+          purchases: 5
+          cover_image_url: cover_image_url
+          Addons:
+            key:
+            - default: true
+              display_order: 6
+              description: description
+              state: visible
+              title: title
+              type: type
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 3
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            - default: true
+              display_order: 6
+              description: description
+              state: visible
+              title: title
+              type: type
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 3
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+          review_count: 7
+          LatestReviews:
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+          Creator:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          title: title
+          review_average: 9.301444243932576
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          url: url
+          downloads: 2
+          LatestVersion:
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
+          last_updated_at: 5
+          creator_id: 6
+          SaleEventEntry:
+            event_id: 4
+            content_type: content_type
+            content_id: 7
+            discount: 1.2315135367772556
+            SaleEvent:
+              event_id: event_id
+              started_at: started_at
+              title: title
+              ended_at: ended_at
+            entry_id: 2
+          resource_id: 0
+          LatestUpdate:
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
+          published_at: 1
+          carousel_image_urls:
+          - carousel_image_urls
+          - carousel_image_urls
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+        created_at: 5
+        Buyer:
+          registered_at: registered_at
+          avatar_url: avatar_url
+          user_id: user_id
+          username: username
+        buyer_id: 1
+        ListPrice:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
+        external_tid: external_tid
+        AdFeePayment:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
+        AdFeeCredit:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
+        content_type: content_type
+        bundle_id: 7
+        PlatformFee:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
+        Seller:
+          registered_at: registered_at
+          avatar_url: avatar_url
+          user_id: user_id
+          username: username
+        validated_at: 2
+        seller_id: 5
+        gateway: gateway
+        FinalPrice:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
       properties:
-        id:
-          type: string
+        purchase_id:
+          type: integer
           x-stoplight:
             id: 7wwg44yyl1ls0
+        content_type:
+          type: string
+          x-stoplight:
+            id: 6kdti5vhkioid
+        content_id:
+          type: integer
+          x-stoplight:
+            id: i35xtukh4zgs7
+        buyer_id:
+          type: integer
+          x-stoplight:
+            id: egf9fdv06ke62
+        seller_id:
+          type: integer
+          x-stoplight:
+            id: 5plqfjghvk5yu
+        created_at:
+          type: integer
+          x-stoplight:
+            id: 29vj36f5rq025
+        validated_at:
+          type: integer
+          x-stoplight:
+            id: t7a5p8m6jjvmd
+        bundle_id:
+          type: integer
+          x-stoplight:
+            id: dk4wb0qnfl0mc
+        sale_event_id:
+          type: integer
+          x-stoplight:
+            id: r2euyx78tm845
+        external_tid:
+          type: string
+          x-stoplight:
+            id: 26r5hgmk50kl4
+        gateway:
+          type: string
+          x-stoplight:
+            id: mi5xu1o7brg2e
+        ListPrice:
+          $ref: '#/components/schemas/Price'
+        FinalPrice:
+          $ref: '#/components/schemas/Price'
+        PlatformFee:
+          $ref: '#/components/schemas/Price'
+        AdFeePayment:
+          $ref: '#/components/schemas/Price'
+        AdFeeCredit:
+          $ref: '#/components/schemas/Price'
+        Resource:
+          $ref: '#/components/schemas/Resource'
+        Addon:
+          $ref: '#/components/schemas/Addon'
+        Buyer:
+          $ref: '#/components/schemas/Member'
+        Seller:
+          $ref: '#/components/schemas/Member'
       title: Purchase
       type: object
       x-stoplight:
@@ -2103,10 +2798,13 @@ components:
           x-stoplight:
             id: lgyl2su1du3tx
         currency:
+          description: The currency code (ISO 4217) of the currency.
           type: string
           x-stoplight:
             id: kix6d7k0mwkjp
         formatted:
+          description: "A formatted version of the value, including any prefix/postfix\
+            \ currency symbols."
           type: string
           x-stoplight:
             id: vajqt3ds49a6s
@@ -2121,16 +2819,182 @@ components:
           formatted: $5.99
     Bundle:
       example:
-        id: id
+        user_id: 6
+        bundle_id: 0
+        description: description
+        discount: 1.4658129805029452
+        created_at: 5
+        title: title
       properties:
-        id:
-          type: string
+        bundle_id:
+          type: integer
           x-stoplight:
             id: 3xhww5gy29r94
+        user_id:
+          type: integer
+          x-stoplight:
+            id: ljzj9jm5g2b4q
+        title:
+          type: string
+          x-stoplight:
+            id: pmysaems1oktd
+        description:
+          type: string
+          x-stoplight:
+            id: bl1xflhnwb5k7
+        discount:
+          type: number
+          x-stoplight:
+            id: zr6inlgb151o4
+        created_at:
+          type: integer
+          x-stoplight:
+            id: qt870pthbkpi5
       title: Bundle
       type: object
       x-stoplight:
         id: 1yae2oj7q83n9
+    RichText:
+      example:
+        bbcode: bbcode
+        html: html
+      properties:
+        html:
+          type: string
+          x-stoplight:
+            id: fwudbu9soz231
+        bbcode:
+          type: string
+          x-stoplight:
+            id: 05fl5g2eiibgc
+      title: RichText
+      type: object
+      x-stoplight:
+        id: 4rh8tz6ddhmvy
+    Coupon:
+      example:
+        expires_at: 5
+        coupon_id: 0
+        max_uses: 2
+        user_id: 6
+        discount: 1.4658129805029452
+        created_at: 5
+        active: true
+        all_content_types:
+        - all_content_types
+        - all_content_types
+        uses: 9
+        label: label
+        max_per_user_uses: 7
+        percent: true
+      properties:
+        coupon_id:
+          type: integer
+          x-stoplight:
+            id: ywy5yv57y17hd
+        user_id:
+          type: integer
+          x-stoplight:
+            id: xtkixiuqlripm
+        label:
+          description: This is the code a buyer would enter at checkout.
+          type: string
+          x-stoplight:
+            id: fmplkgfefexgn
+        discount:
+          description: "The discount to apply. Either a fixed value, or a decimal\
+            \ percent. Depends on the 'percent' field."
+          type: number
+          x-stoplight:
+            id: cjika9b98eewb
+        percent:
+          description: "If true, the 'discount' field represents a decimal percentage.\r\
+            \nIf false, the 'discount' field represents an absolute $ USD value."
+          type: boolean
+          x-stoplight:
+            id: zz8j0s73zmv58
+        all_content_types:
+          description: " A list of content types for which this coupon code applies\
+            \ to without requiring an entry. Eg. if you created the coupon with the\
+            \ 'All resources' option selected, this list will include \"resource\"\
+            ."
+          items:
+            type: string
+            x-stoplight:
+              id: zcl6z77un0g44
+          type: array
+          x-stoplight:
+            id: cw5y2dk2wgcbh
+        created_at:
+          description: A UNIX timestamp.
+          type: integer
+          x-stoplight:
+            id: 1hlqghsid96bm
+        expires_at:
+          description: A UNIX timestamp.
+          type: integer
+          x-stoplight:
+            id: zeyznolkvpwx6
+        max_uses:
+          type: integer
+          x-stoplight:
+            id: xe7k7xibddz5o
+        max_per_user_uses:
+          type: integer
+          x-stoplight:
+            id: l1bwpxrywpxw6
+        uses:
+          type: integer
+          x-stoplight:
+            id: 8q8vmueovxv13
+        active:
+          description: Whether or not the coupon code is active and can still be used
+            at checkout. Accounts for the expiry date if set and the max use limit
+            if set.
+          type: boolean
+          x-stoplight:
+            id: ys86bne29bk6e
+      title: Coupon
+      type: object
+      x-stoplight:
+        id: oq6kmi79u07gh
+    Store:
+      example:
+        store_id: 0
+        summary: summary
+        user_id: 6
+        name: name
+        created_at: 1
+        is_default: true
+      properties:
+        store_id:
+          type: integer
+          x-stoplight:
+            id: im80kz8aw6s98
+        user_id:
+          type: integer
+          x-stoplight:
+            id: qzjgu46wxz42g
+        name:
+          type: string
+          x-stoplight:
+            id: lukzb1v8n9pmk
+        summary:
+          type: string
+          x-stoplight:
+            id: zfcramo4v2iyt
+        is_default:
+          type: boolean
+          x-stoplight:
+            id: litijwrtjfw0o
+        created_at:
+          type: integer
+          x-stoplight:
+            id: xqf66r1k7quwk
+      title: Store
+      type: object
+      x-stoplight:
+        id: 6r7os4b6dxfn3
     get_oauth2_token_request:
       properties:
         grant_type:
@@ -2208,10 +3072,10 @@ components:
     get_resources_discover_resources_200_response_data:
       example:
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
         resources:
         - summary: summary
           Description:
@@ -2220,7 +3084,7 @@ components:
           Category:
             fa_icon: fa_icon
             category_url: category_url
-            category_id: 1
+            category_id: 6
             description: description
             platform_image_url: platform_image_url
             Children:
@@ -2241,7 +3105,7 @@ components:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
-              addon_id: 1
+              addon_id: 3
               FinalPrice:
                 formatted: formatted
                 currency: currency
@@ -2256,19 +3120,59 @@ components:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
-              addon_id: 1
+              addon_id: 3
               FinalPrice:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
           review_count: 7
           LatestReviews:
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
           Creator:
             registered_at: registered_at
             avatar_url: avatar_url
@@ -2283,8 +3187,14 @@ components:
           url: url
           downloads: 2
           LatestVersion:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           last_updated_at: 5
           creator_id: 6
           SaleEventEntry:
@@ -2300,8 +3210,14 @@ components:
             entry_id: 2
           resource_id: 0
           LatestUpdate:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -2317,7 +3233,7 @@ components:
           Category:
             fa_icon: fa_icon
             category_url: category_url
-            category_id: 1
+            category_id: 6
             description: description
             platform_image_url: platform_image_url
             Children:
@@ -2338,7 +3254,7 @@ components:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
-              addon_id: 1
+              addon_id: 3
               FinalPrice:
                 formatted: formatted
                 currency: currency
@@ -2353,19 +3269,59 @@ components:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
-              addon_id: 1
+              addon_id: 3
               FinalPrice:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
           review_count: 7
           LatestReviews:
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
           Creator:
             registered_at: registered_at
             avatar_url: avatar_url
@@ -2380,8 +3336,14 @@ components:
           url: url
           downloads: 2
           LatestVersion:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           last_updated_at: 5
           creator_id: 6
           SaleEventEntry:
@@ -2397,8 +3359,14 @@ components:
             entry_id: 2
           resource_id: 0
           LatestUpdate:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -2414,17 +3382,17 @@ components:
           type: type
           choices:
           - query_field: query_field
-            count: 1
+            count: 2
             title: title
             key: key
             selected: true
           - query_field: query_field
-            count: 1
+            count: 2
             title: title
             key: key
             selected: true
           value: value
-          order: 7
+          order: 1
           primary: true
         - filter_id: filter_id
           query_field: query_field
@@ -2432,17 +3400,17 @@ components:
           type: type
           choices:
           - query_field: query_field
-            count: 1
+            count: 2
             title: title
             key: key
             selected: true
           - query_field: query_field
-            count: 1
+            count: 2
             title: title
             key: key
             selected: true
           value: value
-          order: 7
+          order: 1
           primary: true
       properties:
         resources:
@@ -2470,10 +3438,10 @@ components:
         result: success
         data:
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
           resources:
           - summary: summary
             Description:
@@ -2482,7 +3450,7 @@ components:
             Category:
               fa_icon: fa_icon
               category_url: category_url
-              category_id: 1
+              category_id: 6
               description: description
               platform_image_url: platform_image_url
               Children:
@@ -2503,7 +3471,7 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
@@ -2518,19 +3486,59 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
             review_count: 7
             LatestReviews:
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
@@ -2545,8 +3553,14 @@ components:
             url: url
             downloads: 2
             LatestVersion:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
@@ -2562,8 +3576,14 @@ components:
               entry_id: 2
             resource_id: 0
             LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -2579,7 +3599,7 @@ components:
             Category:
               fa_icon: fa_icon
               category_url: category_url
-              category_id: 1
+              category_id: 6
               description: description
               platform_image_url: platform_image_url
               Children:
@@ -2600,7 +3620,7 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
@@ -2615,19 +3635,59 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
             review_count: 7
             LatestReviews:
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
@@ -2642,8 +3702,14 @@ components:
             url: url
             downloads: 2
             LatestVersion:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
@@ -2659,8 +3725,14 @@ components:
               entry_id: 2
             resource_id: 0
             LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -2676,17 +3748,17 @@ components:
             type: type
             choices:
             - query_field: query_field
-              count: 1
+              count: 2
               title: title
               key: key
               selected: true
             - query_field: query_field
-              count: 1
+              count: 2
               title: title
               key: key
               selected: true
             value: value
-            order: 7
+            order: 1
             primary: true
           - filter_id: filter_id
             query_field: query_field
@@ -2694,17 +3766,17 @@ components:
             type: type
             choices:
             - query_field: query_field
-              count: 1
+              count: 2
               title: title
               key: key
               selected: true
             - query_field: query_field
-              count: 1
+              count: 2
               title: title
               key: key
               selected: true
             value: value
-            order: 7
+            order: 1
             primary: true
       properties:
         result:
@@ -2745,7 +3817,7 @@ components:
         categories:
         - fa_icon: fa_icon
           category_url: category_url
-          category_id: 1
+          category_id: 6
           description: description
           platform_image_url: platform_image_url
           Children:
@@ -2754,7 +3826,7 @@ components:
           title: title
         - fa_icon: fa_icon
           category_url: category_url
-          category_id: 1
+          category_id: 6
           description: description
           platform_image_url: platform_image_url
           Children:
@@ -2778,7 +3850,7 @@ components:
           categories:
           - fa_icon: fa_icon
             category_url: category_url
-            category_id: 1
+            category_id: 6
             description: description
             platform_image_url: platform_image_url
             Children:
@@ -2787,7 +3859,7 @@ components:
             title: title
           - fa_icon: fa_icon
             category_url: category_url
-            category_id: 1
+            category_id: 6
             description: description
             platform_image_url: platform_image_url
             Children:
@@ -2807,7 +3879,7 @@ components:
     get_v2_resources_discover_licenses_200_response_data:
       example:
         licenses:
-        - end_date: 1
+        - end_date: 5
           content_type: content_type
           content_id: 0
           permanent: true
@@ -2819,7 +3891,7 @@ components:
             Category:
               fa_icon: fa_icon
               category_url: category_url
-              category_id: 1
+              category_id: 6
               description: description
               platform_image_url: platform_image_url
               Children:
@@ -2840,7 +3912,7 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
@@ -2855,19 +3927,59 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
             review_count: 7
             LatestReviews:
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
@@ -2882,8 +3994,14 @@ components:
             url: url
             downloads: 2
             LatestVersion:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
@@ -2899,8 +4017,14 @@ components:
               entry_id: 2
             resource_id: 0
             LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -2910,8 +4034,14 @@ components:
               currency: currency
               value: 3.616076749251911
           active: true
-          start_date: 6
-        - end_date: 1
+          Buyer:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          buyer_id: 6
+          start_date: 1
+        - end_date: 5
           content_type: content_type
           content_id: 0
           permanent: true
@@ -2923,7 +4053,7 @@ components:
             Category:
               fa_icon: fa_icon
               category_url: category_url
-              category_id: 1
+              category_id: 6
               description: description
               platform_image_url: platform_image_url
               Children:
@@ -2944,7 +4074,7 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
@@ -2959,19 +4089,59 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
             review_count: 7
             LatestReviews:
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
@@ -2986,8 +4156,14 @@ components:
             url: url
             downloads: 2
             LatestVersion:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
@@ -3003,8 +4179,14 @@ components:
               entry_id: 2
             resource_id: 0
             LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -3014,12 +4196,18 @@ components:
               currency: currency
               value: 3.616076749251911
           active: true
-          start_date: 6
+          Buyer:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          buyer_id: 6
+          start_date: 1
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
       properties:
         licenses:
           items:
@@ -3037,7 +4225,7 @@ components:
         result: success
         data:
           licenses:
-          - end_date: 1
+          - end_date: 5
             content_type: content_type
             content_id: 0
             permanent: true
@@ -3049,7 +4237,7 @@ components:
               Category:
                 fa_icon: fa_icon
                 category_url: category_url
-                category_id: 1
+                category_id: 6
                 description: description
                 platform_image_url: platform_image_url
                 Children:
@@ -3070,7 +4258,7 @@ components:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
-                  addon_id: 1
+                  addon_id: 3
                   FinalPrice:
                     formatted: formatted
                     currency: currency
@@ -3085,19 +4273,59 @@ components:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
-                  addon_id: 1
+                  addon_id: 3
                   FinalPrice:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
               review_count: 7
               LatestReviews:
-              - review_id: review_id
-                reviewer_id: reviewer_id
-                resource_id: resource_id
-              - review_id: review_id
-                reviewer_id: reviewer_id
-                resource_id: resource_id
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
               Creator:
                 registered_at: registered_at
                 avatar_url: avatar_url
@@ -3112,8 +4340,14 @@ components:
               url: url
               downloads: 2
               LatestVersion:
-                resource_id: resource_id
-                version_id: version_id
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
               last_updated_at: 5
               creator_id: 6
               SaleEventEntry:
@@ -3129,8 +4363,14 @@ components:
                 entry_id: 2
               resource_id: 0
               LatestUpdate:
-                resource_id: resource_id
-                version_id: version_id
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -3140,8 +4380,14 @@ components:
                 currency: currency
                 value: 3.616076749251911
             active: true
-            start_date: 6
-          - end_date: 1
+            Buyer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            buyer_id: 6
+            start_date: 1
+          - end_date: 5
             content_type: content_type
             content_id: 0
             permanent: true
@@ -3153,7 +4399,7 @@ components:
               Category:
                 fa_icon: fa_icon
                 category_url: category_url
-                category_id: 1
+                category_id: 6
                 description: description
                 platform_image_url: platform_image_url
                 Children:
@@ -3174,7 +4420,7 @@ components:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
-                  addon_id: 1
+                  addon_id: 3
                   FinalPrice:
                     formatted: formatted
                     currency: currency
@@ -3189,19 +4435,59 @@ components:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
-                  addon_id: 1
+                  addon_id: 3
                   FinalPrice:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
               review_count: 7
               LatestReviews:
-              - review_id: review_id
-                reviewer_id: reviewer_id
-                resource_id: resource_id
-              - review_id: review_id
-                reviewer_id: reviewer_id
-                resource_id: resource_id
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
               Creator:
                 registered_at: registered_at
                 avatar_url: avatar_url
@@ -3216,8 +4502,14 @@ components:
               url: url
               downloads: 2
               LatestVersion:
-                resource_id: resource_id
-                version_id: version_id
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
               last_updated_at: 5
               creator_id: 6
               SaleEventEntry:
@@ -3233,8 +4525,14 @@ components:
                 entry_id: 2
               resource_id: 0
               LatestUpdate:
-                resource_id: resource_id
-                version_id: version_id
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -3244,12 +4542,18 @@ components:
                 currency: currency
                 value: 3.616076749251911
             active: true
-            start_date: 6
+            Buyer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            buyer_id: 6
+            start_date: 1
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
       properties:
         result:
           enum:
@@ -3537,10 +4841,10 @@ components:
     get_v2_events_200_response_data:
       example:
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
         events:
         - event_id: 0
           listener_id: 6
@@ -3569,10 +4873,10 @@ components:
         result: success
         data:
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
           events:
           - event_id: 0
             listener_id: 6
@@ -3872,10 +5176,10 @@ components:
     get_v2_resources_creator_resources_200_response_data:
       example:
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
         resources:
         - summary: summary
           Description:
@@ -3884,7 +5188,7 @@ components:
           Category:
             fa_icon: fa_icon
             category_url: category_url
-            category_id: 1
+            category_id: 6
             description: description
             platform_image_url: platform_image_url
             Children:
@@ -3905,7 +5209,7 @@ components:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
-              addon_id: 1
+              addon_id: 3
               FinalPrice:
                 formatted: formatted
                 currency: currency
@@ -3920,19 +5224,59 @@ components:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
-              addon_id: 1
+              addon_id: 3
               FinalPrice:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
           review_count: 7
           LatestReviews:
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
           Creator:
             registered_at: registered_at
             avatar_url: avatar_url
@@ -3947,8 +5291,14 @@ components:
           url: url
           downloads: 2
           LatestVersion:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           last_updated_at: 5
           creator_id: 6
           SaleEventEntry:
@@ -3964,8 +5314,14 @@ components:
             entry_id: 2
           resource_id: 0
           LatestUpdate:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -3981,7 +5337,7 @@ components:
           Category:
             fa_icon: fa_icon
             category_url: category_url
-            category_id: 1
+            category_id: 6
             description: description
             platform_image_url: platform_image_url
             Children:
@@ -4002,7 +5358,7 @@ components:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
-              addon_id: 1
+              addon_id: 3
               FinalPrice:
                 formatted: formatted
                 currency: currency
@@ -4017,19 +5373,59 @@ components:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
-              addon_id: 1
+              addon_id: 3
               FinalPrice:
                 formatted: formatted
                 currency: currency
                 value: 3.616076749251911
           review_count: 7
           LatestReviews:
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
           Creator:
             registered_at: registered_at
             avatar_url: avatar_url
@@ -4044,8 +5440,14 @@ components:
           url: url
           downloads: 2
           LatestVersion:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           last_updated_at: 5
           creator_id: 6
           SaleEventEntry:
@@ -4061,8 +5463,14 @@ components:
             entry_id: 2
           resource_id: 0
           LatestUpdate:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -4088,10 +5496,10 @@ components:
         result: success
         data:
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
           resources:
           - summary: summary
             Description:
@@ -4100,7 +5508,7 @@ components:
             Category:
               fa_icon: fa_icon
               category_url: category_url
-              category_id: 1
+              category_id: 6
               description: description
               platform_image_url: platform_image_url
               Children:
@@ -4121,7 +5529,7 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
@@ -4136,19 +5544,59 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
             review_count: 7
             LatestReviews:
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
@@ -4163,8 +5611,14 @@ components:
             url: url
             downloads: 2
             LatestVersion:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
@@ -4180,8 +5634,14 @@ components:
               entry_id: 2
             resource_id: 0
             LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -4197,7 +5657,7 @@ components:
             Category:
               fa_icon: fa_icon
               category_url: category_url
-              category_id: 1
+              category_id: 6
               description: description
               platform_image_url: platform_image_url
               Children:
@@ -4218,7 +5678,7 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
@@ -4233,19 +5693,59 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
             review_count: 7
             LatestReviews:
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
@@ -4260,8 +5760,14 @@ components:
             url: url
             downloads: 2
             LatestVersion:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
@@ -4277,8 +5783,14 @@ components:
               entry_id: 2
             resource_id: 0
             LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -4300,13 +5812,425 @@ components:
     get_v2_resources_creator_purchases_200_response_data:
       example:
         purchases:
-        - id: id
-        - id: id
+        - sale_event_id: 9
+          Addon:
+            default: true
+            display_order: 6
+            description: description
+            state: visible
+            title: title
+            type: type
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            addon_id: 3
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          content_id: 6
+          purchase_id: 0
+          Resource:
+            summary: summary
+            Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 6
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            purchases: 5
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 3
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 3
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            url: url
+            downloads: 2
+            LatestVersion:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 4
+              content_type: content_type
+              content_id: 7
+              discount: 1.2315135367772556
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 2
+            resource_id: 0
+            LatestUpdate:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            published_at: 1
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          created_at: 5
+          Buyer:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          buyer_id: 1
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          external_tid: external_tid
+          AdFeePayment:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          AdFeeCredit:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          content_type: content_type
+          bundle_id: 7
+          PlatformFee:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          Seller:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          validated_at: 2
+          seller_id: 5
+          gateway: gateway
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+        - sale_event_id: 9
+          Addon:
+            default: true
+            display_order: 6
+            description: description
+            state: visible
+            title: title
+            type: type
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            addon_id: 3
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          content_id: 6
+          purchase_id: 0
+          Resource:
+            summary: summary
+            Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 6
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            purchases: 5
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 3
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 3
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            url: url
+            downloads: 2
+            LatestVersion:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 4
+              content_type: content_type
+              content_id: 7
+              discount: 1.2315135367772556
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 2
+            resource_id: 0
+            LatestUpdate:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            published_at: 1
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          created_at: 5
+          Buyer:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          buyer_id: 1
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          external_tid: external_tid
+          AdFeePayment:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          AdFeeCredit:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          content_type: content_type
+          bundle_id: 7
+          PlatformFee:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
+          Seller:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          validated_at: 2
+          seller_id: 5
+          gateway: gateway
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
       properties:
         purchases:
           items:
@@ -4324,13 +6248,425 @@ components:
         result: success
         data:
           purchases:
-          - id: id
-          - id: id
+          - sale_event_id: 9
+            Addon:
+              default: true
+              display_order: 6
+              description: description
+              state: visible
+              title: title
+              type: type
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 3
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            content_id: 6
+            purchase_id: 0
+            Resource:
+              summary: summary
+              Description:
+                bbcode: bbcode
+                html: html
+              Category:
+                fa_icon: fa_icon
+                category_url: category_url
+                category_id: 6
+                description: description
+                platform_image_url: platform_image_url
+                Children:
+                - null
+                - null
+                title: title
+              purchases: 5
+              cover_image_url: cover_image_url
+              Addons:
+                key:
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 3
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 3
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+              review_count: 7
+              LatestReviews:
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              Creator:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+              title: title
+              review_average: 9.301444243932576
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              url: url
+              downloads: 2
+              LatestVersion:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              last_updated_at: 5
+              creator_id: 6
+              SaleEventEntry:
+                event_id: 4
+                content_type: content_type
+                content_id: 7
+                discount: 1.2315135367772556
+                SaleEvent:
+                  event_id: event_id
+                  started_at: started_at
+                  title: title
+                  ended_at: ended_at
+                entry_id: 2
+              resource_id: 0
+              LatestUpdate:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              published_at: 1
+              carousel_image_urls:
+              - carousel_image_urls
+              - carousel_image_urls
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            created_at: 5
+            Buyer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            buyer_id: 1
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            external_tid: external_tid
+            AdFeePayment:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            AdFeeCredit:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            content_type: content_type
+            bundle_id: 7
+            PlatformFee:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            Seller:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            validated_at: 2
+            seller_id: 5
+            gateway: gateway
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          - sale_event_id: 9
+            Addon:
+              default: true
+              display_order: 6
+              description: description
+              state: visible
+              title: title
+              type: type
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              addon_id: 3
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            content_id: 6
+            purchase_id: 0
+            Resource:
+              summary: summary
+              Description:
+                bbcode: bbcode
+                html: html
+              Category:
+                fa_icon: fa_icon
+                category_url: category_url
+                category_id: 6
+                description: description
+                platform_image_url: platform_image_url
+                Children:
+                - null
+                - null
+                title: title
+              purchases: 5
+              cover_image_url: cover_image_url
+              Addons:
+                key:
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 3
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 3
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+              review_count: 7
+              LatestReviews:
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              Creator:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+              title: title
+              review_average: 9.301444243932576
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              url: url
+              downloads: 2
+              LatestVersion:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              last_updated_at: 5
+              creator_id: 6
+              SaleEventEntry:
+                event_id: 4
+                content_type: content_type
+                content_id: 7
+                discount: 1.2315135367772556
+                SaleEvent:
+                  event_id: event_id
+                  started_at: started_at
+                  title: title
+                  ended_at: ended_at
+                entry_id: 2
+              resource_id: 0
+              LatestUpdate:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              published_at: 1
+              carousel_image_urls:
+              - carousel_image_urls
+              - carousel_image_urls
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            created_at: 5
+            Buyer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            buyer_id: 1
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            external_tid: external_tid
+            AdFeePayment:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            AdFeeCredit:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            content_type: content_type
+            bundle_id: 7
+            PlatformFee:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            Seller:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            validated_at: 2
+            seller_id: 5
+            gateway: gateway
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
       properties:
         result:
           enum:
@@ -4344,7 +6680,7 @@ components:
     get_v2_resources_creator_licenses_200_response_data:
       example:
         licenses:
-        - end_date: 1
+        - end_date: 5
           content_type: content_type
           content_id: 0
           permanent: true
@@ -4356,7 +6692,7 @@ components:
             Category:
               fa_icon: fa_icon
               category_url: category_url
-              category_id: 1
+              category_id: 6
               description: description
               platform_image_url: platform_image_url
               Children:
@@ -4377,7 +6713,7 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
@@ -4392,19 +6728,59 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
             review_count: 7
             LatestReviews:
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
@@ -4419,8 +6795,14 @@ components:
             url: url
             downloads: 2
             LatestVersion:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
@@ -4436,8 +6818,14 @@ components:
               entry_id: 2
             resource_id: 0
             LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -4447,8 +6835,14 @@ components:
               currency: currency
               value: 3.616076749251911
           active: true
-          start_date: 6
-        - end_date: 1
+          Buyer:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          buyer_id: 6
+          start_date: 1
+        - end_date: 5
           content_type: content_type
           content_id: 0
           permanent: true
@@ -4460,7 +6854,7 @@ components:
             Category:
               fa_icon: fa_icon
               category_url: category_url
-              category_id: 1
+              category_id: 6
               description: description
               platform_image_url: platform_image_url
               Children:
@@ -4481,7 +6875,7 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
@@ -4496,19 +6890,59 @@ components:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
-                addon_id: 1
+                addon_id: 3
                 FinalPrice:
                   formatted: formatted
                   currency: currency
                   value: 3.616076749251911
             review_count: 7
             LatestReviews:
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
-            - review_id: review_id
-              reviewer_id: reviewer_id
-              resource_id: resource_id
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
             Creator:
               registered_at: registered_at
               avatar_url: avatar_url
@@ -4523,8 +6957,14 @@ components:
             url: url
             downloads: 2
             LatestVersion:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             last_updated_at: 5
             creator_id: 6
             SaleEventEntry:
@@ -4540,8 +6980,14 @@ components:
               entry_id: 2
             resource_id: 0
             LatestUpdate:
-              resource_id: resource_id
-              version_id: version_id
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -4551,12 +6997,18 @@ components:
               currency: currency
               value: 3.616076749251911
           active: true
-          start_date: 6
+          Buyer:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+          buyer_id: 6
+          start_date: 1
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
       properties:
         licenses:
           items:
@@ -4574,7 +7026,7 @@ components:
         result: success
         data:
           licenses:
-          - end_date: 1
+          - end_date: 5
             content_type: content_type
             content_id: 0
             permanent: true
@@ -4586,7 +7038,7 @@ components:
               Category:
                 fa_icon: fa_icon
                 category_url: category_url
-                category_id: 1
+                category_id: 6
                 description: description
                 platform_image_url: platform_image_url
                 Children:
@@ -4607,7 +7059,7 @@ components:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
-                  addon_id: 1
+                  addon_id: 3
                   FinalPrice:
                     formatted: formatted
                     currency: currency
@@ -4622,19 +7074,59 @@ components:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
-                  addon_id: 1
+                  addon_id: 3
                   FinalPrice:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
               review_count: 7
               LatestReviews:
-              - review_id: review_id
-                reviewer_id: reviewer_id
-                resource_id: resource_id
-              - review_id: review_id
-                reviewer_id: reviewer_id
-                resource_id: resource_id
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
               Creator:
                 registered_at: registered_at
                 avatar_url: avatar_url
@@ -4649,8 +7141,14 @@ components:
               url: url
               downloads: 2
               LatestVersion:
-                resource_id: resource_id
-                version_id: version_id
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
               last_updated_at: 5
               creator_id: 6
               SaleEventEntry:
@@ -4666,8 +7164,14 @@ components:
                 entry_id: 2
               resource_id: 0
               LatestUpdate:
-                resource_id: resource_id
-                version_id: version_id
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -4677,8 +7181,14 @@ components:
                 currency: currency
                 value: 3.616076749251911
             active: true
-            start_date: 6
-          - end_date: 1
+            Buyer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            buyer_id: 6
+            start_date: 1
+          - end_date: 5
             content_type: content_type
             content_id: 0
             permanent: true
@@ -4690,7 +7200,7 @@ components:
               Category:
                 fa_icon: fa_icon
                 category_url: category_url
-                category_id: 1
+                category_id: 6
                 description: description
                 platform_image_url: platform_image_url
                 Children:
@@ -4711,7 +7221,7 @@ components:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
-                  addon_id: 1
+                  addon_id: 3
                   FinalPrice:
                     formatted: formatted
                     currency: currency
@@ -4726,19 +7236,59 @@ components:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
-                  addon_id: 1
+                  addon_id: 3
                   FinalPrice:
                     formatted: formatted
                     currency: currency
                     value: 3.616076749251911
               review_count: 7
               LatestReviews:
-              - review_id: review_id
-                reviewer_id: reviewer_id
-                resource_id: resource_id
-              - review_id: review_id
-                reviewer_id: reviewer_id
-                resource_id: resource_id
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
               Creator:
                 registered_at: registered_at
                 avatar_url: avatar_url
@@ -4753,8 +7303,14 @@ components:
               url: url
               downloads: 2
               LatestVersion:
-                resource_id: resource_id
-                version_id: version_id
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
               last_updated_at: 5
               creator_id: 6
               SaleEventEntry:
@@ -4770,8 +7326,14 @@ components:
                 entry_id: 2
               resource_id: 0
               LatestUpdate:
-                resource_id: resource_id
-                version_id: version_id
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -4781,12 +7343,18 @@ components:
                 currency: currency
                 value: 3.616076749251911
             active: true
-            start_date: 6
+            Buyer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            buyer_id: 6
+            start_date: 1
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
       properties:
         result:
           enum:
@@ -4800,15 +7368,27 @@ components:
     get_v2_resources_creator_versions_200_response_data:
       example:
         versions:
-        - resource_id: resource_id
-          version_id: version_id
-        - resource_id: resource_id
-          version_id: version_id
+        - Resource: null
+          resource_id: 1
+          created_at: 6
+          review_count: 1
+          version_id: 1
+          review_average: 4.965218492984954
+          version_string: version_string
+          download_count: 7
+        - Resource: null
+          resource_id: 1
+          created_at: 6
+          review_count: 1
+          version_id: 1
+          review_average: 4.965218492984954
+          version_string: version_string
+          download_count: 7
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
       properties:
         versions:
           items:
@@ -4826,15 +7406,27 @@ components:
         result: success
         data:
           versions:
-          - resource_id: resource_id
-            version_id: version_id
-          - resource_id: resource_id
-            version_id: version_id
+          - Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
+          - Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
       properties:
         result:
           enum:
@@ -4848,15 +7440,325 @@ components:
     get_v2_resources_creator_updates_200_response_data:
       example:
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
         updates:
-        - update_id: update_id
-          resource_id: resource_id
-        - update_id: update_id
-          resource_id: resource_id
+        - update_id: 0
+          Description:
+            bbcode: bbcode
+            html: html
+          Resource:
+            summary: summary
+            Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 6
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            purchases: 5
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 3
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 3
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            url: url
+            downloads: 2
+            LatestVersion:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 4
+              content_type: content_type
+              content_id: 7
+              discount: 1.2315135367772556
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 2
+            resource_id: 0
+            LatestUpdate:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            published_at: 1
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          resource_id: 6
+          created_at: 1
+          title: title
+        - update_id: 0
+          Description:
+            bbcode: bbcode
+            html: html
+          Resource:
+            summary: summary
+            Description:
+              bbcode: bbcode
+              html: html
+            Category:
+              fa_icon: fa_icon
+              category_url: category_url
+              category_id: 6
+              description: description
+              platform_image_url: platform_image_url
+              Children:
+              - null
+              - null
+              title: title
+            purchases: 5
+            cover_image_url: cover_image_url
+            Addons:
+              key:
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 3
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+              - default: true
+                display_order: 6
+                description: description
+                state: visible
+                title: title
+                type: type
+                ListPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+                addon_id: 3
+                FinalPrice:
+                  formatted: formatted
+                  currency: currency
+                  value: 3.616076749251911
+            review_count: 7
+            LatestReviews:
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            - review_id: 5
+              Version:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              response: response
+              reviewer_id: 9
+              Resource: null
+              resource_id: 9
+              created_at: 9
+              version_id: 6
+              stars: 8.762042012749001
+              message: message
+              Reviewer:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+            Creator:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+            title: title
+            review_average: 9.301444243932576
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+            url: url
+            downloads: 2
+            LatestVersion:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            last_updated_at: 5
+            creator_id: 6
+            SaleEventEntry:
+              event_id: 4
+              content_type: content_type
+              content_id: 7
+              discount: 1.2315135367772556
+              SaleEvent:
+                event_id: event_id
+                started_at: started_at
+                title: title
+                ended_at: ended_at
+              entry_id: 2
+            resource_id: 0
+            LatestUpdate:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            published_at: 1
+            carousel_image_urls:
+            - carousel_image_urls
+            - carousel_image_urls
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
+          resource_id: 6
+          created_at: 1
+          title: title
       properties:
         updates:
           items:
@@ -4874,15 +7776,325 @@ components:
         result: success
         data:
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
           updates:
-          - update_id: update_id
-            resource_id: resource_id
-          - update_id: update_id
-            resource_id: resource_id
+          - update_id: 0
+            Description:
+              bbcode: bbcode
+              html: html
+            Resource:
+              summary: summary
+              Description:
+                bbcode: bbcode
+                html: html
+              Category:
+                fa_icon: fa_icon
+                category_url: category_url
+                category_id: 6
+                description: description
+                platform_image_url: platform_image_url
+                Children:
+                - null
+                - null
+                title: title
+              purchases: 5
+              cover_image_url: cover_image_url
+              Addons:
+                key:
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 3
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 3
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+              review_count: 7
+              LatestReviews:
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              Creator:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+              title: title
+              review_average: 9.301444243932576
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              url: url
+              downloads: 2
+              LatestVersion:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              last_updated_at: 5
+              creator_id: 6
+              SaleEventEntry:
+                event_id: 4
+                content_type: content_type
+                content_id: 7
+                discount: 1.2315135367772556
+                SaleEvent:
+                  event_id: event_id
+                  started_at: started_at
+                  title: title
+                  ended_at: ended_at
+                entry_id: 2
+              resource_id: 0
+              LatestUpdate:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              published_at: 1
+              carousel_image_urls:
+              - carousel_image_urls
+              - carousel_image_urls
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            resource_id: 6
+            created_at: 1
+            title: title
+          - update_id: 0
+            Description:
+              bbcode: bbcode
+              html: html
+            Resource:
+              summary: summary
+              Description:
+                bbcode: bbcode
+                html: html
+              Category:
+                fa_icon: fa_icon
+                category_url: category_url
+                category_id: 6
+                description: description
+                platform_image_url: platform_image_url
+                Children:
+                - null
+                - null
+                title: title
+              purchases: 5
+              cover_image_url: cover_image_url
+              Addons:
+                key:
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 3
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                - default: true
+                  display_order: 6
+                  description: description
+                  state: visible
+                  title: title
+                  type: type
+                  ListPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+                  addon_id: 3
+                  FinalPrice:
+                    formatted: formatted
+                    currency: currency
+                    value: 3.616076749251911
+              review_count: 7
+              LatestReviews:
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              - review_id: 5
+                Version:
+                  Resource: null
+                  resource_id: 1
+                  created_at: 6
+                  review_count: 1
+                  version_id: 1
+                  review_average: 4.965218492984954
+                  version_string: version_string
+                  download_count: 7
+                response: response
+                reviewer_id: 9
+                Resource: null
+                resource_id: 9
+                created_at: 9
+                version_id: 6
+                stars: 8.762042012749001
+                message: message
+                Reviewer:
+                  registered_at: registered_at
+                  avatar_url: avatar_url
+                  user_id: user_id
+                  username: username
+              Creator:
+                registered_at: registered_at
+                avatar_url: avatar_url
+                user_id: user_id
+                username: username
+              title: title
+              review_average: 9.301444243932576
+              ListPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+              url: url
+              downloads: 2
+              LatestVersion:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              last_updated_at: 5
+              creator_id: 6
+              SaleEventEntry:
+                event_id: 4
+                content_type: content_type
+                content_id: 7
+                discount: 1.2315135367772556
+                SaleEvent:
+                  event_id: event_id
+                  started_at: started_at
+                  title: title
+                  ended_at: ended_at
+                entry_id: 2
+              resource_id: 0
+              LatestUpdate:
+                Resource: null
+                resource_id: 1
+                created_at: 6
+                review_count: 1
+                version_id: 1
+                review_average: 4.965218492984954
+                version_string: version_string
+                download_count: 7
+              published_at: 1
+              carousel_image_urls:
+              - carousel_image_urls
+              - carousel_image_urls
+              FinalPrice:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
+            resource_id: 6
+            created_at: 1
+            title: title
       properties:
         result:
           enum:
@@ -4906,7 +8118,7 @@ components:
             formatted: formatted
             currency: currency
             value: 3.616076749251911
-          addon_id: 1
+          addon_id: 3
           FinalPrice:
             formatted: formatted
             currency: currency
@@ -4921,16 +8133,16 @@ components:
             formatted: formatted
             currency: currency
             value: 3.616076749251911
-          addon_id: 1
+          addon_id: 3
           FinalPrice:
             formatted: formatted
             currency: currency
             value: 3.616076749251911
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
       properties:
         addons:
           items:
@@ -4958,7 +8170,7 @@ components:
               formatted: formatted
               currency: currency
               value: 3.616076749251911
-            addon_id: 1
+            addon_id: 3
             FinalPrice:
               formatted: formatted
               currency: currency
@@ -4973,16 +8185,16 @@ components:
               formatted: formatted
               currency: currency
               value: 3.616076749251911
-            addon_id: 1
+            addon_id: 3
             FinalPrice:
               formatted: formatted
               currency: currency
               value: 3.616076749251911
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
       properties:
         result:
           enum:
@@ -4996,13 +8208,23 @@ components:
     get_v2_resources_creator_bundles_200_response_data:
       example:
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
         bundles:
-        - id: id
-        - id: id
+        - user_id: 6
+          bundle_id: 0
+          description: description
+          discount: 1.4658129805029452
+          created_at: 5
+          title: title
+        - user_id: 6
+          bundle_id: 0
+          description: description
+          discount: 1.4658129805029452
+          created_at: 5
+          title: title
       properties:
         bundles:
           items:
@@ -5020,13 +8242,23 @@ components:
         result: success
         data:
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
           bundles:
-          - id: id
-          - id: id
+          - user_id: 6
+            bundle_id: 0
+            description: description
+            discount: 1.4658129805029452
+            created_at: 5
+            title: title
+          - user_id: 6
+            bundle_id: 0
+            description: description
+            discount: 1.4658129805029452
+            created_at: 5
+            title: title
       properties:
         result:
           enum:
@@ -5040,10 +8272,10 @@ components:
     get_v2_resources_creator_sale_events_200_response_data:
       example:
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
         sale-events:
         - event_id: event_id
           started_at: started_at
@@ -5070,10 +8302,10 @@ components:
         result: success
         data:
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
           sale-events:
           - event_id: event_id
             started_at: started_at
@@ -5096,17 +8328,57 @@ components:
     get_v2_resources_creator_reviews_200_response_data:
       example:
         reviews:
-        - review_id: review_id
-          reviewer_id: reviewer_id
-          resource_id: resource_id
-        - review_id: review_id
-          reviewer_id: reviewer_id
-          resource_id: resource_id
+        - review_id: 5
+          Version:
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
+          response: response
+          reviewer_id: 9
+          Resource: null
+          resource_id: 9
+          created_at: 9
+          version_id: 6
+          stars: 8.762042012749001
+          message: message
+          Reviewer:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
+        - review_id: 5
+          Version:
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
+          response: response
+          reviewer_id: 9
+          Resource: null
+          resource_id: 9
+          created_at: 9
+          version_id: 6
+          stars: 8.762042012749001
+          message: message
+          Reviewer:
+            registered_at: registered_at
+            avatar_url: avatar_url
+            user_id: user_id
+            username: username
         stats:
-          per_page: 9
-          total: 4
-          page: 5
-          max_page: 9
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
       properties:
         reviews:
           items:
@@ -5124,17 +8396,57 @@ components:
         result: success
         data:
           reviews:
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
-          - review_id: review_id
-            reviewer_id: reviewer_id
-            resource_id: resource_id
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
+          - review_id: 5
+            Version:
+              Resource: null
+              resource_id: 1
+              created_at: 6
+              review_count: 1
+              version_id: 1
+              review_average: 4.965218492984954
+              version_string: version_string
+              download_count: 7
+            response: response
+            reviewer_id: 9
+            Resource: null
+            resource_id: 9
+            created_at: 9
+            version_id: 6
+            stars: 8.762042012749001
+            message: message
+            Reviewer:
+              registered_at: registered_at
+              avatar_url: avatar_url
+              user_id: user_id
+              username: username
           stats:
-            per_page: 9
-            total: 4
-            page: 5
-            max_page: 9
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
       properties:
         result:
           enum:
@@ -5148,12 +8460,24 @@ components:
     get_v2_resources_buyer_latest_200_response_data:
       example:
         current:
-          resource_id: resource_id
-          version_id: version_id
+          Resource: null
+          resource_id: 1
+          created_at: 6
+          review_count: 1
+          version_id: 1
+          review_average: 4.965218492984954
+          version_string: version_string
+          download_count: 7
         has_usage_rights: true
         latest:
-          resource_id: resource_id
-          version_id: version_id
+          Resource: null
+          resource_id: 1
+          created_at: 6
+          review_count: 1
+          version_id: 1
+          review_average: 4.965218492984954
+          version_string: version_string
+          download_count: 7
       properties:
         current:
           $ref: '#/components/schemas/Version'
@@ -5171,12 +8495,24 @@ components:
         result: success
         data:
           current:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
           has_usage_rights: true
           latest:
-            resource_id: resource_id
-            version_id: version_id
+            Resource: null
+            resource_id: 1
+            created_at: 6
+            review_count: 1
+            version_id: 1
+            review_average: 4.965218492984954
+            version_string: version_string
+            download_count: 7
       properties:
         result:
           enum:
@@ -5186,6 +8522,184 @@ components:
             id: xe86bnx44ra3f
         data:
           $ref: '#/components/schemas/get_v2_resources_buyer_latest_200_response_data'
+      type: object
+    get_v2_resources_creator_coupons_200_response_data:
+      example:
+        coupons:
+        - expires_at: 5
+          coupon_id: 0
+          max_uses: 2
+          user_id: 6
+          discount: 1.4658129805029452
+          created_at: 5
+          active: true
+          all_content_types:
+          - all_content_types
+          - all_content_types
+          uses: 9
+          label: label
+          max_per_user_uses: 7
+          percent: true
+        - expires_at: 5
+          coupon_id: 0
+          max_uses: 2
+          user_id: 6
+          discount: 1.4658129805029452
+          created_at: 5
+          active: true
+          all_content_types:
+          - all_content_types
+          - all_content_types
+          uses: 9
+          label: label
+          max_per_user_uses: 7
+          percent: true
+        stats:
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
+      properties:
+        coupons:
+          items:
+            $ref: '#/components/schemas/Coupon'
+          type: array
+          x-stoplight:
+            id: gmdy0wr0qa21c
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: cgi8gtkvkv5g9
+    get_v2_resources_creator_coupons_200_response:
+      example:
+        result: success
+        data:
+          coupons:
+          - expires_at: 5
+            coupon_id: 0
+            max_uses: 2
+            user_id: 6
+            discount: 1.4658129805029452
+            created_at: 5
+            active: true
+            all_content_types:
+            - all_content_types
+            - all_content_types
+            uses: 9
+            label: label
+            max_per_user_uses: 7
+            percent: true
+          - expires_at: 5
+            coupon_id: 0
+            max_uses: 2
+            user_id: 6
+            discount: 1.4658129805029452
+            created_at: 5
+            active: true
+            all_content_types:
+            - all_content_types
+            - all_content_types
+            uses: 9
+            label: label
+            max_per_user_uses: 7
+            percent: true
+          stats:
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: 6k6t5t0aql779
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_coupons_200_response_data'
+      type: object
+    get_v2_health_200_response:
+      example:
+        result: success
+        data: ok
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: vy4x4n9a0bw47
+        data:
+          enum:
+          - ok
+          type: string
+          x-stoplight:
+            id: ushq5yrvo220o
+      type: object
+    get_v2_resources_creator_stores_200_response_data:
+      example:
+        stats:
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
+        stores:
+        - store_id: 0
+          summary: summary
+          user_id: 6
+          name: name
+          created_at: 1
+          is_default: true
+        - store_id: 0
+          summary: summary
+          user_id: 6
+          name: name
+          created_at: 1
+          is_default: true
+      properties:
+        stores:
+          items:
+            $ref: '#/components/schemas/Store'
+          type: array
+          x-stoplight:
+            id: fh80zzu7xvi6s
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: xzulyec1txsis
+    get_v2_resources_creator_stores_200_response:
+      example:
+        result: success
+        data:
+          stats:
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
+          stores:
+          - store_id: 0
+            summary: summary
+            user_id: 6
+            name: name
+            created_at: 1
+            is_default: true
+          - store_id: 0
+            summary: summary
+            user_id: 6
+            name: name
+            created_at: 1
+            is_default: true
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: oqlxl2d6zg2nz
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_stores_200_response_data'
       type: object
     CartItem_discounts_inner:
       example:

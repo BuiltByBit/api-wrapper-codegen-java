@@ -28,10 +28,10 @@ import java.util.List;
 import java.util.Map;
 import org.openapitools.client.model.Addon;
 import org.openapitools.client.model.Category;
-import org.openapitools.client.model.Description;
 import org.openapitools.client.model.Member;
 import org.openapitools.client.model.Price;
 import org.openapitools.client.model.Review;
+import org.openapitools.client.model.RichText;
 import org.openapitools.client.model.SaleEventEntry;
 import org.openapitools.client.model.Version;
 
@@ -60,9 +60,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Supported &#39;with&#39; values: - &#39;Creator&#39;: the resource creator/owner - &#39;Category&#39;: the resource category  - &#39;Description&#39;: the resource description (rendered HTML and BBCode) - &#39;LatestReviews&#39;: list of the 10 latest reviews - &#39;Filter values&#39;: filter values set by the creator
+ * Supported &#39;with&#39; hints: - &#39;Creator&#39;: the resource creator/owner - &#39;Category&#39;: the resource category  - &#39;Description&#39;: the resource description (rendered HTML and BBCode) - &#39;LatestReviews&#39;: list of the 10 latest reviews - &#39;Filter values&#39;: filter values set by the creator
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T04:20:08.760795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T14:45:48.336798Z[Etc/UTC]")
 public class Resource {
   public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
@@ -146,7 +146,7 @@ public class Resource {
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "Description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private Description description;
+  private RichText description;
 
   public static final String SERIALIZED_NAME_CATEGORY = "Category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
@@ -555,7 +555,7 @@ public class Resource {
   }
 
 
-  public Resource description(Description description) {
+  public Resource description(RichText description) {
     this.description = description;
     return this;
   }
@@ -565,11 +565,11 @@ public class Resource {
    * @return description
   **/
   @javax.annotation.Nullable
-  public Description getDescription() {
+  public RichText getDescription() {
     return description;
   }
 
-  public void setDescription(Description description) {
+  public void setDescription(RichText description) {
     this.description = description;
   }
 
@@ -814,7 +814,7 @@ public class Resource {
       }
       // validate the optional field `Description`
       if (jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) {
-        Description.validateJsonElement(jsonObj.get("Description"));
+        RichText.validateJsonElement(jsonObj.get("Description"));
       }
       // validate the optional field `Category`
       if (jsonObj.get("Category") != null && !jsonObj.get("Category").isJsonNull()) {

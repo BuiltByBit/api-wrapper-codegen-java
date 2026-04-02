@@ -20,7 +20,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
+import org.openapitools.client.model.Member;
+import org.openapitools.client.model.Resource;
+import org.openapitools.client.model.Version;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,26 +51,58 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Review
+ * Supported &#39;with&#39; hints: - &#39;Resource&#39;: the resource this review relates to - &#39;Version&#39;: the version this review relates to - &#39;Reviewer&#39;: the member who gave this review
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T04:20:08.760795Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T14:45:48.336798Z[Etc/UTC]")
 public class Review {
   public static final String SERIALIZED_NAME_REVIEW_ID = "review_id";
   @SerializedName(SERIALIZED_NAME_REVIEW_ID)
-  private String reviewId;
+  private Integer reviewId;
 
   public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
-  private String resourceId;
+  private Integer resourceId;
 
   public static final String SERIALIZED_NAME_REVIEWER_ID = "reviewer_id";
   @SerializedName(SERIALIZED_NAME_REVIEWER_ID)
-  private String reviewerId;
+  private Integer reviewerId;
+
+  public static final String SERIALIZED_NAME_VERSION_ID = "version_id";
+  @SerializedName(SERIALIZED_NAME_VERSION_ID)
+  private Integer versionId;
+
+  public static final String SERIALIZED_NAME_STARS = "stars";
+  @SerializedName(SERIALIZED_NAME_STARS)
+  private BigDecimal stars;
+
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  private String message;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private Integer createdAt;
+
+  public static final String SERIALIZED_NAME_RESPONSE = "response";
+  @SerializedName(SERIALIZED_NAME_RESPONSE)
+  private String response;
+
+  public static final String SERIALIZED_NAME_RESOURCE = "Resource";
+  @SerializedName(SERIALIZED_NAME_RESOURCE)
+  private Resource resource;
+
+  public static final String SERIALIZED_NAME_VERSION = "Version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
+
+  public static final String SERIALIZED_NAME_REVIEWER = "Reviewer";
+  @SerializedName(SERIALIZED_NAME_REVIEWER)
+  private Member reviewer;
 
   public Review() {
   }
 
-  public Review reviewId(String reviewId) {
+  public Review reviewId(Integer reviewId) {
     this.reviewId = reviewId;
     return this;
   }
@@ -76,16 +112,16 @@ public class Review {
    * @return reviewId
   **/
   @javax.annotation.Nullable
-  public String getReviewId() {
+  public Integer getReviewId() {
     return reviewId;
   }
 
-  public void setReviewId(String reviewId) {
+  public void setReviewId(Integer reviewId) {
     this.reviewId = reviewId;
   }
 
 
-  public Review resourceId(String resourceId) {
+  public Review resourceId(Integer resourceId) {
     this.resourceId = resourceId;
     return this;
   }
@@ -95,16 +131,16 @@ public class Review {
    * @return resourceId
   **/
   @javax.annotation.Nullable
-  public String getResourceId() {
+  public Integer getResourceId() {
     return resourceId;
   }
 
-  public void setResourceId(String resourceId) {
+  public void setResourceId(Integer resourceId) {
     this.resourceId = resourceId;
   }
 
 
-  public Review reviewerId(String reviewerId) {
+  public Review reviewerId(Integer reviewerId) {
     this.reviewerId = reviewerId;
     return this;
   }
@@ -114,12 +150,164 @@ public class Review {
    * @return reviewerId
   **/
   @javax.annotation.Nullable
-  public String getReviewerId() {
+  public Integer getReviewerId() {
     return reviewerId;
   }
 
-  public void setReviewerId(String reviewerId) {
+  public void setReviewerId(Integer reviewerId) {
     this.reviewerId = reviewerId;
+  }
+
+
+  public Review versionId(Integer versionId) {
+    this.versionId = versionId;
+    return this;
+  }
+
+   /**
+   * Get versionId
+   * @return versionId
+  **/
+  @javax.annotation.Nullable
+  public Integer getVersionId() {
+    return versionId;
+  }
+
+  public void setVersionId(Integer versionId) {
+    this.versionId = versionId;
+  }
+
+
+  public Review stars(BigDecimal stars) {
+    this.stars = stars;
+    return this;
+  }
+
+   /**
+   * Get stars
+   * @return stars
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getStars() {
+    return stars;
+  }
+
+  public void setStars(BigDecimal stars) {
+    this.stars = stars;
+  }
+
+
+  public Review message(String message) {
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Get message
+   * @return message
+  **/
+  @javax.annotation.Nullable
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+
+  public Review createdAt(Integer createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+  public Integer getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(Integer createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public Review response(String response) {
+    this.response = response;
+    return this;
+  }
+
+   /**
+   * Get response
+   * @return response
+  **/
+  @javax.annotation.Nullable
+  public String getResponse() {
+    return response;
+  }
+
+  public void setResponse(String response) {
+    this.response = response;
+  }
+
+
+  public Review resource(Resource resource) {
+    this.resource = resource;
+    return this;
+  }
+
+   /**
+   * Get resource
+   * @return resource
+  **/
+  @javax.annotation.Nullable
+  public Resource getResource() {
+    return resource;
+  }
+
+  public void setResource(Resource resource) {
+    this.resource = resource;
+  }
+
+
+  public Review version(Version version) {
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @javax.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
+  public Review reviewer(Member reviewer) {
+    this.reviewer = reviewer;
+    return this;
+  }
+
+   /**
+   * Get reviewer
+   * @return reviewer
+  **/
+  @javax.annotation.Nullable
+  public Member getReviewer() {
+    return reviewer;
+  }
+
+  public void setReviewer(Member reviewer) {
+    this.reviewer = reviewer;
   }
 
 
@@ -135,12 +323,20 @@ public class Review {
     Review review = (Review) o;
     return Objects.equals(this.reviewId, review.reviewId) &&
         Objects.equals(this.resourceId, review.resourceId) &&
-        Objects.equals(this.reviewerId, review.reviewerId);
+        Objects.equals(this.reviewerId, review.reviewerId) &&
+        Objects.equals(this.versionId, review.versionId) &&
+        Objects.equals(this.stars, review.stars) &&
+        Objects.equals(this.message, review.message) &&
+        Objects.equals(this.createdAt, review.createdAt) &&
+        Objects.equals(this.response, review.response) &&
+        Objects.equals(this.resource, review.resource) &&
+        Objects.equals(this.version, review.version) &&
+        Objects.equals(this.reviewer, review.reviewer);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reviewId, resourceId, reviewerId);
+    return Objects.hash(reviewId, resourceId, reviewerId, versionId, stars, message, createdAt, response, resource, version, reviewer);
   }
 
   @Override
@@ -150,6 +346,14 @@ public class Review {
     sb.append("    reviewId: ").append(toIndentedString(reviewId)).append("\n");
     sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
     sb.append("    reviewerId: ").append(toIndentedString(reviewerId)).append("\n");
+    sb.append("    versionId: ").append(toIndentedString(versionId)).append("\n");
+    sb.append("    stars: ").append(toIndentedString(stars)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    response: ").append(toIndentedString(response)).append("\n");
+    sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    reviewer: ").append(toIndentedString(reviewer)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -175,6 +379,14 @@ public class Review {
     openapiFields.add("review_id");
     openapiFields.add("resource_id");
     openapiFields.add("reviewer_id");
+    openapiFields.add("version_id");
+    openapiFields.add("stars");
+    openapiFields.add("message");
+    openapiFields.add("created_at");
+    openapiFields.add("response");
+    openapiFields.add("Resource");
+    openapiFields.add("Version");
+    openapiFields.add("Reviewer");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -201,14 +413,23 @@ public class Review {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("review_id") != null && !jsonObj.get("review_id").isJsonNull()) && !jsonObj.get("review_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `review_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("review_id").toString()));
+      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
-      if ((jsonObj.get("resource_id") != null && !jsonObj.get("resource_id").isJsonNull()) && !jsonObj.get("resource_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `resource_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resource_id").toString()));
+      if ((jsonObj.get("response") != null && !jsonObj.get("response").isJsonNull()) && !jsonObj.get("response").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `response` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response").toString()));
       }
-      if ((jsonObj.get("reviewer_id") != null && !jsonObj.get("reviewer_id").isJsonNull()) && !jsonObj.get("reviewer_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reviewer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reviewer_id").toString()));
+      // validate the optional field `Resource`
+      if (jsonObj.get("Resource") != null && !jsonObj.get("Resource").isJsonNull()) {
+        Resource.validateJsonElement(jsonObj.get("Resource"));
+      }
+      // validate the optional field `Version`
+      if (jsonObj.get("Version") != null && !jsonObj.get("Version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("Version"));
+      }
+      // validate the optional field `Reviewer`
+      if (jsonObj.get("Reviewer") != null && !jsonObj.get("Reviewer").isJsonNull()) {
+        Member.validateJsonElement(jsonObj.get("Reviewer"));
       }
   }
 
