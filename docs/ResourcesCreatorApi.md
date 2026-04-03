@@ -6,11 +6,13 @@ All URIs are relative to *https://api.builtbybit.com*
 |------------- | ------------- | -------------|
 | [**getV2ResourcesCreatorAddons**](ResourcesCreatorApi.md#getV2ResourcesCreatorAddons) | **GET** /v2/resources/creator/addons | Fetch a list of your resources&#39; addons |
 | [**getV2ResourcesCreatorBundles**](ResourcesCreatorApi.md#getV2ResourcesCreatorBundles) | **GET** /v2/resources/creator/bundles | Fetch a list of your bundles |
+| [**getV2ResourcesCreatorCoupons**](ResourcesCreatorApi.md#getV2ResourcesCreatorCoupons) | **GET** /v2/resources/creator/coupons | Fetch a list of your coupons |
 | [**getV2ResourcesCreatorLicenses**](ResourcesCreatorApi.md#getV2ResourcesCreatorLicenses) | **GET** /v2/resources/creator/licenses | Fetch a list of your resources&#39; licenses |
 | [**getV2ResourcesCreatorPurchases**](ResourcesCreatorApi.md#getV2ResourcesCreatorPurchases) | **GET** /v2/resources/creator/purchases | Fetch a list of your resources&#39; purchases |
 | [**getV2ResourcesCreatorResources**](ResourcesCreatorApi.md#getV2ResourcesCreatorResources) | **GET** /v2/resources/creator/resources | Fetch a list of your resources |
 | [**getV2ResourcesCreatorReviews**](ResourcesCreatorApi.md#getV2ResourcesCreatorReviews) | **GET** /v2/resources/creator/reviews | Fetch a list of your resources&#39; reviews |
 | [**getV2ResourcesCreatorSaleEvents**](ResourcesCreatorApi.md#getV2ResourcesCreatorSaleEvents) | **GET** /v2/resources/creator/sale-events | Fetch a list of your sale events |
+| [**getV2ResourcesCreatorStores**](ResourcesCreatorApi.md#getV2ResourcesCreatorStores) | **GET** /v2/resources/creator/stores | Fetch a list of your stores |
 | [**getV2ResourcesCreatorUpdates**](ResourcesCreatorApi.md#getV2ResourcesCreatorUpdates) | **GET** /v2/resources/creator/updates | Fetch a list of your resource&#39;s updates |
 | [**getV2ResourcesCreatorVersions**](ResourcesCreatorApi.md#getV2ResourcesCreatorVersions) | **GET** /v2/resources/creator/versions | Fetch a list of your resources&#39; versions |
 | [**postV2ResourcesCreatorUpdate**](ResourcesCreatorApi.md#postV2ResourcesCreatorUpdate) | **POST** /v2/resources/creator/update | Post a resource update |
@@ -131,6 +133,69 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**GetV2ResourcesCreatorBundles200Response**](GetV2ResourcesCreatorBundles200Response.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+<a id="getV2ResourcesCreatorCoupons"></a>
+# **getV2ResourcesCreatorCoupons**
+> GetV2ResourcesCreatorCoupons200Response getV2ResourcesCreatorCoupons()
+
+Fetch a list of your coupons
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ResourcesCreatorApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.builtbybit.com");
+    
+    // Configure API key authorization: token
+    ApiKeyAuth token = (ApiKeyAuth) defaultClient.getAuthentication("token");
+    token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //token.setApiKeyPrefix("Token");
+
+    ResourcesCreatorApi apiInstance = new ResourcesCreatorApi(defaultClient);
+    try {
+      GetV2ResourcesCreatorCoupons200Response result = apiInstance.getV2ResourcesCreatorCoupons();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ResourcesCreatorApi#getV2ResourcesCreatorCoupons");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetV2ResourcesCreatorCoupons200Response**](GetV2ResourcesCreatorCoupons200Response.md)
 
 ### Authorization
 
@@ -459,6 +524,69 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**GetV2ResourcesCreatorSaleEvents200Response**](GetV2ResourcesCreatorSaleEvents200Response.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+<a id="getV2ResourcesCreatorStores"></a>
+# **getV2ResourcesCreatorStores**
+> GetV2ResourcesCreatorStores200Response getV2ResourcesCreatorStores()
+
+Fetch a list of your stores
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ResourcesCreatorApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.builtbybit.com");
+    
+    // Configure API key authorization: token
+    ApiKeyAuth token = (ApiKeyAuth) defaultClient.getAuthentication("token");
+    token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //token.setApiKeyPrefix("Token");
+
+    ResourcesCreatorApi apiInstance = new ResourcesCreatorApi(defaultClient);
+    try {
+      GetV2ResourcesCreatorStores200Response result = apiInstance.getV2ResourcesCreatorStores();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ResourcesCreatorApi#getV2ResourcesCreatorStores");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetV2ResourcesCreatorStores200Response**](GetV2ResourcesCreatorStores200Response.md)
 
 ### Authorization
 

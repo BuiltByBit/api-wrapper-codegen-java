@@ -16,8 +16,10 @@ servers:
 - description: BuiltByBit
   url: https://api.builtbybit.com/
 tags:
+- name: analytics
+- name: events
 - name: free
-- name: global
+- name: health
 - name: oauth2
 - name: resources/buyer
 - name: resources/creator
@@ -453,7 +455,7 @@ paths:
       - token: []
       summary: Fetch a list of pending events
       tags:
-      - global
+      - events
       x-stoplight:
         id: 00f4ahftly4s2
       x-accepts: application/json
@@ -474,7 +476,7 @@ paths:
           description: OK
       summary: Mark events as complete
       tags:
-      - global
+      - events
       x-stoplight:
         id: f2lqrdli45xul
       x-content-type: application/json
@@ -493,7 +495,7 @@ paths:
       - token: []
       summary: Fetch a list of analytics definitions
       tags:
-      - global
+      - analytics
       x-stoplight:
         id: au6y5fszotgtf
       x-accepts: application/json
@@ -554,7 +556,7 @@ paths:
       - token: []
       summary: Fetch analytics graph data
       tags:
-      - global
+      - analytics
       x-stoplight:
         id: 10brpg6zlz0yv
       x-accepts: application/json
@@ -615,7 +617,7 @@ paths:
       - token: []
       summary: Fetch a single analytics value
       tags:
-      - global
+      - analytics
       x-stoplight:
         id: z0mpisnpeuegq
       x-accepts: application/json
@@ -940,7 +942,8 @@ paths:
       security:
       - token: []
       summary: Fetch a list of your coupons
-      tags: []
+      tags:
+      - resources/creator
       x-stoplight:
         id: w4lgpl86j65rj
       x-accepts: application/json
@@ -957,7 +960,8 @@ paths:
       security:
       - token: []
       summary: Retrieve a health status
-      tags: []
+      tags:
+      - health
       x-stoplight:
         id: t839xv25nj4y1
       x-accepts: application/json
@@ -974,9 +978,64 @@ paths:
       security:
       - token: []
       summary: Fetch a list of your stores
-      tags: []
+      tags:
+      - resources/creator
       x-stoplight:
         id: z941xq9jbm1ki
+      x-accepts: application/json
+  /v2/resources/creator/batch:
+    get:
+      operationId: get-v2-resources-creator-batch
+      parameters:
+      - description: A comma-separated list of batch IDs to filter on. No filter is
+          applied if empty.
+        explode: false
+        in: query
+        name: batch_ids
+        required: false
+        schema:
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_creator_batch_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a list of your batches edits
+      tags: []
+      x-stoplight:
+        id: icz9ioupc63pq
+      x-accepts: application/json
+    post:
+      description: Batch edits will be processed in the background meaning a successful
+        call to this endpoint does not guarantee that the edits have been completed.
+        You will instead receive an identifier to a batch edit which you can then
+        use to fetch the status of via the below endpoint. This is not an atomic operation
+        meaning some resources may be edited successfully and others may not be due
+        to an error. You may only batch edit resources you own currently.
+      operationId: post-v2-resources-creator-batch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_resources_creator_batch_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_v2_resources_creator_batch_200_response'
+          description: OK
+      security: []
+      summary: Submit a new batch edit
+      tags: []
+      x-stoplight:
+        id: qa9wz2n2gcuzh
+      x-content-type: application/json
       x-accepts: application/json
 components:
   examples: {}
@@ -2430,8 +2489,6 @@ components:
             values:
               key: 5.962133916683182
             count: 0
-            averages:
-              key: 5.637376656633329
             days: 1
             label: label
             ts: 6
@@ -2463,8 +2520,6 @@ components:
         values:
           key: 5.962133916683182
         count: 0
-        averages:
-          key: 5.637376656633329
         days: 1
         label: label
         ts: 6
@@ -2493,14 +2548,6 @@ components:
           type: object
           x-stoplight:
             id: 73ijgb3mknlad
-        averages:
-          additionalProperties:
-            type: number
-            x-stoplight:
-              id: oud9zl7csn7r6
-          type: object
-          x-stoplight:
-            id: eyh6ty5q9nwvy
       title: AnalyticGraphDataPoint
       type: object
       x-stoplight:
@@ -2995,6 +3042,54 @@ components:
       type: object
       x-stoplight:
         id: 6r7os4b6dxfn3
+    Batch:
+      example:
+        completed_at: 5
+        data: data
+        batch_id: 0
+        user_id: 6
+        created_at: 1
+        errors:
+          key:
+          - errors
+          - errors
+      properties:
+        batch_id:
+          type: integer
+          x-stoplight:
+            id: rywmsoga1fe0d
+        user_id:
+          type: integer
+          x-stoplight:
+            id: 7xll9btyrfgot
+        errors:
+          additionalProperties:
+            items:
+              type: string
+              x-stoplight:
+                id: 0aer42sweluen
+            type: array
+            x-stoplight:
+              id: gt82q11gqjh88
+          type: object
+          x-stoplight:
+            id: xub0zolvnre7u
+        data:
+          type: string
+          x-stoplight:
+            id: q2mzi5v7ih9mx
+        created_at:
+          type: integer
+          x-stoplight:
+            id: vgtzd40pnfj4f
+        completed_at:
+          type: integer
+          x-stoplight:
+            id: y3phpy9xiq90a
+      title: Batch
+      type: object
+      x-stoplight:
+        id: t08rlhuya7u4f
     get_oauth2_token_request:
       properties:
         grant_type:
@@ -4991,8 +5086,6 @@ components:
               values:
                 key: 5.962133916683182
               count: 0
-              averages:
-                key: 5.637376656633329
               days: 1
               label: label
               ts: 6
@@ -8700,6 +8793,168 @@ components:
             id: oqlxl2d6zg2nz
         data:
           $ref: '#/components/schemas/get_v2_resources_creator_stores_200_response_data'
+      type: object
+    get_v2_resources_creator_batch_200_response_data:
+      example:
+        batches:
+        - completed_at: 5
+          data: data
+          batch_id: 0
+          user_id: 6
+          created_at: 1
+          errors:
+            key:
+            - errors
+            - errors
+        - completed_at: 5
+          data: data
+          batch_id: 0
+          user_id: 6
+          created_at: 1
+          errors:
+            key:
+            - errors
+            - errors
+        stats:
+          per_page: 5
+          total: 6
+          page: 6
+          max_page: 6
+      properties:
+        batches:
+          items:
+            $ref: '#/components/schemas/Batch'
+          type: array
+          x-stoplight:
+            id: snlln6bye6o3v
+        stats:
+          $ref: '#/components/schemas/ListStats'
+      type: object
+      x-stoplight:
+        id: 4gavk9909u5jv
+    get_v2_resources_creator_batch_200_response:
+      example:
+        result: success
+        data:
+          batches:
+          - completed_at: 5
+            data: data
+            batch_id: 0
+            user_id: 6
+            created_at: 1
+            errors:
+              key:
+              - errors
+              - errors
+          - completed_at: 5
+            data: data
+            batch_id: 0
+            user_id: 6
+            created_at: 1
+            errors:
+              key:
+              - errors
+              - errors
+          stats:
+            per_page: 5
+            total: 6
+            page: 6
+            max_page: 6
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: vdj5lttfalg23
+        data:
+          $ref: '#/components/schemas/get_v2_resources_creator_batch_200_response_data'
+      type: object
+    post_v2_resources_creator_batch_request_changes_inner:
+      properties:
+        field:
+          type: string
+          x-stoplight:
+            id: 7wxtfkz0jnfof
+        type:
+          type: string
+          x-stoplight:
+            id: t39muepw3xzgc
+        search:
+          type: string
+          x-stoplight:
+            id: ojc6jmztfj3y9
+        value:
+          items: {}
+          type: array
+          x-stoplight:
+            id: dup4famp2x8jh
+      required:
+      - field
+      - type
+      - value
+      type: object
+      x-stoplight:
+        id: kzylfe3aizlt7
+    post_v2_resources_creator_batch_request:
+      properties:
+        resources:
+          description: A list of resource IDs to edit.
+          items: {}
+          type: array
+          x-stoplight:
+            id: ir2feygtqs9js
+        changes:
+          items:
+            $ref: '#/components/schemas/post_v2_resources_creator_batch_request_changes_inner'
+          type: array
+          x-stoplight:
+            id: dga54iqms4398
+      required:
+      - changes
+      - resources
+      type: object
+    post_v2_resources_creator_batch_200_response_data:
+      example:
+        batch:
+          completed_at: 5
+          data: data
+          batch_id: 0
+          user_id: 6
+          created_at: 1
+          errors:
+            key:
+            - errors
+            - errors
+      properties:
+        batch:
+          $ref: '#/components/schemas/Batch'
+      type: object
+      x-stoplight:
+        id: txtvguoylrj8j
+    post_v2_resources_creator_batch_200_response:
+      example:
+        result: success
+        data:
+          batch:
+            completed_at: 5
+            data: data
+            batch_id: 0
+            user_id: 6
+            created_at: 1
+            errors:
+              key:
+              - errors
+              - errors
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: 27p3h051x4t3x
+        data:
+          $ref: '#/components/schemas/post_v2_resources_creator_batch_200_response_data'
       type: object
     CartItem_discounts_inner:
       example:

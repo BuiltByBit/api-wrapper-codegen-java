@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * AnalyticGraphDataPoint
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T04:21:18.594461Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T12:25:57.552532Z[Etc/UTC]")
 public class AnalyticGraphDataPoint {
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
@@ -73,10 +73,6 @@ public class AnalyticGraphDataPoint {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
   private Map<String, BigDecimal> values = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_AVERAGES = "averages";
-  @SerializedName(SERIALIZED_NAME_AVERAGES)
-  private Map<String, BigDecimal> averages = new HashMap<>();
 
   public AnalyticGraphDataPoint() {
   }
@@ -184,33 +180,6 @@ public class AnalyticGraphDataPoint {
   }
 
 
-  public AnalyticGraphDataPoint averages(Map<String, BigDecimal> averages) {
-    this.averages = averages;
-    return this;
-  }
-
-  public AnalyticGraphDataPoint putAveragesItem(String key, BigDecimal averagesItem) {
-    if (this.averages == null) {
-      this.averages = new HashMap<>();
-    }
-    this.averages.put(key, averagesItem);
-    return this;
-  }
-
-   /**
-   * Get averages
-   * @return averages
-  **/
-  @javax.annotation.Nullable
-  public Map<String, BigDecimal> getAverages() {
-    return averages;
-  }
-
-  public void setAverages(Map<String, BigDecimal> averages) {
-    this.averages = averages;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -225,13 +194,12 @@ public class AnalyticGraphDataPoint {
         Objects.equals(this.count, analyticGraphDataPoint.count) &&
         Objects.equals(this.ts, analyticGraphDataPoint.ts) &&
         Objects.equals(this.days, analyticGraphDataPoint.days) &&
-        Objects.equals(this.values, analyticGraphDataPoint.values) &&
-        Objects.equals(this.averages, analyticGraphDataPoint.averages);
+        Objects.equals(this.values, analyticGraphDataPoint.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, count, ts, days, values, averages);
+    return Objects.hash(label, count, ts, days, values);
   }
 
   @Override
@@ -243,7 +211,6 @@ public class AnalyticGraphDataPoint {
     sb.append("    ts: ").append(toIndentedString(ts)).append("\n");
     sb.append("    days: ").append(toIndentedString(days)).append("\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
-    sb.append("    averages: ").append(toIndentedString(averages)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -271,7 +238,6 @@ public class AnalyticGraphDataPoint {
     openapiFields.add("ts");
     openapiFields.add("days");
     openapiFields.add("values");
-    openapiFields.add("averages");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

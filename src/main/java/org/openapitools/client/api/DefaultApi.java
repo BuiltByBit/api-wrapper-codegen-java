@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.GetV2Health200Response;
-import org.openapitools.client.model.GetV2ResourcesCreatorCoupons200Response;
-import org.openapitools.client.model.GetV2ResourcesCreatorStores200Response;
+import org.openapitools.client.model.GetV2ResourcesCreatorBatch200Response;
+import org.openapitools.client.model.PostV2ResourcesCreatorBatch200Response;
+import org.openapitools.client.model.PostV2ResourcesCreatorBatchRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -75,7 +75,8 @@ public class DefaultApi {
     }
 
     /**
-     * Build call for getV2Health
+     * Build call for getV2ResourcesCreatorBatch
+     * @param batchIds A comma-separated list of batch IDs to filter on. No filter is applied if empty. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -85,7 +86,7 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2HealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getV2ResourcesCreatorBatchCall(List batchIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -102,13 +103,17 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/health";
+        String localVarPath = "/v2/resources/creator/batch";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (batchIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("batch_ids", batchIds));
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -130,15 +135,16 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV2HealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV2HealthCall(_callback);
+    private okhttp3.Call getV2ResourcesCreatorBatchValidateBeforeCall(List batchIds, final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorBatchCall(batchIds, _callback);
 
     }
 
     /**
-     * Retrieve a health status
+     * Fetch a list of your batches edits
      * 
-     * @return GetV2Health200Response
+     * @param batchIds A comma-separated list of batch IDs to filter on. No filter is applied if empty. (optional)
+     * @return GetV2ResourcesCreatorBatch200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -146,15 +152,16 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public GetV2Health200Response getV2Health() throws ApiException {
-        ApiResponse<GetV2Health200Response> localVarResp = getV2HealthWithHttpInfo();
+    public GetV2ResourcesCreatorBatch200Response getV2ResourcesCreatorBatch(List batchIds) throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorBatch200Response> localVarResp = getV2ResourcesCreatorBatchWithHttpInfo(batchIds);
         return localVarResp.getData();
     }
 
     /**
-     * Retrieve a health status
+     * Fetch a list of your batches edits
      * 
-     * @return ApiResponse&lt;GetV2Health200Response&gt;
+     * @param batchIds A comma-separated list of batch IDs to filter on. No filter is applied if empty. (optional)
+     * @return ApiResponse&lt;GetV2ResourcesCreatorBatch200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -162,15 +169,16 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetV2Health200Response> getV2HealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV2HealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetV2Health200Response>(){}.getType();
+    public ApiResponse<GetV2ResourcesCreatorBatch200Response> getV2ResourcesCreatorBatchWithHttpInfo(List batchIds) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorBatchValidateBeforeCall(batchIds, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorBatch200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Retrieve a health status (asynchronously)
+     * Fetch a list of your batches edits (asynchronously)
      * 
+     * @param batchIds A comma-separated list of batch IDs to filter on. No filter is applied if empty. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -180,15 +188,16 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2HealthAsync(final ApiCallback<GetV2Health200Response> _callback) throws ApiException {
+    public okhttp3.Call getV2ResourcesCreatorBatchAsync(List batchIds, final ApiCallback<GetV2ResourcesCreatorBatch200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV2HealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetV2Health200Response>(){}.getType();
+        okhttp3.Call localVarCall = getV2ResourcesCreatorBatchValidateBeforeCall(batchIds, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorBatch200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV2ResourcesCreatorCoupons
+     * Build call for postV2ResourcesCreatorBatch
+     * @param postV2ResourcesCreatorBatchRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -198,7 +207,7 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2ResourcesCreatorCouponsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postV2ResourcesCreatorBatchCall(PostV2ResourcesCreatorBatchRequest postV2ResourcesCreatorBatchRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -212,10 +221,10 @@ public class DefaultApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = postV2ResourcesCreatorBatchRequest;
 
         // create path and map variables
-        String localVarPath = "/v2/resources/creator/coupons";
+        String localVarPath = "/v2/resources/creator/batch";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -232,139 +241,28 @@ public class DefaultApi {
         }
 
         final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "token" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV2ResourcesCreatorCouponsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV2ResourcesCreatorCouponsCall(_callback);
-
-    }
-
-    /**
-     * Fetch a list of your coupons
-     * 
-     * @return GetV2ResourcesCreatorCoupons200Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetV2ResourcesCreatorCoupons200Response getV2ResourcesCreatorCoupons() throws ApiException {
-        ApiResponse<GetV2ResourcesCreatorCoupons200Response> localVarResp = getV2ResourcesCreatorCouponsWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Fetch a list of your coupons
-     * 
-     * @return ApiResponse&lt;GetV2ResourcesCreatorCoupons200Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetV2ResourcesCreatorCoupons200Response> getV2ResourcesCreatorCouponsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV2ResourcesCreatorCouponsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorCoupons200Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Fetch a list of your coupons (asynchronously)
-     * 
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getV2ResourcesCreatorCouponsAsync(final ApiCallback<GetV2ResourcesCreatorCoupons200Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getV2ResourcesCreatorCouponsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorCoupons200Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getV2ResourcesCreatorStores
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getV2ResourcesCreatorStoresCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v2/resources/creator/stores";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
             "application/json"
         };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "token" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV2ResourcesCreatorStoresValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV2ResourcesCreatorStoresCall(_callback);
+    private okhttp3.Call postV2ResourcesCreatorBatchValidateBeforeCall(PostV2ResourcesCreatorBatchRequest postV2ResourcesCreatorBatchRequest, final ApiCallback _callback) throws ApiException {
+        return postV2ResourcesCreatorBatchCall(postV2ResourcesCreatorBatchRequest, _callback);
 
     }
 
     /**
-     * Fetch a list of your stores
-     * 
-     * @return GetV2ResourcesCreatorStores200Response
+     * Submit a new batch edit
+     * Batch edits will be processed in the background meaning a successful call to this endpoint does not guarantee that the edits have been completed. You will instead receive an identifier to a batch edit which you can then use to fetch the status of via the below endpoint. This is not an atomic operation meaning some resources may be edited successfully and others may not be due to an error. You may only batch edit resources you own currently.
+     * @param postV2ResourcesCreatorBatchRequest  (optional)
+     * @return PostV2ResourcesCreatorBatch200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -372,15 +270,16 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public GetV2ResourcesCreatorStores200Response getV2ResourcesCreatorStores() throws ApiException {
-        ApiResponse<GetV2ResourcesCreatorStores200Response> localVarResp = getV2ResourcesCreatorStoresWithHttpInfo();
+    public PostV2ResourcesCreatorBatch200Response postV2ResourcesCreatorBatch(PostV2ResourcesCreatorBatchRequest postV2ResourcesCreatorBatchRequest) throws ApiException {
+        ApiResponse<PostV2ResourcesCreatorBatch200Response> localVarResp = postV2ResourcesCreatorBatchWithHttpInfo(postV2ResourcesCreatorBatchRequest);
         return localVarResp.getData();
     }
 
     /**
-     * Fetch a list of your stores
-     * 
-     * @return ApiResponse&lt;GetV2ResourcesCreatorStores200Response&gt;
+     * Submit a new batch edit
+     * Batch edits will be processed in the background meaning a successful call to this endpoint does not guarantee that the edits have been completed. You will instead receive an identifier to a batch edit which you can then use to fetch the status of via the below endpoint. This is not an atomic operation meaning some resources may be edited successfully and others may not be due to an error. You may only batch edit resources you own currently.
+     * @param postV2ResourcesCreatorBatchRequest  (optional)
+     * @return ApiResponse&lt;PostV2ResourcesCreatorBatch200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -388,15 +287,16 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetV2ResourcesCreatorStores200Response> getV2ResourcesCreatorStoresWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV2ResourcesCreatorStoresValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorStores200Response>(){}.getType();
+    public ApiResponse<PostV2ResourcesCreatorBatch200Response> postV2ResourcesCreatorBatchWithHttpInfo(PostV2ResourcesCreatorBatchRequest postV2ResourcesCreatorBatchRequest) throws ApiException {
+        okhttp3.Call localVarCall = postV2ResourcesCreatorBatchValidateBeforeCall(postV2ResourcesCreatorBatchRequest, null);
+        Type localVarReturnType = new TypeToken<PostV2ResourcesCreatorBatch200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Fetch a list of your stores (asynchronously)
-     * 
+     * Submit a new batch edit (asynchronously)
+     * Batch edits will be processed in the background meaning a successful call to this endpoint does not guarantee that the edits have been completed. You will instead receive an identifier to a batch edit which you can then use to fetch the status of via the below endpoint. This is not an atomic operation meaning some resources may be edited successfully and others may not be due to an error. You may only batch edit resources you own currently.
+     * @param postV2ResourcesCreatorBatchRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -406,10 +306,10 @@ public class DefaultApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2ResourcesCreatorStoresAsync(final ApiCallback<GetV2ResourcesCreatorStores200Response> _callback) throws ApiException {
+    public okhttp3.Call postV2ResourcesCreatorBatchAsync(PostV2ResourcesCreatorBatchRequest postV2ResourcesCreatorBatchRequest, final ApiCallback<PostV2ResourcesCreatorBatch200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV2ResourcesCreatorStoresValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorStores200Response>(){}.getType();
+        okhttp3.Call localVarCall = postV2ResourcesCreatorBatchValidateBeforeCall(postV2ResourcesCreatorBatchRequest, _callback);
+        Type localVarReturnType = new TypeToken<PostV2ResourcesCreatorBatch200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-04-03T04:21:18.594461Z[Etc/UTC]
+  - Build date: 2026-04-03T12:25:57.552532Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
@@ -89,7 +89,7 @@ import org.openapitools.client.ApiException;
 import org.openapitools.client.Configuration;
 import org.openapitools.client.auth.*;
 import org.openapitools.client.models.*;
-import org.openapitools.client.api.DefaultApi;
+import org.openapitools.client.api.AnalyticsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -102,12 +102,12 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //token.setApiKeyPrefix("Token");
 
-    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
     try {
-      GetV2Health200Response result = apiInstance.getV2Health();
+      GetV2Analytics200Response result = apiInstance.getV2Analytics();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#getV2Health");
+      System.err.println("Exception when calling AnalyticsApi#getV2Analytics");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -124,24 +124,26 @@ All URIs are relative to *https://api.builtbybit.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**getV2Health**](docs/DefaultApi.md#getV2Health) | **GET** /v2/health | Retrieve a health status
-*DefaultApi* | [**getV2ResourcesCreatorCoupons**](docs/DefaultApi.md#getV2ResourcesCreatorCoupons) | **GET** /v2/resources/creator/coupons | Fetch a list of your coupons
-*DefaultApi* | [**getV2ResourcesCreatorStores**](docs/DefaultApi.md#getV2ResourcesCreatorStores) | **GET** /v2/resources/creator/stores | Fetch a list of your stores
-*GlobalApi* | [**getV2Analytics**](docs/GlobalApi.md#getV2Analytics) | **GET** /v2/analytics | Fetch a list of analytics definitions
-*GlobalApi* | [**getV2AnalyticsGraph**](docs/GlobalApi.md#getV2AnalyticsGraph) | **GET** /v2/analytics/graph | Fetch analytics graph data
-*GlobalApi* | [**getV2AnalyticsSingle**](docs/GlobalApi.md#getV2AnalyticsSingle) | **GET** /v2/analytics/single | Fetch a single analytics value
-*GlobalApi* | [**getV2Events**](docs/GlobalApi.md#getV2Events) | **GET** /v2/events | Fetch a list of pending events
-*GlobalApi* | [**postV2EventsComplete**](docs/GlobalApi.md#postV2EventsComplete) | **POST** /v2/events/complete | Mark events as complete
+*AnalyticsApi* | [**getV2Analytics**](docs/AnalyticsApi.md#getV2Analytics) | **GET** /v2/analytics | Fetch a list of analytics definitions
+*AnalyticsApi* | [**getV2AnalyticsGraph**](docs/AnalyticsApi.md#getV2AnalyticsGraph) | **GET** /v2/analytics/graph | Fetch analytics graph data
+*AnalyticsApi* | [**getV2AnalyticsSingle**](docs/AnalyticsApi.md#getV2AnalyticsSingle) | **GET** /v2/analytics/single | Fetch a single analytics value
+*DefaultApi* | [**getV2ResourcesCreatorBatch**](docs/DefaultApi.md#getV2ResourcesCreatorBatch) | **GET** /v2/resources/creator/batch | Fetch a list of your batches edits
+*DefaultApi* | [**postV2ResourcesCreatorBatch**](docs/DefaultApi.md#postV2ResourcesCreatorBatch) | **POST** /v2/resources/creator/batch | Submit a new batch edit
+*EventsApi* | [**getV2Events**](docs/EventsApi.md#getV2Events) | **GET** /v2/events | Fetch a list of pending events
+*EventsApi* | [**postV2EventsComplete**](docs/EventsApi.md#postV2EventsComplete) | **POST** /v2/events/complete | Mark events as complete
+*HealthApi* | [**getV2Health**](docs/HealthApi.md#getV2Health) | **GET** /v2/health | Retrieve a health status
 *Oauth2Api* | [**getOauth2Token**](docs/Oauth2Api.md#getOauth2Token) | **POST** /oauth2/token | Request an access token using an existing grant
 *Oauth2Api* | [**getOauth2TokenRevoke**](docs/Oauth2Api.md#getOauth2TokenRevoke) | **POST** /oauth2/token/revoke | Revoke an existing access or refresh token
 *ResourcesBuyerApi* | [**getV2ResourcesBuyerLatest**](docs/ResourcesBuyerApi.md#getV2ResourcesBuyerLatest) | **GET** /v2/resources/buyer/latest | Fetches the latest versions &amp; license information
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorAddons**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorAddons) | **GET** /v2/resources/creator/addons | Fetch a list of your resources&#39; addons
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorBundles**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorBundles) | **GET** /v2/resources/creator/bundles | Fetch a list of your bundles
+*ResourcesCreatorApi* | [**getV2ResourcesCreatorCoupons**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorCoupons) | **GET** /v2/resources/creator/coupons | Fetch a list of your coupons
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorLicenses**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorLicenses) | **GET** /v2/resources/creator/licenses | Fetch a list of your resources&#39; licenses
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorPurchases**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorPurchases) | **GET** /v2/resources/creator/purchases | Fetch a list of your resources&#39; purchases
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorResources**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorResources) | **GET** /v2/resources/creator/resources | Fetch a list of your resources
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorReviews**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorReviews) | **GET** /v2/resources/creator/reviews | Fetch a list of your resources&#39; reviews
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorSaleEvents**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorSaleEvents) | **GET** /v2/resources/creator/sale-events | Fetch a list of your sale events
+*ResourcesCreatorApi* | [**getV2ResourcesCreatorStores**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorStores) | **GET** /v2/resources/creator/stores | Fetch a list of your stores
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorUpdates**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorUpdates) | **GET** /v2/resources/creator/updates | Fetch a list of your resource&#39;s updates
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorVersions**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorVersions) | **GET** /v2/resources/creator/versions | Fetch a list of your resources&#39; versions
 *ResourcesCreatorApi* | [**postV2ResourcesCreatorUpdate**](docs/ResourcesCreatorApi.md#postV2ResourcesCreatorUpdate) | **POST** /v2/resources/creator/update | Post a resource update
@@ -164,6 +166,7 @@ Class | Method | HTTP request | Description
  - [AnalyticGraphData](docs/AnalyticGraphData.md)
  - [AnalyticGraphDataPeriod](docs/AnalyticGraphDataPeriod.md)
  - [AnalyticGraphDataPoint](docs/AnalyticGraphDataPoint.md)
+ - [Batch](docs/Batch.md)
  - [Bundle](docs/Bundle.md)
  - [CartItem](docs/CartItem.md)
  - [CartItemDiscountsInner](docs/CartItemDiscountsInner.md)
@@ -195,6 +198,8 @@ Class | Method | HTTP request | Description
  - [GetV2ResourcesBuyerLatest200ResponseData](docs/GetV2ResourcesBuyerLatest200ResponseData.md)
  - [GetV2ResourcesCreatorAddons200Response](docs/GetV2ResourcesCreatorAddons200Response.md)
  - [GetV2ResourcesCreatorAddons200ResponseData](docs/GetV2ResourcesCreatorAddons200ResponseData.md)
+ - [GetV2ResourcesCreatorBatch200Response](docs/GetV2ResourcesCreatorBatch200Response.md)
+ - [GetV2ResourcesCreatorBatch200ResponseData](docs/GetV2ResourcesCreatorBatch200ResponseData.md)
  - [GetV2ResourcesCreatorBundles200Response](docs/GetV2ResourcesCreatorBundles200Response.md)
  - [GetV2ResourcesCreatorBundles200ResponseData](docs/GetV2ResourcesCreatorBundles200ResponseData.md)
  - [GetV2ResourcesCreatorCoupons200Response](docs/GetV2ResourcesCreatorCoupons200Response.md)
@@ -224,6 +229,10 @@ Class | Method | HTTP request | Description
  - [Member](docs/Member.md)
  - [PostV2EventsComplete200Response](docs/PostV2EventsComplete200Response.md)
  - [PostV2EventsCompleteRequest](docs/PostV2EventsCompleteRequest.md)
+ - [PostV2ResourcesCreatorBatch200Response](docs/PostV2ResourcesCreatorBatch200Response.md)
+ - [PostV2ResourcesCreatorBatch200ResponseData](docs/PostV2ResourcesCreatorBatch200ResponseData.md)
+ - [PostV2ResourcesCreatorBatchRequest](docs/PostV2ResourcesCreatorBatchRequest.md)
+ - [PostV2ResourcesCreatorBatchRequestChangesInner](docs/PostV2ResourcesCreatorBatchRequestChangesInner.md)
  - [PostV2ResourcesCreatorUpdate200Response](docs/PostV2ResourcesCreatorUpdate200Response.md)
  - [PostV2ResourcesCreatorUpdate200ResponseData](docs/PostV2ResourcesCreatorUpdate200ResponseData.md)
  - [PostV2ResourcesCreatorUpdateRequest](docs/PostV2ResourcesCreatorUpdateRequest.md)

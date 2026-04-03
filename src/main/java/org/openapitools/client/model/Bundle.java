@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * Bundle
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T04:21:18.594461Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T12:25:57.552532Z[Etc/UTC]")
 public class Bundle {
   public static final String SERIALIZED_NAME_BUNDLE_ID = "bundle_id";
   @SerializedName(SERIALIZED_NAME_BUNDLE_ID)
