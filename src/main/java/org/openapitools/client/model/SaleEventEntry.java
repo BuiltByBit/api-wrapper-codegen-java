@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * SaleEventEntry
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-04T04:07:38.386192Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-05T04:29:03.461388Z[Etc/UTC]")
 public class SaleEventEntry {
   public static final String SERIALIZED_NAME_ENTRY_ID = "entry_id";
   @SerializedName(SERIALIZED_NAME_ENTRY_ID)
