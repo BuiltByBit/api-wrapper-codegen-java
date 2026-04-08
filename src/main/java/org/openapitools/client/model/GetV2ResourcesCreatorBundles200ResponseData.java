@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * GetV2ResourcesCreatorBundles200ResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-07T04:25:00.633408Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-08T04:28:30.922967Z[Etc/UTC]")
 public class GetV2ResourcesCreatorBundles200ResponseData {
   public static final String SERIALIZED_NAME_BUNDLES = "bundles";
   @SerializedName(SERIALIZED_NAME_BUNDLES)

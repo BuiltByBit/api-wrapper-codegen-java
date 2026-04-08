@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Batch
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-07T04:25:00.633408Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-08T04:28:30.922967Z[Etc/UTC]")
 public class Batch {
   public static final String SERIALIZED_NAME_BATCH_ID = "batch_id";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
