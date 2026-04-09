@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * GetResourcesDiscoverResources4XXResponseError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-08T04:28:30.922967Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-09T04:24:48.610685Z[Etc/UTC]")
 public class GetResourcesDiscoverResources4XXResponseError {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
