@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Supported &#39;with&#39; hints: - &#39;Resource&#39;: the resource this review relates to - &#39;Version&#39;: the version this review relates to - &#39;Reviewer&#39;: the member who gave this review
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-09T04:24:48.610685Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-10T04:38:43.920283Z[Etc/UTC]")
 public class Review {
   public static final String SERIALIZED_NAME_REVIEW_ID = "review_id";
   @SerializedName(SERIALIZED_NAME_REVIEW_ID)
