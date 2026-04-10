@@ -38,6 +38,8 @@ import org.openapitools.client.model.GetV2ResourcesCreatorSaleEvents200Response;
 import org.openapitools.client.model.GetV2ResourcesCreatorStores200Response;
 import org.openapitools.client.model.GetV2ResourcesCreatorUpdates200Response;
 import org.openapitools.client.model.GetV2ResourcesCreatorVersions200Response;
+import org.openapitools.client.model.PostV2ResourcesCreatorCoupons200Response;
+import org.openapitools.client.model.PostV2ResourcesCreatorCouponsRequest;
 import org.openapitools.client.model.PostV2ResourcesCreatorUpdate200Response;
 import org.openapitools.client.model.PostV2ResourcesCreatorUpdateRequest;
 
@@ -1396,6 +1398,124 @@ public class ResourcesCreatorApi {
 
         okhttp3.Call localVarCall = getV2ResourcesCreatorVersionsValidateBeforeCall(resourceIds, _callback);
         Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorVersions200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postV2ResourcesCreatorCoupons
+     * @param postV2ResourcesCreatorCouponsRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postV2ResourcesCreatorCouponsCall(PostV2ResourcesCreatorCouponsRequest postV2ResourcesCreatorCouponsRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = postV2ResourcesCreatorCouponsRequest;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/coupons";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postV2ResourcesCreatorCouponsValidateBeforeCall(PostV2ResourcesCreatorCouponsRequest postV2ResourcesCreatorCouponsRequest, final ApiCallback _callback) throws ApiException {
+        return postV2ResourcesCreatorCouponsCall(postV2ResourcesCreatorCouponsRequest, _callback);
+
+    }
+
+    /**
+     * Create a new coupon
+     * This endpoint is currently limited to percent-based coupons with a maximum discount of 50%.
+     * @param postV2ResourcesCreatorCouponsRequest  (optional)
+     * @return PostV2ResourcesCreatorCoupons200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public PostV2ResourcesCreatorCoupons200Response postV2ResourcesCreatorCoupons(PostV2ResourcesCreatorCouponsRequest postV2ResourcesCreatorCouponsRequest) throws ApiException {
+        ApiResponse<PostV2ResourcesCreatorCoupons200Response> localVarResp = postV2ResourcesCreatorCouponsWithHttpInfo(postV2ResourcesCreatorCouponsRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a new coupon
+     * This endpoint is currently limited to percent-based coupons with a maximum discount of 50%.
+     * @param postV2ResourcesCreatorCouponsRequest  (optional)
+     * @return ApiResponse&lt;PostV2ResourcesCreatorCoupons200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PostV2ResourcesCreatorCoupons200Response> postV2ResourcesCreatorCouponsWithHttpInfo(PostV2ResourcesCreatorCouponsRequest postV2ResourcesCreatorCouponsRequest) throws ApiException {
+        okhttp3.Call localVarCall = postV2ResourcesCreatorCouponsValidateBeforeCall(postV2ResourcesCreatorCouponsRequest, null);
+        Type localVarReturnType = new TypeToken<PostV2ResourcesCreatorCoupons200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a new coupon (asynchronously)
+     * This endpoint is currently limited to percent-based coupons with a maximum discount of 50%.
+     * @param postV2ResourcesCreatorCouponsRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postV2ResourcesCreatorCouponsAsync(PostV2ResourcesCreatorCouponsRequest postV2ResourcesCreatorCouponsRequest, final ApiCallback<PostV2ResourcesCreatorCoupons200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postV2ResourcesCreatorCouponsValidateBeforeCall(postV2ResourcesCreatorCouponsRequest, _callback);
+        Type localVarReturnType = new TypeToken<PostV2ResourcesCreatorCoupons200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

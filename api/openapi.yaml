@@ -947,6 +947,31 @@ paths:
       x-stoplight:
         id: w4lgpl86j65rj
       x-accepts: application/json
+    post:
+      description: This endpoint is currently limited to percent-based coupons with
+        a maximum discount of 50%.
+      operationId: post-v2-resources-creator-coupons
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_resources_creator_coupons_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_v2_resources_creator_coupons_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Create a new coupon
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: ingjrcbpj58sm
+      x-content-type: application/json
+      x-accepts: application/json
   /v2/health:
     get:
       operationId: get-v2-health
@@ -8711,6 +8736,144 @@ components:
             id: 6k6t5t0aql779
         data:
           $ref: '#/components/schemas/get_v2_resources_creator_coupons_200_response_data'
+      type: object
+    post_v2_resources_creator_coupons_request:
+      properties:
+        type:
+          description: Must be 'perecent'.
+          example: percent
+          type: string
+          x-stoplight:
+            id: ebpcmy615ngg8
+        discount:
+          maximum: 50
+          minimum: 1
+          type: number
+          x-stoplight:
+            id: xv4k5gf53jfgg
+        label:
+          description: "The trailing part of the coupon code (without '{user_id}-')."
+          example: launch
+          maxLength: 15
+          minLength: 1
+          type: string
+          x-stoplight:
+            id: s6epsr6fjke92
+        do_expiry:
+          description: Whether or not to respect the 'expiry_date' field. No expiry
+            date is set otherwise.
+          type: boolean
+          x-stoplight:
+            id: pdoc0dnnykh90
+        expiry_date:
+          type: string
+          x-stoplight:
+            id: er9x4jaa1t3n9
+        limited_uses:
+          description: Whether or not to respect the 'max_uses' field. No max use
+            limit is set otherwise.
+          type: boolean
+          x-stoplight:
+            id: z6qig1djgvedr
+        max_uses:
+          type: integer
+          x-stoplight:
+            id: cn2lm5enh0zp3
+        limited_user_uses:
+          description: Whether or not to respect the 'max_per_user_uses' field. No
+            max uses per user limit is set otherwise.
+          type: boolean
+          x-stoplight:
+            id: vj0j5fib451fo
+        max_per_user_uses:
+          type: integer
+          x-stoplight:
+            id: 0spylcl8tvicf
+        all_content_types:
+          description: "If a content type is included, all of the creator's content\
+            \ (of that type) can be used against this coupon.\r\nSupport values include:\
+            \ 'resource', 'addon', and 'bundle'"
+          items:
+            type: string
+            x-stoplight:
+              id: zit61tfbrfybo
+          type: array
+          x-stoplight:
+            id: pvu73d9h68j7l
+        resources:
+          description: A comma-separated list of resource IDs which this coupon can
+            be used against.
+          type: string
+          x-stoplight:
+            id: uobqm2o7m5ld6
+        addons:
+          description: A comma-separated list of addon IDs which this coupon can be
+            used against.
+          type: string
+          x-stoplight:
+            id: j44atw5c0nq6t
+        bundles:
+          description: A comma-separated list of bundle IDs which this coupon can
+            be used against.
+          type: string
+          x-stoplight:
+            id: wkajbxmye2hz6
+      required:
+      - discount
+      - label
+      - type
+      type: object
+    post_v2_resources_creator_coupons_200_response_data:
+      example:
+        coupon:
+          expires_at: 5
+          coupon_id: 0
+          max_uses: 2
+          user_id: 6
+          discount: 1.4658129805029452
+          created_at: 5
+          active: true
+          all_content_types:
+          - all_content_types
+          - all_content_types
+          uses: 9
+          label: label
+          max_per_user_uses: 7
+          percent: true
+      properties:
+        coupon:
+          $ref: '#/components/schemas/Coupon'
+      type: object
+      x-stoplight:
+        id: zh07tlli8qz6u
+    post_v2_resources_creator_coupons_200_response:
+      example:
+        result: success
+        data:
+          coupon:
+            expires_at: 5
+            coupon_id: 0
+            max_uses: 2
+            user_id: 6
+            discount: 1.4658129805029452
+            created_at: 5
+            active: true
+            all_content_types:
+            - all_content_types
+            - all_content_types
+            uses: 9
+            label: label
+            max_per_user_uses: 7
+            percent: true
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: w75i7hsxzbudp
+        data:
+          $ref: '#/components/schemas/post_v2_resources_creator_coupons_200_response_data'
       type: object
     get_v2_health_200_response:
       example:

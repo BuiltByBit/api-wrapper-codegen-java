@@ -15,6 +15,7 @@ All URIs are relative to *https://api.builtbybit.com*
 | [**getV2ResourcesCreatorStores**](ResourcesCreatorApi.md#getV2ResourcesCreatorStores) | **GET** /v2/resources/creator/stores | Fetch a list of your stores |
 | [**getV2ResourcesCreatorUpdates**](ResourcesCreatorApi.md#getV2ResourcesCreatorUpdates) | **GET** /v2/resources/creator/updates | Fetch a list of your resource&#39;s updates |
 | [**getV2ResourcesCreatorVersions**](ResourcesCreatorApi.md#getV2ResourcesCreatorVersions) | **GET** /v2/resources/creator/versions | Fetch a list of your resources&#39; versions |
+| [**postV2ResourcesCreatorCoupons**](ResourcesCreatorApi.md#postV2ResourcesCreatorCoupons) | **POST** /v2/resources/creator/coupons | Create a new coupon |
 | [**postV2ResourcesCreatorUpdate**](ResourcesCreatorApi.md#postV2ResourcesCreatorUpdate) | **POST** /v2/resources/creator/update | Post a resource update |
 
 
@@ -729,6 +730,75 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+<a id="postV2ResourcesCreatorCoupons"></a>
+# **postV2ResourcesCreatorCoupons**
+> PostV2ResourcesCreatorCoupons200Response postV2ResourcesCreatorCoupons(postV2ResourcesCreatorCouponsRequest)
+
+Create a new coupon
+
+This endpoint is currently limited to percent-based coupons with a maximum discount of 50%.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ResourcesCreatorApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.builtbybit.com");
+    
+    // Configure API key authorization: token
+    ApiKeyAuth token = (ApiKeyAuth) defaultClient.getAuthentication("token");
+    token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //token.setApiKeyPrefix("Token");
+
+    ResourcesCreatorApi apiInstance = new ResourcesCreatorApi(defaultClient);
+    PostV2ResourcesCreatorCouponsRequest postV2ResourcesCreatorCouponsRequest = new PostV2ResourcesCreatorCouponsRequest(); // PostV2ResourcesCreatorCouponsRequest | 
+    try {
+      PostV2ResourcesCreatorCoupons200Response result = apiInstance.postV2ResourcesCreatorCoupons(postV2ResourcesCreatorCouponsRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ResourcesCreatorApi#postV2ResourcesCreatorCoupons");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **postV2ResourcesCreatorCouponsRequest** | [**PostV2ResourcesCreatorCouponsRequest**](PostV2ResourcesCreatorCouponsRequest.md)|  | [optional] |
+
+### Return type
+
+[**PostV2ResourcesCreatorCoupons200Response**](PostV2ResourcesCreatorCoupons200Response.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

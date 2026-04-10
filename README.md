@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-04-10T04:38:43.920283Z[Etc/UTC]
+  - Build date: 2026-04-10T10:23:07.418227Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
@@ -146,6 +146,7 @@ Class | Method | HTTP request | Description
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorStores**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorStores) | **GET** /v2/resources/creator/stores | Fetch a list of your stores
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorUpdates**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorUpdates) | **GET** /v2/resources/creator/updates | Fetch a list of your resource&#39;s updates
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorVersions**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorVersions) | **GET** /v2/resources/creator/versions | Fetch a list of your resources&#39; versions
+*ResourcesCreatorApi* | [**postV2ResourcesCreatorCoupons**](docs/ResourcesCreatorApi.md#postV2ResourcesCreatorCoupons) | **POST** /v2/resources/creator/coupons | Create a new coupon
 *ResourcesCreatorApi* | [**postV2ResourcesCreatorUpdate**](docs/ResourcesCreatorApi.md#postV2ResourcesCreatorUpdate) | **POST** /v2/resources/creator/update | Post a resource update
 *ResourcesDiscoveryApi* | [**getResourcesDiscoverCategories**](docs/ResourcesDiscoveryApi.md#getResourcesDiscoverCategories) | **GET** /v2/resources/discover/categories | Fetch a list of categories
 *ResourcesDiscoveryApi* | [**getResourcesDiscoverResources**](docs/ResourcesDiscoveryApi.md#getResourcesDiscoverResources) | **GET** /v2/resources/discover/resources | Fetch a list of resources
@@ -233,6 +234,9 @@ Class | Method | HTTP request | Description
  - [PostV2ResourcesCreatorBatch200ResponseData](docs/PostV2ResourcesCreatorBatch200ResponseData.md)
  - [PostV2ResourcesCreatorBatchRequest](docs/PostV2ResourcesCreatorBatchRequest.md)
  - [PostV2ResourcesCreatorBatchRequestChangesInner](docs/PostV2ResourcesCreatorBatchRequestChangesInner.md)
+ - [PostV2ResourcesCreatorCoupons200Response](docs/PostV2ResourcesCreatorCoupons200Response.md)
+ - [PostV2ResourcesCreatorCoupons200ResponseData](docs/PostV2ResourcesCreatorCoupons200ResponseData.md)
+ - [PostV2ResourcesCreatorCouponsRequest](docs/PostV2ResourcesCreatorCouponsRequest.md)
  - [PostV2ResourcesCreatorUpdate200Response](docs/PostV2ResourcesCreatorUpdate200Response.md)
  - [PostV2ResourcesCreatorUpdate200ResponseData](docs/PostV2ResourcesCreatorUpdate200ResponseData.md)
  - [PostV2ResourcesCreatorUpdateRequest](docs/PostV2ResourcesCreatorUpdateRequest.md)
