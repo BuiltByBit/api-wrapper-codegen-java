@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * GetV2Health200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-11T04:11:29.560571Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-12T04:39:13.103280Z[Etc/UTC]")
 public class GetV2Health200Response {
   /**
    * Gets or Sets result

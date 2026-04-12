@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Supported &#39;with&#39; hints: - &#39;Resource&#39;: the resource this update relates to - &#39;Description&#39;: the rendered description of the update
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-11T04:11:29.560571Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-12T04:39:13.103280Z[Etc/UTC]")
 public class Update {
   public static final String SERIALIZED_NAME_UPDATE_ID = "update_id";
   @SerializedName(SERIALIZED_NAME_UPDATE_ID)
