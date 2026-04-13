@@ -22,6 +22,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import org.openapitools.client.model.Addon;
+import org.openapitools.client.model.Resource;
 import org.openapitools.client.model.SaleEvent;
 
 import com.google.gson.Gson;
@@ -51,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * SaleEventEntry
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-13T04:50:35.525532Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-13T10:35:05.977799Z[Etc/UTC]")
 public class SaleEventEntry {
   public static final String SERIALIZED_NAME_ENTRY_ID = "entry_id";
   @SerializedName(SERIALIZED_NAME_ENTRY_ID)
@@ -76,6 +78,14 @@ public class SaleEventEntry {
   public static final String SERIALIZED_NAME_SALE_EVENT = "SaleEvent";
   @SerializedName(SERIALIZED_NAME_SALE_EVENT)
   private SaleEvent saleEvent;
+
+  public static final String SERIALIZED_NAME_RESOURCE = "Resource";
+  @SerializedName(SERIALIZED_NAME_RESOURCE)
+  private Resource resource;
+
+  public static final String SERIALIZED_NAME_ADDON = "Addon";
+  @SerializedName(SERIALIZED_NAME_ADDON)
+  private Addon addon;
 
   public SaleEventEntry() {
   }
@@ -194,6 +204,44 @@ public class SaleEventEntry {
   }
 
 
+  public SaleEventEntry resource(Resource resource) {
+    this.resource = resource;
+    return this;
+  }
+
+   /**
+   * Get resource
+   * @return resource
+  **/
+  @javax.annotation.Nullable
+  public Resource getResource() {
+    return resource;
+  }
+
+  public void setResource(Resource resource) {
+    this.resource = resource;
+  }
+
+
+  public SaleEventEntry addon(Addon addon) {
+    this.addon = addon;
+    return this;
+  }
+
+   /**
+   * Get addon
+   * @return addon
+  **/
+  @javax.annotation.Nullable
+  public Addon getAddon() {
+    return addon;
+  }
+
+  public void setAddon(Addon addon) {
+    this.addon = addon;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -209,12 +257,14 @@ public class SaleEventEntry {
         Objects.equals(this.contentType, saleEventEntry.contentType) &&
         Objects.equals(this.contentId, saleEventEntry.contentId) &&
         Objects.equals(this.discount, saleEventEntry.discount) &&
-        Objects.equals(this.saleEvent, saleEventEntry.saleEvent);
+        Objects.equals(this.saleEvent, saleEventEntry.saleEvent) &&
+        Objects.equals(this.resource, saleEventEntry.resource) &&
+        Objects.equals(this.addon, saleEventEntry.addon);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entryId, eventId, contentType, contentId, discount, saleEvent);
+    return Objects.hash(entryId, eventId, contentType, contentId, discount, saleEvent, resource, addon);
   }
 
   @Override
@@ -227,6 +277,8 @@ public class SaleEventEntry {
     sb.append("    contentId: ").append(toIndentedString(contentId)).append("\n");
     sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
     sb.append("    saleEvent: ").append(toIndentedString(saleEvent)).append("\n");
+    sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
+    sb.append("    addon: ").append(toIndentedString(addon)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -255,6 +307,8 @@ public class SaleEventEntry {
     openapiFields.add("content_id");
     openapiFields.add("discount");
     openapiFields.add("SaleEvent");
+    openapiFields.add("Resource");
+    openapiFields.add("Addon");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -287,6 +341,14 @@ public class SaleEventEntry {
       // validate the optional field `SaleEvent`
       if (jsonObj.get("SaleEvent") != null && !jsonObj.get("SaleEvent").isJsonNull()) {
         SaleEvent.validateJsonElement(jsonObj.get("SaleEvent"));
+      }
+      // validate the optional field `Resource`
+      if (jsonObj.get("Resource") != null && !jsonObj.get("Resource").isJsonNull()) {
+        Resource.validateJsonElement(jsonObj.get("Resource"));
+      }
+      // validate the optional field `Addon`
+      if (jsonObj.get("Addon") != null && !jsonObj.get("Addon").isJsonNull()) {
+        Addon.validateJsonElement(jsonObj.get("Addon"));
       }
   }
 

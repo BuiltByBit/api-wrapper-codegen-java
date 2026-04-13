@@ -13,6 +13,8 @@
 |**description** | **String** |  |  [optional] |
 |**discount** | **BigDecimal** |  |  [optional] |
 |**createdAt** | **Integer** |  |  [optional] |
+|**listPrice** | [**Price**](Price.md) |  |  [optional] |
+|**finalPrice** | [**Price**](Price.md) |  |  [optional] |
 
 
 

@@ -13,6 +13,8 @@
 |**contentId** | **Integer** |  |  [optional] |
 |**discount** | **BigDecimal** |  |  [optional] |
 |**saleEvent** | [**SaleEvent**](SaleEvent.md) |  |  [optional] |
+|**resource** | [**Resource**](Resource.md) |  |  [optional] |
+|**addon** | [**Addon**](Addon.md) |  |  [optional] |
 
 
 

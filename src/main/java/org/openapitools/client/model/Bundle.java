@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import org.openapitools.client.model.Price;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Bundle
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-13T04:50:35.525532Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-13T10:35:05.977799Z[Etc/UTC]")
 public class Bundle {
   public static final String SERIALIZED_NAME_BUNDLE_ID = "bundle_id";
   @SerializedName(SERIALIZED_NAME_BUNDLE_ID)
@@ -75,6 +76,14 @@ public class Bundle {
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   private Integer createdAt;
+
+  public static final String SERIALIZED_NAME_LIST_PRICE = "ListPrice";
+  @SerializedName(SERIALIZED_NAME_LIST_PRICE)
+  private Price listPrice;
+
+  public static final String SERIALIZED_NAME_FINAL_PRICE = "FinalPrice";
+  @SerializedName(SERIALIZED_NAME_FINAL_PRICE)
+  private Price finalPrice;
 
   public Bundle() {
   }
@@ -193,6 +202,44 @@ public class Bundle {
   }
 
 
+  public Bundle listPrice(Price listPrice) {
+    this.listPrice = listPrice;
+    return this;
+  }
+
+   /**
+   * Get listPrice
+   * @return listPrice
+  **/
+  @javax.annotation.Nullable
+  public Price getListPrice() {
+    return listPrice;
+  }
+
+  public void setListPrice(Price listPrice) {
+    this.listPrice = listPrice;
+  }
+
+
+  public Bundle finalPrice(Price finalPrice) {
+    this.finalPrice = finalPrice;
+    return this;
+  }
+
+   /**
+   * Get finalPrice
+   * @return finalPrice
+  **/
+  @javax.annotation.Nullable
+  public Price getFinalPrice() {
+    return finalPrice;
+  }
+
+  public void setFinalPrice(Price finalPrice) {
+    this.finalPrice = finalPrice;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -208,12 +255,14 @@ public class Bundle {
         Objects.equals(this.title, bundle.title) &&
         Objects.equals(this.description, bundle.description) &&
         Objects.equals(this.discount, bundle.discount) &&
-        Objects.equals(this.createdAt, bundle.createdAt);
+        Objects.equals(this.createdAt, bundle.createdAt) &&
+        Objects.equals(this.listPrice, bundle.listPrice) &&
+        Objects.equals(this.finalPrice, bundle.finalPrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bundleId, userId, title, description, discount, createdAt);
+    return Objects.hash(bundleId, userId, title, description, discount, createdAt, listPrice, finalPrice);
   }
 
   @Override
@@ -226,6 +275,8 @@ public class Bundle {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    listPrice: ").append(toIndentedString(listPrice)).append("\n");
+    sb.append("    finalPrice: ").append(toIndentedString(finalPrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -254,6 +305,8 @@ public class Bundle {
     openapiFields.add("description");
     openapiFields.add("discount");
     openapiFields.add("created_at");
+    openapiFields.add("ListPrice");
+    openapiFields.add("FinalPrice");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -285,6 +338,14 @@ public class Bundle {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      // validate the optional field `ListPrice`
+      if (jsonObj.get("ListPrice") != null && !jsonObj.get("ListPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("ListPrice"));
+      }
+      // validate the optional field `FinalPrice`
+      if (jsonObj.get("FinalPrice") != null && !jsonObj.get("FinalPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("FinalPrice"));
       }
   }
 

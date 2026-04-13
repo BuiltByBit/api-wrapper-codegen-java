@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-04-13T04:50:35.525532Z[Etc/UTC]
+  - Build date: 2026-04-13T10:35:05.977799Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
@@ -127,8 +127,6 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**getV2Analytics**](docs/AnalyticsApi.md#getV2Analytics) | **GET** /v2/analytics | Fetch a list of analytics definitions
 *AnalyticsApi* | [**getV2AnalyticsGraph**](docs/AnalyticsApi.md#getV2AnalyticsGraph) | **GET** /v2/analytics/graph | Fetch analytics graph data
 *AnalyticsApi* | [**getV2AnalyticsSingle**](docs/AnalyticsApi.md#getV2AnalyticsSingle) | **GET** /v2/analytics/single | Fetch a single analytics value
-*DefaultApi* | [**getV2ResourcesCreatorBatch**](docs/DefaultApi.md#getV2ResourcesCreatorBatch) | **GET** /v2/resources/creator/batch | Fetch a list of your batches edits
-*DefaultApi* | [**postV2ResourcesCreatorBatch**](docs/DefaultApi.md#postV2ResourcesCreatorBatch) | **POST** /v2/resources/creator/batch | Submit a new batch edit
 *EventsApi* | [**getV2Events**](docs/EventsApi.md#getV2Events) | **GET** /v2/events | Fetch a list of pending events
 *EventsApi* | [**postV2EventsComplete**](docs/EventsApi.md#postV2EventsComplete) | **POST** /v2/events/complete | Mark events as complete
 *HealthApi* | [**getV2Health**](docs/HealthApi.md#getV2Health) | **GET** /v2/health | Retrieve a health status
@@ -136,16 +134,21 @@ Class | Method | HTTP request | Description
 *Oauth2Api* | [**getOauth2TokenRevoke**](docs/Oauth2Api.md#getOauth2TokenRevoke) | **POST** /oauth2/token/revoke | Revoke an existing access or refresh token
 *ResourcesBuyerApi* | [**getV2ResourcesBuyerLatest**](docs/ResourcesBuyerApi.md#getV2ResourcesBuyerLatest) | **GET** /v2/resources/buyer/latest | Fetches the latest versions &amp; license information
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorAddons**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorAddons) | **GET** /v2/resources/creator/addons | Fetch a list of your resources&#39; addons
+*ResourcesCreatorApi* | [**getV2ResourcesCreatorBatch**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorBatch) | **GET** /v2/resources/creator/batch | Fetch a list of your batches edits
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorBundles**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorBundles) | **GET** /v2/resources/creator/bundles | Fetch a list of your bundles
+*ResourcesCreatorApi* | [**getV2ResourcesCreatorBundlesEntries**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorBundlesEntries) | **GET** /v2/resources/creator/bundles/entries | Fetch a list of your bundle entries
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorCoupons**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorCoupons) | **GET** /v2/resources/creator/coupons | Fetch a list of your coupons
+*ResourcesCreatorApi* | [**getV2ResourcesCreatorCouponsEntries**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorCouponsEntries) | **GET** /v2/resources/creator/coupons/entries | Fetch a list of your coupon entries
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorLicenses**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorLicenses) | **GET** /v2/resources/creator/licenses | Fetch a list of your resources&#39; licenses
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorPurchases**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorPurchases) | **GET** /v2/resources/creator/purchases | Fetch a list of your resources&#39; purchases
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorResources**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorResources) | **GET** /v2/resources/creator/resources | Fetch a list of your resources
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorReviews**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorReviews) | **GET** /v2/resources/creator/reviews | Fetch a list of your resources&#39; reviews
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorSaleEvents**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorSaleEvents) | **GET** /v2/resources/creator/sale-events | Fetch a list of your sale events
+*ResourcesCreatorApi* | [**getV2ResourcesCreatorSaleEventsEntries**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorSaleEventsEntries) | **GET** /v2/resources/creator/sale-events/entries | Fetch a list of your sale event entries
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorStores**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorStores) | **GET** /v2/resources/creator/stores | Fetch a list of your stores
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorUpdates**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorUpdates) | **GET** /v2/resources/creator/updates | Fetch a list of your resource&#39;s updates
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorVersions**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorVersions) | **GET** /v2/resources/creator/versions | Fetch a list of your resources&#39; versions
+*ResourcesCreatorApi* | [**postV2ResourcesCreatorBatch**](docs/ResourcesCreatorApi.md#postV2ResourcesCreatorBatch) | **POST** /v2/resources/creator/batch | Submit a new batch edit
 *ResourcesCreatorApi* | [**postV2ResourcesCreatorCoupons**](docs/ResourcesCreatorApi.md#postV2ResourcesCreatorCoupons) | **POST** /v2/resources/creator/coupons | Create a new coupon
 *ResourcesCreatorApi* | [**postV2ResourcesCreatorUpdate**](docs/ResourcesCreatorApi.md#postV2ResourcesCreatorUpdate) | **POST** /v2/resources/creator/update | Post a resource update
 *ResourcesDiscoveryApi* | [**getResourcesDiscoverCategories**](docs/ResourcesDiscoveryApi.md#getResourcesDiscoverCategories) | **GET** /v2/resources/discover/categories | Fetch a list of categories
@@ -169,11 +172,13 @@ Class | Method | HTTP request | Description
  - [AnalyticGraphDataPoint](docs/AnalyticGraphDataPoint.md)
  - [Batch](docs/Batch.md)
  - [Bundle](docs/Bundle.md)
+ - [BundleEntry](docs/BundleEntry.md)
  - [CartItem](docs/CartItem.md)
  - [CartItemDiscountsInner](docs/CartItemDiscountsInner.md)
  - [CartSummary](docs/CartSummary.md)
  - [Category](docs/Category.md)
  - [Coupon](docs/Coupon.md)
+ - [CouponEntry](docs/CouponEntry.md)
  - [Event](docs/Event.md)
  - [Filter](docs/Filter.md)
  - [FilterChoice](docs/FilterChoice.md)
@@ -203,8 +208,12 @@ Class | Method | HTTP request | Description
  - [GetV2ResourcesCreatorBatch200ResponseData](docs/GetV2ResourcesCreatorBatch200ResponseData.md)
  - [GetV2ResourcesCreatorBundles200Response](docs/GetV2ResourcesCreatorBundles200Response.md)
  - [GetV2ResourcesCreatorBundles200ResponseData](docs/GetV2ResourcesCreatorBundles200ResponseData.md)
+ - [GetV2ResourcesCreatorBundlesEntries200Response](docs/GetV2ResourcesCreatorBundlesEntries200Response.md)
+ - [GetV2ResourcesCreatorBundlesEntries200ResponseData](docs/GetV2ResourcesCreatorBundlesEntries200ResponseData.md)
  - [GetV2ResourcesCreatorCoupons200Response](docs/GetV2ResourcesCreatorCoupons200Response.md)
  - [GetV2ResourcesCreatorCoupons200ResponseData](docs/GetV2ResourcesCreatorCoupons200ResponseData.md)
+ - [GetV2ResourcesCreatorCouponsEntries200Response](docs/GetV2ResourcesCreatorCouponsEntries200Response.md)
+ - [GetV2ResourcesCreatorCouponsEntries200ResponseData](docs/GetV2ResourcesCreatorCouponsEntries200ResponseData.md)
  - [GetV2ResourcesCreatorLicenses200Response](docs/GetV2ResourcesCreatorLicenses200Response.md)
  - [GetV2ResourcesCreatorLicenses200ResponseData](docs/GetV2ResourcesCreatorLicenses200ResponseData.md)
  - [GetV2ResourcesCreatorPurchases200Response](docs/GetV2ResourcesCreatorPurchases200Response.md)
@@ -215,6 +224,8 @@ Class | Method | HTTP request | Description
  - [GetV2ResourcesCreatorReviews200ResponseData](docs/GetV2ResourcesCreatorReviews200ResponseData.md)
  - [GetV2ResourcesCreatorSaleEvents200Response](docs/GetV2ResourcesCreatorSaleEvents200Response.md)
  - [GetV2ResourcesCreatorSaleEvents200ResponseData](docs/GetV2ResourcesCreatorSaleEvents200ResponseData.md)
+ - [GetV2ResourcesCreatorSaleEventsEntries200Response](docs/GetV2ResourcesCreatorSaleEventsEntries200Response.md)
+ - [GetV2ResourcesCreatorSaleEventsEntries200ResponseData](docs/GetV2ResourcesCreatorSaleEventsEntries200ResponseData.md)
  - [GetV2ResourcesCreatorStores200Response](docs/GetV2ResourcesCreatorStores200Response.md)
  - [GetV2ResourcesCreatorStores200ResponseData](docs/GetV2ResourcesCreatorStores200ResponseData.md)
  - [GetV2ResourcesCreatorUpdates200Response](docs/GetV2ResourcesCreatorUpdates200Response.md)
