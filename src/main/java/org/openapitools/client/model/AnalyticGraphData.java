@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * AnalyticGraphData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-14T04:37:51.294805Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-14T13:44:20.000766Z[Etc/UTC]")
 public class AnalyticGraphData {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)

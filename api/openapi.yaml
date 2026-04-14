@@ -21,9 +21,19 @@ tags:
 - name: free
 - name: health
 - name: oauth2
+  x-page-title: OAuth2
 - name: resources/buyer
+  x-page-title: Resources/Buyer
 - name: resources/creator
+  x-page-title: Resources/Creator
+- name: resources/creator/bundles
+  x-page-title: Bundles
+- name: resources/creator/coupons
+  x-page-title: Coupons
+- name: resources/creator/sale-events
+  x-page-title: Sale Events
 - name: resources/discovery
+  x-page-title: Resources/Discovery
 paths:
   /oauth2/token:
     post:
@@ -862,6 +872,7 @@ paths:
       summary: Fetch a list of your bundles
       tags:
       - resources/creator
+      - resources/creator/bundles
       x-stoplight:
         id: 8rr5mssb968xc
       x-accepts: application/json
@@ -890,6 +901,7 @@ paths:
       summary: Fetch a list of your bundle entries
       tags:
       - resources/creator
+      - resources/creator/bundles
       x-stoplight:
         id: ppk1s05ia84fa
       x-accepts: application/json
@@ -918,6 +930,7 @@ paths:
       summary: Fetch a list of your sale events
       tags:
       - resources/creator
+      - resources/creator/sale-events
       x-stoplight:
         id: e153a7jk4duox
       x-accepts: application/json
@@ -946,6 +959,7 @@ paths:
       summary: Fetch a list of your sale event entries
       tags:
       - resources/creator
+      - resources/creator/sale-events
       x-stoplight:
         id: gxhblj0l41ot9
       x-accepts: application/json
@@ -1029,6 +1043,7 @@ paths:
       summary: Fetch a list of your coupons
       tags:
       - resources/creator
+      - resources/creator/coupons
       x-stoplight:
         id: w4lgpl86j65rj
       x-accepts: application/json
@@ -1053,6 +1068,7 @@ paths:
       summary: Create a new coupon
       tags:
       - resources/creator
+      - resources/creator/coupons
       x-stoplight:
         id: ingjrcbpj58sm
       x-content-type: application/json
@@ -1082,6 +1098,7 @@ paths:
       summary: Fetch a list of your coupon entries
       tags:
       - resources/creator
+      - resources/creator/coupons
       x-stoplight:
         id: wi9f7x6az41t3
       x-accepts: application/json
@@ -2113,19 +2130,23 @@ components:
       example:
         content_title: content_title
         content_summary: content_summary
-        list_price_formatted: list_price_formatted
         content_type: content_type
         discounts:
-        - amount: 5.962133916683182
-          formatted: formatted
-        - amount: 5.962133916683182
-          formatted: formatted
+          key:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
         content_id: 0
-        final_price: 1.4658129805029452
         cart_item_id: cart_item_id
-        list_price: 6.027456183070403
+        ListPrice:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
         content_cover_image_url: content_cover_image_url
-        final_price_formatted: final_price_formatted
+        FinalPrice:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
       properties:
         cart_item_id:
           type: string
@@ -2151,73 +2172,32 @@ components:
           type: string
           x-stoplight:
             id: 6imus6gmqu7tn
-        list_price:
-          type: number
-          x-stoplight:
-            id: ccxb6cl670du8
-        list_price_formatted:
-          type: string
-          x-stoplight:
-            id: zvgipr34l9yv7
-        final_price:
-          type: number
-          x-stoplight:
-            id: yo4zke2lcac6l
-        final_price_formatted:
-          type: string
-          x-stoplight:
-            id: bypnjlevon8u9
+        ListPrice:
+          $ref: '#/components/schemas/Price'
+        FinalPrice:
+          $ref: '#/components/schemas/Price'
         discounts:
-          items:
-            $ref: '#/components/schemas/CartItem_discounts_inner'
-          type: array
+          additionalProperties:
+            $ref: '#/components/schemas/Price'
+          type: object
           x-stoplight:
-            id: g4djxkdvgkxuu
+            id: ichhirx9vegdj
       title: CartItem
       type: object
       x-stoplight:
         id: 56j3817scrzh1
     CartSummary:
       example:
-        list_price_formatted: list_price_formatted
-        final_price: 2.3021358869347655
-        currency: USD
-        list_price: 5.637376656633329
-        final_price_formatted: final_price_formatted
+        ListPrice:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
         notice: notice
+        FinalPrice:
+          formatted: formatted
+          currency: currency
+          value: 3.616076749251911
       properties:
-        list_price:
-          description: The combined listed price of all items in the cart (ie. the
-            original prices without any discounts applied).
-          type: number
-          x-stoplight:
-            id: cb3jp1b4c7o60
-        list_price_formatted:
-          description: "The list price formatted as a string using the given currency.\r\
-            \nA list price of 5 would be formatted as `$5.00`."
-          type: string
-          x-stoplight:
-            id: viqvi29vgo81h
-        final_price:
-          description: "The combined final price of all items in the cart (ie. with\
-            \ discounts applied). This is the subtotal the user would pay upon checkout\
-            \ initiation, minus any applicable sales tax."
-          type: number
-          x-stoplight:
-            id: 2ary8hl7lag9s
-        final_price_formatted:
-          description: "The final price formatted as a string using the given currency.\r\
-            \nA final price of 5 would be formatted as `$5.00`."
-          type: string
-          x-stoplight:
-            id: clz01pfy72j3o
-        currency:
-          description: "The currency code (ISO 4217) of the prices in this summary.\r\
-            \nWill be USD for all transactions through BuiltByBit."
-          example: USD
-          type: string
-          x-stoplight:
-            id: vhcjzo79pzldi
         notice:
           description: A message to display to the user as a notice regarding their
             current cart items. We may use this to inform the user that they have
@@ -2226,12 +2206,10 @@ components:
           type: string
           x-stoplight:
             id: arvcnn9amx7ok
-      required:
-      - currency
-      - final_price
-      - final_price_formatted
-      - list_price
-      - list_price_formatted
+        ListPrice:
+          $ref: '#/components/schemas/Price'
+        FinalPrice:
+          $ref: '#/components/schemas/Price'
       title: CartSummary
       type: object
       x-stoplight:
@@ -5523,43 +5501,54 @@ components:
     get_v2_resources_discover_cart_view_200_response_data:
       example:
         summary:
-          list_price_formatted: list_price_formatted
-          final_price: 2.3021358869347655
-          currency: USD
-          list_price: 5.637376656633329
-          final_price_formatted: final_price_formatted
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
           notice: notice
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
         items:
         - content_title: content_title
           content_summary: content_summary
-          list_price_formatted: list_price_formatted
           content_type: content_type
           discounts:
-          - amount: 5.962133916683182
-            formatted: formatted
-          - amount: 5.962133916683182
-            formatted: formatted
+            key:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
           content_id: 0
-          final_price: 1.4658129805029452
           cart_item_id: cart_item_id
-          list_price: 6.027456183070403
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
           content_cover_image_url: content_cover_image_url
-          final_price_formatted: final_price_formatted
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
         - content_title: content_title
           content_summary: content_summary
-          list_price_formatted: list_price_formatted
           content_type: content_type
           discounts:
-          - amount: 5.962133916683182
-            formatted: formatted
-          - amount: 5.962133916683182
-            formatted: formatted
+            key:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
           content_id: 0
-          final_price: 1.4658129805029452
           cart_item_id: cart_item_id
-          list_price: 6.027456183070403
+          ListPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
           content_cover_image_url: content_cover_image_url
-          final_price_formatted: final_price_formatted
+          FinalPrice:
+            formatted: formatted
+            currency: currency
+            value: 3.616076749251911
         user:
           registered_at: registered_at
           avatar_url: avatar_url
@@ -5587,43 +5576,54 @@ components:
         result: success
         data:
           summary:
-            list_price_formatted: list_price_formatted
-            final_price: 2.3021358869347655
-            currency: USD
-            list_price: 5.637376656633329
-            final_price_formatted: final_price_formatted
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
             notice: notice
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
           items:
           - content_title: content_title
             content_summary: content_summary
-            list_price_formatted: list_price_formatted
             content_type: content_type
             discounts:
-            - amount: 5.962133916683182
-              formatted: formatted
-            - amount: 5.962133916683182
-              formatted: formatted
+              key:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
             content_id: 0
-            final_price: 1.4658129805029452
             cart_item_id: cart_item_id
-            list_price: 6.027456183070403
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
             content_cover_image_url: content_cover_image_url
-            final_price_formatted: final_price_formatted
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
           - content_title: content_title
             content_summary: content_summary
-            list_price_formatted: list_price_formatted
             content_type: content_type
             discounts:
-            - amount: 5.962133916683182
-              formatted: formatted
-            - amount: 5.962133916683182
-              formatted: formatted
+              key:
+                formatted: formatted
+                currency: currency
+                value: 3.616076749251911
             content_id: 0
-            final_price: 1.4658129805029452
             cart_item_id: cart_item_id
-            list_price: 6.027456183070403
+            ListPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
             content_cover_image_url: content_cover_image_url
-            final_price_formatted: final_price_formatted
+            FinalPrice:
+              formatted: formatted
+              currency: currency
+              value: 3.616076749251911
           user:
             registered_at: registered_at
             avatar_url: avatar_url
@@ -12143,22 +12143,6 @@ components:
         data:
           $ref: '#/components/schemas/post_v2_resources_creator_batch_200_response_data'
       type: object
-    CartItem_discounts_inner:
-      example:
-        amount: 5.962133916683182
-        formatted: formatted
-      properties:
-        amount:
-          type: number
-          x-stoplight:
-            id: xferie0tbawb8
-        formatted:
-          type: string
-          x-stoplight:
-            id: r3zlzx1omaqc8
-      type: object
-      x-stoplight:
-        id: r6x6zbrv6s90q
     Analytic_filters_value:
       example:
         type: type

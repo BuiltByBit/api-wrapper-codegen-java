@@ -13,11 +13,9 @@
 |**contentTitle** | **String** |  |  [optional] |
 |**contentSummary** | **String** |  |  [optional] |
 |**contentCoverImageUrl** | **String** |  |  [optional] |
-|**listPrice** | **BigDecimal** |  |  [optional] |
-|**listPriceFormatted** | **String** |  |  [optional] |
-|**finalPrice** | **BigDecimal** |  |  [optional] |
-|**finalPriceFormatted** | **String** |  |  [optional] |
-|**discounts** | [**List&lt;CartItemDiscountsInner&gt;**](CartItemDiscountsInner.md) |  |  [optional] |
+|**listPrice** | [**Price**](Price.md) |  |  [optional] |
+|**finalPrice** | [**Price**](Price.md) |  |  [optional] |
+|**discounts** | [**Map&lt;String, Price&gt;**](Price.md) |  |  [optional] |
 
 
 

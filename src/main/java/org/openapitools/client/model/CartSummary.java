@@ -20,8 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
+import org.openapitools.client.model.Price;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,129 +50,22 @@ import org.openapitools.client.JSON;
 /**
  * CartSummary
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-14T04:37:51.294805Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-14T13:44:20.000766Z[Etc/UTC]")
 public class CartSummary {
-  public static final String SERIALIZED_NAME_LIST_PRICE = "list_price";
-  @SerializedName(SERIALIZED_NAME_LIST_PRICE)
-  private BigDecimal listPrice;
-
-  public static final String SERIALIZED_NAME_LIST_PRICE_FORMATTED = "list_price_formatted";
-  @SerializedName(SERIALIZED_NAME_LIST_PRICE_FORMATTED)
-  private String listPriceFormatted;
-
-  public static final String SERIALIZED_NAME_FINAL_PRICE = "final_price";
-  @SerializedName(SERIALIZED_NAME_FINAL_PRICE)
-  private BigDecimal finalPrice;
-
-  public static final String SERIALIZED_NAME_FINAL_PRICE_FORMATTED = "final_price_formatted";
-  @SerializedName(SERIALIZED_NAME_FINAL_PRICE_FORMATTED)
-  private String finalPriceFormatted;
-
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
-
   public static final String SERIALIZED_NAME_NOTICE = "notice";
   @SerializedName(SERIALIZED_NAME_NOTICE)
   private String notice;
 
+  public static final String SERIALIZED_NAME_LIST_PRICE = "ListPrice";
+  @SerializedName(SERIALIZED_NAME_LIST_PRICE)
+  private Price listPrice;
+
+  public static final String SERIALIZED_NAME_FINAL_PRICE = "FinalPrice";
+  @SerializedName(SERIALIZED_NAME_FINAL_PRICE)
+  private Price finalPrice;
+
   public CartSummary() {
   }
-
-  public CartSummary listPrice(BigDecimal listPrice) {
-    this.listPrice = listPrice;
-    return this;
-  }
-
-   /**
-   * The combined listed price of all items in the cart (ie. the original prices without any discounts applied).
-   * @return listPrice
-  **/
-  @javax.annotation.Nonnull
-  public BigDecimal getListPrice() {
-    return listPrice;
-  }
-
-  public void setListPrice(BigDecimal listPrice) {
-    this.listPrice = listPrice;
-  }
-
-
-  public CartSummary listPriceFormatted(String listPriceFormatted) {
-    this.listPriceFormatted = listPriceFormatted;
-    return this;
-  }
-
-   /**
-   * The list price formatted as a string using the given currency.  A list price of 5 would be formatted as &#x60;$5.00&#x60;.
-   * @return listPriceFormatted
-  **/
-  @javax.annotation.Nonnull
-  public String getListPriceFormatted() {
-    return listPriceFormatted;
-  }
-
-  public void setListPriceFormatted(String listPriceFormatted) {
-    this.listPriceFormatted = listPriceFormatted;
-  }
-
-
-  public CartSummary finalPrice(BigDecimal finalPrice) {
-    this.finalPrice = finalPrice;
-    return this;
-  }
-
-   /**
-   * The combined final price of all items in the cart (ie. with discounts applied). This is the subtotal the user would pay upon checkout initiation, minus any applicable sales tax.
-   * @return finalPrice
-  **/
-  @javax.annotation.Nonnull
-  public BigDecimal getFinalPrice() {
-    return finalPrice;
-  }
-
-  public void setFinalPrice(BigDecimal finalPrice) {
-    this.finalPrice = finalPrice;
-  }
-
-
-  public CartSummary finalPriceFormatted(String finalPriceFormatted) {
-    this.finalPriceFormatted = finalPriceFormatted;
-    return this;
-  }
-
-   /**
-   * The final price formatted as a string using the given currency.  A final price of 5 would be formatted as &#x60;$5.00&#x60;.
-   * @return finalPriceFormatted
-  **/
-  @javax.annotation.Nonnull
-  public String getFinalPriceFormatted() {
-    return finalPriceFormatted;
-  }
-
-  public void setFinalPriceFormatted(String finalPriceFormatted) {
-    this.finalPriceFormatted = finalPriceFormatted;
-  }
-
-
-  public CartSummary currency(String currency) {
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * The currency code (ISO 4217) of the prices in this summary.  Will be USD for all transactions through BuiltByBit.
-   * @return currency
-  **/
-  @javax.annotation.Nonnull
-  public String getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
-  }
-
 
   public CartSummary notice(String notice) {
     this.notice = notice;
@@ -193,6 +86,44 @@ public class CartSummary {
   }
 
 
+  public CartSummary listPrice(Price listPrice) {
+    this.listPrice = listPrice;
+    return this;
+  }
+
+   /**
+   * Get listPrice
+   * @return listPrice
+  **/
+  @javax.annotation.Nullable
+  public Price getListPrice() {
+    return listPrice;
+  }
+
+  public void setListPrice(Price listPrice) {
+    this.listPrice = listPrice;
+  }
+
+
+  public CartSummary finalPrice(Price finalPrice) {
+    this.finalPrice = finalPrice;
+    return this;
+  }
+
+   /**
+   * Get finalPrice
+   * @return finalPrice
+  **/
+  @javax.annotation.Nullable
+  public Price getFinalPrice() {
+    return finalPrice;
+  }
+
+  public void setFinalPrice(Price finalPrice) {
+    this.finalPrice = finalPrice;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -203,29 +134,23 @@ public class CartSummary {
       return false;
     }
     CartSummary cartSummary = (CartSummary) o;
-    return Objects.equals(this.listPrice, cartSummary.listPrice) &&
-        Objects.equals(this.listPriceFormatted, cartSummary.listPriceFormatted) &&
-        Objects.equals(this.finalPrice, cartSummary.finalPrice) &&
-        Objects.equals(this.finalPriceFormatted, cartSummary.finalPriceFormatted) &&
-        Objects.equals(this.currency, cartSummary.currency) &&
-        Objects.equals(this.notice, cartSummary.notice);
+    return Objects.equals(this.notice, cartSummary.notice) &&
+        Objects.equals(this.listPrice, cartSummary.listPrice) &&
+        Objects.equals(this.finalPrice, cartSummary.finalPrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(listPrice, listPriceFormatted, finalPrice, finalPriceFormatted, currency, notice);
+    return Objects.hash(notice, listPrice, finalPrice);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CartSummary {\n");
-    sb.append("    listPrice: ").append(toIndentedString(listPrice)).append("\n");
-    sb.append("    listPriceFormatted: ").append(toIndentedString(listPriceFormatted)).append("\n");
-    sb.append("    finalPrice: ").append(toIndentedString(finalPrice)).append("\n");
-    sb.append("    finalPriceFormatted: ").append(toIndentedString(finalPriceFormatted)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    notice: ").append(toIndentedString(notice)).append("\n");
+    sb.append("    listPrice: ").append(toIndentedString(listPrice)).append("\n");
+    sb.append("    finalPrice: ").append(toIndentedString(finalPrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -248,20 +173,12 @@ public class CartSummary {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("list_price");
-    openapiFields.add("list_price_formatted");
-    openapiFields.add("final_price");
-    openapiFields.add("final_price_formatted");
-    openapiFields.add("currency");
     openapiFields.add("notice");
+    openapiFields.add("ListPrice");
+    openapiFields.add("FinalPrice");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("list_price");
-    openapiRequiredFields.add("list_price_formatted");
-    openapiRequiredFields.add("final_price");
-    openapiRequiredFields.add("final_price_formatted");
-    openapiRequiredFields.add("currency");
   }
 
  /**
@@ -284,25 +201,17 @@ public class CartSummary {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CartSummary` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CartSummary.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("list_price_formatted").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `list_price_formatted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("list_price_formatted").toString()));
-      }
-      if (!jsonObj.get("final_price_formatted").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `final_price_formatted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("final_price_formatted").toString()));
-      }
-      if (!jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
-      }
       if ((jsonObj.get("notice") != null && !jsonObj.get("notice").isJsonNull()) && !jsonObj.get("notice").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `notice` to be a primitive type in the JSON string but got `%s`", jsonObj.get("notice").toString()));
+      }
+      // validate the optional field `ListPrice`
+      if (jsonObj.get("ListPrice") != null && !jsonObj.get("ListPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("ListPrice"));
+      }
+      // validate the optional field `FinalPrice`
+      if (jsonObj.get("FinalPrice") != null && !jsonObj.get("FinalPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("FinalPrice"));
       }
   }
 

@@ -20,11 +20,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.openapitools.client.model.CartItemDiscountsInner;
+import java.util.HashMap;
+import java.util.Map;
+import org.openapitools.client.model.Price;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * CartItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-14T04:37:51.294805Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-14T13:44:20.000766Z[Etc/UTC]")
 public class CartItem {
   public static final String SERIALIZED_NAME_CART_ITEM_ID = "cart_item_id";
   @SerializedName(SERIALIZED_NAME_CART_ITEM_ID)
@@ -79,25 +78,17 @@ public class CartItem {
   @SerializedName(SERIALIZED_NAME_CONTENT_COVER_IMAGE_URL)
   private String contentCoverImageUrl;
 
-  public static final String SERIALIZED_NAME_LIST_PRICE = "list_price";
+  public static final String SERIALIZED_NAME_LIST_PRICE = "ListPrice";
   @SerializedName(SERIALIZED_NAME_LIST_PRICE)
-  private BigDecimal listPrice;
+  private Price listPrice;
 
-  public static final String SERIALIZED_NAME_LIST_PRICE_FORMATTED = "list_price_formatted";
-  @SerializedName(SERIALIZED_NAME_LIST_PRICE_FORMATTED)
-  private String listPriceFormatted;
-
-  public static final String SERIALIZED_NAME_FINAL_PRICE = "final_price";
+  public static final String SERIALIZED_NAME_FINAL_PRICE = "FinalPrice";
   @SerializedName(SERIALIZED_NAME_FINAL_PRICE)
-  private BigDecimal finalPrice;
-
-  public static final String SERIALIZED_NAME_FINAL_PRICE_FORMATTED = "final_price_formatted";
-  @SerializedName(SERIALIZED_NAME_FINAL_PRICE_FORMATTED)
-  private String finalPriceFormatted;
+  private Price finalPrice;
 
   public static final String SERIALIZED_NAME_DISCOUNTS = "discounts";
   @SerializedName(SERIALIZED_NAME_DISCOUNTS)
-  private List<CartItemDiscountsInner> discounts;
+  private Map<String, Price> discounts = new HashMap<>();
 
   public CartItem() {
   }
@@ -216,7 +207,7 @@ public class CartItem {
   }
 
 
-  public CartItem listPrice(BigDecimal listPrice) {
+  public CartItem listPrice(Price listPrice) {
     this.listPrice = listPrice;
     return this;
   }
@@ -226,35 +217,16 @@ public class CartItem {
    * @return listPrice
   **/
   @javax.annotation.Nullable
-  public BigDecimal getListPrice() {
+  public Price getListPrice() {
     return listPrice;
   }
 
-  public void setListPrice(BigDecimal listPrice) {
+  public void setListPrice(Price listPrice) {
     this.listPrice = listPrice;
   }
 
 
-  public CartItem listPriceFormatted(String listPriceFormatted) {
-    this.listPriceFormatted = listPriceFormatted;
-    return this;
-  }
-
-   /**
-   * Get listPriceFormatted
-   * @return listPriceFormatted
-  **/
-  @javax.annotation.Nullable
-  public String getListPriceFormatted() {
-    return listPriceFormatted;
-  }
-
-  public void setListPriceFormatted(String listPriceFormatted) {
-    this.listPriceFormatted = listPriceFormatted;
-  }
-
-
-  public CartItem finalPrice(BigDecimal finalPrice) {
+  public CartItem finalPrice(Price finalPrice) {
     this.finalPrice = finalPrice;
     return this;
   }
@@ -264,44 +236,25 @@ public class CartItem {
    * @return finalPrice
   **/
   @javax.annotation.Nullable
-  public BigDecimal getFinalPrice() {
+  public Price getFinalPrice() {
     return finalPrice;
   }
 
-  public void setFinalPrice(BigDecimal finalPrice) {
+  public void setFinalPrice(Price finalPrice) {
     this.finalPrice = finalPrice;
   }
 
 
-  public CartItem finalPriceFormatted(String finalPriceFormatted) {
-    this.finalPriceFormatted = finalPriceFormatted;
-    return this;
-  }
-
-   /**
-   * Get finalPriceFormatted
-   * @return finalPriceFormatted
-  **/
-  @javax.annotation.Nullable
-  public String getFinalPriceFormatted() {
-    return finalPriceFormatted;
-  }
-
-  public void setFinalPriceFormatted(String finalPriceFormatted) {
-    this.finalPriceFormatted = finalPriceFormatted;
-  }
-
-
-  public CartItem discounts(List<CartItemDiscountsInner> discounts) {
+  public CartItem discounts(Map<String, Price> discounts) {
     this.discounts = discounts;
     return this;
   }
 
-  public CartItem addDiscountsItem(CartItemDiscountsInner discountsItem) {
+  public CartItem putDiscountsItem(String key, Price discountsItem) {
     if (this.discounts == null) {
-      this.discounts = new ArrayList<>();
+      this.discounts = new HashMap<>();
     }
-    this.discounts.add(discountsItem);
+    this.discounts.put(key, discountsItem);
     return this;
   }
 
@@ -310,11 +263,11 @@ public class CartItem {
    * @return discounts
   **/
   @javax.annotation.Nullable
-  public List<CartItemDiscountsInner> getDiscounts() {
+  public Map<String, Price> getDiscounts() {
     return discounts;
   }
 
-  public void setDiscounts(List<CartItemDiscountsInner> discounts) {
+  public void setDiscounts(Map<String, Price> discounts) {
     this.discounts = discounts;
   }
 
@@ -336,15 +289,13 @@ public class CartItem {
         Objects.equals(this.contentSummary, cartItem.contentSummary) &&
         Objects.equals(this.contentCoverImageUrl, cartItem.contentCoverImageUrl) &&
         Objects.equals(this.listPrice, cartItem.listPrice) &&
-        Objects.equals(this.listPriceFormatted, cartItem.listPriceFormatted) &&
         Objects.equals(this.finalPrice, cartItem.finalPrice) &&
-        Objects.equals(this.finalPriceFormatted, cartItem.finalPriceFormatted) &&
         Objects.equals(this.discounts, cartItem.discounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cartItemId, contentType, contentId, contentTitle, contentSummary, contentCoverImageUrl, listPrice, listPriceFormatted, finalPrice, finalPriceFormatted, discounts);
+    return Objects.hash(cartItemId, contentType, contentId, contentTitle, contentSummary, contentCoverImageUrl, listPrice, finalPrice, discounts);
   }
 
   @Override
@@ -358,9 +309,7 @@ public class CartItem {
     sb.append("    contentSummary: ").append(toIndentedString(contentSummary)).append("\n");
     sb.append("    contentCoverImageUrl: ").append(toIndentedString(contentCoverImageUrl)).append("\n");
     sb.append("    listPrice: ").append(toIndentedString(listPrice)).append("\n");
-    sb.append("    listPriceFormatted: ").append(toIndentedString(listPriceFormatted)).append("\n");
     sb.append("    finalPrice: ").append(toIndentedString(finalPrice)).append("\n");
-    sb.append("    finalPriceFormatted: ").append(toIndentedString(finalPriceFormatted)).append("\n");
     sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -390,10 +339,8 @@ public class CartItem {
     openapiFields.add("content_title");
     openapiFields.add("content_summary");
     openapiFields.add("content_cover_image_url");
-    openapiFields.add("list_price");
-    openapiFields.add("list_price_formatted");
-    openapiFields.add("final_price");
-    openapiFields.add("final_price_formatted");
+    openapiFields.add("ListPrice");
+    openapiFields.add("FinalPrice");
     openapiFields.add("discounts");
 
     // a set of required properties/fields (JSON key names)
@@ -436,25 +383,13 @@ public class CartItem {
       if ((jsonObj.get("content_cover_image_url") != null && !jsonObj.get("content_cover_image_url").isJsonNull()) && !jsonObj.get("content_cover_image_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `content_cover_image_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("content_cover_image_url").toString()));
       }
-      if ((jsonObj.get("list_price_formatted") != null && !jsonObj.get("list_price_formatted").isJsonNull()) && !jsonObj.get("list_price_formatted").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `list_price_formatted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("list_price_formatted").toString()));
+      // validate the optional field `ListPrice`
+      if (jsonObj.get("ListPrice") != null && !jsonObj.get("ListPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("ListPrice"));
       }
-      if ((jsonObj.get("final_price_formatted") != null && !jsonObj.get("final_price_formatted").isJsonNull()) && !jsonObj.get("final_price_formatted").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `final_price_formatted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("final_price_formatted").toString()));
-      }
-      if (jsonObj.get("discounts") != null && !jsonObj.get("discounts").isJsonNull()) {
-        JsonArray jsonArraydiscounts = jsonObj.getAsJsonArray("discounts");
-        if (jsonArraydiscounts != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("discounts").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `discounts` to be an array in the JSON string but got `%s`", jsonObj.get("discounts").toString()));
-          }
-
-          // validate the optional field `discounts` (array)
-          for (int i = 0; i < jsonArraydiscounts.size(); i++) {
-            CartItemDiscountsInner.validateJsonElement(jsonArraydiscounts.get(i));
-          };
-        }
+      // validate the optional field `FinalPrice`
+      if (jsonObj.get("FinalPrice") != null && !jsonObj.get("FinalPrice").isJsonNull()) {
+        Price.validateJsonElement(jsonObj.get("FinalPrice"));
       }
   }
 
