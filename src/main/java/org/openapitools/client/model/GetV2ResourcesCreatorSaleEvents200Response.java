@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * GetV2ResourcesCreatorSaleEvents200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-13T10:35:05.977799Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-14T04:37:51.294805Z[Etc/UTC]")
 public class GetV2ResourcesCreatorSaleEvents200Response {
   /**
    * Gets or Sets result

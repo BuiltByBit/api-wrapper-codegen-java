@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * RichText
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-13T10:35:05.977799Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-14T04:37:51.294805Z[Etc/UTC]")
 public class RichText {
   public static final String SERIALIZED_NAME_HTML = "html";
   @SerializedName(SERIALIZED_NAME_HTML)
