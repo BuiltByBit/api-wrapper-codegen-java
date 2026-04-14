@@ -27,10 +27,13 @@ tags:
 - name: resources/creator
   x-page-title: Resources/Creator
 - name: resources/creator/bundles
+  x-parent: resources/creator
   x-page-title: Bundles
 - name: resources/creator/coupons
+  x-parent: resources/creator
   x-page-title: Coupons
 - name: resources/creator/sale-events
+  x-parent: resources/creator
   x-page-title: Sale Events
 - name: resources/discovery
   x-page-title: Resources/Discovery
