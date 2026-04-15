@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * GetV2ResourcesCreatorBatch200ResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-14T18:13:31.009132Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-15T04:38:00.884070Z[Etc/UTC]")
 public class GetV2ResourcesCreatorBatch200ResponseData {
   public static final String SERIALIZED_NAME_BATCHES = "batches";
   @SerializedName(SERIALIZED_NAME_BATCHES)
