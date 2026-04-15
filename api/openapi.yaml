@@ -874,7 +874,6 @@ paths:
       - token: []
       summary: Fetch a list of your bundles
       tags:
-      - resources/creator
       - resources/creator/bundles
       x-stoplight:
         id: 8rr5mssb968xc
@@ -903,7 +902,6 @@ paths:
       - token: []
       summary: Fetch a list of your bundle entries
       tags:
-      - resources/creator
       - resources/creator/bundles
       x-stoplight:
         id: ppk1s05ia84fa
