@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import org.openapitools.client.model.Price;
+import org.openapitools.client.model.Resource;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,13 +49,17 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Addon
+ * Supported &#39;with&#39; hints: - Resource: the resource this addon belongs to
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-15T10:08:03.846487Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-15T15:26:09.025286Z[Etc/UTC]")
 public class Addon {
   public static final String SERIALIZED_NAME_ADDON_ID = "addon_id";
   @SerializedName(SERIALIZED_NAME_ADDON_ID)
   private Integer addonId;
+
+  public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
+  @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
+  private Integer resourceId;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -140,6 +145,10 @@ public class Addon {
   @SerializedName(SERIALIZED_NAME_FINAL_PRICE)
   private Price finalPrice;
 
+  public static final String SERIALIZED_NAME_RESOURCE = "Resource";
+  @SerializedName(SERIALIZED_NAME_RESOURCE)
+  private Resource resource;
+
   public Addon() {
   }
 
@@ -159,6 +168,25 @@ public class Addon {
 
   public void setAddonId(Integer addonId) {
     this.addonId = addonId;
+  }
+
+
+  public Addon resourceId(Integer resourceId) {
+    this.resourceId = resourceId;
+    return this;
+  }
+
+   /**
+   * Get resourceId
+   * @return resourceId
+  **/
+  @javax.annotation.Nullable
+  public Integer getResourceId() {
+    return resourceId;
+  }
+
+  public void setResourceId(Integer resourceId) {
+    this.resourceId = resourceId;
   }
 
 
@@ -314,6 +342,25 @@ public class Addon {
   }
 
 
+  public Addon resource(Resource resource) {
+    this.resource = resource;
+    return this;
+  }
+
+   /**
+   * Get resource
+   * @return resource
+  **/
+  @javax.annotation.Nullable
+  public Resource getResource() {
+    return resource;
+  }
+
+  public void setResource(Resource resource) {
+    this.resource = resource;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -325,6 +372,7 @@ public class Addon {
     }
     Addon addon = (Addon) o;
     return Objects.equals(this.addonId, addon.addonId) &&
+        Objects.equals(this.resourceId, addon.resourceId) &&
         Objects.equals(this.title, addon.title) &&
         Objects.equals(this.description, addon.description) &&
         Objects.equals(this.type, addon.type) &&
@@ -332,12 +380,13 @@ public class Addon {
         Objects.equals(this.displayOrder, addon.displayOrder) &&
         Objects.equals(this._default, addon._default) &&
         Objects.equals(this.listPrice, addon.listPrice) &&
-        Objects.equals(this.finalPrice, addon.finalPrice);
+        Objects.equals(this.finalPrice, addon.finalPrice) &&
+        Objects.equals(this.resource, addon.resource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addonId, title, description, type, state, displayOrder, _default, listPrice, finalPrice);
+    return Objects.hash(addonId, resourceId, title, description, type, state, displayOrder, _default, listPrice, finalPrice, resource);
   }
 
   @Override
@@ -345,6 +394,7 @@ public class Addon {
     StringBuilder sb = new StringBuilder();
     sb.append("class Addon {\n");
     sb.append("    addonId: ").append(toIndentedString(addonId)).append("\n");
+    sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
@@ -353,6 +403,7 @@ public class Addon {
     sb.append("    _default: ").append(toIndentedString(_default)).append("\n");
     sb.append("    listPrice: ").append(toIndentedString(listPrice)).append("\n");
     sb.append("    finalPrice: ").append(toIndentedString(finalPrice)).append("\n");
+    sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -376,6 +427,7 @@ public class Addon {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("addon_id");
+    openapiFields.add("resource_id");
     openapiFields.add("title");
     openapiFields.add("description");
     openapiFields.add("type");
@@ -384,6 +436,7 @@ public class Addon {
     openapiFields.add("default");
     openapiFields.add("ListPrice");
     openapiFields.add("FinalPrice");
+    openapiFields.add("Resource");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -433,6 +486,10 @@ public class Addon {
       // validate the optional field `FinalPrice`
       if (jsonObj.get("FinalPrice") != null && !jsonObj.get("FinalPrice").isJsonNull()) {
         Price.validateJsonElement(jsonObj.get("FinalPrice"));
+      }
+      // validate the optional field `Resource`
+      if (jsonObj.get("Resource") != null && !jsonObj.get("Resource").isJsonNull()) {
+        Resource.validateJsonElement(jsonObj.get("Resource"));
       }
   }
 
