@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-15T15:26:09.025286Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-16T04:44:02.825591Z[Etc/UTC]")
 public class Filter {
   public static final String SERIALIZED_NAME_FILTER_ID = "filter_id";
   @SerializedName(SERIALIZED_NAME_FILTER_ID)

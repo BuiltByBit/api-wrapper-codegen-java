@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Supported &#39;with&#39; hints: - Resource: the resource this addon belongs to
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-15T15:26:09.025286Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-16T04:44:02.825591Z[Etc/UTC]")
 public class Addon {
   public static final String SERIALIZED_NAME_ADDON_ID = "addon_id";
   @SerializedName(SERIALIZED_NAME_ADDON_ID)
