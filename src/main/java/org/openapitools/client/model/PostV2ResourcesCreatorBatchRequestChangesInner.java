@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2ResourcesCreatorBatchRequestChangesInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-17T04:41:23.109629Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-18T04:23:58.993525Z[Etc/UTC]")
 public class PostV2ResourcesCreatorBatchRequestChangesInner {
   public static final String SERIALIZED_NAME_FIELD = "field";
   @SerializedName(SERIALIZED_NAME_FIELD)
