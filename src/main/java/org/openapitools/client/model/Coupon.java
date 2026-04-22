@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * Coupon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-21T04:41:08.093076Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-22T04:38:38.462775Z[Etc/UTC]")
 public class Coupon {
   public static final String SERIALIZED_NAME_COUPON_ID = "coupon_id";
   @SerializedName(SERIALIZED_NAME_COUPON_ID)

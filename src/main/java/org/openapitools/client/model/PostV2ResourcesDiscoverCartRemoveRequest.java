@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2ResourcesDiscoverCartRemoveRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-21T04:41:08.093076Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-22T04:38:38.462775Z[Etc/UTC]")
 public class PostV2ResourcesDiscoverCartRemoveRequest {
   public static final String SERIALIZED_NAME_CART_ITEM_ID = "cart_item_id";
   @SerializedName(SERIALIZED_NAME_CART_ITEM_ID)

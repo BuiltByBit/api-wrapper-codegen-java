@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * BundleEntry
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-21T04:41:08.093076Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-22T04:38:38.462775Z[Etc/UTC]")
 public class BundleEntry {
   public static final String SERIALIZED_NAME_ENTRY_ID = "entry_id";
   @SerializedName(SERIALIZED_NAME_ENTRY_ID)
