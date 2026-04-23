@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * GetV2AnalyticsSingle200ResponseDataPeriod
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-22T04:38:38.462775Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-23T04:43:30.093254Z[Etc/UTC]")
 public class GetV2AnalyticsSingle200ResponseDataPeriod {
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)
