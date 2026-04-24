@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * Analytic
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-23T04:43:30.093254Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-24T04:47:05.486185Z[Etc/UTC]")
 public class Analytic {
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
