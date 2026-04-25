@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * Supported &#39;with&#39; hints: - &#39;Buyer&#39;: the buyer of the purchase - &#39;Seller&#39;: the seller of the purchase - &#39;Resource&#39;: the resource purchased, if content_type &#x3D; &#39;resource&#39; - &#39;Addon&#39;: the addon purchased, if content_type &#x3D; &#39;addon&#39;
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-24T04:47:05.486185Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-25T04:28:11.769954Z[Etc/UTC]")
 public class Purchase {
   public static final String SERIALIZED_NAME_PURCHASE_ID = "purchase_id";
   @SerializedName(SERIALIZED_NAME_PURCHASE_ID)
