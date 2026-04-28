@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-04-28T05:23:11.630348Z[Etc/UTC]
+  - Build date: 2026-04-28T14:55:19.894088Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
@@ -127,6 +127,7 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**getV2Analytics**](docs/AnalyticsApi.md#getV2Analytics) | **GET** /v2/analytics | Fetch a list of analytics definitions
 *AnalyticsApi* | [**getV2AnalyticsGraph**](docs/AnalyticsApi.md#getV2AnalyticsGraph) | **GET** /v2/analytics/graph | Fetch analytics graph data
 *AnalyticsApi* | [**getV2AnalyticsSingle**](docs/AnalyticsApi.md#getV2AnalyticsSingle) | **GET** /v2/analytics/single | Fetch a single analytics value
+*DeploymentsApi* | [**postV2DeploymentsUpgrade**](docs/DeploymentsApi.md#postV2DeploymentsUpgrade) | **POST** /v2/deployments/upgrade | Upgrade a short-lived token
 *EventsApi* | [**getV2Events**](docs/EventsApi.md#getV2Events) | **GET** /v2/events | Fetch a list of pending events
 *EventsApi* | [**postV2EventsComplete**](docs/EventsApi.md#postV2EventsComplete) | **POST** /v2/events/complete | Mark events as complete
 *HealthApi* | [**getV2Health**](docs/HealthApi.md#getV2Health) | **GET** /v2/health | Retrieve a health status
@@ -243,6 +244,10 @@ Class | Method | HTTP request | Description
  - [License](docs/License.md)
  - [ListStats](docs/ListStats.md)
  - [Member](docs/Member.md)
+ - [PostV2DeploymentsUpgrade200Response](docs/PostV2DeploymentsUpgrade200Response.md)
+ - [PostV2DeploymentsUpgrade200ResponseData](docs/PostV2DeploymentsUpgrade200ResponseData.md)
+ - [PostV2DeploymentsUpgrade200ResponseDataPreauthorize](docs/PostV2DeploymentsUpgrade200ResponseDataPreauthorize.md)
+ - [PostV2DeploymentsUpgradeRequest](docs/PostV2DeploymentsUpgradeRequest.md)
  - [PostV2EventsComplete200Response](docs/PostV2EventsComplete200Response.md)
  - [PostV2EventsCompleteRequest](docs/PostV2EventsCompleteRequest.md)
  - [PostV2ResourcesCreatorBatch200Response](docs/PostV2ResourcesCreatorBatch200Response.md)

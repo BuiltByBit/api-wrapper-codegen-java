@@ -17,6 +17,7 @@ servers:
   url: https://api.builtbybit.com/
 tags:
 - name: analytics
+- name: deployments
 - name: events
 - name: free
 - name: health
@@ -1193,6 +1194,32 @@ paths:
       - resources/creator
       x-stoplight:
         id: qa9wz2n2gcuzh
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/deployments/upgrade:
+    post:
+      description: ""
+      operationId: post-v2-deployments-upgrade
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_deployments_upgrade_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_v2_deployments_upgrade_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Upgrade a short-lived token
+      tags:
+      - deployments
+      x-stoplight:
+        id: ghbjy9uq3jfx3
       x-content-type: application/json
       x-accepts: application/json
 components:
@@ -12430,6 +12457,104 @@ components:
             id: 27p3h051x4t3x
         data:
           $ref: '#/components/schemas/post_v2_resources_creator_batch_200_response_data'
+      type: object
+    post_v2_deployments_upgrade_request:
+      properties:
+        preauthorize:
+          default: false
+          description: Whether or not to pre-authorize OAuth2 credentials for the
+            deployment token owner.
+          type: boolean
+          x-stoplight:
+            id: payx433zsr15n
+        scopes:
+          description: A space-separated list of scopes to request if pre-authorizing.
+          type: string
+          x-stoplight:
+            id: b7f6hxf9pefnu
+      type: object
+    post_v2_deployments_upgrade_200_response_data_preauthorize:
+      example:
+        access_token: access_token
+        refresh_token: refresh_token
+        scope: scope
+        token_type: token_type
+        expires_in: 0
+      properties:
+        access_token:
+          type: string
+          x-stoplight:
+            id: 8njcqzl5jvxcm
+        expires_in:
+          type: integer
+          x-stoplight:
+            id: 1on2vxzqw6v40
+        refresh_token:
+          type: string
+          x-stoplight:
+            id: 4afqcwziwp9o2
+        scope:
+          type: string
+          x-stoplight:
+            id: pjxn27l995icp
+        token_type:
+          type: string
+          x-stoplight:
+            id: 4s20opk9vet1a
+      type: object
+      x-stoplight:
+        id: fblre81tijs9l
+    post_v2_deployments_upgrade_200_response_data:
+      example:
+        oauth2_client: oauth2_client
+        oauth2_secret: oauth2_secret
+        preauthorize:
+          access_token: access_token
+          refresh_token: refresh_token
+          scope: scope
+          token_type: token_type
+          expires_in: 0
+        token: token
+      properties:
+        token:
+          type: string
+          x-stoplight:
+            id: 1lxjwh0m6s2ie
+        oauth2_client:
+          type: string
+          x-stoplight:
+            id: 1ocwr8tffvisg
+        oauth2_secret:
+          type: string
+          x-stoplight:
+            id: qfjhvsovyv3ng
+        preauthorize:
+          $ref: '#/components/schemas/post_v2_deployments_upgrade_200_response_data_preauthorize'
+      type: object
+      x-stoplight:
+        id: m9d8sbnchp6at
+    post_v2_deployments_upgrade_200_response:
+      example:
+        result: success
+        data:
+          oauth2_client: oauth2_client
+          oauth2_secret: oauth2_secret
+          preauthorize:
+            access_token: access_token
+            refresh_token: refresh_token
+            scope: scope
+            token_type: token_type
+            expires_in: 0
+          token: token
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: sa40b4ryvtqtq
+        data:
+          $ref: '#/components/schemas/post_v2_deployments_upgrade_200_response_data'
       type: object
     Analytic_filters_value:
       example:
