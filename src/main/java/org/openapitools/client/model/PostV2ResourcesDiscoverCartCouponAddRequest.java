@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2ResourcesDiscoverCartCouponAddRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-27T04:59:59.544100Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-28T05:23:11.630348Z[Etc/UTC]")
 public class PostV2ResourcesDiscoverCartCouponAddRequest {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
