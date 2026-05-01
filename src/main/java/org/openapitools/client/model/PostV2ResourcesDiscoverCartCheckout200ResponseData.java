@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2ResourcesDiscoverCartCheckout200ResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-30T05:22:56.250003Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-01T05:34:49.360726Z[Etc/UTC]")
 public class PostV2ResourcesDiscoverCartCheckout200ResponseData {
   /**
    * &#x60;initiated&#x60; - the checkout request was successful and returned a Tebex basket identifier stored in the &#x60;ident&#x60; field.    &#x60;bypassed&#x60; - the checkout was successful but no Tebex basket identifier was generated as it was not needed (perhaps because the buyer used a 100% off coupon).
