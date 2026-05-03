@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * Store
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-02T04:52:01.182854Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-03T05:22:05.839495Z[Etc/UTC]")
 public class Store {
   public static final String SERIALIZED_NAME_STORE_ID = "store_id";
   @SerializedName(SERIALIZED_NAME_STORE_ID)
