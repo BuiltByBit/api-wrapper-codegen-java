@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2ResourcesCreatorBatchRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-03T05:22:05.839495Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-04T05:25:14.792605Z[Etc/UTC]")
 public class PostV2ResourcesCreatorBatchRequest {
   public static final String SERIALIZED_NAME_RESOURCES = "resources";
   @SerializedName(SERIALIZED_NAME_RESOURCES)
