@@ -90,7 +90,7 @@ public class Example {
 
 <a id="getResourcesDiscoverResources"></a>
 # **getResourcesDiscoverResources**
-> GetResourcesDiscoverResources200Response getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies)
+> GetResourcesDiscoverResources200Response getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds)
 
 Fetch a list of resources
 
@@ -124,9 +124,11 @@ public class Example {
     String resourceIds = "resourceIds_example"; // String | A comma-separated list of resource IDs to filter on.
     Integer page = 1; // Integer | The page number to return.
     BigDecimal perPage = new BigDecimal("25"); // BigDecimal | The number of resources to return per page.
-    Boolean noDependencies = true; // Boolean | 
+    Boolean noDependencies = true; // Boolean | Whether or not to exclude resources with dependencies listed.
+    String excludedResourceIds = "excludedResourceIds_example"; // String | A comma-separated list of resource IDs to exclude. No filter will be applied if empty.
+    String excludedCreatorIds = "excludedCreatorIds_example"; // String | A comma-separated list of creator IDs to exclude. No filter will be applied if empty.
     try {
-      GetResourcesDiscoverResources200Response result = apiInstance.getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies);
+      GetResourcesDiscoverResources200Response result = apiInstance.getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ResourcesDiscoveryApi#getResourcesDiscoverResources");
@@ -149,7 +151,9 @@ public class Example {
 | **resourceIds** | **String**| A comma-separated list of resource IDs to filter on. | [optional] |
 | **page** | **Integer**| The page number to return. | [optional] [default to 1] |
 | **perPage** | **BigDecimal**| The number of resources to return per page. | [optional] [default to 25] |
-| **noDependencies** | **Boolean**|  | [optional] |
+| **noDependencies** | **Boolean**| Whether or not to exclude resources with dependencies listed. | [optional] |
+| **excludedResourceIds** | **String**| A comma-separated list of resource IDs to exclude. No filter will be applied if empty. | [optional] |
+| **excludedCreatorIds** | **String**| A comma-separated list of creator IDs to exclude. No filter will be applied if empty. | [optional] |
 
 ### Return type
 

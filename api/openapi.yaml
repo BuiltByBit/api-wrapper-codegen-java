@@ -164,12 +164,31 @@ paths:
           maximum: 100
           type: number
         style: form
-      - explode: true
+      - description: Whether or not to exclude resources with dependencies listed.
+        explode: true
         in: query
         name: no_dependencies
         required: false
         schema:
           type: boolean
+        style: form
+      - description: A comma-separated list of resource IDs to exclude. No filter
+          will be applied if empty.
+        explode: true
+        in: query
+        name: excluded_resource_ids
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A comma-separated list of creator IDs to exclude. No filter will
+          be applied if empty.
+        explode: true
+        in: query
+        name: excluded_creator_ids
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":

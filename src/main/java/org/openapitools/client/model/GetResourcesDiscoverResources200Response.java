@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * GetResourcesDiscoverResources200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-05T04:53:38.234106Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-12T15:39:14.172923Z[Etc/UTC]")
 public class GetResourcesDiscoverResources200Response {
   public static final String SERIALIZED_NAME_RESULT = "result";
   @SerializedName(SERIALIZED_NAME_RESULT)

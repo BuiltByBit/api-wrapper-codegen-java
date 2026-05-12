@@ -231,7 +231,9 @@ public class ResourcesDiscoveryApi {
      * @param resourceIds A comma-separated list of resource IDs to filter on. (optional)
      * @param page The page number to return. (optional, default to 1)
      * @param perPage The number of resources to return per page. (optional, default to 25)
-     * @param noDependencies  (optional)
+     * @param noDependencies Whether or not to exclude resources with dependencies listed. (optional)
+     * @param excludedResourceIds A comma-separated list of resource IDs to exclude. No filter will be applied if empty. (optional)
+     * @param excludedCreatorIds A comma-separated list of creator IDs to exclude. No filter will be applied if empty. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -243,7 +245,7 @@ public class ResourcesDiscoveryApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getResourcesDiscoverResourcesCall(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getResourcesDiscoverResourcesCall(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -296,6 +298,14 @@ public class ResourcesDiscoveryApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("no_dependencies", noDependencies));
         }
 
+        if (excludedResourceIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("excluded_resource_ids", excludedResourceIds));
+        }
+
+        if (excludedCreatorIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("excluded_creator_ids", excludedCreatorIds));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -316,8 +326,8 @@ public class ResourcesDiscoveryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getResourcesDiscoverResourcesValidateBeforeCall(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, final ApiCallback _callback) throws ApiException {
-        return getResourcesDiscoverResourcesCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, _callback);
+    private okhttp3.Call getResourcesDiscoverResourcesValidateBeforeCall(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, final ApiCallback _callback) throws ApiException {
+        return getResourcesDiscoverResourcesCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, _callback);
 
     }
 
@@ -330,7 +340,9 @@ public class ResourcesDiscoveryApi {
      * @param resourceIds A comma-separated list of resource IDs to filter on. (optional)
      * @param page The page number to return. (optional, default to 1)
      * @param perPage The number of resources to return per page. (optional, default to 25)
-     * @param noDependencies  (optional)
+     * @param noDependencies Whether or not to exclude resources with dependencies listed. (optional)
+     * @param excludedResourceIds A comma-separated list of resource IDs to exclude. No filter will be applied if empty. (optional)
+     * @param excludedCreatorIds A comma-separated list of creator IDs to exclude. No filter will be applied if empty. (optional)
      * @return GetResourcesDiscoverResources200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -341,8 +353,8 @@ public class ResourcesDiscoveryApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public GetResourcesDiscoverResources200Response getResourcesDiscoverResources(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies) throws ApiException {
-        ApiResponse<GetResourcesDiscoverResources200Response> localVarResp = getResourcesDiscoverResourcesWithHttpInfo(categoryId, with, filters, resourceIds, page, perPage, noDependencies);
+    public GetResourcesDiscoverResources200Response getResourcesDiscoverResources(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds) throws ApiException {
+        ApiResponse<GetResourcesDiscoverResources200Response> localVarResp = getResourcesDiscoverResourcesWithHttpInfo(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds);
         return localVarResp.getData();
     }
 
@@ -355,7 +367,9 @@ public class ResourcesDiscoveryApi {
      * @param resourceIds A comma-separated list of resource IDs to filter on. (optional)
      * @param page The page number to return. (optional, default to 1)
      * @param perPage The number of resources to return per page. (optional, default to 25)
-     * @param noDependencies  (optional)
+     * @param noDependencies Whether or not to exclude resources with dependencies listed. (optional)
+     * @param excludedResourceIds A comma-separated list of resource IDs to exclude. No filter will be applied if empty. (optional)
+     * @param excludedCreatorIds A comma-separated list of creator IDs to exclude. No filter will be applied if empty. (optional)
      * @return ApiResponse&lt;GetResourcesDiscoverResources200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -366,8 +380,8 @@ public class ResourcesDiscoveryApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetResourcesDiscoverResources200Response> getResourcesDiscoverResourcesWithHttpInfo(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies) throws ApiException {
-        okhttp3.Call localVarCall = getResourcesDiscoverResourcesValidateBeforeCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, null);
+    public ApiResponse<GetResourcesDiscoverResources200Response> getResourcesDiscoverResourcesWithHttpInfo(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds) throws ApiException {
+        okhttp3.Call localVarCall = getResourcesDiscoverResourcesValidateBeforeCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, null);
         Type localVarReturnType = new TypeToken<GetResourcesDiscoverResources200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -381,7 +395,9 @@ public class ResourcesDiscoveryApi {
      * @param resourceIds A comma-separated list of resource IDs to filter on. (optional)
      * @param page The page number to return. (optional, default to 1)
      * @param perPage The number of resources to return per page. (optional, default to 25)
-     * @param noDependencies  (optional)
+     * @param noDependencies Whether or not to exclude resources with dependencies listed. (optional)
+     * @param excludedResourceIds A comma-separated list of resource IDs to exclude. No filter will be applied if empty. (optional)
+     * @param excludedCreatorIds A comma-separated list of creator IDs to exclude. No filter will be applied if empty. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -393,9 +409,9 @@ public class ResourcesDiscoveryApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getResourcesDiscoverResourcesAsync(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, final ApiCallback<GetResourcesDiscoverResources200Response> _callback) throws ApiException {
+    public okhttp3.Call getResourcesDiscoverResourcesAsync(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, final ApiCallback<GetResourcesDiscoverResources200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getResourcesDiscoverResourcesValidateBeforeCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, _callback);
+        okhttp3.Call localVarCall = getResourcesDiscoverResourcesValidateBeforeCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, _callback);
         Type localVarReturnType = new TypeToken<GetResourcesDiscoverResources200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
