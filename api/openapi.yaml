@@ -27,6 +27,9 @@ tags:
   x-page-title: Resources/Buyer
 - name: resources/creator
   x-page-title: Resources/Creator
+- name: resources/creator/batch
+  x-parent: resources/creator
+  x-page-title: Batch editing
 - name: resources/creator/bundles
   x-parent: resources/creator
   x-page-title: Bundles
@@ -36,8 +39,11 @@ tags:
 - name: resources/creator/sale-events
   x-parent: resources/creator
   x-page-title: Sale Events
-- name: resources/discovery
-  x-page-title: Resources/Discovery
+- name: resources/discover
+  x-page-title: Resources/Discover
+- name: resources/discover/cart
+  x-parent: resources/discover
+  x-page-title: Cart
 paths:
   /oauth2/token:
     post:
@@ -213,7 +219,7 @@ paths:
       - token: []
       summary: Fetch a list of resources
       tags:
-      - resources/discovery
+      - resources/discover
       x-stoplight:
         id: p24j0imx0z6cc
       x-accepts: application/json
@@ -265,7 +271,7 @@ paths:
       - token: []
       summary: Fetch a list of categories
       tags:
-      - resources/discovery
+      - resources/discover
       x-stoplight:
         id: 1wpuixx1xd8vo
       x-accepts: application/json
@@ -327,7 +333,7 @@ paths:
       - oauth2: []
       summary: Fetch a list of the user's licenses
       tags:
-      - resources/discovery
+      - resources/discover
       x-stoplight:
         id: 5ulsft847tbha
       x-accepts: application/json
@@ -346,7 +352,7 @@ paths:
       - oauth2: []
       summary: View the user's cart items
       tags:
-      - resources/discovery
+      - resources/discover/cart
       x-stoplight:
         id: eikr4b3wx2qem
       x-accepts: application/json
@@ -373,7 +379,7 @@ paths:
       - oauth2: []
       summary: Add items to a user's cart
       tags:
-      - resources/discovery
+      - resources/discover/cart
       x-stoplight:
         id: 91lnfa7dxz87w
       x-content-type: application/json
@@ -397,7 +403,7 @@ paths:
       - oauth2: []
       summary: Initiate a checkout of a user's cart
       tags:
-      - resources/discovery
+      - resources/discover/cart
       x-stoplight:
         id: 0x1pcudppx63b
       x-content-type: application/json
@@ -421,7 +427,7 @@ paths:
       - oauth2: []
       summary: Remove an item from the user's cart
       tags:
-      - resources/discovery
+      - resources/discover/cart
       x-stoplight:
         id: 12m9v5ctkpynt
       x-content-type: application/json
@@ -445,7 +451,7 @@ paths:
       - oauth2: []
       summary: Add a coupon to the user's cart
       tags:
-      - resources/discovery
+      - resources/discover/cart
       x-stoplight:
         id: g2gmfc32a3a14
       x-content-type: application/json
@@ -469,7 +475,7 @@ paths:
       - oauth2: []
       summary: Remove a coupon from the user's cart
       tags:
-      - resources/discovery
+      - resources/discover/cart
       x-stoplight:
         id: bbvokgafxl9nf
       x-content-type: application/json
@@ -950,7 +956,6 @@ paths:
       - token: []
       summary: Fetch a list of your sale events
       tags:
-      - resources/creator
       - resources/creator/sale-events
       x-stoplight:
         id: e153a7jk4duox
@@ -979,7 +984,6 @@ paths:
       - token: []
       summary: Fetch a list of your sale event entries
       tags:
-      - resources/creator
       - resources/creator/sale-events
       x-stoplight:
         id: gxhblj0l41ot9
@@ -1063,7 +1067,6 @@ paths:
       - token: []
       summary: Fetch a list of your coupons
       tags:
-      - resources/creator
       - resources/creator/coupons
       x-stoplight:
         id: w4lgpl86j65rj
@@ -1088,7 +1091,6 @@ paths:
       - token: []
       summary: Create a new coupon
       tags:
-      - resources/creator
       - resources/creator/coupons
       x-stoplight:
         id: ingjrcbpj58sm
@@ -1118,7 +1120,6 @@ paths:
       - token: []
       summary: Fetch a list of your coupon entries
       tags:
-      - resources/creator
       - resources/creator/coupons
       x-stoplight:
         id: wi9f7x6az41t3
@@ -1183,7 +1184,7 @@ paths:
       - token: []
       summary: Fetch a list of your batches edits
       tags:
-      - resources/creator
+      - resources/creator/batch
       x-stoplight:
         id: icz9ioupc63pq
       x-accepts: application/json
@@ -1210,7 +1211,7 @@ paths:
       security: []
       summary: Submit a new batch edit
       tags:
-      - resources/creator
+      - resources/creator/batch
       x-stoplight:
         id: qa9wz2n2gcuzh
       x-content-type: application/json
