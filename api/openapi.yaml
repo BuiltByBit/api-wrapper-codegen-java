@@ -44,6 +44,8 @@ tags:
 - name: resources/discover/cart
   x-parent: resources/discover
   x-page-title: Cart
+- name: resources/embed
+  x-page-title: Resources/Embed
 paths:
   /oauth2/token:
     post:
@@ -1014,9 +1016,9 @@ paths:
       x-stoplight:
         id: 2srju4vu6icgb
       x-accepts: application/json
-  /v2/resources/buyer/latest:
+  /v2/resources/embed/latest:
     get:
-      operationId: get-v2-resources-buyer-latest
+      operationId: get-v2-resources-embed-latest
       parameters:
       - description: "32 character hash provided by an anti-piracy placeholder of\
           \ the NONCE type. Must be from a resource download (cannot be an addon download’\
@@ -1033,13 +1035,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/get_v2_resources_buyer_latest_200_response'
+                $ref: '#/components/schemas/get_v2_resources_embed_latest_200_response'
           description: OK
       security:
       - token: []
       summary: Fetches the latest versions & license information
       tags:
-      - resources/buyer
+      - resources/embed
       x-stoplight:
         id: z2obo5xmlssl1
       x-accepts: application/json
@@ -1242,6 +1244,58 @@ paths:
         id: ghbjy9uq3jfx3
       x-content-type: application/json
       x-accepts: application/json
+  /v2/resources/embed/download:
+    get:
+      operationId: get-v2-resources-embed-download
+      parameters:
+      - description: The token provided when submitting a download request.
+        explode: true
+        in: query
+        name: token
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_embed_download_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch the status of a download request
+      tags:
+      - resources/embed
+      x-stoplight:
+        id: 91tvd6cd1au67
+      x-accepts: application/json
+    post:
+      description: "Supported content types:\r\n- 'resource_version'\r\n- 'api_asset'"
+      operationId: post-v2-resources-embed-download
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_resources_embed_download_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_v2_resources_embed_download_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Submit a new download request
+      tags:
+      - resources/embed
+      x-stoplight:
+        id: s4z1rvddmo5wv
+      x-content-type: application/json
+      x-accepts: application/json
+  /2/resources/embed/download/poll: {}
 components:
   examples: {}
   parameters:
@@ -3896,6 +3950,60 @@ components:
       type: object
       x-stoplight:
         id: sm1s0a4gbjwm0
+    DownloadRequest:
+      example:
+        expires: 5
+        content_type: content_type
+        content_id: 6
+        user_id: 1
+        download_request_id: 0
+        token: token
+      properties:
+        download_request_id:
+          type: integer
+          x-stoplight:
+            id: z6baz63i9udyo
+        content_type:
+          type: string
+          x-stoplight:
+            id: frcsm50vdvhph
+        content_id:
+          type: integer
+          x-stoplight:
+            id: owix1glw5uvmy
+        user_id:
+          type: integer
+          x-stoplight:
+            id: f8isx4gucnmeq
+        token:
+          type: string
+          x-stoplight:
+            id: 1vj7r96ijkvox
+        expires:
+          type: integer
+          x-stoplight:
+            id: hi7dowe54f9d7
+      title: DownloadRequest
+      type: object
+      x-stoplight:
+        id: 6boevaquo14l2
+    DownloadStatus:
+      example:
+        retry: true
+        url: url
+      properties:
+        retry:
+          type: boolean
+          x-stoplight:
+            id: 50o4464lwv8aq
+        url:
+          type: string
+          x-stoplight:
+            id: 8jnp7b7asrbwx
+      title: DownloadResponse
+      type: object
+      x-stoplight:
+        id: qc3ai0naipzva
     get_oauth2_token_request:
       properties:
         grant_type:
@@ -10994,7 +11102,7 @@ components:
         data:
           $ref: '#/components/schemas/get_v2_resources_creator_reviews_200_response_data'
       type: object
-    get_v2_resources_buyer_latest_200_response_data:
+    get_v2_resources_embed_latest_200_response_data:
       example:
         current:
           Resource: null
@@ -11027,7 +11135,7 @@ components:
       type: object
       x-stoplight:
         id: 086gai3wsenos
-    get_v2_resources_buyer_latest_200_response:
+    get_v2_resources_embed_latest_200_response:
       example:
         result: success
         data:
@@ -11058,7 +11166,7 @@ components:
           x-stoplight:
             id: xe86bnx44ra3f
         data:
-          $ref: '#/components/schemas/get_v2_resources_buyer_latest_200_response_data'
+          $ref: '#/components/schemas/get_v2_resources_embed_latest_200_response_data'
       type: object
     get_v2_resources_creator_coupons_200_response_data:
       example:
@@ -12575,6 +12683,89 @@ components:
             id: sa40b4ryvtqtq
         data:
           $ref: '#/components/schemas/post_v2_deployments_upgrade_200_response_data'
+      type: object
+    get_v2_resources_embed_download_200_response_data:
+      example:
+        status:
+          retry: true
+          url: url
+      properties:
+        status:
+          $ref: '#/components/schemas/DownloadStatus'
+      type: object
+      x-stoplight:
+        id: 4keoengwafhx0
+    get_v2_resources_embed_download_200_response:
+      example:
+        result: success
+        data:
+          status:
+            retry: true
+            url: url
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: k64eiks21w9ie
+        data:
+          $ref: '#/components/schemas/get_v2_resources_embed_download_200_response_data'
+      type: object
+    post_v2_resources_embed_download_request:
+      properties:
+        nonce:
+          type: string
+          x-stoplight:
+            id: en5yzy9rql7hf
+        content_type:
+          type: string
+          x-stoplight:
+            id: vpt6xh012cadg
+        content_id:
+          type: integer
+          x-stoplight:
+            id: 9ca2t84ofck5t
+      required:
+      - content_id
+      - content_type
+      - nonce
+      type: object
+    post_v2_resources_embed_download_200_response_data:
+      example:
+        request:
+          expires: 5
+          content_type: content_type
+          content_id: 6
+          user_id: 1
+          download_request_id: 0
+          token: token
+      properties:
+        request:
+          $ref: '#/components/schemas/DownloadRequest'
+      type: object
+      x-stoplight:
+        id: gttw71oxpvtmc
+    post_v2_resources_embed_download_200_response:
+      example:
+        result: success
+        data:
+          request:
+            expires: 5
+            content_type: content_type
+            content_id: 6
+            user_id: 1
+            download_request_id: 0
+            token: token
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: tff1v9q6hmuaz
+        data:
+          $ref: '#/components/schemas/post_v2_resources_embed_download_200_response_data'
       type: object
     Analytic_filters_value:
       example:

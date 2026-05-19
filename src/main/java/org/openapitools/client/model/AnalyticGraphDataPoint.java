@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * AnalyticGraphDataPoint
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-15T09:36:59.288654Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-19T10:29:07.570173Z[Etc/UTC]")
 public class AnalyticGraphDataPoint {
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)

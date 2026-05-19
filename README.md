@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-05-15T09:36:59.288654Z[Etc/UTC]
+  - Build date: 2026-05-19T10:29:07.570173Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
@@ -133,7 +133,6 @@ Class | Method | HTTP request | Description
 *HealthApi* | [**getV2Health**](docs/HealthApi.md#getV2Health) | **GET** /v2/health | Retrieve a health status
 *Oauth2Api* | [**getOauth2Token**](docs/Oauth2Api.md#getOauth2Token) | **POST** /oauth2/token | Request an access token using an existing grant
 *Oauth2Api* | [**getOauth2TokenRevoke**](docs/Oauth2Api.md#getOauth2TokenRevoke) | **POST** /oauth2/token/revoke | Revoke an existing access or refresh token
-*ResourcesBuyerApi* | [**getV2ResourcesBuyerLatest**](docs/ResourcesBuyerApi.md#getV2ResourcesBuyerLatest) | **GET** /v2/resources/buyer/latest | Fetches the latest versions &amp; license information
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorAddons**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorAddons) | **GET** /v2/resources/creator/addons | Fetch a list of your resources&#39; addons
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorLicenses**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorLicenses) | **GET** /v2/resources/creator/licenses | Fetch a list of your resources&#39; licenses
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorPurchases**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorPurchases) | **GET** /v2/resources/creator/purchases | Fetch a list of your resources&#39; purchases
@@ -161,6 +160,9 @@ Class | Method | HTTP request | Description
 *ResourcesDiscoverCartApi* | [**postV2ResourcesDiscoverCartCouponAdd**](docs/ResourcesDiscoverCartApi.md#postV2ResourcesDiscoverCartCouponAdd) | **POST** /v2/resources/discover/cart/coupon/add | Add a coupon to the user&#39;s cart
 *ResourcesDiscoverCartApi* | [**postV2ResourcesDiscoverCartCouponRemove**](docs/ResourcesDiscoverCartApi.md#postV2ResourcesDiscoverCartCouponRemove) | **POST** /v2/resources/discover/cart/coupon/remove | Remove a coupon from the user&#39;s cart
 *ResourcesDiscoverCartApi* | [**postV2ResourcesDiscoverCartRemove**](docs/ResourcesDiscoverCartApi.md#postV2ResourcesDiscoverCartRemove) | **POST** /v2/resources/discover/cart/remove | Remove an item from the user&#39;s cart
+*ResourcesEmbedApi* | [**getV2ResourcesEmbedDownload**](docs/ResourcesEmbedApi.md#getV2ResourcesEmbedDownload) | **GET** /v2/resources/embed/download | Fetch the status of a download request
+*ResourcesEmbedApi* | [**getV2ResourcesEmbedLatest**](docs/ResourcesEmbedApi.md#getV2ResourcesEmbedLatest) | **GET** /v2/resources/embed/latest | Fetches the latest versions &amp; license information
+*ResourcesEmbedApi* | [**postV2ResourcesEmbedDownload**](docs/ResourcesEmbedApi.md#postV2ResourcesEmbedDownload) | **POST** /v2/resources/embed/download | Submit a new download request
 
 
 ## Documentation for Models
@@ -179,6 +181,8 @@ Class | Method | HTTP request | Description
  - [Category](docs/Category.md)
  - [Coupon](docs/Coupon.md)
  - [CouponEntry](docs/CouponEntry.md)
+ - [DownloadRequest](docs/DownloadRequest.md)
+ - [DownloadStatus](docs/DownloadStatus.md)
  - [Event](docs/Event.md)
  - [Filter](docs/Filter.md)
  - [FilterChoice](docs/FilterChoice.md)
@@ -200,8 +204,6 @@ Class | Method | HTTP request | Description
  - [GetV2Events200Response](docs/GetV2Events200Response.md)
  - [GetV2Events200ResponseData](docs/GetV2Events200ResponseData.md)
  - [GetV2Health200Response](docs/GetV2Health200Response.md)
- - [GetV2ResourcesBuyerLatest200Response](docs/GetV2ResourcesBuyerLatest200Response.md)
- - [GetV2ResourcesBuyerLatest200ResponseData](docs/GetV2ResourcesBuyerLatest200ResponseData.md)
  - [GetV2ResourcesCreatorAddons200Response](docs/GetV2ResourcesCreatorAddons200Response.md)
  - [GetV2ResourcesCreatorAddons200ResponseData](docs/GetV2ResourcesCreatorAddons200ResponseData.md)
  - [GetV2ResourcesCreatorBatch200Response](docs/GetV2ResourcesCreatorBatch200Response.md)
@@ -236,6 +238,10 @@ Class | Method | HTTP request | Description
  - [GetV2ResourcesDiscoverCartView200ResponseData](docs/GetV2ResourcesDiscoverCartView200ResponseData.md)
  - [GetV2ResourcesDiscoverLicenses200Response](docs/GetV2ResourcesDiscoverLicenses200Response.md)
  - [GetV2ResourcesDiscoverLicenses200ResponseData](docs/GetV2ResourcesDiscoverLicenses200ResponseData.md)
+ - [GetV2ResourcesEmbedDownload200Response](docs/GetV2ResourcesEmbedDownload200Response.md)
+ - [GetV2ResourcesEmbedDownload200ResponseData](docs/GetV2ResourcesEmbedDownload200ResponseData.md)
+ - [GetV2ResourcesEmbedLatest200Response](docs/GetV2ResourcesEmbedLatest200Response.md)
+ - [GetV2ResourcesEmbedLatest200ResponseData](docs/GetV2ResourcesEmbedLatest200ResponseData.md)
  - [License](docs/License.md)
  - [ListStats](docs/ListStats.md)
  - [Member](docs/Member.md)
@@ -267,6 +273,9 @@ Class | Method | HTTP request | Description
  - [PostV2ResourcesDiscoverCartCouponRemoveRequest](docs/PostV2ResourcesDiscoverCartCouponRemoveRequest.md)
  - [PostV2ResourcesDiscoverCartRemove200Response](docs/PostV2ResourcesDiscoverCartRemove200Response.md)
  - [PostV2ResourcesDiscoverCartRemoveRequest](docs/PostV2ResourcesDiscoverCartRemoveRequest.md)
+ - [PostV2ResourcesEmbedDownload200Response](docs/PostV2ResourcesEmbedDownload200Response.md)
+ - [PostV2ResourcesEmbedDownload200ResponseData](docs/PostV2ResourcesEmbedDownload200ResponseData.md)
+ - [PostV2ResourcesEmbedDownloadRequest](docs/PostV2ResourcesEmbedDownloadRequest.md)
  - [Price](docs/Price.md)
  - [Purchase](docs/Purchase.md)
  - [Resource](docs/Resource.md)

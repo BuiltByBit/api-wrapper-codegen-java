@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2DeploymentsUpgrade200ResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-15T09:36:59.288654Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-19T10:29:07.570173Z[Etc/UTC]")
 public class PostV2DeploymentsUpgrade200ResponseData {
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)

@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Supported &#39;with&#39; hints: - &#39;Resource&#39;: the resource this version relates to
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-15T09:36:59.288654Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-19T10:29:07.570173Z[Etc/UTC]")
 public class Version {
   public static final String SERIALIZED_NAME_VERSION_ID = "version_id";
   @SerializedName(SERIALIZED_NAME_VERSION_ID)
