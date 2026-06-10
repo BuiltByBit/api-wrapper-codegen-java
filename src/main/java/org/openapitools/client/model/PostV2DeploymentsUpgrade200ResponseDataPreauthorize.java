@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2DeploymentsUpgrade200ResponseDataPreauthorize
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-19T10:29:07.570173Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-10T13:23:40.968029Z[Etc/UTC]")
 public class PostV2DeploymentsUpgrade200ResponseDataPreauthorize {
   public static final String SERIALIZED_NAME_ACCESS_TOKEN = "access_token";
   @SerializedName(SERIALIZED_NAME_ACCESS_TOKEN)

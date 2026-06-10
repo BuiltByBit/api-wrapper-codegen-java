@@ -84,7 +84,7 @@ public class Example {
 
 <a id="getV2ResourcesCreatorLicenses"></a>
 # **getV2ResourcesCreatorLicenses**
-> GetV2ResourcesCreatorLicenses200Response getV2ResourcesCreatorLicenses(resourceIds)
+> GetV2ResourcesCreatorLicenses200Response getV2ResourcesCreatorLicenses(resourceIds, buyerIds)
 
 Fetch a list of your resources&#39; licenses
 
@@ -111,8 +111,9 @@ public class Example {
 
     ResourcesCreatorApi apiInstance = new ResourcesCreatorApi(defaultClient);
     List resourceIds = new List(); // List | A comma-separated list of resource IDs to filter on. No filter is applied if empty.
+    List buyerIds = new List(); // List | A comma-separated list of buyer IDs to filter on. No filter is applied if empty.
     try {
-      GetV2ResourcesCreatorLicenses200Response result = apiInstance.getV2ResourcesCreatorLicenses(resourceIds);
+      GetV2ResourcesCreatorLicenses200Response result = apiInstance.getV2ResourcesCreatorLicenses(resourceIds, buyerIds);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ResourcesCreatorApi#getV2ResourcesCreatorLicenses");
@@ -130,6 +131,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **resourceIds** | [**List**](.md)| A comma-separated list of resource IDs to filter on. No filter is applied if empty. | [optional] |
+| **buyerIds** | [**List**](.md)| A comma-separated list of buyer IDs to filter on. No filter is applied if empty. | [optional] |
 
 ### Return type
 

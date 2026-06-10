@@ -205,6 +205,7 @@ public class ResourcesCreatorApi {
     /**
      * Build call for getV2ResourcesCreatorLicenses
      * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param buyerIds A comma-separated list of buyer IDs to filter on. No filter is applied if empty. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -214,7 +215,7 @@ public class ResourcesCreatorApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2ResourcesCreatorLicensesCall(List resourceIds, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getV2ResourcesCreatorLicensesCall(List resourceIds, List buyerIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -243,6 +244,10 @@ public class ResourcesCreatorApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("resource_ids", resourceIds));
         }
 
+        if (buyerIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("buyer_ids", buyerIds));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -263,8 +268,8 @@ public class ResourcesCreatorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV2ResourcesCreatorLicensesValidateBeforeCall(List resourceIds, final ApiCallback _callback) throws ApiException {
-        return getV2ResourcesCreatorLicensesCall(resourceIds, _callback);
+    private okhttp3.Call getV2ResourcesCreatorLicensesValidateBeforeCall(List resourceIds, List buyerIds, final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesCreatorLicensesCall(resourceIds, buyerIds, _callback);
 
     }
 
@@ -272,6 +277,7 @@ public class ResourcesCreatorApi {
      * Fetch a list of your resources&#39; licenses
      * 
      * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param buyerIds A comma-separated list of buyer IDs to filter on. No filter is applied if empty. (optional)
      * @return GetV2ResourcesCreatorLicenses200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -280,8 +286,8 @@ public class ResourcesCreatorApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public GetV2ResourcesCreatorLicenses200Response getV2ResourcesCreatorLicenses(List resourceIds) throws ApiException {
-        ApiResponse<GetV2ResourcesCreatorLicenses200Response> localVarResp = getV2ResourcesCreatorLicensesWithHttpInfo(resourceIds);
+    public GetV2ResourcesCreatorLicenses200Response getV2ResourcesCreatorLicenses(List resourceIds, List buyerIds) throws ApiException {
+        ApiResponse<GetV2ResourcesCreatorLicenses200Response> localVarResp = getV2ResourcesCreatorLicensesWithHttpInfo(resourceIds, buyerIds);
         return localVarResp.getData();
     }
 
@@ -289,6 +295,7 @@ public class ResourcesCreatorApi {
      * Fetch a list of your resources&#39; licenses
      * 
      * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param buyerIds A comma-separated list of buyer IDs to filter on. No filter is applied if empty. (optional)
      * @return ApiResponse&lt;GetV2ResourcesCreatorLicenses200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -297,8 +304,8 @@ public class ResourcesCreatorApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetV2ResourcesCreatorLicenses200Response> getV2ResourcesCreatorLicensesWithHttpInfo(List resourceIds) throws ApiException {
-        okhttp3.Call localVarCall = getV2ResourcesCreatorLicensesValidateBeforeCall(resourceIds, null);
+    public ApiResponse<GetV2ResourcesCreatorLicenses200Response> getV2ResourcesCreatorLicensesWithHttpInfo(List resourceIds, List buyerIds) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesCreatorLicensesValidateBeforeCall(resourceIds, buyerIds, null);
         Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorLicenses200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -307,6 +314,7 @@ public class ResourcesCreatorApi {
      * Fetch a list of your resources&#39; licenses (asynchronously)
      * 
      * @param resourceIds A comma-separated list of resource IDs to filter on. No filter is applied if empty. (optional)
+     * @param buyerIds A comma-separated list of buyer IDs to filter on. No filter is applied if empty. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -316,9 +324,9 @@ public class ResourcesCreatorApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2ResourcesCreatorLicensesAsync(List resourceIds, final ApiCallback<GetV2ResourcesCreatorLicenses200Response> _callback) throws ApiException {
+    public okhttp3.Call getV2ResourcesCreatorLicensesAsync(List resourceIds, List buyerIds, final ApiCallback<GetV2ResourcesCreatorLicenses200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV2ResourcesCreatorLicensesValidateBeforeCall(resourceIds, _callback);
+        okhttp3.Call localVarCall = getV2ResourcesCreatorLicensesValidateBeforeCall(resourceIds, buyerIds, _callback);
         Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorLicenses200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

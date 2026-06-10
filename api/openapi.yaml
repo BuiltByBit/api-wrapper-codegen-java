@@ -779,6 +779,15 @@ paths:
         schema:
           type: array
         style: form
+      - description: A comma-separated list of buyer IDs to filter on. No filter is
+          applied if empty.
+        explode: true
+        in: query
+        name: buyer_ids
+        required: false
+        schema:
+          type: array
+        style: form
       responses:
         "200":
           content:
