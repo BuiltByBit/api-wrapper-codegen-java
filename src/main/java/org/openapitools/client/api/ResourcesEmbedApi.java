@@ -27,10 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.GetV2ResourcesEmbedDownload200Response;
+import org.openapitools.client.model.GetV2ResourcesEmbedDownloadInitiate200Response;
+import org.openapitools.client.model.GetV2ResourcesEmbedDownloadStatus200Response;
 import org.openapitools.client.model.GetV2ResourcesEmbedLatest200Response;
-import org.openapitools.client.model.PostV2ResourcesEmbedDownload200Response;
-import org.openapitools.client.model.PostV2ResourcesEmbedDownloadRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -76,8 +75,10 @@ public class ResourcesEmbedApi {
     }
 
     /**
-     * Build call for getV2ResourcesEmbedDownload
-     * @param token The token provided when submitting a download request. (required)
+     * Build call for getV2ResourcesEmbedDownloadInitiate
+     * @param contentType Either &#39;resource&#39;, &#39;resource_version&#39;, &#39;api_asset&#39; (required)
+     * @param contentId  (required)
+     * @param nonce 32 character hash provided by an anti-piracy placeholder of the NONCE type. Must be from a resource download (cannot be an addon download’s nonce, etc). (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -87,7 +88,7 @@ public class ResourcesEmbedApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2ResourcesEmbedDownloadCall(String token, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getV2ResourcesEmbedDownloadInitiateCall(String contentType, Integer contentId, String nonce, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -104,7 +105,157 @@ public class ResourcesEmbedApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/resources/embed/download";
+        String localVarPath = "/v2/resources/embed/download/initiate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (contentType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("content_type", contentType));
+        }
+
+        if (contentId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("content_id", contentId));
+        }
+
+        if (nonce != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("nonce", nonce));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesEmbedDownloadInitiateValidateBeforeCall(String contentType, Integer contentId, String nonce, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'contentType' is set
+        if (contentType == null) {
+            throw new ApiException("Missing the required parameter 'contentType' when calling getV2ResourcesEmbedDownloadInitiate(Async)");
+        }
+
+        // verify the required parameter 'contentId' is set
+        if (contentId == null) {
+            throw new ApiException("Missing the required parameter 'contentId' when calling getV2ResourcesEmbedDownloadInitiate(Async)");
+        }
+
+        // verify the required parameter 'nonce' is set
+        if (nonce == null) {
+            throw new ApiException("Missing the required parameter 'nonce' when calling getV2ResourcesEmbedDownloadInitiate(Async)");
+        }
+
+        return getV2ResourcesEmbedDownloadInitiateCall(contentType, contentId, nonce, _callback);
+
+    }
+
+    /**
+     * Initiate a download request
+     * See: https://builtbybit.com/help/developers/resource-apis/embed/
+     * @param contentType Either &#39;resource&#39;, &#39;resource_version&#39;, &#39;api_asset&#39; (required)
+     * @param contentId  (required)
+     * @param nonce 32 character hash provided by an anti-piracy placeholder of the NONCE type. Must be from a resource download (cannot be an addon download’s nonce, etc). (required)
+     * @return GetV2ResourcesEmbedDownloadInitiate200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesEmbedDownloadInitiate200Response getV2ResourcesEmbedDownloadInitiate(String contentType, Integer contentId, String nonce) throws ApiException {
+        ApiResponse<GetV2ResourcesEmbedDownloadInitiate200Response> localVarResp = getV2ResourcesEmbedDownloadInitiateWithHttpInfo(contentType, contentId, nonce);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Initiate a download request
+     * See: https://builtbybit.com/help/developers/resource-apis/embed/
+     * @param contentType Either &#39;resource&#39;, &#39;resource_version&#39;, &#39;api_asset&#39; (required)
+     * @param contentId  (required)
+     * @param nonce 32 character hash provided by an anti-piracy placeholder of the NONCE type. Must be from a resource download (cannot be an addon download’s nonce, etc). (required)
+     * @return ApiResponse&lt;GetV2ResourcesEmbedDownloadInitiate200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesEmbedDownloadInitiate200Response> getV2ResourcesEmbedDownloadInitiateWithHttpInfo(String contentType, Integer contentId, String nonce) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesEmbedDownloadInitiateValidateBeforeCall(contentType, contentId, nonce, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesEmbedDownloadInitiate200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Initiate a download request (asynchronously)
+     * See: https://builtbybit.com/help/developers/resource-apis/embed/
+     * @param contentType Either &#39;resource&#39;, &#39;resource_version&#39;, &#39;api_asset&#39; (required)
+     * @param contentId  (required)
+     * @param nonce 32 character hash provided by an anti-piracy placeholder of the NONCE type. Must be from a resource download (cannot be an addon download’s nonce, etc). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesEmbedDownloadInitiateAsync(String contentType, Integer contentId, String nonce, final ApiCallback<GetV2ResourcesEmbedDownloadInitiate200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesEmbedDownloadInitiateValidateBeforeCall(contentType, contentId, nonce, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesEmbedDownloadInitiate200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesEmbedDownloadStatus
+     * @param token The download request token returned from an initiate request. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesEmbedDownloadStatusCall(String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/embed/download/status";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -136,21 +287,16 @@ public class ResourcesEmbedApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV2ResourcesEmbedDownloadValidateBeforeCall(String token, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'token' is set
-        if (token == null) {
-            throw new ApiException("Missing the required parameter 'token' when calling getV2ResourcesEmbedDownload(Async)");
-        }
-
-        return getV2ResourcesEmbedDownloadCall(token, _callback);
+    private okhttp3.Call getV2ResourcesEmbedDownloadStatusValidateBeforeCall(String token, final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesEmbedDownloadStatusCall(token, _callback);
 
     }
 
     /**
      * Fetch the status of a download request
-     * 
-     * @param token The token provided when submitting a download request. (required)
-     * @return GetV2ResourcesEmbedDownload200Response
+     * See: https://builtbybit.com/help/developers/resource-apis/embed/
+     * @param token The download request token returned from an initiate request. (optional)
+     * @return GetV2ResourcesEmbedDownloadStatus200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -158,16 +304,16 @@ public class ResourcesEmbedApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public GetV2ResourcesEmbedDownload200Response getV2ResourcesEmbedDownload(String token) throws ApiException {
-        ApiResponse<GetV2ResourcesEmbedDownload200Response> localVarResp = getV2ResourcesEmbedDownloadWithHttpInfo(token);
+    public GetV2ResourcesEmbedDownloadStatus200Response getV2ResourcesEmbedDownloadStatus(String token) throws ApiException {
+        ApiResponse<GetV2ResourcesEmbedDownloadStatus200Response> localVarResp = getV2ResourcesEmbedDownloadStatusWithHttpInfo(token);
         return localVarResp.getData();
     }
 
     /**
      * Fetch the status of a download request
-     * 
-     * @param token The token provided when submitting a download request. (required)
-     * @return ApiResponse&lt;GetV2ResourcesEmbedDownload200Response&gt;
+     * See: https://builtbybit.com/help/developers/resource-apis/embed/
+     * @param token The download request token returned from an initiate request. (optional)
+     * @return ApiResponse&lt;GetV2ResourcesEmbedDownloadStatus200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -175,16 +321,16 @@ public class ResourcesEmbedApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetV2ResourcesEmbedDownload200Response> getV2ResourcesEmbedDownloadWithHttpInfo(String token) throws ApiException {
-        okhttp3.Call localVarCall = getV2ResourcesEmbedDownloadValidateBeforeCall(token, null);
-        Type localVarReturnType = new TypeToken<GetV2ResourcesEmbedDownload200Response>(){}.getType();
+    public ApiResponse<GetV2ResourcesEmbedDownloadStatus200Response> getV2ResourcesEmbedDownloadStatusWithHttpInfo(String token) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesEmbedDownloadStatusValidateBeforeCall(token, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesEmbedDownloadStatus200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Fetch the status of a download request (asynchronously)
-     * 
-     * @param token The token provided when submitting a download request. (required)
+     * See: https://builtbybit.com/help/developers/resource-apis/embed/
+     * @param token The download request token returned from an initiate request. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -194,10 +340,10 @@ public class ResourcesEmbedApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV2ResourcesEmbedDownloadAsync(String token, final ApiCallback<GetV2ResourcesEmbedDownload200Response> _callback) throws ApiException {
+    public okhttp3.Call getV2ResourcesEmbedDownloadStatusAsync(String token, final ApiCallback<GetV2ResourcesEmbedDownloadStatus200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV2ResourcesEmbedDownloadValidateBeforeCall(token, _callback);
-        Type localVarReturnType = new TypeToken<GetV2ResourcesEmbedDownload200Response>(){}.getType();
+        okhttp3.Call localVarCall = getV2ResourcesEmbedDownloadStatusValidateBeforeCall(token, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesEmbedDownloadStatus200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -269,7 +415,7 @@ public class ResourcesEmbedApi {
 
     /**
      * Fetches the latest versions &amp; license information
-     * 
+     * See: https://builtbybit.com/help/developers/resource-apis/embed/
      * @param nonce 32 character hash provided by an anti-piracy placeholder of the NONCE type. Must be from a resource download (cannot be an addon download’s nonce, etc). (optional)
      * @return GetV2ResourcesEmbedLatest200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -286,7 +432,7 @@ public class ResourcesEmbedApi {
 
     /**
      * Fetches the latest versions &amp; license information
-     * 
+     * See: https://builtbybit.com/help/developers/resource-apis/embed/
      * @param nonce 32 character hash provided by an anti-piracy placeholder of the NONCE type. Must be from a resource download (cannot be an addon download’s nonce, etc). (optional)
      * @return ApiResponse&lt;GetV2ResourcesEmbedLatest200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -304,7 +450,7 @@ public class ResourcesEmbedApi {
 
     /**
      * Fetches the latest versions &amp; license information (asynchronously)
-     * 
+     * See: https://builtbybit.com/help/developers/resource-apis/embed/
      * @param nonce 32 character hash provided by an anti-piracy placeholder of the NONCE type. Must be from a resource download (cannot be an addon download’s nonce, etc). (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -319,124 +465,6 @@ public class ResourcesEmbedApi {
 
         okhttp3.Call localVarCall = getV2ResourcesEmbedLatestValidateBeforeCall(nonce, _callback);
         Type localVarReturnType = new TypeToken<GetV2ResourcesEmbedLatest200Response>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postV2ResourcesEmbedDownload
-     * @param postV2ResourcesEmbedDownloadRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postV2ResourcesEmbedDownloadCall(PostV2ResourcesEmbedDownloadRequest postV2ResourcesEmbedDownloadRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = postV2ResourcesEmbedDownloadRequest;
-
-        // create path and map variables
-        String localVarPath = "/v2/resources/embed/download";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "token" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV2ResourcesEmbedDownloadValidateBeforeCall(PostV2ResourcesEmbedDownloadRequest postV2ResourcesEmbedDownloadRequest, final ApiCallback _callback) throws ApiException {
-        return postV2ResourcesEmbedDownloadCall(postV2ResourcesEmbedDownloadRequest, _callback);
-
-    }
-
-    /**
-     * Submit a new download request
-     * Supported content types:  - &#39;resource_version&#39;  - &#39;api_asset&#39;
-     * @param postV2ResourcesEmbedDownloadRequest  (optional)
-     * @return PostV2ResourcesEmbedDownload200Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public PostV2ResourcesEmbedDownload200Response postV2ResourcesEmbedDownload(PostV2ResourcesEmbedDownloadRequest postV2ResourcesEmbedDownloadRequest) throws ApiException {
-        ApiResponse<PostV2ResourcesEmbedDownload200Response> localVarResp = postV2ResourcesEmbedDownloadWithHttpInfo(postV2ResourcesEmbedDownloadRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Submit a new download request
-     * Supported content types:  - &#39;resource_version&#39;  - &#39;api_asset&#39;
-     * @param postV2ResourcesEmbedDownloadRequest  (optional)
-     * @return ApiResponse&lt;PostV2ResourcesEmbedDownload200Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PostV2ResourcesEmbedDownload200Response> postV2ResourcesEmbedDownloadWithHttpInfo(PostV2ResourcesEmbedDownloadRequest postV2ResourcesEmbedDownloadRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV2ResourcesEmbedDownloadValidateBeforeCall(postV2ResourcesEmbedDownloadRequest, null);
-        Type localVarReturnType = new TypeToken<PostV2ResourcesEmbedDownload200Response>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Submit a new download request (asynchronously)
-     * Supported content types:  - &#39;resource_version&#39;  - &#39;api_asset&#39;
-     * @param postV2ResourcesEmbedDownloadRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postV2ResourcesEmbedDownloadAsync(PostV2ResourcesEmbedDownloadRequest postV2ResourcesEmbedDownloadRequest, final ApiCallback<PostV2ResourcesEmbedDownload200Response> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postV2ResourcesEmbedDownloadValidateBeforeCall(postV2ResourcesEmbedDownloadRequest, _callback);
-        Type localVarReturnType = new TypeToken<PostV2ResourcesEmbedDownload200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

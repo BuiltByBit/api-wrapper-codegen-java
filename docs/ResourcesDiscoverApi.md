@@ -6,6 +6,8 @@ All URIs are relative to *https://api.builtbybit.com*
 |------------- | ------------- | -------------|
 | [**getResourcesDiscoverCategories**](ResourcesDiscoverApi.md#getResourcesDiscoverCategories) | **GET** /v2/resources/discover/categories | Fetch a list of categories |
 | [**getResourcesDiscoverResources**](ResourcesDiscoverApi.md#getResourcesDiscoverResources) | **GET** /v2/resources/discover/resources | Fetch a list of resources |
+| [**getV2ResourcesDiscoverDownloadDirectInitiate**](ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadDirectInitiate) | **GET** /v2/resources/discover/download/direct/initiate | Initiate a direct download request |
+| [**getV2ResourcesDiscoverDownloadDirectPoll**](ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadDirectPoll) | **GET** /v2/resources/discover/download/direct/status | Fetch the status of a direct download request |
 | [**getV2ResourcesDiscoverLicenses**](ResourcesDiscoverApi.md#getV2ResourcesDiscoverLicenses) | **GET** /v2/resources/discover/licenses | Fetch a list of the user&#39;s licenses |
 
 
@@ -168,6 +170,142 @@ public class Example {
 | **200** | OK |  -  |
 | **4XX** |  |  -  |
 | **5XX** |  |  -  |
+
+<a id="getV2ResourcesDiscoverDownloadDirectInitiate"></a>
+# **getV2ResourcesDiscoverDownloadDirectInitiate**
+> GetV2ResourcesDiscoverDownloadDirectInitiate200Response getV2ResourcesDiscoverDownloadDirectInitiate(contentType, contentId)
+
+Initiate a direct download request
+
+See: https://builtbybit.com/help/developers/discovery-api/downloading-and-one-click/
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ResourcesDiscoverApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.builtbybit.com");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ResourcesDiscoverApi apiInstance = new ResourcesDiscoverApi(defaultClient);
+    String contentType = "contentType_example"; // String | Either 'resource' or 'resource_version'
+    Integer contentId = 56; // Integer | 
+    try {
+      GetV2ResourcesDiscoverDownloadDirectInitiate200Response result = apiInstance.getV2ResourcesDiscoverDownloadDirectInitiate(contentType, contentId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ResourcesDiscoverApi#getV2ResourcesDiscoverDownloadDirectInitiate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **contentType** | **String**| Either &#39;resource&#39; or &#39;resource_version&#39; | |
+| **contentId** | **Integer**|  | |
+
+### Return type
+
+[**GetV2ResourcesDiscoverDownloadDirectInitiate200Response**](GetV2ResourcesDiscoverDownloadDirectInitiate200Response.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+<a id="getV2ResourcesDiscoverDownloadDirectPoll"></a>
+# **getV2ResourcesDiscoverDownloadDirectPoll**
+> GetV2ResourcesDiscoverDownloadDirectPoll200Response getV2ResourcesDiscoverDownloadDirectPoll(token)
+
+Fetch the status of a direct download request
+
+See: https://builtbybit.com/help/developers/discovery-api/downloading-and-one-click/
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ResourcesDiscoverApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.builtbybit.com");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ResourcesDiscoverApi apiInstance = new ResourcesDiscoverApi(defaultClient);
+    String token = "token_example"; // String | The download request token returned from an initiate request.
+    try {
+      GetV2ResourcesDiscoverDownloadDirectPoll200Response result = apiInstance.getV2ResourcesDiscoverDownloadDirectPoll(token);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ResourcesDiscoverApi#getV2ResourcesDiscoverDownloadDirectPoll");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **token** | **String**| The download request token returned from an initiate request. | [optional] |
+
+### Return type
+
+[**GetV2ResourcesDiscoverDownloadDirectPoll200Response**](GetV2ResourcesDiscoverDownloadDirectPoll200Response.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 
 <a id="getV2ResourcesDiscoverLicenses"></a>
 # **getV2ResourcesDiscoverLicenses**

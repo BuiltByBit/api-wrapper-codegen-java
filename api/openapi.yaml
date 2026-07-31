@@ -1027,6 +1027,7 @@ paths:
       x-accepts: application/json
   /v2/resources/embed/latest:
     get:
+      description: "See: https://builtbybit.com/help/developers/resource-apis/embed/"
       operationId: get-v2-resources-embed-latest
       parameters:
       - description: "32 character hash provided by an anti-piracy placeholder of\
@@ -1253,14 +1254,96 @@ paths:
         id: ghbjy9uq3jfx3
       x-content-type: application/json
       x-accepts: application/json
-  /v2/resources/embed/download:
+  /v2/resources/discover/download/direct/initiate:
     get:
-      operationId: get-v2-resources-embed-download
+      description: "See: https://builtbybit.com/help/developers/discovery-api/downloading-and-one-click/"
+      operationId: get-v2-resources-discover-download-direct-initiate
       parameters:
-      - description: The token provided when submitting a download request.
+      - description: Either 'resource' or 'resource_version'
+        explode: true
+        in: query
+        name: content_type
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: content_id
+        required: true
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_discover_download_direct_initiate_200_response'
+          description: OK
+      security:
+      - oauth2: []
+      summary: Initiate a direct download request
+      tags:
+      - resources/discover
+      x-stoplight:
+        id: wczwtopx8puhg
+      x-accepts: application/json
+  /v2/resources/discover/download/direct/status:
+    get:
+      description: "See: https://builtbybit.com/help/developers/discovery-api/downloading-and-one-click/"
+      operationId: get-v2-resources-discover-download-direct-poll
+      parameters:
+      - description: The download request token returned from an initiate request.
         explode: true
         in: query
         name: token
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody: {}
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_discover_download_direct_poll_200_response'
+          description: OK
+      security:
+      - oauth2: []
+      summary: Fetch the status of a direct download request
+      tags:
+      - resources/discover
+      x-stoplight:
+        id: bec0502hhlkm3
+      x-accepts: application/json
+  /v2/resources/embed/download/initiate:
+    get:
+      description: "See: https://builtbybit.com/help/developers/resource-apis/embed/"
+      operationId: get-v2-resources-embed-download-initiate
+      parameters:
+      - description: "Either 'resource', 'resource_version', 'api_asset'"
+        explode: true
+        in: query
+        name: content_type
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: content_id
+        required: true
+        schema:
+          type: integer
+        style: form
+      - description: "32 character hash provided by an anti-piracy placeholder of\
+          \ the NONCE type. Must be from a resource download (cannot be an addon download’\
+          s nonce, etc)."
+        explode: true
+        in: query
+        name: nonce
         required: true
         schema:
           type: string
@@ -1270,7 +1353,35 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/get_v2_resources_embed_download_200_response'
+                $ref: '#/components/schemas/get_v2_resources_embed_download_initiate_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Initiate a download request
+      tags:
+      - resources/embed
+      x-stoplight:
+        id: clyb8sb9p0djv
+      x-accepts: application/json
+  /v2/resources/embed/download/status:
+    get:
+      description: "See: https://builtbybit.com/help/developers/resource-apis/embed/"
+      operationId: get-v2-resources-embed-download-status
+      parameters:
+      - description: The download request token returned from an initiate request.
+        explode: true
+        in: query
+        name: token
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_embed_download_status_200_response'
           description: OK
       security:
       - token: []
@@ -1278,33 +1389,8 @@ paths:
       tags:
       - resources/embed
       x-stoplight:
-        id: 91tvd6cd1au67
+        id: 7adv392i58h8y
       x-accepts: application/json
-    post:
-      description: "Supported content types:\r\n- 'resource_version'\r\n- 'api_asset'"
-      operationId: post-v2-resources-embed-download
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/post_v2_resources_embed_download_request'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/post_v2_resources_embed_download_200_response'
-          description: OK
-      security:
-      - token: []
-      summary: Submit a new download request
-      tags:
-      - resources/embed
-      x-stoplight:
-        id: s4z1rvddmo5wv
-      x-content-type: application/json
-      x-accepts: application/json
-  /2/resources/embed/download/poll: {}
 components:
   examples: {}
   parameters:
@@ -12693,54 +12779,7 @@ components:
         data:
           $ref: '#/components/schemas/post_v2_deployments_upgrade_200_response_data'
       type: object
-    get_v2_resources_embed_download_200_response_data:
-      example:
-        status:
-          retry: true
-          url: url
-      properties:
-        status:
-          $ref: '#/components/schemas/DownloadStatus'
-      type: object
-      x-stoplight:
-        id: 4keoengwafhx0
-    get_v2_resources_embed_download_200_response:
-      example:
-        result: success
-        data:
-          status:
-            retry: true
-            url: url
-      properties:
-        result:
-          enum:
-          - success
-          type: string
-          x-stoplight:
-            id: k64eiks21w9ie
-        data:
-          $ref: '#/components/schemas/get_v2_resources_embed_download_200_response_data'
-      type: object
-    post_v2_resources_embed_download_request:
-      properties:
-        nonce:
-          type: string
-          x-stoplight:
-            id: en5yzy9rql7hf
-        content_type:
-          type: string
-          x-stoplight:
-            id: vpt6xh012cadg
-        content_id:
-          type: integer
-          x-stoplight:
-            id: 9ca2t84ofck5t
-      required:
-      - content_id
-      - content_type
-      - nonce
-      type: object
-    post_v2_resources_embed_download_200_response_data:
+    get_v2_resources_discover_download_direct_initiate_200_response_data:
       example:
         request:
           expires: 5
@@ -12753,9 +12792,7 @@ components:
         request:
           $ref: '#/components/schemas/DownloadRequest'
       type: object
-      x-stoplight:
-        id: gttw71oxpvtmc
-    post_v2_resources_embed_download_200_response:
+    get_v2_resources_discover_download_direct_initiate_200_response:
       example:
         result: success
         data:
@@ -12772,9 +12809,101 @@ components:
           - success
           type: string
           x-stoplight:
-            id: tff1v9q6hmuaz
+            id: 8qjmwfitzl0qn
         data:
-          $ref: '#/components/schemas/post_v2_resources_embed_download_200_response_data'
+          $ref: '#/components/schemas/get_v2_resources_discover_download_direct_initiate_200_response_data'
+      type: object
+    get_v2_resources_discover_download_direct_poll_200_response_data:
+      example:
+        status:
+          retry: true
+          url: url
+      properties:
+        status:
+          $ref: '#/components/schemas/DownloadStatus'
+      type: object
+      x-stoplight:
+        id: rjxvxc4ru42yf
+    get_v2_resources_discover_download_direct_poll_200_response:
+      example:
+        result: success
+        data:
+          status:
+            retry: true
+            url: url
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: a12mbdqnlwwmf
+        data:
+          $ref: '#/components/schemas/get_v2_resources_discover_download_direct_poll_200_response_data'
+      type: object
+    get_v2_resources_embed_download_initiate_200_response_data:
+      example:
+        request:
+          expires: 5
+          content_type: content_type
+          content_id: 6
+          user_id: 1
+          download_request_id: 0
+          token: token
+      properties:
+        request:
+          $ref: '#/components/schemas/DownloadRequest'
+      type: object
+      x-stoplight:
+        id: i9kpu35fsja8q
+    get_v2_resources_embed_download_initiate_200_response:
+      example:
+        result: success
+        data:
+          request:
+            expires: 5
+            content_type: content_type
+            content_id: 6
+            user_id: 1
+            download_request_id: 0
+            token: token
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: anhn5ubpkcfyt
+        data:
+          $ref: '#/components/schemas/get_v2_resources_embed_download_initiate_200_response_data'
+      type: object
+    get_v2_resources_embed_download_status_200_response_data:
+      example:
+        status:
+          retry: true
+          url: url
+      properties:
+        status:
+          $ref: '#/components/schemas/DownloadStatus'
+      type: object
+      x-stoplight:
+        id: xcnza5407jmq7
+    get_v2_resources_embed_download_status_200_response:
+      example:
+        result: success
+        data:
+          status:
+            retry: true
+            url: url
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: 74st7byljvmfg
+        data:
+          $ref: '#/components/schemas/get_v2_resources_embed_download_status_200_response_data'
       type: object
     Analytic_filters_value:
       example:

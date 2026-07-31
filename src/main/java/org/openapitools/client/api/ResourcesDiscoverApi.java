@@ -31,6 +31,8 @@ import java.math.BigDecimal;
 import org.openapitools.client.model.GetResourcesDiscoverCategories200Response;
 import org.openapitools.client.model.GetResourcesDiscoverResources200Response;
 import org.openapitools.client.model.GetResourcesDiscoverResources4XXResponse;
+import org.openapitools.client.model.GetV2ResourcesDiscoverDownloadDirectInitiate200Response;
+import org.openapitools.client.model.GetV2ResourcesDiscoverDownloadDirectPoll200Response;
 import org.openapitools.client.model.GetV2ResourcesDiscoverLicenses200Response;
 
 import java.lang.reflect.Type;
@@ -403,6 +405,266 @@ public class ResourcesDiscoverApi {
 
         okhttp3.Call localVarCall = getResourcesDiscoverResourcesValidateBeforeCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, _callback);
         Type localVarReturnType = new TypeToken<GetResourcesDiscoverResources200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesDiscoverDownloadDirectInitiate
+     * @param contentType Either &#39;resource&#39; or &#39;resource_version&#39; (required)
+     * @param contentId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesDiscoverDownloadDirectInitiateCall(String contentType, Integer contentId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/discover/download/direct/initiate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (contentType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("content_type", contentType));
+        }
+
+        if (contentId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("content_id", contentId));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesDiscoverDownloadDirectInitiateValidateBeforeCall(String contentType, Integer contentId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'contentType' is set
+        if (contentType == null) {
+            throw new ApiException("Missing the required parameter 'contentType' when calling getV2ResourcesDiscoverDownloadDirectInitiate(Async)");
+        }
+
+        // verify the required parameter 'contentId' is set
+        if (contentId == null) {
+            throw new ApiException("Missing the required parameter 'contentId' when calling getV2ResourcesDiscoverDownloadDirectInitiate(Async)");
+        }
+
+        return getV2ResourcesDiscoverDownloadDirectInitiateCall(contentType, contentId, _callback);
+
+    }
+
+    /**
+     * Initiate a direct download request
+     * See: https://builtbybit.com/help/developers/discovery-api/downloading-and-one-click/
+     * @param contentType Either &#39;resource&#39; or &#39;resource_version&#39; (required)
+     * @param contentId  (required)
+     * @return GetV2ResourcesDiscoverDownloadDirectInitiate200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesDiscoverDownloadDirectInitiate200Response getV2ResourcesDiscoverDownloadDirectInitiate(String contentType, Integer contentId) throws ApiException {
+        ApiResponse<GetV2ResourcesDiscoverDownloadDirectInitiate200Response> localVarResp = getV2ResourcesDiscoverDownloadDirectInitiateWithHttpInfo(contentType, contentId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Initiate a direct download request
+     * See: https://builtbybit.com/help/developers/discovery-api/downloading-and-one-click/
+     * @param contentType Either &#39;resource&#39; or &#39;resource_version&#39; (required)
+     * @param contentId  (required)
+     * @return ApiResponse&lt;GetV2ResourcesDiscoverDownloadDirectInitiate200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesDiscoverDownloadDirectInitiate200Response> getV2ResourcesDiscoverDownloadDirectInitiateWithHttpInfo(String contentType, Integer contentId) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesDiscoverDownloadDirectInitiateValidateBeforeCall(contentType, contentId, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesDiscoverDownloadDirectInitiate200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Initiate a direct download request (asynchronously)
+     * See: https://builtbybit.com/help/developers/discovery-api/downloading-and-one-click/
+     * @param contentType Either &#39;resource&#39; or &#39;resource_version&#39; (required)
+     * @param contentId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesDiscoverDownloadDirectInitiateAsync(String contentType, Integer contentId, final ApiCallback<GetV2ResourcesDiscoverDownloadDirectInitiate200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesDiscoverDownloadDirectInitiateValidateBeforeCall(contentType, contentId, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesDiscoverDownloadDirectInitiate200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesDiscoverDownloadDirectPoll
+     * @param token The download request token returned from an initiate request. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesDiscoverDownloadDirectPollCall(String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/discover/download/direct/status";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (token != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesDiscoverDownloadDirectPollValidateBeforeCall(String token, final ApiCallback _callback) throws ApiException {
+        return getV2ResourcesDiscoverDownloadDirectPollCall(token, _callback);
+
+    }
+
+    /**
+     * Fetch the status of a direct download request
+     * See: https://builtbybit.com/help/developers/discovery-api/downloading-and-one-click/
+     * @param token The download request token returned from an initiate request. (optional)
+     * @return GetV2ResourcesDiscoverDownloadDirectPoll200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesDiscoverDownloadDirectPoll200Response getV2ResourcesDiscoverDownloadDirectPoll(String token) throws ApiException {
+        ApiResponse<GetV2ResourcesDiscoverDownloadDirectPoll200Response> localVarResp = getV2ResourcesDiscoverDownloadDirectPollWithHttpInfo(token);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Fetch the status of a direct download request
+     * See: https://builtbybit.com/help/developers/discovery-api/downloading-and-one-click/
+     * @param token The download request token returned from an initiate request. (optional)
+     * @return ApiResponse&lt;GetV2ResourcesDiscoverDownloadDirectPoll200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesDiscoverDownloadDirectPoll200Response> getV2ResourcesDiscoverDownloadDirectPollWithHttpInfo(String token) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesDiscoverDownloadDirectPollValidateBeforeCall(token, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesDiscoverDownloadDirectPoll200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Fetch the status of a direct download request (asynchronously)
+     * See: https://builtbybit.com/help/developers/discovery-api/downloading-and-one-click/
+     * @param token The download request token returned from an initiate request. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesDiscoverDownloadDirectPollAsync(String token, final ApiCallback<GetV2ResourcesDiscoverDownloadDirectPoll200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesDiscoverDownloadDirectPollValidateBeforeCall(token, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesDiscoverDownloadDirectPoll200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-06-10T13:23:40.968029Z[Etc/UTC]
+  - Build date: 2026-07-31T13:16:52.665929Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
@@ -153,6 +153,8 @@ Class | Method | HTTP request | Description
 *ResourcesCreatorSaleEventsApi* | [**getV2ResourcesCreatorSaleEventsEntries**](docs/ResourcesCreatorSaleEventsApi.md#getV2ResourcesCreatorSaleEventsEntries) | **GET** /v2/resources/creator/sale-events/entries | Fetch a list of your sale event entries
 *ResourcesDiscoverApi* | [**getResourcesDiscoverCategories**](docs/ResourcesDiscoverApi.md#getResourcesDiscoverCategories) | **GET** /v2/resources/discover/categories | Fetch a list of categories
 *ResourcesDiscoverApi* | [**getResourcesDiscoverResources**](docs/ResourcesDiscoverApi.md#getResourcesDiscoverResources) | **GET** /v2/resources/discover/resources | Fetch a list of resources
+*ResourcesDiscoverApi* | [**getV2ResourcesDiscoverDownloadDirectInitiate**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadDirectInitiate) | **GET** /v2/resources/discover/download/direct/initiate | Initiate a direct download request
+*ResourcesDiscoverApi* | [**getV2ResourcesDiscoverDownloadDirectPoll**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadDirectPoll) | **GET** /v2/resources/discover/download/direct/status | Fetch the status of a direct download request
 *ResourcesDiscoverApi* | [**getV2ResourcesDiscoverLicenses**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverLicenses) | **GET** /v2/resources/discover/licenses | Fetch a list of the user&#39;s licenses
 *ResourcesDiscoverCartApi* | [**getV2ResourcesDiscoverCartView**](docs/ResourcesDiscoverCartApi.md#getV2ResourcesDiscoverCartView) | **GET** /v2/resources/discover/cart/view | View the user&#39;s cart items
 *ResourcesDiscoverCartApi* | [**postV2ResourcesDiscoverCartAdd**](docs/ResourcesDiscoverCartApi.md#postV2ResourcesDiscoverCartAdd) | **POST** /v2/resources/discover/cart/add | Add items to a user&#39;s cart
@@ -160,9 +162,9 @@ Class | Method | HTTP request | Description
 *ResourcesDiscoverCartApi* | [**postV2ResourcesDiscoverCartCouponAdd**](docs/ResourcesDiscoverCartApi.md#postV2ResourcesDiscoverCartCouponAdd) | **POST** /v2/resources/discover/cart/coupon/add | Add a coupon to the user&#39;s cart
 *ResourcesDiscoverCartApi* | [**postV2ResourcesDiscoverCartCouponRemove**](docs/ResourcesDiscoverCartApi.md#postV2ResourcesDiscoverCartCouponRemove) | **POST** /v2/resources/discover/cart/coupon/remove | Remove a coupon from the user&#39;s cart
 *ResourcesDiscoverCartApi* | [**postV2ResourcesDiscoverCartRemove**](docs/ResourcesDiscoverCartApi.md#postV2ResourcesDiscoverCartRemove) | **POST** /v2/resources/discover/cart/remove | Remove an item from the user&#39;s cart
-*ResourcesEmbedApi* | [**getV2ResourcesEmbedDownload**](docs/ResourcesEmbedApi.md#getV2ResourcesEmbedDownload) | **GET** /v2/resources/embed/download | Fetch the status of a download request
+*ResourcesEmbedApi* | [**getV2ResourcesEmbedDownloadInitiate**](docs/ResourcesEmbedApi.md#getV2ResourcesEmbedDownloadInitiate) | **GET** /v2/resources/embed/download/initiate | Initiate a download request
+*ResourcesEmbedApi* | [**getV2ResourcesEmbedDownloadStatus**](docs/ResourcesEmbedApi.md#getV2ResourcesEmbedDownloadStatus) | **GET** /v2/resources/embed/download/status | Fetch the status of a download request
 *ResourcesEmbedApi* | [**getV2ResourcesEmbedLatest**](docs/ResourcesEmbedApi.md#getV2ResourcesEmbedLatest) | **GET** /v2/resources/embed/latest | Fetches the latest versions &amp; license information
-*ResourcesEmbedApi* | [**postV2ResourcesEmbedDownload**](docs/ResourcesEmbedApi.md#postV2ResourcesEmbedDownload) | **POST** /v2/resources/embed/download | Submit a new download request
 
 
 ## Documentation for Models
@@ -236,10 +238,16 @@ Class | Method | HTTP request | Description
  - [GetV2ResourcesCreatorVersions200ResponseData](docs/GetV2ResourcesCreatorVersions200ResponseData.md)
  - [GetV2ResourcesDiscoverCartView200Response](docs/GetV2ResourcesDiscoverCartView200Response.md)
  - [GetV2ResourcesDiscoverCartView200ResponseData](docs/GetV2ResourcesDiscoverCartView200ResponseData.md)
+ - [GetV2ResourcesDiscoverDownloadDirectInitiate200Response](docs/GetV2ResourcesDiscoverDownloadDirectInitiate200Response.md)
+ - [GetV2ResourcesDiscoverDownloadDirectInitiate200ResponseData](docs/GetV2ResourcesDiscoverDownloadDirectInitiate200ResponseData.md)
+ - [GetV2ResourcesDiscoverDownloadDirectPoll200Response](docs/GetV2ResourcesDiscoverDownloadDirectPoll200Response.md)
+ - [GetV2ResourcesDiscoverDownloadDirectPoll200ResponseData](docs/GetV2ResourcesDiscoverDownloadDirectPoll200ResponseData.md)
  - [GetV2ResourcesDiscoverLicenses200Response](docs/GetV2ResourcesDiscoverLicenses200Response.md)
  - [GetV2ResourcesDiscoverLicenses200ResponseData](docs/GetV2ResourcesDiscoverLicenses200ResponseData.md)
- - [GetV2ResourcesEmbedDownload200Response](docs/GetV2ResourcesEmbedDownload200Response.md)
- - [GetV2ResourcesEmbedDownload200ResponseData](docs/GetV2ResourcesEmbedDownload200ResponseData.md)
+ - [GetV2ResourcesEmbedDownloadInitiate200Response](docs/GetV2ResourcesEmbedDownloadInitiate200Response.md)
+ - [GetV2ResourcesEmbedDownloadInitiate200ResponseData](docs/GetV2ResourcesEmbedDownloadInitiate200ResponseData.md)
+ - [GetV2ResourcesEmbedDownloadStatus200Response](docs/GetV2ResourcesEmbedDownloadStatus200Response.md)
+ - [GetV2ResourcesEmbedDownloadStatus200ResponseData](docs/GetV2ResourcesEmbedDownloadStatus200ResponseData.md)
  - [GetV2ResourcesEmbedLatest200Response](docs/GetV2ResourcesEmbedLatest200Response.md)
  - [GetV2ResourcesEmbedLatest200ResponseData](docs/GetV2ResourcesEmbedLatest200ResponseData.md)
  - [License](docs/License.md)
@@ -273,9 +281,6 @@ Class | Method | HTTP request | Description
  - [PostV2ResourcesDiscoverCartCouponRemoveRequest](docs/PostV2ResourcesDiscoverCartCouponRemoveRequest.md)
  - [PostV2ResourcesDiscoverCartRemove200Response](docs/PostV2ResourcesDiscoverCartRemove200Response.md)
  - [PostV2ResourcesDiscoverCartRemoveRequest](docs/PostV2ResourcesDiscoverCartRemoveRequest.md)
- - [PostV2ResourcesEmbedDownload200Response](docs/PostV2ResourcesEmbedDownload200Response.md)
- - [PostV2ResourcesEmbedDownload200ResponseData](docs/PostV2ResourcesEmbedDownload200ResponseData.md)
- - [PostV2ResourcesEmbedDownloadRequest](docs/PostV2ResourcesEmbedDownloadRequest.md)
  - [Price](docs/Price.md)
  - [Purchase](docs/Purchase.md)
  - [Resource](docs/Resource.md)
