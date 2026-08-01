@@ -35,6 +35,8 @@ import org.openapitools.client.model.GetV2ResourcesCreatorReviews200Response;
 import org.openapitools.client.model.GetV2ResourcesCreatorStores200Response;
 import org.openapitools.client.model.GetV2ResourcesCreatorUpdates200Response;
 import org.openapitools.client.model.GetV2ResourcesCreatorVersions200Response;
+import org.openapitools.client.model.PostV2ResourcesCreatorAddonsUpdateRequest;
+import org.openapitools.client.model.PostV2ResourcesCreatorApiAssetsUpdateRequest;
 import org.openapitools.client.model.PostV2ResourcesCreatorUpdate200Response;
 import org.openapitools.client.model.PostV2ResourcesCreatorUpdateRequest;
 
@@ -1063,6 +1065,192 @@ public class ResourcesCreatorApi {
         okhttp3.Call localVarCall = getV2ResourcesCreatorVersionsValidateBeforeCall(resourceIds, _callback);
         Type localVarReturnType = new TypeToken<GetV2ResourcesCreatorVersions200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postV2ResourcesCreatorAddonsUpdate
+     * @param postV2ResourcesCreatorAddonsUpdateRequest Creates a new version for the addon. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postV2ResourcesCreatorAddonsUpdateCall(PostV2ResourcesCreatorAddonsUpdateRequest postV2ResourcesCreatorAddonsUpdateRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = postV2ResourcesCreatorAddonsUpdateRequest;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/addons/update";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postV2ResourcesCreatorAddonsUpdateValidateBeforeCall(PostV2ResourcesCreatorAddonsUpdateRequest postV2ResourcesCreatorAddonsUpdateRequest, final ApiCallback _callback) throws ApiException {
+        return postV2ResourcesCreatorAddonsUpdateCall(postV2ResourcesCreatorAddonsUpdateRequest, _callback);
+
+    }
+
+    /**
+     * Post an addon update
+     * 
+     * @param postV2ResourcesCreatorAddonsUpdateRequest Creates a new version for the addon. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postV2ResourcesCreatorAddonsUpdate(PostV2ResourcesCreatorAddonsUpdateRequest postV2ResourcesCreatorAddonsUpdateRequest) throws ApiException {
+        postV2ResourcesCreatorAddonsUpdateWithHttpInfo(postV2ResourcesCreatorAddonsUpdateRequest);
+    }
+
+    /**
+     * Post an addon update
+     * 
+     * @param postV2ResourcesCreatorAddonsUpdateRequest Creates a new version for the addon. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postV2ResourcesCreatorAddonsUpdateWithHttpInfo(PostV2ResourcesCreatorAddonsUpdateRequest postV2ResourcesCreatorAddonsUpdateRequest) throws ApiException {
+        okhttp3.Call localVarCall = postV2ResourcesCreatorAddonsUpdateValidateBeforeCall(postV2ResourcesCreatorAddonsUpdateRequest, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Post an addon update (asynchronously)
+     * 
+     * @param postV2ResourcesCreatorAddonsUpdateRequest Creates a new version for the addon. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postV2ResourcesCreatorAddonsUpdateAsync(PostV2ResourcesCreatorAddonsUpdateRequest postV2ResourcesCreatorAddonsUpdateRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postV2ResourcesCreatorAddonsUpdateValidateBeforeCall(postV2ResourcesCreatorAddonsUpdateRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postV2ResourcesCreatorApiAssetsUpdate
+     * @param postV2ResourcesCreatorApiAssetsUpdateRequest Creates a new version for the API asset. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postV2ResourcesCreatorApiAssetsUpdateCall(PostV2ResourcesCreatorApiAssetsUpdateRequest postV2ResourcesCreatorApiAssetsUpdateRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = postV2ResourcesCreatorApiAssetsUpdateRequest;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/creator/api-assets/update";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postV2ResourcesCreatorApiAssetsUpdateValidateBeforeCall(PostV2ResourcesCreatorApiAssetsUpdateRequest postV2ResourcesCreatorApiAssetsUpdateRequest, final ApiCallback _callback) throws ApiException {
+        return postV2ResourcesCreatorApiAssetsUpdateCall(postV2ResourcesCreatorApiAssetsUpdateRequest, _callback);
+
+    }
+
+    /**
+     * Post an API asset update
+     * 
+     * @param postV2ResourcesCreatorApiAssetsUpdateRequest Creates a new version for the API asset. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postV2ResourcesCreatorApiAssetsUpdate(PostV2ResourcesCreatorApiAssetsUpdateRequest postV2ResourcesCreatorApiAssetsUpdateRequest) throws ApiException {
+        postV2ResourcesCreatorApiAssetsUpdateWithHttpInfo(postV2ResourcesCreatorApiAssetsUpdateRequest);
+    }
+
+    /**
+     * Post an API asset update
+     * 
+     * @param postV2ResourcesCreatorApiAssetsUpdateRequest Creates a new version for the API asset. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postV2ResourcesCreatorApiAssetsUpdateWithHttpInfo(PostV2ResourcesCreatorApiAssetsUpdateRequest postV2ResourcesCreatorApiAssetsUpdateRequest) throws ApiException {
+        okhttp3.Call localVarCall = postV2ResourcesCreatorApiAssetsUpdateValidateBeforeCall(postV2ResourcesCreatorApiAssetsUpdateRequest, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Post an API asset update (asynchronously)
+     * 
+     * @param postV2ResourcesCreatorApiAssetsUpdateRequest Creates a new version for the API asset. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postV2ResourcesCreatorApiAssetsUpdateAsync(PostV2ResourcesCreatorApiAssetsUpdateRequest postV2ResourcesCreatorApiAssetsUpdateRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postV2ResourcesCreatorApiAssetsUpdateValidateBeforeCall(postV2ResourcesCreatorApiAssetsUpdateRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**

@@ -12,6 +12,8 @@ All URIs are relative to *https://api.builtbybit.com*
 | [**getV2ResourcesCreatorStores**](ResourcesCreatorApi.md#getV2ResourcesCreatorStores) | **GET** /v2/resources/creator/stores | Fetch a list of your stores |
 | [**getV2ResourcesCreatorUpdates**](ResourcesCreatorApi.md#getV2ResourcesCreatorUpdates) | **GET** /v2/resources/creator/updates | Fetch a list of your resource&#39;s updates |
 | [**getV2ResourcesCreatorVersions**](ResourcesCreatorApi.md#getV2ResourcesCreatorVersions) | **GET** /v2/resources/creator/versions | Fetch a list of your resources&#39; versions |
+| [**postV2ResourcesCreatorAddonsUpdate**](ResourcesCreatorApi.md#postV2ResourcesCreatorAddonsUpdate) | **POST** /v2/resources/creator/addons/update | Post an addon update |
+| [**postV2ResourcesCreatorApiAssetsUpdate**](ResourcesCreatorApi.md#postV2ResourcesCreatorApiAssetsUpdate) | **POST** /v2/resources/creator/api-assets/update | Post an API asset update |
 | [**postV2ResourcesCreatorUpdate**](ResourcesCreatorApi.md#postV2ResourcesCreatorUpdate) | **POST** /v2/resources/creator/update | Post a resource update |
 
 
@@ -545,6 +547,130 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+
+<a id="postV2ResourcesCreatorAddonsUpdate"></a>
+# **postV2ResourcesCreatorAddonsUpdate**
+> postV2ResourcesCreatorAddonsUpdate(postV2ResourcesCreatorAddonsUpdateRequest)
+
+Post an addon update
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ResourcesCreatorApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.builtbybit.com");
+    
+    // Configure API key authorization: token
+    ApiKeyAuth token = (ApiKeyAuth) defaultClient.getAuthentication("token");
+    token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //token.setApiKeyPrefix("Token");
+
+    ResourcesCreatorApi apiInstance = new ResourcesCreatorApi(defaultClient);
+    PostV2ResourcesCreatorAddonsUpdateRequest postV2ResourcesCreatorAddonsUpdateRequest = new PostV2ResourcesCreatorAddonsUpdateRequest(); // PostV2ResourcesCreatorAddonsUpdateRequest | Creates a new version for the addon. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses.
+    try {
+      apiInstance.postV2ResourcesCreatorAddonsUpdate(postV2ResourcesCreatorAddonsUpdateRequest);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ResourcesCreatorApi#postV2ResourcesCreatorAddonsUpdate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **postV2ResourcesCreatorAddonsUpdateRequest** | [**PostV2ResourcesCreatorAddonsUpdateRequest**](PostV2ResourcesCreatorAddonsUpdateRequest.md)| Creates a new version for the addon. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses. | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+
+<a id="postV2ResourcesCreatorApiAssetsUpdate"></a>
+# **postV2ResourcesCreatorApiAssetsUpdate**
+> postV2ResourcesCreatorApiAssetsUpdate(postV2ResourcesCreatorApiAssetsUpdateRequest)
+
+Post an API asset update
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ResourcesCreatorApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.builtbybit.com");
+    
+    // Configure API key authorization: token
+    ApiKeyAuth token = (ApiKeyAuth) defaultClient.getAuthentication("token");
+    token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //token.setApiKeyPrefix("Token");
+
+    ResourcesCreatorApi apiInstance = new ResourcesCreatorApi(defaultClient);
+    PostV2ResourcesCreatorApiAssetsUpdateRequest postV2ResourcesCreatorApiAssetsUpdateRequest = new PostV2ResourcesCreatorApiAssetsUpdateRequest(); // PostV2ResourcesCreatorApiAssetsUpdateRequest | Creates a new version for the API asset. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses.
+    try {
+      apiInstance.postV2ResourcesCreatorApiAssetsUpdate(postV2ResourcesCreatorApiAssetsUpdateRequest);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ResourcesCreatorApi#postV2ResourcesCreatorApiAssetsUpdate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **postV2ResourcesCreatorApiAssetsUpdateRequest** | [**PostV2ResourcesCreatorApiAssetsUpdateRequest**](PostV2ResourcesCreatorApiAssetsUpdateRequest.md)| Creates a new version for the API asset. The uploaded file must be encoded using base64 as part of the JSON request body shown below.  The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses. | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 
 <a id="postV2ResourcesCreatorUpdate"></a>
 # **postV2ResourcesCreatorUpdate**

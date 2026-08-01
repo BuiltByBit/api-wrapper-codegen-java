@@ -1391,6 +1391,50 @@ paths:
       x-stoplight:
         id: 7adv392i58h8y
       x-accepts: application/json
+  /v2/resources/creator/addons/update:
+    post:
+      operationId: post-v2-resources-creator-addons-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_resources_creator_addons_update_request'
+        description: |-
+          Creates a new version for the addon. The uploaded file must be encoded using base64 as part of the JSON request body shown below.
+
+          The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses.
+      responses: {}
+      security:
+      - token: []
+      summary: Post an addon update
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: v0ebb2r8uile9
+      x-content-type: application/json
+      x-accepts: application/json
+  /v2/resources/creator/api-assets/update:
+    post:
+      operationId: post-v2-resources-creator-api-assets-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_v2_resources_creator_api_assets_update_request'
+        description: |-
+          Creates a new version for the API asset. The uploaded file must be encoded using base64 as part of the JSON request body shown below.
+
+          The request body (including the base64 encoded file data) cannot exceed 100MB. This roughly equates to a 67MB upload limit for the raw file when taking into account base64 encoding losses.
+      responses: {}
+      security:
+      - token: []
+      summary: Post an API asset update
+      tags:
+      - resources/creator
+      x-stoplight:
+        id: a3oq9ufnxt653
+      x-content-type: application/json
+      x-accepts: application/json
 components:
   examples: {}
   parameters:
@@ -12904,6 +12948,71 @@ components:
             id: 74st7byljvmfg
         data:
           $ref: '#/components/schemas/get_v2_resources_embed_download_status_200_response_data'
+      type: object
+    post_v2_resources_creator_addons_update_request_file:
+      properties:
+        name:
+          description: The name of the file (including extension).
+          type: string
+          x-stoplight:
+            id: 0donv8fmvnmu3
+        data:
+          description: The base64 encoded file data.
+          type: string
+          x-stoplight:
+            id: 7in4dkx1ihv4s
+      required:
+      - data
+      - name
+      type: object
+      x-stoplight:
+        id: bj27na9uv6o9u
+    post_v2_resources_creator_addons_update_request:
+      properties:
+        addon_id:
+          type: integer
+          x-stoplight:
+            id: ty78bvr9jcoa3
+        file:
+          $ref: '#/components/schemas/post_v2_resources_creator_addons_update_request_file'
+        version_name:
+          type: string
+          x-stoplight:
+            id: 1arsrqb9oz08w
+      required:
+      - addon_id
+      - file
+      - version_name
+      type: object
+    post_v2_resources_creator_api_assets_update_request_file:
+      properties:
+        name:
+          description: The name of the file (including extension).
+          type: string
+          x-stoplight:
+            id: aw5csx3cc365l
+        data:
+          description: The base64 encoded file data.
+          type: string
+          x-stoplight:
+            id: r5j4wleek3dsm
+      required:
+      - data
+      - name
+      type: object
+      x-stoplight:
+        id: 965s1vvntdbr9
+    post_v2_resources_creator_api_assets_update_request:
+      properties:
+        api_asset_id:
+          type: string
+          x-stoplight:
+            id: usepopbra506f
+        file:
+          $ref: '#/components/schemas/post_v2_resources_creator_api_assets_update_request_file'
+      required:
+      - api_asset_id
+      - file
       type: object
     Analytic_filters_value:
       example:

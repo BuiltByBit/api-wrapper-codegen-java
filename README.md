@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-07-31T13:16:52.665929Z[Etc/UTC]
+  - Build date: 2026-08-01T20:29:13.832214Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
@@ -141,6 +141,8 @@ Class | Method | HTTP request | Description
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorStores**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorStores) | **GET** /v2/resources/creator/stores | Fetch a list of your stores
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorUpdates**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorUpdates) | **GET** /v2/resources/creator/updates | Fetch a list of your resource&#39;s updates
 *ResourcesCreatorApi* | [**getV2ResourcesCreatorVersions**](docs/ResourcesCreatorApi.md#getV2ResourcesCreatorVersions) | **GET** /v2/resources/creator/versions | Fetch a list of your resources&#39; versions
+*ResourcesCreatorApi* | [**postV2ResourcesCreatorAddonsUpdate**](docs/ResourcesCreatorApi.md#postV2ResourcesCreatorAddonsUpdate) | **POST** /v2/resources/creator/addons/update | Post an addon update
+*ResourcesCreatorApi* | [**postV2ResourcesCreatorApiAssetsUpdate**](docs/ResourcesCreatorApi.md#postV2ResourcesCreatorApiAssetsUpdate) | **POST** /v2/resources/creator/api-assets/update | Post an API asset update
 *ResourcesCreatorApi* | [**postV2ResourcesCreatorUpdate**](docs/ResourcesCreatorApi.md#postV2ResourcesCreatorUpdate) | **POST** /v2/resources/creator/update | Post a resource update
 *ResourcesCreatorBatchApi* | [**getV2ResourcesCreatorBatch**](docs/ResourcesCreatorBatchApi.md#getV2ResourcesCreatorBatch) | **GET** /v2/resources/creator/batch | Fetch a list of your batches edits
 *ResourcesCreatorBatchApi* | [**postV2ResourcesCreatorBatch**](docs/ResourcesCreatorBatchApi.md#postV2ResourcesCreatorBatch) | **POST** /v2/resources/creator/batch | Submit a new batch edit
@@ -259,6 +261,10 @@ Class | Method | HTTP request | Description
  - [PostV2DeploymentsUpgradeRequest](docs/PostV2DeploymentsUpgradeRequest.md)
  - [PostV2EventsComplete200Response](docs/PostV2EventsComplete200Response.md)
  - [PostV2EventsCompleteRequest](docs/PostV2EventsCompleteRequest.md)
+ - [PostV2ResourcesCreatorAddonsUpdateRequest](docs/PostV2ResourcesCreatorAddonsUpdateRequest.md)
+ - [PostV2ResourcesCreatorAddonsUpdateRequestFile](docs/PostV2ResourcesCreatorAddonsUpdateRequestFile.md)
+ - [PostV2ResourcesCreatorApiAssetsUpdateRequest](docs/PostV2ResourcesCreatorApiAssetsUpdateRequest.md)
+ - [PostV2ResourcesCreatorApiAssetsUpdateRequestFile](docs/PostV2ResourcesCreatorApiAssetsUpdateRequestFile.md)
  - [PostV2ResourcesCreatorBatch200Response](docs/PostV2ResourcesCreatorBatch200Response.md)
  - [PostV2ResourcesCreatorBatch200ResponseData](docs/PostV2ResourcesCreatorBatch200ResponseData.md)
  - [PostV2ResourcesCreatorBatchRequest](docs/PostV2ResourcesCreatorBatchRequest.md)
