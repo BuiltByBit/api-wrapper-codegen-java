@@ -1435,6 +1435,62 @@ paths:
         id: a3oq9ufnxt653
       x-content-type: application/json
       x-accepts: application/json
+  /v2/resources/discover/download/plan:
+    get:
+      operationId: get-v2-resources-discover-download-plan
+      parameters:
+      - description: Only 'resource' is currently supported.
+        explode: true
+        in: query
+        name: content_type
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: content_id
+        required: true
+        schema:
+          type: integer
+        style: form
+      - description: A comma-separated list of supported features (like archive formats).
+        explode: true
+        in: query
+        name: supported
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: current_server_sofware
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: current_server_version
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_resources_discover_download_plan_200_response'
+          description: OK
+      security:
+      - token: []
+      summary: Fetch a download plan
+      tags:
+      - resources/discover
+      x-stoplight:
+        id: l2n9hkp59ez8a
+      x-accepts: application/json
 components:
   examples: {}
   parameters:
@@ -4143,6 +4199,128 @@ components:
       type: object
       x-stoplight:
         id: qc3ai0naipzva
+    DownloadPlan:
+      example:
+        notices:
+        - text: text
+        - text: text
+        unsupported:
+        - unsupported
+        - unsupported
+        requires_empty_server: requires_empty_server
+        level: full
+        actions:
+        - dst: dst
+          src: src
+          type: copy
+          actions:
+          - null
+          - null
+        - dst: dst
+          src: src
+          type: copy
+          actions:
+          - null
+          - null
+      properties:
+        level:
+          enum:
+          - full
+          - partial
+          - manual
+          type: string
+          x-stoplight:
+            id: 37cu2v7lxk4p3
+        actions:
+          items:
+            $ref: '#/components/schemas/DownloadPlanAction'
+          type: array
+          x-stoplight:
+            id: t7n5sf2r2bkmn
+        notices:
+          items:
+            $ref: '#/components/schemas/DownloadPlanNotice'
+          type: array
+          x-stoplight:
+            id: t3fjvjkc5p6to
+        unsupported:
+          description: "A list of features which were unsupported (not passed into\
+            \ the 'supported' query paramter) which were needed, resulting in the\
+            \ plan level being downgraded to 'manual'."
+          items:
+            type: string
+            x-stoplight:
+              id: j2dq6vu86j175
+          type: array
+          x-stoplight:
+            id: 7x1664z1kvmol
+        requires_empty_server:
+          description: Whether the server files must be empty before exeucting the
+            plan steps.
+          type: string
+          x-stoplight:
+            id: 7pifmmlvmdhef
+      required:
+      - level
+      title: DownloadPlan
+      type: object
+      x-stoplight:
+        id: 7giuqnr10mgsh
+    DownloadPlanAction:
+      example:
+        dst: dst
+        src: src
+        type: copy
+        actions:
+        - null
+        - null
+      properties:
+        type:
+          enum:
+          - copy
+          - copy_dir
+          - open_zip
+          - server_restart
+          type: string
+          x-stoplight:
+            id: l7tau0e28hzs6
+        src:
+          description: The source file/directory.
+          type: string
+          x-stoplight:
+            id: wk4u2tuep42o9
+        dst:
+          description: A destination file/directory relative to the server root.
+          type: string
+          x-stoplight:
+            id: srmj1ev4o7ezv
+        actions:
+          description: A set of subactions to execute in the context of this action.
+          items:
+            $ref: '#/components/schemas/DownloadPlanAction'
+          type: array
+          x-stoplight:
+            id: ti95r5527xvdk
+      required:
+      - type
+      title: DownloadPlanAction
+      type: object
+      x-stoplight:
+        id: havbrhcd79uct
+    DownloadPlanNotice:
+      example:
+        text: text
+      properties:
+        text:
+          type: string
+          x-stoplight:
+            id: nx2h224oy1tzl
+      required:
+      - text
+      title: DownloadPlanNotice
+      type: object
+      x-stoplight:
+        id: kdsrcoxgjvyyt
     get_oauth2_token_request:
       properties:
         grant_type:
@@ -13013,6 +13191,72 @@ components:
       required:
       - api_asset_id
       - file
+      type: object
+    get_v2_resources_discover_download_plan_200_response_data:
+      example:
+        plan:
+          notices:
+          - text: text
+          - text: text
+          unsupported:
+          - unsupported
+          - unsupported
+          requires_empty_server: requires_empty_server
+          level: full
+          actions:
+          - dst: dst
+            src: src
+            type: copy
+            actions:
+            - null
+            - null
+          - dst: dst
+            src: src
+            type: copy
+            actions:
+            - null
+            - null
+      properties:
+        plan:
+          $ref: '#/components/schemas/DownloadPlan'
+      type: object
+      x-stoplight:
+        id: bmykdensz0kww
+    get_v2_resources_discover_download_plan_200_response:
+      example:
+        result: success
+        data:
+          plan:
+            notices:
+            - text: text
+            - text: text
+            unsupported:
+            - unsupported
+            - unsupported
+            requires_empty_server: requires_empty_server
+            level: full
+            actions:
+            - dst: dst
+              src: src
+              type: copy
+              actions:
+              - null
+              - null
+            - dst: dst
+              src: src
+              type: copy
+              actions:
+              - null
+              - null
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: 21hfwvzfexvq4
+        data:
+          $ref: '#/components/schemas/get_v2_resources_discover_download_plan_200_response_data'
       type: object
     Analytic_filters_value:
       example:

@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-08-01T20:29:13.832214Z[Etc/UTC]
+  - Build date: 2026-09-07T15:23:13.439118Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
@@ -157,6 +157,7 @@ Class | Method | HTTP request | Description
 *ResourcesDiscoverApi* | [**getResourcesDiscoverResources**](docs/ResourcesDiscoverApi.md#getResourcesDiscoverResources) | **GET** /v2/resources/discover/resources | Fetch a list of resources
 *ResourcesDiscoverApi* | [**getV2ResourcesDiscoverDownloadDirectInitiate**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadDirectInitiate) | **GET** /v2/resources/discover/download/direct/initiate | Initiate a direct download request
 *ResourcesDiscoverApi* | [**getV2ResourcesDiscoverDownloadDirectPoll**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadDirectPoll) | **GET** /v2/resources/discover/download/direct/status | Fetch the status of a direct download request
+*ResourcesDiscoverApi* | [**getV2ResourcesDiscoverDownloadPlan**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadPlan) | **GET** /v2/resources/discover/download/plan | Fetch a download plan
 *ResourcesDiscoverApi* | [**getV2ResourcesDiscoverLicenses**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverLicenses) | **GET** /v2/resources/discover/licenses | Fetch a list of the user&#39;s licenses
 *ResourcesDiscoverCartApi* | [**getV2ResourcesDiscoverCartView**](docs/ResourcesDiscoverCartApi.md#getV2ResourcesDiscoverCartView) | **GET** /v2/resources/discover/cart/view | View the user&#39;s cart items
 *ResourcesDiscoverCartApi* | [**postV2ResourcesDiscoverCartAdd**](docs/ResourcesDiscoverCartApi.md#postV2ResourcesDiscoverCartAdd) | **POST** /v2/resources/discover/cart/add | Add items to a user&#39;s cart
@@ -185,6 +186,9 @@ Class | Method | HTTP request | Description
  - [Category](docs/Category.md)
  - [Coupon](docs/Coupon.md)
  - [CouponEntry](docs/CouponEntry.md)
+ - [DownloadPlan](docs/DownloadPlan.md)
+ - [DownloadPlanAction](docs/DownloadPlanAction.md)
+ - [DownloadPlanNotice](docs/DownloadPlanNotice.md)
  - [DownloadRequest](docs/DownloadRequest.md)
  - [DownloadStatus](docs/DownloadStatus.md)
  - [Event](docs/Event.md)
@@ -244,6 +248,8 @@ Class | Method | HTTP request | Description
  - [GetV2ResourcesDiscoverDownloadDirectInitiate200ResponseData](docs/GetV2ResourcesDiscoverDownloadDirectInitiate200ResponseData.md)
  - [GetV2ResourcesDiscoverDownloadDirectPoll200Response](docs/GetV2ResourcesDiscoverDownloadDirectPoll200Response.md)
  - [GetV2ResourcesDiscoverDownloadDirectPoll200ResponseData](docs/GetV2ResourcesDiscoverDownloadDirectPoll200ResponseData.md)
+ - [GetV2ResourcesDiscoverDownloadPlan200Response](docs/GetV2ResourcesDiscoverDownloadPlan200Response.md)
+ - [GetV2ResourcesDiscoverDownloadPlan200ResponseData](docs/GetV2ResourcesDiscoverDownloadPlan200ResponseData.md)
  - [GetV2ResourcesDiscoverLicenses200Response](docs/GetV2ResourcesDiscoverLicenses200Response.md)
  - [GetV2ResourcesDiscoverLicenses200ResponseData](docs/GetV2ResourcesDiscoverLicenses200ResponseData.md)
  - [GetV2ResourcesEmbedDownloadInitiate200Response](docs/GetV2ResourcesEmbedDownloadInitiate200Response.md)

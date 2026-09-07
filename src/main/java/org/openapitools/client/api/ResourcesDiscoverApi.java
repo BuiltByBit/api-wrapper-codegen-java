@@ -33,6 +33,7 @@ import org.openapitools.client.model.GetResourcesDiscoverResources200Response;
 import org.openapitools.client.model.GetResourcesDiscoverResources4XXResponse;
 import org.openapitools.client.model.GetV2ResourcesDiscoverDownloadDirectInitiate200Response;
 import org.openapitools.client.model.GetV2ResourcesDiscoverDownloadDirectPoll200Response;
+import org.openapitools.client.model.GetV2ResourcesDiscoverDownloadPlan200Response;
 import org.openapitools.client.model.GetV2ResourcesDiscoverLicenses200Response;
 
 import java.lang.reflect.Type;
@@ -665,6 +666,169 @@ public class ResourcesDiscoverApi {
 
         okhttp3.Call localVarCall = getV2ResourcesDiscoverDownloadDirectPollValidateBeforeCall(token, _callback);
         Type localVarReturnType = new TypeToken<GetV2ResourcesDiscoverDownloadDirectPoll200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getV2ResourcesDiscoverDownloadPlan
+     * @param contentType Only &#39;resource&#39; is currently supported. (required)
+     * @param contentId  (required)
+     * @param supported A comma-separated list of supported features (like archive formats). (optional)
+     * @param currentServerSofware  (optional)
+     * @param currentServerVersion  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesDiscoverDownloadPlanCall(String contentType, Integer contentId, String supported, String currentServerSofware, String currentServerVersion, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/resources/discover/download/plan";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (contentType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("content_type", contentType));
+        }
+
+        if (contentId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("content_id", contentId));
+        }
+
+        if (supported != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("supported", supported));
+        }
+
+        if (currentServerSofware != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("current_server_sofware", currentServerSofware));
+        }
+
+        if (currentServerVersion != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("current_server_version", currentServerVersion));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "token" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getV2ResourcesDiscoverDownloadPlanValidateBeforeCall(String contentType, Integer contentId, String supported, String currentServerSofware, String currentServerVersion, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'contentType' is set
+        if (contentType == null) {
+            throw new ApiException("Missing the required parameter 'contentType' when calling getV2ResourcesDiscoverDownloadPlan(Async)");
+        }
+
+        // verify the required parameter 'contentId' is set
+        if (contentId == null) {
+            throw new ApiException("Missing the required parameter 'contentId' when calling getV2ResourcesDiscoverDownloadPlan(Async)");
+        }
+
+        return getV2ResourcesDiscoverDownloadPlanCall(contentType, contentId, supported, currentServerSofware, currentServerVersion, _callback);
+
+    }
+
+    /**
+     * Fetch a download plan
+     * 
+     * @param contentType Only &#39;resource&#39; is currently supported. (required)
+     * @param contentId  (required)
+     * @param supported A comma-separated list of supported features (like archive formats). (optional)
+     * @param currentServerSofware  (optional)
+     * @param currentServerVersion  (optional)
+     * @return GetV2ResourcesDiscoverDownloadPlan200Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public GetV2ResourcesDiscoverDownloadPlan200Response getV2ResourcesDiscoverDownloadPlan(String contentType, Integer contentId, String supported, String currentServerSofware, String currentServerVersion) throws ApiException {
+        ApiResponse<GetV2ResourcesDiscoverDownloadPlan200Response> localVarResp = getV2ResourcesDiscoverDownloadPlanWithHttpInfo(contentType, contentId, supported, currentServerSofware, currentServerVersion);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Fetch a download plan
+     * 
+     * @param contentType Only &#39;resource&#39; is currently supported. (required)
+     * @param contentId  (required)
+     * @param supported A comma-separated list of supported features (like archive formats). (optional)
+     * @param currentServerSofware  (optional)
+     * @param currentServerVersion  (optional)
+     * @return ApiResponse&lt;GetV2ResourcesDiscoverDownloadPlan200Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GetV2ResourcesDiscoverDownloadPlan200Response> getV2ResourcesDiscoverDownloadPlanWithHttpInfo(String contentType, Integer contentId, String supported, String currentServerSofware, String currentServerVersion) throws ApiException {
+        okhttp3.Call localVarCall = getV2ResourcesDiscoverDownloadPlanValidateBeforeCall(contentType, contentId, supported, currentServerSofware, currentServerVersion, null);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesDiscoverDownloadPlan200Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Fetch a download plan (asynchronously)
+     * 
+     * @param contentType Only &#39;resource&#39; is currently supported. (required)
+     * @param contentId  (required)
+     * @param supported A comma-separated list of supported features (like archive formats). (optional)
+     * @param currentServerSofware  (optional)
+     * @param currentServerVersion  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getV2ResourcesDiscoverDownloadPlanAsync(String contentType, Integer contentId, String supported, String currentServerSofware, String currentServerVersion, final ApiCallback<GetV2ResourcesDiscoverDownloadPlan200Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getV2ResourcesDiscoverDownloadPlanValidateBeforeCall(contentType, contentId, supported, currentServerSofware, currentServerVersion, _callback);
+        Type localVarReturnType = new TypeToken<GetV2ResourcesDiscoverDownloadPlan200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
