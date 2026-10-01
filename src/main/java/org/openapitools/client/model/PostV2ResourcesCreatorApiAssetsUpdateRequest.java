@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2ResourcesCreatorApiAssetsUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-09-07T15:23:13.439118Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-01T11:22:43.441273Z[Etc/UTC]")
 public class PostV2ResourcesCreatorApiAssetsUpdateRequest {
   public static final String SERIALIZED_NAME_API_ASSET_ID = "api_asset_id";
   @SerializedName(SERIALIZED_NAME_API_ASSET_ID)
@@ -59,6 +59,18 @@ public class PostV2ResourcesCreatorApiAssetsUpdateRequest {
   public static final String SERIALIZED_NAME_FILE = "file";
   @SerializedName(SERIALIZED_NAME_FILE)
   private PostV2ResourcesCreatorApiAssetsUpdateRequestFile _file;
+
+  public static final String SERIALIZED_NAME_VERSION_STRING = "version_string";
+  @SerializedName(SERIALIZED_NAME_VERSION_STRING)
+  private String versionString;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_OLDEST_RESOURCE_VERSION_ID = "oldest_resource_version_id";
+  @SerializedName(SERIALIZED_NAME_OLDEST_RESOURCE_VERSION_ID)
+  private Integer oldestResourceVersionId;
 
   public PostV2ResourcesCreatorApiAssetsUpdateRequest() {
   }
@@ -101,6 +113,63 @@ public class PostV2ResourcesCreatorApiAssetsUpdateRequest {
   }
 
 
+  public PostV2ResourcesCreatorApiAssetsUpdateRequest versionString(String versionString) {
+    this.versionString = versionString;
+    return this;
+  }
+
+   /**
+   * Get versionString
+   * @return versionString
+  **/
+  @javax.annotation.Nonnull
+  public String getVersionString() {
+    return versionString;
+  }
+
+  public void setVersionString(String versionString) {
+    this.versionString = versionString;
+  }
+
+
+  public PostV2ResourcesCreatorApiAssetsUpdateRequest description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public PostV2ResourcesCreatorApiAssetsUpdateRequest oldestResourceVersionId(Integer oldestResourceVersionId) {
+    this.oldestResourceVersionId = oldestResourceVersionId;
+    return this;
+  }
+
+   /**
+   * Get oldestResourceVersionId
+   * @return oldestResourceVersionId
+  **/
+  @javax.annotation.Nonnull
+  public Integer getOldestResourceVersionId() {
+    return oldestResourceVersionId;
+  }
+
+  public void setOldestResourceVersionId(Integer oldestResourceVersionId) {
+    this.oldestResourceVersionId = oldestResourceVersionId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -112,12 +181,15 @@ public class PostV2ResourcesCreatorApiAssetsUpdateRequest {
     }
     PostV2ResourcesCreatorApiAssetsUpdateRequest postV2ResourcesCreatorApiAssetsUpdateRequest = (PostV2ResourcesCreatorApiAssetsUpdateRequest) o;
     return Objects.equals(this.apiAssetId, postV2ResourcesCreatorApiAssetsUpdateRequest.apiAssetId) &&
-        Objects.equals(this._file, postV2ResourcesCreatorApiAssetsUpdateRequest._file);
+        Objects.equals(this._file, postV2ResourcesCreatorApiAssetsUpdateRequest._file) &&
+        Objects.equals(this.versionString, postV2ResourcesCreatorApiAssetsUpdateRequest.versionString) &&
+        Objects.equals(this.description, postV2ResourcesCreatorApiAssetsUpdateRequest.description) &&
+        Objects.equals(this.oldestResourceVersionId, postV2ResourcesCreatorApiAssetsUpdateRequest.oldestResourceVersionId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiAssetId, _file);
+    return Objects.hash(apiAssetId, _file, versionString, description, oldestResourceVersionId);
   }
 
   @Override
@@ -126,6 +198,9 @@ public class PostV2ResourcesCreatorApiAssetsUpdateRequest {
     sb.append("class PostV2ResourcesCreatorApiAssetsUpdateRequest {\n");
     sb.append("    apiAssetId: ").append(toIndentedString(apiAssetId)).append("\n");
     sb.append("    _file: ").append(toIndentedString(_file)).append("\n");
+    sb.append("    versionString: ").append(toIndentedString(versionString)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    oldestResourceVersionId: ").append(toIndentedString(oldestResourceVersionId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,11 +225,16 @@ public class PostV2ResourcesCreatorApiAssetsUpdateRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("api_asset_id");
     openapiFields.add("file");
+    openapiFields.add("version_string");
+    openapiFields.add("description");
+    openapiFields.add("oldest_resource_version_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("api_asset_id");
     openapiRequiredFields.add("file");
+    openapiRequiredFields.add("version_string");
+    openapiRequiredFields.add("oldest_resource_version_id");
   }
 
  /**
@@ -190,6 +270,12 @@ public class PostV2ResourcesCreatorApiAssetsUpdateRequest {
       }
       // validate the required field `file`
       PostV2ResourcesCreatorApiAssetsUpdateRequestFile.validateJsonElement(jsonObj.get("file"));
+      if (!jsonObj.get("version_string").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `version_string` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version_string").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

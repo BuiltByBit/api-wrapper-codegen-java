@@ -9,6 +9,9 @@
 |------------ | ------------- | ------------- | -------------|
 |**apiAssetId** | **String** |  |  |
 |**_file** | [**PostV2ResourcesCreatorApiAssetsUpdateRequestFile**](PostV2ResourcesCreatorApiAssetsUpdateRequestFile.md) |  |  |
+|**versionString** | **String** |  |  |
+|**description** | **String** |  |  [optional] |
+|**oldestResourceVersionId** | **Integer** |  |  |
 
 
 

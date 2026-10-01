@@ -13188,9 +13188,23 @@ components:
             id: usepopbra506f
         file:
           $ref: '#/components/schemas/post_v2_resources_creator_api_assets_update_request_file'
+        version_string:
+          type: string
+          x-stoplight:
+            id: fkmte3g9dj1xx
+        description:
+          type: string
+          x-stoplight:
+            id: 6yimq01viptfb
+        oldest_resource_version_id:
+          type: integer
+          x-stoplight:
+            id: ajmffhxe97jia
       required:
       - api_asset_id
       - file
+      - oldest_resource_version_id
+      - version_string
       type: object
     get_v2_resources_discover_download_plan_200_response_data:
       example:
