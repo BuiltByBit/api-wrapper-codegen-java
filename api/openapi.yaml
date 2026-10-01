@@ -1547,8 +1547,9 @@ components:
     Resource:
       description: "Supported 'with' hints:\n- 'Creator': the resource creator/owner\n\
         - 'Category': the resource category \n- 'Description': the resource description\
-        \ (rendered HTML and BBCode)\n- 'LatestReviews': list of the 10 latest reviews\n\
-        - 'Filter values': filter values set by the creator"
+        \ (rendered HTML and BBCode)\n- 'Dependencies': the resource dependencies\
+        \ section (rendered HTML and BBCode)\n- 'LatestReviews': list of the 10 latest\
+        \ reviews\n- 'FilterValues': filter values set by the creator"
       example:
         summary: summary
         Description:
@@ -1714,6 +1715,9 @@ components:
           review_average: 9.369310271410669
           version_string: version_string
           download_count: 5
+        Dependencies:
+          bbcode: bbcode
+          html: html
         published_at: 1
         carousel_image_urls:
         - carousel_image_urls
@@ -1795,6 +1799,8 @@ components:
           type: object
           x-stoplight:
             id: nw0fuu0htjc3r
+        Dependencies:
+          $ref: '#/components/schemas/RichText'
       title: Resource
       type: object
       x-stoplight:
@@ -2192,6 +2198,9 @@ components:
             review_average: 9.369310271410669
             version_string: version_string
             download_count: 5
+          Dependencies:
+            bbcode: bbcode
+            html: html
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -2727,6 +2736,9 @@ components:
             review_average: 9.369310271410669
             version_string: version_string
             download_count: 5
+          Dependencies:
+            bbcode: bbcode
+            html: html
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -3264,6 +3276,9 @@ components:
             review_average: 9.369310271410669
             version_string: version_string
             download_count: 5
+          Dependencies:
+            bbcode: bbcode
+            html: html
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -3833,6 +3848,9 @@ components:
             review_average: 9.369310271410669
             version_string: version_string
             download_count: 5
+          Dependencies:
+            bbcode: bbcode
+            html: html
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -4107,6 +4125,9 @@ components:
             review_average: 9.369310271410669
             version_string: version_string
             download_count: 5
+          Dependencies:
+            bbcode: bbcode
+            html: html
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -4567,6 +4588,9 @@ components:
             review_average: 9.369310271410669
             version_string: version_string
             download_count: 5
+          Dependencies:
+            bbcode: bbcode
+            html: html
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -4739,6 +4763,9 @@ components:
             review_average: 9.369310271410669
             version_string: version_string
             download_count: 5
+          Dependencies:
+            bbcode: bbcode
+            html: html
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -4979,6 +5006,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -5151,6 +5181,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -5466,6 +5499,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -5651,6 +5687,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -5858,6 +5897,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -6043,6 +6085,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -6875,6 +6920,9 @@ components:
             review_average: 9.369310271410669
             version_string: version_string
             download_count: 5
+          Dependencies:
+            bbcode: bbcode
+            html: html
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -7047,6 +7095,9 @@ components:
             review_average: 9.369310271410669
             version_string: version_string
             download_count: 5
+          Dependencies:
+            bbcode: bbcode
+            html: html
           published_at: 1
           carousel_image_urls:
           - carousel_image_urls
@@ -7241,6 +7292,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -7413,6 +7467,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -7620,6 +7677,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -7852,6 +7912,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -8106,6 +8169,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -8338,6 +8404,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -8571,6 +8640,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -8756,6 +8828,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -8963,6 +9038,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -9148,6 +9226,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -9428,6 +9509,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -9608,6 +9692,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -9810,6 +9897,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -9990,6 +10080,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -10404,6 +10497,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -10609,6 +10705,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -10836,6 +10935,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -11041,6 +11143,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -11938,6 +12043,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -12163,6 +12271,9 @@ components:
               review_average: 9.369310271410669
               version_string: version_string
               download_count: 5
+            Dependencies:
+              bbcode: bbcode
+              html: html
             published_at: 1
             carousel_image_urls:
             - carousel_image_urls
@@ -12410,6 +12521,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls
@@ -12635,6 +12749,9 @@ components:
                 review_average: 9.369310271410669
                 version_string: version_string
                 download_count: 5
+              Dependencies:
+                bbcode: bbcode
+                html: html
               published_at: 1
               carousel_image_urls:
               - carousel_image_urls

@@ -60,9 +60,9 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Supported &#39;with&#39; hints: - &#39;Creator&#39;: the resource creator/owner - &#39;Category&#39;: the resource category  - &#39;Description&#39;: the resource description (rendered HTML and BBCode) - &#39;LatestReviews&#39;: list of the 10 latest reviews - &#39;Filter values&#39;: filter values set by the creator
+ * Supported &#39;with&#39; hints: - &#39;Creator&#39;: the resource creator/owner - &#39;Category&#39;: the resource category  - &#39;Description&#39;: the resource description (rendered HTML and BBCode) - &#39;Dependencies&#39;: the resource dependencies section (rendered HTML and BBCode) - &#39;LatestReviews&#39;: list of the 10 latest reviews - &#39;FilterValues&#39;: filter values set by the creator
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-01T11:22:43.441273Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-01T15:07:00.911222Z[Etc/UTC]")
 public class Resource {
   public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
@@ -155,6 +155,10 @@ public class Resource {
   public static final String SERIALIZED_NAME_ADDONS = "Addons";
   @SerializedName(SERIALIZED_NAME_ADDONS)
   private Map<String, List<Addon>> addons = new HashMap<>();
+
+  public static final String SERIALIZED_NAME_DEPENDENCIES = "Dependencies";
+  @SerializedName(SERIALIZED_NAME_DEPENDENCIES)
+  private RichText dependencies;
 
   public Resource() {
   }
@@ -620,6 +624,25 @@ public class Resource {
   }
 
 
+  public Resource dependencies(RichText dependencies) {
+    this.dependencies = dependencies;
+    return this;
+  }
+
+   /**
+   * Get dependencies
+   * @return dependencies
+  **/
+  @javax.annotation.Nullable
+  public RichText getDependencies() {
+    return dependencies;
+  }
+
+  public void setDependencies(RichText dependencies) {
+    this.dependencies = dependencies;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -652,12 +675,13 @@ public class Resource {
         Objects.equals(this.latestReviews, resource.latestReviews) &&
         Objects.equals(this.description, resource.description) &&
         Objects.equals(this.category, resource.category) &&
-        Objects.equals(this.addons, resource.addons);
+        Objects.equals(this.addons, resource.addons) &&
+        Objects.equals(this.dependencies, resource.dependencies);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resourceId, title, summary, url, creatorId, publishedAt, lastUpdatedAt, purchases, downloads, coverImageUrl, carouselImageUrls, reviewCount, reviewAverage, listPrice, finalPrice, saleEventEntry, creator, latestVersion, latestUpdate, latestReviews, description, category, addons);
+    return Objects.hash(resourceId, title, summary, url, creatorId, publishedAt, lastUpdatedAt, purchases, downloads, coverImageUrl, carouselImageUrls, reviewCount, reviewAverage, listPrice, finalPrice, saleEventEntry, creator, latestVersion, latestUpdate, latestReviews, description, category, addons, dependencies);
   }
 
   @Override
@@ -687,6 +711,7 @@ public class Resource {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    addons: ").append(toIndentedString(addons)).append("\n");
+    sb.append("    dependencies: ").append(toIndentedString(dependencies)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -732,6 +757,7 @@ public class Resource {
     openapiFields.add("Description");
     openapiFields.add("Category");
     openapiFields.add("Addons");
+    openapiFields.add("Dependencies");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -819,6 +845,10 @@ public class Resource {
       // validate the optional field `Category`
       if (jsonObj.get("Category") != null && !jsonObj.get("Category").isJsonNull()) {
         Category.validateJsonElement(jsonObj.get("Category"));
+      }
+      // validate the optional field `Dependencies`
+      if (jsonObj.get("Dependencies") != null && !jsonObj.get("Dependencies").isJsonNull()) {
+        RichText.validateJsonElement(jsonObj.get("Dependencies"));
       }
   }
 

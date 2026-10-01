@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * DownloadPlanAction
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-01T11:22:43.441273Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-01T15:07:00.911222Z[Etc/UTC]")
 public class DownloadPlanAction {
   /**
    * Gets or Sets type
