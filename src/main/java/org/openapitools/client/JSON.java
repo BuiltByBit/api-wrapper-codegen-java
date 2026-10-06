@@ -171,6 +171,10 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.GetV2ResourcesDiscoverDownloadDirectPoll200ResponseData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.GetV2ResourcesDiscoverDownloadPlan200Response.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.GetV2ResourcesDiscoverDownloadPlan200ResponseData.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.GetV2ResourcesDiscoverDownloadPlanBatch200Response.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.GetV2ResourcesDiscoverDownloadPlanBatch200ResponseData.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.GetV2ResourcesDiscoverDownloadPlanBatch200ResponseDataPlansInner.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.GetV2ResourcesDiscoverDownloadPlanBatch200ResponseDataPlansInnerError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.GetV2ResourcesDiscoverLicenses200Response.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.GetV2ResourcesDiscoverLicenses200ResponseData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new org.openapitools.client.model.GetV2ResourcesEmbedDownloadInitiate200Response.CustomTypeAdapterFactory());

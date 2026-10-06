@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * DownloadRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-01T15:07:00.911222Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-06T13:24:25.224624Z[Etc/UTC]")
 public class DownloadRequest {
   public static final String SERIALIZED_NAME_DOWNLOAD_REQUEST_ID = "download_request_id";
   @SerializedName(SERIALIZED_NAME_DOWNLOAD_REQUEST_ID)

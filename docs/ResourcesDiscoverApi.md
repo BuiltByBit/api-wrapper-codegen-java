@@ -9,6 +9,7 @@ All URIs are relative to *https://api.builtbybit.com*
 | [**getV2ResourcesDiscoverDownloadDirectInitiate**](ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadDirectInitiate) | **GET** /v2/resources/discover/download/direct/initiate | Initiate a direct download request |
 | [**getV2ResourcesDiscoverDownloadDirectPoll**](ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadDirectPoll) | **GET** /v2/resources/discover/download/direct/status | Fetch the status of a direct download request |
 | [**getV2ResourcesDiscoverDownloadPlan**](ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadPlan) | **GET** /v2/resources/discover/download/plan | Fetch a download plan |
+| [**getV2ResourcesDiscoverDownloadPlanBatch**](ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadPlanBatch) | **GET** /v2/resources/discover/download/plan/batch | Batch fetch download plans |
 | [**getV2ResourcesDiscoverLicenses**](ResourcesDiscoverApi.md#getV2ResourcesDiscoverLicenses) | **GET** /v2/resources/discover/licenses | Fetch a list of the user&#39;s licenses |
 
 
@@ -310,7 +311,7 @@ public class Example {
 
 <a id="getV2ResourcesDiscoverDownloadPlan"></a>
 # **getV2ResourcesDiscoverDownloadPlan**
-> GetV2ResourcesDiscoverDownloadPlan200Response getV2ResourcesDiscoverDownloadPlan(contentType, contentId, supported, currentServerSofware, currentServerVersion)
+> GetV2ResourcesDiscoverDownloadPlan200Response getV2ResourcesDiscoverDownloadPlan(contentType, contentId, supported, currentServerSoftware, currentServerVersion)
 
 Fetch a download plan
 
@@ -339,10 +340,10 @@ public class Example {
     String contentType = "contentType_example"; // String | Only 'resource' is currently supported.
     Integer contentId = 56; // Integer | 
     String supported = "supported_example"; // String | A comma-separated list of supported features (like archive formats).
-    String currentServerSofware = "currentServerSofware_example"; // String | 
+    String currentServerSoftware = "currentServerSoftware_example"; // String | 
     String currentServerVersion = "currentServerVersion_example"; // String | 
     try {
-      GetV2ResourcesDiscoverDownloadPlan200Response result = apiInstance.getV2ResourcesDiscoverDownloadPlan(contentType, contentId, supported, currentServerSofware, currentServerVersion);
+      GetV2ResourcesDiscoverDownloadPlan200Response result = apiInstance.getV2ResourcesDiscoverDownloadPlan(contentType, contentId, supported, currentServerSoftware, currentServerVersion);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ResourcesDiscoverApi#getV2ResourcesDiscoverDownloadPlan");
@@ -362,12 +363,85 @@ public class Example {
 | **contentType** | **String**| Only &#39;resource&#39; is currently supported. | |
 | **contentId** | **Integer**|  | |
 | **supported** | **String**| A comma-separated list of supported features (like archive formats). | [optional] |
-| **currentServerSofware** | **String**|  | [optional] |
+| **currentServerSoftware** | **String**|  | [optional] |
 | **currentServerVersion** | **String**|  | [optional] |
 
 ### Return type
 
 [**GetV2ResourcesDiscoverDownloadPlan200Response**](GetV2ResourcesDiscoverDownloadPlan200Response.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+<a id="getV2ResourcesDiscoverDownloadPlanBatch"></a>
+# **getV2ResourcesDiscoverDownloadPlanBatch**
+> GetV2ResourcesDiscoverDownloadPlanBatch200Response getV2ResourcesDiscoverDownloadPlanBatch(contentPairs, supported, currentServerSoftware, currentServerVersion)
+
+Batch fetch download plans
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ResourcesDiscoverApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.builtbybit.com");
+    
+    // Configure API key authorization: token
+    ApiKeyAuth token = (ApiKeyAuth) defaultClient.getAuthentication("token");
+    token.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //token.setApiKeyPrefix("Token");
+
+    ResourcesDiscoverApi apiInstance = new ResourcesDiscoverApi(defaultClient);
+    String contentPairs = "resource:5,resource_version:15"; // String | A comma-separated list of content pairs. A content pair is a content_type and content_id separated by a : (colon).
+    String supported = "supported_example"; // String | A comma-separated list of supported features (like archive formats).
+    String currentServerSoftware = "currentServerSoftware_example"; // String | 
+    String currentServerVersion = "currentServerVersion_example"; // String | 
+    try {
+      GetV2ResourcesDiscoverDownloadPlanBatch200Response result = apiInstance.getV2ResourcesDiscoverDownloadPlanBatch(contentPairs, supported, currentServerSoftware, currentServerVersion);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ResourcesDiscoverApi#getV2ResourcesDiscoverDownloadPlanBatch");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **contentPairs** | **String**| A comma-separated list of content pairs. A content pair is a content_type and content_id separated by a : (colon). | |
+| **supported** | **String**| A comma-separated list of supported features (like archive formats). | [optional] |
+| **currentServerSoftware** | **String**|  | [optional] |
+| **currentServerVersion** | **String**|  | [optional] |
+
+### Return type
+
+[**GetV2ResourcesDiscoverDownloadPlanBatch200Response**](GetV2ResourcesDiscoverDownloadPlanBatch200Response.md)
 
 ### Authorization
 

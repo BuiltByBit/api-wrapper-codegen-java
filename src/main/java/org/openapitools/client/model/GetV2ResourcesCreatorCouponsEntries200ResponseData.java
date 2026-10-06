@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * GetV2ResourcesCreatorCouponsEntries200ResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-01T15:07:00.911222Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-06T13:24:25.224624Z[Etc/UTC]")
 public class GetV2ResourcesCreatorCouponsEntries200ResponseData {
   public static final String SERIALIZED_NAME_COUPON_ENTRIES = "coupon-entries";
   @SerializedName(SERIALIZED_NAME_COUPON_ENTRIES)

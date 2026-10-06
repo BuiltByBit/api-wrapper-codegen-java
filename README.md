@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-10-01T15:07:00.911222Z[Etc/UTC]
+  - Build date: 2026-10-06T13:24:25.224624Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
@@ -158,6 +158,7 @@ Class | Method | HTTP request | Description
 *ResourcesDiscoverApi* | [**getV2ResourcesDiscoverDownloadDirectInitiate**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadDirectInitiate) | **GET** /v2/resources/discover/download/direct/initiate | Initiate a direct download request
 *ResourcesDiscoverApi* | [**getV2ResourcesDiscoverDownloadDirectPoll**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadDirectPoll) | **GET** /v2/resources/discover/download/direct/status | Fetch the status of a direct download request
 *ResourcesDiscoverApi* | [**getV2ResourcesDiscoverDownloadPlan**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadPlan) | **GET** /v2/resources/discover/download/plan | Fetch a download plan
+*ResourcesDiscoverApi* | [**getV2ResourcesDiscoverDownloadPlanBatch**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverDownloadPlanBatch) | **GET** /v2/resources/discover/download/plan/batch | Batch fetch download plans
 *ResourcesDiscoverApi* | [**getV2ResourcesDiscoverLicenses**](docs/ResourcesDiscoverApi.md#getV2ResourcesDiscoverLicenses) | **GET** /v2/resources/discover/licenses | Fetch a list of the user&#39;s licenses
 *ResourcesDiscoverCartApi* | [**getV2ResourcesDiscoverCartView**](docs/ResourcesDiscoverCartApi.md#getV2ResourcesDiscoverCartView) | **GET** /v2/resources/discover/cart/view | View the user&#39;s cart items
 *ResourcesDiscoverCartApi* | [**postV2ResourcesDiscoverCartAdd**](docs/ResourcesDiscoverCartApi.md#postV2ResourcesDiscoverCartAdd) | **POST** /v2/resources/discover/cart/add | Add items to a user&#39;s cart
@@ -250,6 +251,10 @@ Class | Method | HTTP request | Description
  - [GetV2ResourcesDiscoverDownloadDirectPoll200ResponseData](docs/GetV2ResourcesDiscoverDownloadDirectPoll200ResponseData.md)
  - [GetV2ResourcesDiscoverDownloadPlan200Response](docs/GetV2ResourcesDiscoverDownloadPlan200Response.md)
  - [GetV2ResourcesDiscoverDownloadPlan200ResponseData](docs/GetV2ResourcesDiscoverDownloadPlan200ResponseData.md)
+ - [GetV2ResourcesDiscoverDownloadPlanBatch200Response](docs/GetV2ResourcesDiscoverDownloadPlanBatch200Response.md)
+ - [GetV2ResourcesDiscoverDownloadPlanBatch200ResponseData](docs/GetV2ResourcesDiscoverDownloadPlanBatch200ResponseData.md)
+ - [GetV2ResourcesDiscoverDownloadPlanBatch200ResponseDataPlansInner](docs/GetV2ResourcesDiscoverDownloadPlanBatch200ResponseDataPlansInner.md)
+ - [GetV2ResourcesDiscoverDownloadPlanBatch200ResponseDataPlansInnerError](docs/GetV2ResourcesDiscoverDownloadPlanBatch200ResponseDataPlansInnerError.md)
  - [GetV2ResourcesDiscoverLicenses200Response](docs/GetV2ResourcesDiscoverLicenses200Response.md)
  - [GetV2ResourcesDiscoverLicenses200ResponseData](docs/GetV2ResourcesDiscoverLicenses200ResponseData.md)
  - [GetV2ResourcesEmbedDownloadInitiate200Response](docs/GetV2ResourcesEmbedDownloadInitiate200Response.md)
