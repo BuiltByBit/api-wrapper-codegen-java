@@ -62,7 +62,7 @@ import org.openapitools.client.JSON;
 /**
  * Supported &#39;with&#39; hints: - &#39;Creator&#39;: the resource creator/owner - &#39;Category&#39;: the resource category  - &#39;Description&#39;: the resource description (rendered HTML and BBCode) - &#39;Dependencies&#39;: the resource dependencies section (rendered HTML and BBCode) - &#39;LatestReviews&#39;: list of the 10 latest reviews - &#39;FilterValues&#39;: filter values set by the creator
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-06T13:24:25.224624Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-08T09:56:08.392321Z[Etc/UTC]")
 public class Resource {
   public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
@@ -79,6 +79,14 @@ public class Resource {
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
   private String url;
+
+  public static final String SERIALIZED_NAME_REFERRER_URL = "referrer_url";
+  @SerializedName(SERIALIZED_NAME_REFERRER_URL)
+  private String referrerUrl;
+
+  public static final String SERIALIZED_NAME_REFERRER_RATE = "referrer_rate";
+  @SerializedName(SERIALIZED_NAME_REFERRER_RATE)
+  private Integer referrerRate;
 
   public static final String SERIALIZED_NAME_CREATOR_ID = "creator_id";
   @SerializedName(SERIALIZED_NAME_CREATOR_ID)
@@ -236,6 +244,44 @@ public class Resource {
 
   public void setUrl(String url) {
     this.url = url;
+  }
+
+
+  public Resource referrerUrl(String referrerUrl) {
+    this.referrerUrl = referrerUrl;
+    return this;
+  }
+
+   /**
+   * Get referrerUrl
+   * @return referrerUrl
+  **/
+  @javax.annotation.Nullable
+  public String getReferrerUrl() {
+    return referrerUrl;
+  }
+
+  public void setReferrerUrl(String referrerUrl) {
+    this.referrerUrl = referrerUrl;
+  }
+
+
+  public Resource referrerRate(Integer referrerRate) {
+    this.referrerRate = referrerRate;
+    return this;
+  }
+
+   /**
+   * Get referrerRate
+   * @return referrerRate
+  **/
+  @javax.annotation.Nullable
+  public Integer getReferrerRate() {
+    return referrerRate;
+  }
+
+  public void setReferrerRate(Integer referrerRate) {
+    this.referrerRate = referrerRate;
   }
 
 
@@ -657,6 +703,8 @@ public class Resource {
         Objects.equals(this.title, resource.title) &&
         Objects.equals(this.summary, resource.summary) &&
         Objects.equals(this.url, resource.url) &&
+        Objects.equals(this.referrerUrl, resource.referrerUrl) &&
+        Objects.equals(this.referrerRate, resource.referrerRate) &&
         Objects.equals(this.creatorId, resource.creatorId) &&
         Objects.equals(this.publishedAt, resource.publishedAt) &&
         Objects.equals(this.lastUpdatedAt, resource.lastUpdatedAt) &&
@@ -681,7 +729,7 @@ public class Resource {
 
   @Override
   public int hashCode() {
-    return Objects.hash(resourceId, title, summary, url, creatorId, publishedAt, lastUpdatedAt, purchases, downloads, coverImageUrl, carouselImageUrls, reviewCount, reviewAverage, listPrice, finalPrice, saleEventEntry, creator, latestVersion, latestUpdate, latestReviews, description, category, addons, dependencies);
+    return Objects.hash(resourceId, title, summary, url, referrerUrl, referrerRate, creatorId, publishedAt, lastUpdatedAt, purchases, downloads, coverImageUrl, carouselImageUrls, reviewCount, reviewAverage, listPrice, finalPrice, saleEventEntry, creator, latestVersion, latestUpdate, latestReviews, description, category, addons, dependencies);
   }
 
   @Override
@@ -692,6 +740,8 @@ public class Resource {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    referrerUrl: ").append(toIndentedString(referrerUrl)).append("\n");
+    sb.append("    referrerRate: ").append(toIndentedString(referrerRate)).append("\n");
     sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
     sb.append("    publishedAt: ").append(toIndentedString(publishedAt)).append("\n");
     sb.append("    lastUpdatedAt: ").append(toIndentedString(lastUpdatedAt)).append("\n");
@@ -738,6 +788,8 @@ public class Resource {
     openapiFields.add("title");
     openapiFields.add("summary");
     openapiFields.add("url");
+    openapiFields.add("referrer_url");
+    openapiFields.add("referrer_rate");
     openapiFields.add("creator_id");
     openapiFields.add("published_at");
     openapiFields.add("last_updated_at");
@@ -792,6 +844,9 @@ public class Resource {
       }
       if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
+      }
+      if ((jsonObj.get("referrer_url") != null && !jsonObj.get("referrer_url").isJsonNull()) && !jsonObj.get("referrer_url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `referrer_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("referrer_url").toString()));
       }
       if ((jsonObj.get("cover_image_url") != null && !jsonObj.get("cover_image_url").isJsonNull()) && !jsonObj.get("cover_image_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cover_image_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cover_image_url").toString()));

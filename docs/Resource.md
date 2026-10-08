@@ -12,6 +12,8 @@ Supported 'with' hints: - 'Creator': the resource creator/owner - 'Category': th
 |**title** | **String** |  |  [optional] |
 |**summary** | **String** |  |  [optional] |
 |**url** | **String** |  |  [optional] |
+|**referrerUrl** | **String** |  |  [optional] |
+|**referrerRate** | **Integer** |  |  [optional] |
 |**creatorId** | **Integer** |  |  [optional] |
 |**publishedAt** | **Integer** |  |  [optional] |
 |**lastUpdatedAt** | **Integer** |  |  [optional] |

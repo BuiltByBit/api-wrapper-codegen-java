@@ -88,7 +88,7 @@ public class Example {
 
 <a id="getResourcesDiscoverResources"></a>
 # **getResourcesDiscoverResources**
-> GetResourcesDiscoverResources200Response getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds)
+> GetResourcesDiscoverResources200Response getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate)
 
 Fetch a list of resources
 
@@ -125,8 +125,9 @@ public class Example {
     Boolean noDependencies = true; // Boolean | Whether or not to exclude resources with dependencies listed.
     String excludedResourceIds = "excludedResourceIds_example"; // String | A comma-separated list of resource IDs to exclude. No filter will be applied if empty.
     String excludedCreatorIds = "excludedCreatorIds_example"; // String | A comma-separated list of creator IDs to exclude. No filter will be applied if empty.
+    Integer minReferrerRate = 56; // Integer | A minimum referral rate (percent) to filter on. Defaults to 0%.
     try {
-      GetResourcesDiscoverResources200Response result = apiInstance.getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds);
+      GetResourcesDiscoverResources200Response result = apiInstance.getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ResourcesDiscoverApi#getResourcesDiscoverResources");
@@ -152,6 +153,7 @@ public class Example {
 | **noDependencies** | **Boolean**| Whether or not to exclude resources with dependencies listed. | [optional] |
 | **excludedResourceIds** | **String**| A comma-separated list of resource IDs to exclude. No filter will be applied if empty. | [optional] |
 | **excludedCreatorIds** | **String**| A comma-separated list of creator IDs to exclude. No filter will be applied if empty. | [optional] |
+| **minReferrerRate** | **Integer**| A minimum referral rate (percent) to filter on. Defaults to 0%. | [optional] |
 
 ### Return type
 
