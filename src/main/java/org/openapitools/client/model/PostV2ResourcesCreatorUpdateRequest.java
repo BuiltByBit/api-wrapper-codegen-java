@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2ResourcesCreatorUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-08T09:56:08.392321Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-09T11:36:52.945914Z[Etc/UTC]")
 public class PostV2ResourcesCreatorUpdateRequest {
   public static final String SERIALIZED_NAME_RESOURCE_ID = "resource_id";
   @SerializedName(SERIALIZED_NAME_RESOURCE_ID)

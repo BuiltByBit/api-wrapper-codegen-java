@@ -1550,6 +1550,25 @@ paths:
       x-stoplight:
         id: rndiqh6u7ai7g
       x-accepts: application/json
+  /v2/members/self:
+    get:
+      description: "See: https://builtbybit.com/help/developers/global-apis/members/"
+      operationId: get-v2-members-self
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_v2_members_self_200_response'
+          description: OK
+      security:
+      - token: []
+      - oauth2: []
+      summary: Fetch self member information
+      tags: []
+      x-stoplight:
+        id: 6yobvgsf0l2kp
+      x-accepts: application/json
 components:
   examples: {}
   parameters:
@@ -1663,9 +1682,14 @@ components:
         review_count: 9
         Creator:
           registered_at: registered_at
-          avatar_url: avatar_url
           user_id: user_id
+          avatar_url_large: avatar_url_large
+          user_url: user_url
+          avatar_url_medium: avatar_url_medium
+          avatar_url_small: avatar_url_small
+          banned: true
           username: username
+          discord_id: discord_id
         title: title
         ListPrice:
           formatted: formatted
@@ -1713,9 +1737,14 @@ components:
           message: message
           Reviewer:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
         - review_id: 8
           Version:
             Resource: null
@@ -1736,9 +1765,14 @@ components:
           message: message
           Reviewer:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
         review_average: 3.616076749251911
         url: url
         LatestVersion:
@@ -1914,12 +1948,21 @@ components:
     Member:
       example:
         registered_at: registered_at
-        avatar_url: avatar_url
         user_id: user_id
+        avatar_url_large: avatar_url_large
+        user_url: user_url
+        avatar_url_medium: avatar_url_medium
+        avatar_url_small: avatar_url_small
+        banned: true
         username: username
+        discord_id: discord_id
       properties:
         user_id:
           type: string
+        user_url:
+          type: string
+          x-stoplight:
+            id: rzmf1890forzr
         username:
           type: string
           x-stoplight:
@@ -1928,10 +1971,26 @@ components:
           type: string
           x-stoplight:
             id: kfuewsgtcuq74
-        avatar_url:
+        avatar_url_large:
           type: string
           x-stoplight:
             id: 6l5qmbkfzte0c
+        avatar_url_medium:
+          type: string
+          x-stoplight:
+            id: md2kapvhnvlc0
+        avatar_url_small:
+          type: string
+          x-stoplight:
+            id: unxkbxmr5vwu4
+        banned:
+          type: boolean
+          x-stoplight:
+            id: ng02mvfrlgrbz
+        discord_id:
+          type: string
+          x-stoplight:
+            id: syg6gd6yi2fu9
       title: User
       type: object
       x-stoplight:
@@ -2048,9 +2107,14 @@ components:
         message: message
         Reviewer:
           registered_at: registered_at
-          avatar_url: avatar_url
           user_id: user_id
+          avatar_url_large: avatar_url_large
+          user_url: user_url
+          avatar_url_medium: avatar_url_medium
+          avatar_url_small: avatar_url_small
+          banned: true
           username: username
+          discord_id: discord_id
       properties:
         review_id:
           type: integer
@@ -2156,9 +2220,14 @@ components:
           review_count: 9
           Creator:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           title: title
           ListPrice:
             formatted: formatted
@@ -2206,9 +2275,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           - review_id: 8
             Version:
               Resource: null
@@ -2229,9 +2303,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           review_average: 3.616076749251911
           url: url
           LatestVersion:
@@ -2696,9 +2775,14 @@ components:
           review_count: 9
           Creator:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           title: title
           ListPrice:
             formatted: formatted
@@ -2746,9 +2830,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           - review_id: 8
             Version:
               Resource: null
@@ -2769,9 +2858,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           review_average: 3.616076749251911
           url: url
           LatestVersion:
@@ -2823,9 +2917,14 @@ components:
         active: true
         Buyer:
           registered_at: registered_at
-          avatar_url: avatar_url
           user_id: user_id
+          avatar_url_large: avatar_url_large
+          user_url: user_url
+          avatar_url_medium: avatar_url_medium
+          avatar_url_small: avatar_url_small
+          banned: true
           username: username
+          discord_id: discord_id
         buyer_id: 6
         start_date: 1
       properties:
@@ -3238,9 +3337,14 @@ components:
           review_count: 9
           Creator:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           title: title
           ListPrice:
             formatted: formatted
@@ -3288,9 +3392,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           - review_id: 8
             Version:
               Resource: null
@@ -3311,9 +3420,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           review_average: 3.616076749251911
           url: url
           LatestVersion:
@@ -3365,9 +3479,14 @@ components:
         created_at: 5
         Buyer:
           registered_at: registered_at
-          avatar_url: avatar_url
           user_id: user_id
+          avatar_url_large: avatar_url_large
+          user_url: user_url
+          avatar_url_medium: avatar_url_medium
+          avatar_url_small: avatar_url_small
+          banned: true
           username: username
+          discord_id: discord_id
         buyer_id: 1
         ListPrice:
           formatted: formatted
@@ -3390,9 +3509,14 @@ components:
           value: 2.027123023002322
         Seller:
           registered_at: registered_at
-          avatar_url: avatar_url
           user_id: user_id
+          avatar_url_large: avatar_url_large
+          user_url: user_url
+          avatar_url_medium: avatar_url_medium
+          avatar_url_small: avatar_url_small
+          banned: true
           username: username
+          discord_id: discord_id
         validated_at: 2
         seller_id: 5
         gateway: gateway
@@ -3812,9 +3936,14 @@ components:
           review_count: 9
           Creator:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           title: title
           ListPrice:
             formatted: formatted
@@ -3862,9 +3991,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           - review_id: 8
             Version:
               Resource: null
@@ -3885,9 +4019,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           review_average: 3.616076749251911
           url: url
           LatestVersion:
@@ -4091,9 +4230,14 @@ components:
           review_count: 9
           Creator:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           title: title
           ListPrice:
             formatted: formatted
@@ -4141,9 +4285,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           - review_id: 8
             Version:
               Resource: null
@@ -4164,9 +4313,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           review_average: 3.616076749251911
           url: url
           LatestVersion:
@@ -4556,9 +4710,14 @@ components:
           review_count: 9
           Creator:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           title: title
           ListPrice:
             formatted: formatted
@@ -4606,9 +4765,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           - review_id: 8
             Version:
               Resource: null
@@ -4629,9 +4793,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           review_average: 3.616076749251911
           url: url
           LatestVersion:
@@ -4733,9 +4902,14 @@ components:
           review_count: 9
           Creator:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           title: title
           ListPrice:
             formatted: formatted
@@ -4783,9 +4957,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           - review_id: 8
             Version:
               Resource: null
@@ -4806,9 +4985,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           review_average: 3.616076749251911
           url: url
           LatestVersion:
@@ -4978,9 +5162,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -5028,9 +5217,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -5051,9 +5245,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -5155,9 +5354,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -5205,9 +5409,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -5228,9 +5437,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -5475,9 +5689,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -5525,9 +5744,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -5548,9 +5772,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -5602,9 +5831,14 @@ components:
           active: true
           Buyer:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           buyer_id: 6
           start_date: 1
         - end_date: 5
@@ -5665,9 +5899,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -5715,9 +5954,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -5738,9 +5982,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -5792,9 +6041,14 @@ components:
           active: true
           Buyer:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           buyer_id: 6
           start_date: 1
         stats:
@@ -5877,9 +6131,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -5927,9 +6186,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -5950,9 +6214,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -6004,9 +6273,14 @@ components:
             active: true
             Buyer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             buyer_id: 6
             start_date: 1
           - end_date: 5
@@ -6067,9 +6341,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -6117,9 +6396,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -6140,9 +6424,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -6194,9 +6483,14 @@ components:
             active: true
             Buyer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             buyer_id: 6
             start_date: 1
           stats:
@@ -6267,9 +6561,14 @@ components:
             value: 2.027123023002322
         user:
           registered_at: registered_at
-          avatar_url: avatar_url
           user_id: user_id
+          avatar_url_large: avatar_url_large
+          user_url: user_url
+          avatar_url_medium: avatar_url_medium
+          avatar_url_small: avatar_url_small
+          banned: true
           username: username
+          discord_id: discord_id
       properties:
         items:
           items:
@@ -6342,9 +6641,14 @@ components:
               value: 2.027123023002322
           user:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
       properties:
         result:
           enum:
@@ -6904,9 +7208,14 @@ components:
           review_count: 9
           Creator:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           title: title
           ListPrice:
             formatted: formatted
@@ -6954,9 +7263,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           - review_id: 8
             Version:
               Resource: null
@@ -6977,9 +7291,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           review_average: 3.616076749251911
           url: url
           LatestVersion:
@@ -7081,9 +7400,14 @@ components:
           review_count: 9
           Creator:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           title: title
           ListPrice:
             formatted: formatted
@@ -7131,9 +7455,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           - review_id: 8
             Version:
               Resource: null
@@ -7154,9 +7483,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           review_average: 3.616076749251911
           url: url
           LatestVersion:
@@ -7280,9 +7614,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -7330,9 +7669,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -7353,9 +7697,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -7457,9 +7806,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -7507,9 +7861,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -7530,9 +7889,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -7669,9 +8033,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -7719,9 +8088,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -7742,9 +8116,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -7796,9 +8175,14 @@ components:
           created_at: 5
           Buyer:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           buyer_id: 1
           ListPrice:
             formatted: formatted
@@ -7821,9 +8205,14 @@ components:
             value: 2.027123023002322
           Seller:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           validated_at: 2
           seller_id: 5
           gateway: gateway
@@ -7906,9 +8295,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -7956,9 +8350,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -7979,9 +8378,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -8033,9 +8437,14 @@ components:
           created_at: 5
           Buyer:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           buyer_id: 1
           ListPrice:
             formatted: formatted
@@ -8058,9 +8467,14 @@ components:
             value: 2.027123023002322
           Seller:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           validated_at: 2
           seller_id: 5
           gateway: gateway
@@ -8165,9 +8579,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -8215,9 +8634,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -8238,9 +8662,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -8292,9 +8721,14 @@ components:
             created_at: 5
             Buyer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             buyer_id: 1
             ListPrice:
               formatted: formatted
@@ -8317,9 +8751,14 @@ components:
               value: 2.027123023002322
             Seller:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             validated_at: 2
             seller_id: 5
             gateway: gateway
@@ -8402,9 +8841,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -8452,9 +8896,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -8475,9 +8924,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -8529,9 +8983,14 @@ components:
             created_at: 5
             Buyer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             buyer_id: 1
             ListPrice:
               formatted: formatted
@@ -8554,9 +9013,14 @@ components:
               value: 2.027123023002322
             Seller:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             validated_at: 2
             seller_id: 5
             gateway: gateway
@@ -8640,9 +9104,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -8690,9 +9159,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -8713,9 +9187,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -8767,9 +9246,14 @@ components:
           active: true
           Buyer:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           buyer_id: 6
           start_date: 1
         - end_date: 5
@@ -8830,9 +9314,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -8880,9 +9369,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -8903,9 +9397,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -8957,9 +9456,14 @@ components:
           active: true
           Buyer:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
           buyer_id: 6
           start_date: 1
         stats:
@@ -9042,9 +9546,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -9092,9 +9601,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -9115,9 +9629,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -9169,9 +9688,14 @@ components:
             active: true
             Buyer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             buyer_id: 6
             start_date: 1
           - end_date: 5
@@ -9232,9 +9756,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -9282,9 +9811,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -9305,9 +9839,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -9359,9 +9898,14 @@ components:
             active: true
             Buyer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             buyer_id: 6
             start_date: 1
           stats:
@@ -9517,9 +10061,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -9567,9 +10116,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -9590,9 +10144,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -9702,9 +10261,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -9752,9 +10316,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -9775,9 +10344,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -9909,9 +10483,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -9959,9 +10538,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -9982,9 +10566,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -10094,9 +10683,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -10144,9 +10738,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -10167,9 +10766,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -10513,9 +11117,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -10563,9 +11172,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -10586,9 +11200,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -10723,9 +11342,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -10773,9 +11397,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -10796,9 +11425,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -10955,9 +11589,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -11005,9 +11644,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -11028,9 +11672,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -11165,9 +11814,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -11215,9 +11869,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -11238,9 +11897,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -11550,9 +12214,14 @@ components:
           message: message
           Reviewer:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
         - review_id: 8
           Version:
             Resource: null
@@ -11573,9 +12242,14 @@ components:
           message: message
           Reviewer:
             registered_at: registered_at
-            avatar_url: avatar_url
             user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
             username: username
+            discord_id: discord_id
         stats:
           per_page: 3
           total: 5
@@ -11618,9 +12292,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           - review_id: 8
             Version:
               Resource: null
@@ -11641,9 +12320,14 @@ components:
             message: message
             Reviewer:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
           stats:
             per_page: 3
             total: 5
@@ -12067,9 +12751,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -12117,9 +12806,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -12140,9 +12834,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -12297,9 +12996,14 @@ components:
             review_count: 9
             Creator:
               registered_at: registered_at
-              avatar_url: avatar_url
               user_id: user_id
+              avatar_url_large: avatar_url_large
+              user_url: user_url
+              avatar_url_medium: avatar_url_medium
+              avatar_url_small: avatar_url_small
+              banned: true
               username: username
+              discord_id: discord_id
             title: title
             ListPrice:
               formatted: formatted
@@ -12347,9 +13051,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             - review_id: 8
               Version:
                 Resource: null
@@ -12370,9 +13079,14 @@ components:
               message: message
               Reviewer:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
             review_average: 3.616076749251911
             url: url
             LatestVersion:
@@ -12549,9 +13263,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -12599,9 +13318,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -12622,9 +13346,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -12779,9 +13508,14 @@ components:
               review_count: 9
               Creator:
                 registered_at: registered_at
-                avatar_url: avatar_url
                 user_id: user_id
+                avatar_url_large: avatar_url_large
+                user_url: user_url
+                avatar_url_medium: avatar_url_medium
+                avatar_url_small: avatar_url_small
+                banned: true
                 username: username
+                discord_id: discord_id
               title: title
               ListPrice:
                 formatted: formatted
@@ -12829,9 +13563,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               - review_id: 8
                 Version:
                   Resource: null
@@ -12852,9 +13591,14 @@ components:
                 message: message
                 Reviewer:
                   registered_at: registered_at
-                  avatar_url: avatar_url
                   user_id: user_id
+                  avatar_url_large: avatar_url_large
+                  user_url: user_url
+                  avatar_url_medium: avatar_url_medium
+                  avatar_url_small: avatar_url_small
+                  banned: true
                   username: username
+                  discord_id: discord_id
               review_average: 3.616076749251911
               url: url
               LatestVersion:
@@ -13733,6 +14477,48 @@ components:
           $ref: '#/components/schemas/get_v2_resources_discover_download_plan_batch_200_response_data'
       required:
       - result
+      type: object
+    get_v2_members_self_200_response_data:
+      example:
+        self:
+          registered_at: registered_at
+          user_id: user_id
+          avatar_url_large: avatar_url_large
+          user_url: user_url
+          avatar_url_medium: avatar_url_medium
+          avatar_url_small: avatar_url_small
+          banned: true
+          username: username
+          discord_id: discord_id
+      properties:
+        self:
+          $ref: '#/components/schemas/Member'
+      type: object
+      x-stoplight:
+        id: 84p7yvvmujwhz
+    get_v2_members_self_200_response:
+      example:
+        result: success
+        data:
+          self:
+            registered_at: registered_at
+            user_id: user_id
+            avatar_url_large: avatar_url_large
+            user_url: user_url
+            avatar_url_medium: avatar_url_medium
+            avatar_url_small: avatar_url_small
+            banned: true
+            username: username
+            discord_id: discord_id
+      properties:
+        result:
+          enum:
+          - success
+          type: string
+          x-stoplight:
+            id: vlv6w489i7xrf
+        data:
+          $ref: '#/components/schemas/get_v2_members_self_200_response_data'
       type: object
     Analytic_filters_value:
       example:

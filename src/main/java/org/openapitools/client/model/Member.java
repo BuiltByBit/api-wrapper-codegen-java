@@ -49,11 +49,15 @@ import org.openapitools.client.JSON;
 /**
  * Member
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-08T09:56:08.392321Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-09T11:36:52.945914Z[Etc/UTC]")
 public class Member {
   public static final String SERIALIZED_NAME_USER_ID = "user_id";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
+
+  public static final String SERIALIZED_NAME_USER_URL = "user_url";
+  @SerializedName(SERIALIZED_NAME_USER_URL)
+  private String userUrl;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
@@ -63,9 +67,25 @@ public class Member {
   @SerializedName(SERIALIZED_NAME_REGISTERED_AT)
   private String registeredAt;
 
-  public static final String SERIALIZED_NAME_AVATAR_URL = "avatar_url";
-  @SerializedName(SERIALIZED_NAME_AVATAR_URL)
-  private String avatarUrl;
+  public static final String SERIALIZED_NAME_AVATAR_URL_LARGE = "avatar_url_large";
+  @SerializedName(SERIALIZED_NAME_AVATAR_URL_LARGE)
+  private String avatarUrlLarge;
+
+  public static final String SERIALIZED_NAME_AVATAR_URL_MEDIUM = "avatar_url_medium";
+  @SerializedName(SERIALIZED_NAME_AVATAR_URL_MEDIUM)
+  private String avatarUrlMedium;
+
+  public static final String SERIALIZED_NAME_AVATAR_URL_SMALL = "avatar_url_small";
+  @SerializedName(SERIALIZED_NAME_AVATAR_URL_SMALL)
+  private String avatarUrlSmall;
+
+  public static final String SERIALIZED_NAME_BANNED = "banned";
+  @SerializedName(SERIALIZED_NAME_BANNED)
+  private Boolean banned;
+
+  public static final String SERIALIZED_NAME_DISCORD_ID = "discord_id";
+  @SerializedName(SERIALIZED_NAME_DISCORD_ID)
+  private String discordId;
 
   public Member() {
   }
@@ -86,6 +106,25 @@ public class Member {
 
   public void setUserId(String userId) {
     this.userId = userId;
+  }
+
+
+  public Member userUrl(String userUrl) {
+    this.userUrl = userUrl;
+    return this;
+  }
+
+   /**
+   * Get userUrl
+   * @return userUrl
+  **/
+  @javax.annotation.Nullable
+  public String getUserUrl() {
+    return userUrl;
+  }
+
+  public void setUserUrl(String userUrl) {
+    this.userUrl = userUrl;
   }
 
 
@@ -127,22 +166,98 @@ public class Member {
   }
 
 
-  public Member avatarUrl(String avatarUrl) {
-    this.avatarUrl = avatarUrl;
+  public Member avatarUrlLarge(String avatarUrlLarge) {
+    this.avatarUrlLarge = avatarUrlLarge;
     return this;
   }
 
    /**
-   * Get avatarUrl
-   * @return avatarUrl
+   * Get avatarUrlLarge
+   * @return avatarUrlLarge
   **/
   @javax.annotation.Nullable
-  public String getAvatarUrl() {
-    return avatarUrl;
+  public String getAvatarUrlLarge() {
+    return avatarUrlLarge;
   }
 
-  public void setAvatarUrl(String avatarUrl) {
-    this.avatarUrl = avatarUrl;
+  public void setAvatarUrlLarge(String avatarUrlLarge) {
+    this.avatarUrlLarge = avatarUrlLarge;
+  }
+
+
+  public Member avatarUrlMedium(String avatarUrlMedium) {
+    this.avatarUrlMedium = avatarUrlMedium;
+    return this;
+  }
+
+   /**
+   * Get avatarUrlMedium
+   * @return avatarUrlMedium
+  **/
+  @javax.annotation.Nullable
+  public String getAvatarUrlMedium() {
+    return avatarUrlMedium;
+  }
+
+  public void setAvatarUrlMedium(String avatarUrlMedium) {
+    this.avatarUrlMedium = avatarUrlMedium;
+  }
+
+
+  public Member avatarUrlSmall(String avatarUrlSmall) {
+    this.avatarUrlSmall = avatarUrlSmall;
+    return this;
+  }
+
+   /**
+   * Get avatarUrlSmall
+   * @return avatarUrlSmall
+  **/
+  @javax.annotation.Nullable
+  public String getAvatarUrlSmall() {
+    return avatarUrlSmall;
+  }
+
+  public void setAvatarUrlSmall(String avatarUrlSmall) {
+    this.avatarUrlSmall = avatarUrlSmall;
+  }
+
+
+  public Member banned(Boolean banned) {
+    this.banned = banned;
+    return this;
+  }
+
+   /**
+   * Get banned
+   * @return banned
+  **/
+  @javax.annotation.Nullable
+  public Boolean getBanned() {
+    return banned;
+  }
+
+  public void setBanned(Boolean banned) {
+    this.banned = banned;
+  }
+
+
+  public Member discordId(String discordId) {
+    this.discordId = discordId;
+    return this;
+  }
+
+   /**
+   * Get discordId
+   * @return discordId
+  **/
+  @javax.annotation.Nullable
+  public String getDiscordId() {
+    return discordId;
+  }
+
+  public void setDiscordId(String discordId) {
+    this.discordId = discordId;
   }
 
 
@@ -157,14 +272,19 @@ public class Member {
     }
     Member member = (Member) o;
     return Objects.equals(this.userId, member.userId) &&
+        Objects.equals(this.userUrl, member.userUrl) &&
         Objects.equals(this.username, member.username) &&
         Objects.equals(this.registeredAt, member.registeredAt) &&
-        Objects.equals(this.avatarUrl, member.avatarUrl);
+        Objects.equals(this.avatarUrlLarge, member.avatarUrlLarge) &&
+        Objects.equals(this.avatarUrlMedium, member.avatarUrlMedium) &&
+        Objects.equals(this.avatarUrlSmall, member.avatarUrlSmall) &&
+        Objects.equals(this.banned, member.banned) &&
+        Objects.equals(this.discordId, member.discordId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, username, registeredAt, avatarUrl);
+    return Objects.hash(userId, userUrl, username, registeredAt, avatarUrlLarge, avatarUrlMedium, avatarUrlSmall, banned, discordId);
   }
 
   @Override
@@ -172,9 +292,14 @@ public class Member {
     StringBuilder sb = new StringBuilder();
     sb.append("class Member {\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    userUrl: ").append(toIndentedString(userUrl)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    registeredAt: ").append(toIndentedString(registeredAt)).append("\n");
-    sb.append("    avatarUrl: ").append(toIndentedString(avatarUrl)).append("\n");
+    sb.append("    avatarUrlLarge: ").append(toIndentedString(avatarUrlLarge)).append("\n");
+    sb.append("    avatarUrlMedium: ").append(toIndentedString(avatarUrlMedium)).append("\n");
+    sb.append("    avatarUrlSmall: ").append(toIndentedString(avatarUrlSmall)).append("\n");
+    sb.append("    banned: ").append(toIndentedString(banned)).append("\n");
+    sb.append("    discordId: ").append(toIndentedString(discordId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -198,9 +323,14 @@ public class Member {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("user_id");
+    openapiFields.add("user_url");
     openapiFields.add("username");
     openapiFields.add("registered_at");
-    openapiFields.add("avatar_url");
+    openapiFields.add("avatar_url_large");
+    openapiFields.add("avatar_url_medium");
+    openapiFields.add("avatar_url_small");
+    openapiFields.add("banned");
+    openapiFields.add("discord_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -230,14 +360,26 @@ public class Member {
       if ((jsonObj.get("user_id") != null && !jsonObj.get("user_id").isJsonNull()) && !jsonObj.get("user_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `user_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_id").toString()));
       }
+      if ((jsonObj.get("user_url") != null && !jsonObj.get("user_url").isJsonNull()) && !jsonObj.get("user_url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `user_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_url").toString()));
+      }
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
       if ((jsonObj.get("registered_at") != null && !jsonObj.get("registered_at").isJsonNull()) && !jsonObj.get("registered_at").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `registered_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("registered_at").toString()));
       }
-      if ((jsonObj.get("avatar_url") != null && !jsonObj.get("avatar_url").isJsonNull()) && !jsonObj.get("avatar_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `avatar_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_url").toString()));
+      if ((jsonObj.get("avatar_url_large") != null && !jsonObj.get("avatar_url_large").isJsonNull()) && !jsonObj.get("avatar_url_large").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar_url_large` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_url_large").toString()));
+      }
+      if ((jsonObj.get("avatar_url_medium") != null && !jsonObj.get("avatar_url_medium").isJsonNull()) && !jsonObj.get("avatar_url_medium").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar_url_medium` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_url_medium").toString()));
+      }
+      if ((jsonObj.get("avatar_url_small") != null && !jsonObj.get("avatar_url_small").isJsonNull()) && !jsonObj.get("avatar_url_small").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar_url_small` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar_url_small").toString()));
+      }
+      if ((jsonObj.get("discord_id") != null && !jsonObj.get("discord_id").isJsonNull()) && !jsonObj.get("discord_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `discord_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("discord_id").toString()));
       }
   }
 

@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.client.model.Member;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,56 +48,33 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * DownloadStatus
+ * GetV2MembersSelf200ResponseData
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-09T11:36:52.945914Z[Etc/UTC]")
-public class DownloadStatus {
-  public static final String SERIALIZED_NAME_RETRY = "retry";
-  @SerializedName(SERIALIZED_NAME_RETRY)
-  private Boolean retry;
+public class GetV2MembersSelf200ResponseData {
+  public static final String SERIALIZED_NAME_SELF = "self";
+  @SerializedName(SERIALIZED_NAME_SELF)
+  private Member self;
 
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  private String url;
-
-  public DownloadStatus() {
+  public GetV2MembersSelf200ResponseData() {
   }
 
-  public DownloadStatus retry(Boolean retry) {
-    this.retry = retry;
+  public GetV2MembersSelf200ResponseData self(Member self) {
+    this.self = self;
     return this;
   }
 
    /**
-   * Get retry
-   * @return retry
+   * Get self
+   * @return self
   **/
   @javax.annotation.Nullable
-  public Boolean getRetry() {
-    return retry;
+  public Member getSelf() {
+    return self;
   }
 
-  public void setRetry(Boolean retry) {
-    this.retry = retry;
-  }
-
-
-  public DownloadStatus url(String url) {
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * Get url
-   * @return url
-  **/
-  @javax.annotation.Nullable
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
+  public void setSelf(Member self) {
+    this.self = self;
   }
 
 
@@ -109,22 +87,20 @@ public class DownloadStatus {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DownloadStatus downloadStatus = (DownloadStatus) o;
-    return Objects.equals(this.retry, downloadStatus.retry) &&
-        Objects.equals(this.url, downloadStatus.url);
+    GetV2MembersSelf200ResponseData getV2MembersSelf200ResponseData = (GetV2MembersSelf200ResponseData) o;
+    return Objects.equals(this.self, getV2MembersSelf200ResponseData.self);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(retry, url);
+    return Objects.hash(self);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DownloadStatus {\n");
-    sb.append("    retry: ").append(toIndentedString(retry)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("class GetV2MembersSelf200ResponseData {\n");
+    sb.append("    self: ").append(toIndentedString(self)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,8 +123,7 @@ public class DownloadStatus {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("retry");
-    openapiFields.add("url");
+    openapiFields.add("self");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -158,25 +133,26 @@ public class DownloadStatus {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to DownloadStatus
+  * @throws IOException if the JSON Element is invalid with respect to GetV2MembersSelf200ResponseData
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!DownloadStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DownloadStatus is not found in the empty JSON string", DownloadStatus.openapiRequiredFields.toString()));
+        if (!GetV2MembersSelf200ResponseData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in GetV2MembersSelf200ResponseData is not found in the empty JSON string", GetV2MembersSelf200ResponseData.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!DownloadStatus.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DownloadStatus` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!GetV2MembersSelf200ResponseData.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GetV2MembersSelf200ResponseData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
+      // validate the optional field `self`
+      if (jsonObj.get("self") != null && !jsonObj.get("self").isJsonNull()) {
+        Member.validateJsonElement(jsonObj.get("self"));
       }
   }
 
@@ -184,22 +160,22 @@ public class DownloadStatus {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DownloadStatus.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DownloadStatus' and its subtypes
+       if (!GetV2MembersSelf200ResponseData.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GetV2MembersSelf200ResponseData' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DownloadStatus> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DownloadStatus.class));
+       final TypeAdapter<GetV2MembersSelf200ResponseData> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GetV2MembersSelf200ResponseData.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DownloadStatus>() {
+       return (TypeAdapter<T>) new TypeAdapter<GetV2MembersSelf200ResponseData>() {
            @Override
-           public void write(JsonWriter out, DownloadStatus value) throws IOException {
+           public void write(JsonWriter out, GetV2MembersSelf200ResponseData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public DownloadStatus read(JsonReader in) throws IOException {
+           public GetV2MembersSelf200ResponseData read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -210,18 +186,18 @@ public class DownloadStatus {
   }
 
  /**
-  * Create an instance of DownloadStatus given an JSON string
+  * Create an instance of GetV2MembersSelf200ResponseData given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of DownloadStatus
-  * @throws IOException if the JSON string is invalid with respect to DownloadStatus
+  * @return An instance of GetV2MembersSelf200ResponseData
+  * @throws IOException if the JSON string is invalid with respect to GetV2MembersSelf200ResponseData
   */
-  public static DownloadStatus fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DownloadStatus.class);
+  public static GetV2MembersSelf200ResponseData fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GetV2MembersSelf200ResponseData.class);
   }
 
  /**
-  * Convert an instance of DownloadStatus to an JSON string
+  * Convert an instance of GetV2MembersSelf200ResponseData to an JSON string
   *
   * @return JSON string
   */

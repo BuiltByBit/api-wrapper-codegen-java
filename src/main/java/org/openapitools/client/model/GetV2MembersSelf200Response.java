@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.client.model.GetV2MembersSelf200ResponseData;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,10 +48,10 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * GetV2Health200Response
+ * GetV2MembersSelf200Response
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-09T11:36:52.945914Z[Etc/UTC]")
-public class GetV2Health200Response {
+public class GetV2MembersSelf200Response {
   /**
    * Gets or Sets result
    */
@@ -105,64 +106,14 @@ public class GetV2Health200Response {
   @SerializedName(SERIALIZED_NAME_RESULT)
   private ResultEnum result;
 
-  /**
-   * Gets or Sets data
-   */
-  @JsonAdapter(DataEnum.Adapter.class)
-  public enum DataEnum {
-    OK("ok");
-
-    private String value;
-
-    DataEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DataEnum fromValue(String value) {
-      for (DataEnum b : DataEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DataEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DataEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DataEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DataEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      DataEnum.fromValue(value);
-    }
-  }
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private DataEnum data;
+  private GetV2MembersSelf200ResponseData data;
 
-  public GetV2Health200Response() {
+  public GetV2MembersSelf200Response() {
   }
 
-  public GetV2Health200Response result(ResultEnum result) {
+  public GetV2MembersSelf200Response result(ResultEnum result) {
     this.result = result;
     return this;
   }
@@ -181,7 +132,7 @@ public class GetV2Health200Response {
   }
 
 
-  public GetV2Health200Response data(DataEnum data) {
+  public GetV2MembersSelf200Response data(GetV2MembersSelf200ResponseData data) {
     this.data = data;
     return this;
   }
@@ -191,11 +142,11 @@ public class GetV2Health200Response {
    * @return data
   **/
   @javax.annotation.Nullable
-  public DataEnum getData() {
+  public GetV2MembersSelf200ResponseData getData() {
     return data;
   }
 
-  public void setData(DataEnum data) {
+  public void setData(GetV2MembersSelf200ResponseData data) {
     this.data = data;
   }
 
@@ -209,9 +160,9 @@ public class GetV2Health200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetV2Health200Response getV2Health200Response = (GetV2Health200Response) o;
-    return Objects.equals(this.result, getV2Health200Response.result) &&
-        Objects.equals(this.data, getV2Health200Response.data);
+    GetV2MembersSelf200Response getV2MembersSelf200Response = (GetV2MembersSelf200Response) o;
+    return Objects.equals(this.result, getV2MembersSelf200Response.result) &&
+        Objects.equals(this.data, getV2MembersSelf200Response.data);
   }
 
   @Override
@@ -222,7 +173,7 @@ public class GetV2Health200Response {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetV2Health200Response {\n");
+    sb.append("class GetV2MembersSelf200Response {\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
@@ -258,20 +209,20 @@ public class GetV2Health200Response {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to GetV2Health200Response
+  * @throws IOException if the JSON Element is invalid with respect to GetV2MembersSelf200Response
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!GetV2Health200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GetV2Health200Response is not found in the empty JSON string", GetV2Health200Response.openapiRequiredFields.toString()));
+        if (!GetV2MembersSelf200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in GetV2MembersSelf200Response is not found in the empty JSON string", GetV2MembersSelf200Response.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GetV2Health200Response.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GetV2Health200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!GetV2MembersSelf200Response.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GetV2MembersSelf200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -282,12 +233,9 @@ public class GetV2Health200Response {
       if (jsonObj.get("result") != null && !jsonObj.get("result").isJsonNull()) {
         ResultEnum.validateJsonElement(jsonObj.get("result"));
       }
-      if ((jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) && !jsonObj.get("data").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data` to be a primitive type in the JSON string but got `%s`", jsonObj.get("data").toString()));
-      }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        DataEnum.validateJsonElement(jsonObj.get("data"));
+        GetV2MembersSelf200ResponseData.validateJsonElement(jsonObj.get("data"));
       }
   }
 
@@ -295,22 +243,22 @@ public class GetV2Health200Response {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetV2Health200Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetV2Health200Response' and its subtypes
+       if (!GetV2MembersSelf200Response.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GetV2MembersSelf200Response' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetV2Health200Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetV2Health200Response.class));
+       final TypeAdapter<GetV2MembersSelf200Response> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GetV2MembersSelf200Response.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<GetV2Health200Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<GetV2MembersSelf200Response>() {
            @Override
-           public void write(JsonWriter out, GetV2Health200Response value) throws IOException {
+           public void write(JsonWriter out, GetV2MembersSelf200Response value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public GetV2Health200Response read(JsonReader in) throws IOException {
+           public GetV2MembersSelf200Response read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -321,18 +269,18 @@ public class GetV2Health200Response {
   }
 
  /**
-  * Create an instance of GetV2Health200Response given an JSON string
+  * Create an instance of GetV2MembersSelf200Response given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of GetV2Health200Response
-  * @throws IOException if the JSON string is invalid with respect to GetV2Health200Response
+  * @return An instance of GetV2MembersSelf200Response
+  * @throws IOException if the JSON string is invalid with respect to GetV2MembersSelf200Response
   */
-  public static GetV2Health200Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetV2Health200Response.class);
+  public static GetV2MembersSelf200Response fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GetV2MembersSelf200Response.class);
   }
 
  /**
-  * Convert an instance of GetV2Health200Response to an JSON string
+  * Convert an instance of GetV2MembersSelf200Response to an JSON string
   *
   * @return JSON string
   */

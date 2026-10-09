@@ -2,7 +2,7 @@
 
 BuiltByBit API
 - API version: v2
-  - Build date: 2026-10-08T09:56:08.392321Z[Etc/UTC]
+  - Build date: 2026-10-09T11:36:52.945914Z[Etc/UTC]
 
 All operations not tagged 'free' require an active [Ultimate](https://builtbybit.com/account/ultimate) subscription or invite-only permissions.
 
@@ -127,6 +127,7 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**getV2Analytics**](docs/AnalyticsApi.md#getV2Analytics) | **GET** /v2/analytics | Fetch a list of analytics definitions
 *AnalyticsApi* | [**getV2AnalyticsGraph**](docs/AnalyticsApi.md#getV2AnalyticsGraph) | **GET** /v2/analytics/graph | Fetch analytics graph data
 *AnalyticsApi* | [**getV2AnalyticsSingle**](docs/AnalyticsApi.md#getV2AnalyticsSingle) | **GET** /v2/analytics/single | Fetch a single analytics value
+*DefaultApi* | [**getV2MembersSelf**](docs/DefaultApi.md#getV2MembersSelf) | **GET** /v2/members/self | Fetch self member information
 *DeploymentsApi* | [**postV2DeploymentsUpgrade**](docs/DeploymentsApi.md#postV2DeploymentsUpgrade) | **POST** /v2/deployments/upgrade | Upgrade a short-lived token
 *EventsApi* | [**getV2Events**](docs/EventsApi.md#getV2Events) | **GET** /v2/events | Fetch a list of pending events
 *EventsApi* | [**postV2EventsComplete**](docs/EventsApi.md#postV2EventsComplete) | **POST** /v2/events/complete | Mark events as complete
@@ -213,6 +214,8 @@ Class | Method | HTTP request | Description
  - [GetV2Events200Response](docs/GetV2Events200Response.md)
  - [GetV2Events200ResponseData](docs/GetV2Events200ResponseData.md)
  - [GetV2Health200Response](docs/GetV2Health200Response.md)
+ - [GetV2MembersSelf200Response](docs/GetV2MembersSelf200Response.md)
+ - [GetV2MembersSelf200ResponseData](docs/GetV2MembersSelf200ResponseData.md)
  - [GetV2ResourcesCreatorAddons200Response](docs/GetV2ResourcesCreatorAddons200Response.md)
  - [GetV2ResourcesCreatorAddons200ResponseData](docs/GetV2ResourcesCreatorAddons200ResponseData.md)
  - [GetV2ResourcesCreatorBatch200Response](docs/GetV2ResourcesCreatorBatch200Response.md)
