@@ -88,7 +88,7 @@ public class Example {
 
 <a id="getResourcesDiscoverResources"></a>
 # **getResourcesDiscoverResources**
-> GetResourcesDiscoverResources200Response getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate)
+> GetResourcesDiscoverResources200Response getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug)
 
 Fetch a list of resources
 
@@ -126,8 +126,9 @@ public class Example {
     String excludedResourceIds = "excludedResourceIds_example"; // String | A comma-separated list of resource IDs to exclude. No filter will be applied if empty.
     String excludedCreatorIds = "excludedCreatorIds_example"; // String | A comma-separated list of creator IDs to exclude. No filter will be applied if empty.
     Integer minReferrerRate = 56; // Integer | A minimum referral rate (percent) to filter on. Defaults to 0%.
+    Boolean strictMug = true; // Boolean | Whether to enforce strict MUG compliance title/summary keyword exclusions.
     try {
-      GetResourcesDiscoverResources200Response result = apiInstance.getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate);
+      GetResourcesDiscoverResources200Response result = apiInstance.getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ResourcesDiscoverApi#getResourcesDiscoverResources");
@@ -154,6 +155,7 @@ public class Example {
 | **excludedResourceIds** | **String**| A comma-separated list of resource IDs to exclude. No filter will be applied if empty. | [optional] |
 | **excludedCreatorIds** | **String**| A comma-separated list of creator IDs to exclude. No filter will be applied if empty. | [optional] |
 | **minReferrerRate** | **Integer**| A minimum referral rate (percent) to filter on. Defaults to 0%. | [optional] |
+| **strictMug** | **Boolean**| Whether to enforce strict MUG compliance title/summary keyword exclusions. | [optional] |
 
 ### Return type
 

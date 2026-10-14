@@ -206,6 +206,15 @@ paths:
         schema:
           type: integer
         style: form
+      - description: Whether to enforce strict MUG compliance title/summary keyword
+          exclusions.
+        explode: true
+        in: query
+        name: strict_mug
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
