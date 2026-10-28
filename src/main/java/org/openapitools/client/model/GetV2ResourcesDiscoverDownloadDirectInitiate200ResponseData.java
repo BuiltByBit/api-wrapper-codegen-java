@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * GetV2ResourcesDiscoverDownloadDirectInitiate200ResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T08:59:21.522848Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-28T16:59:15.744516Z[Etc/UTC]")
 public class GetV2ResourcesDiscoverDownloadDirectInitiate200ResponseData {
   public static final String SERIALIZED_NAME_REQUEST = "request";
   @SerializedName(SERIALIZED_NAME_REQUEST)

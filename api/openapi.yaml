@@ -215,6 +215,15 @@ paths:
         schema:
           type: boolean
         style: form
+      - description: A comma-separated list of category IDs to exclude. No filter
+          will be applied if empty.
+        explode: true
+        in: query
+        name: excluded_category_ids
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -265,6 +274,15 @@ paths:
           enum:
           - SortOptions
           - FilterOptions
+          type: string
+        style: form
+      - description: A comma-separated list of category IDs to exclude. No filter
+          will be applied if empty.
+        explode: true
+        in: query
+        name: excluded_category_ids
+        required: false
+        schema:
           type: string
         style: form
       responses:

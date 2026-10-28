@@ -84,6 +84,7 @@ public class ResourcesDiscoverApi {
      * Build call for getResourcesDiscoverCategories
      * @param categoryId A category ID to filter on. (optional)
      * @param with A comma-separated list of submodels to include. (optional)
+     * @param excludedCategoryIds A comma-separated list of category IDs to exclude. No filter will be applied if empty. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -95,7 +96,7 @@ public class ResourcesDiscoverApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getResourcesDiscoverCategoriesCall(String categoryId, String with, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getResourcesDiscoverCategoriesCall(String categoryId, String with, String excludedCategoryIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -128,6 +129,10 @@ public class ResourcesDiscoverApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("with", with));
         }
 
+        if (excludedCategoryIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("excluded_category_ids", excludedCategoryIds));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -148,8 +153,8 @@ public class ResourcesDiscoverApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getResourcesDiscoverCategoriesValidateBeforeCall(String categoryId, String with, final ApiCallback _callback) throws ApiException {
-        return getResourcesDiscoverCategoriesCall(categoryId, with, _callback);
+    private okhttp3.Call getResourcesDiscoverCategoriesValidateBeforeCall(String categoryId, String with, String excludedCategoryIds, final ApiCallback _callback) throws ApiException {
+        return getResourcesDiscoverCategoriesCall(categoryId, with, excludedCategoryIds, _callback);
 
     }
 
@@ -158,6 +163,7 @@ public class ResourcesDiscoverApi {
      * Supported &#39;with&#39; hints:  - Children: includes all subcategories and their children
      * @param categoryId A category ID to filter on. (optional)
      * @param with A comma-separated list of submodels to include. (optional)
+     * @param excludedCategoryIds A comma-separated list of category IDs to exclude. No filter will be applied if empty. (optional)
      * @return GetResourcesDiscoverCategories200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -168,8 +174,8 @@ public class ResourcesDiscoverApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public GetResourcesDiscoverCategories200Response getResourcesDiscoverCategories(String categoryId, String with) throws ApiException {
-        ApiResponse<GetResourcesDiscoverCategories200Response> localVarResp = getResourcesDiscoverCategoriesWithHttpInfo(categoryId, with);
+    public GetResourcesDiscoverCategories200Response getResourcesDiscoverCategories(String categoryId, String with, String excludedCategoryIds) throws ApiException {
+        ApiResponse<GetResourcesDiscoverCategories200Response> localVarResp = getResourcesDiscoverCategoriesWithHttpInfo(categoryId, with, excludedCategoryIds);
         return localVarResp.getData();
     }
 
@@ -178,6 +184,7 @@ public class ResourcesDiscoverApi {
      * Supported &#39;with&#39; hints:  - Children: includes all subcategories and their children
      * @param categoryId A category ID to filter on. (optional)
      * @param with A comma-separated list of submodels to include. (optional)
+     * @param excludedCategoryIds A comma-separated list of category IDs to exclude. No filter will be applied if empty. (optional)
      * @return ApiResponse&lt;GetResourcesDiscoverCategories200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -188,8 +195,8 @@ public class ResourcesDiscoverApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetResourcesDiscoverCategories200Response> getResourcesDiscoverCategoriesWithHttpInfo(String categoryId, String with) throws ApiException {
-        okhttp3.Call localVarCall = getResourcesDiscoverCategoriesValidateBeforeCall(categoryId, with, null);
+    public ApiResponse<GetResourcesDiscoverCategories200Response> getResourcesDiscoverCategoriesWithHttpInfo(String categoryId, String with, String excludedCategoryIds) throws ApiException {
+        okhttp3.Call localVarCall = getResourcesDiscoverCategoriesValidateBeforeCall(categoryId, with, excludedCategoryIds, null);
         Type localVarReturnType = new TypeToken<GetResourcesDiscoverCategories200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -199,6 +206,7 @@ public class ResourcesDiscoverApi {
      * Supported &#39;with&#39; hints:  - Children: includes all subcategories and their children
      * @param categoryId A category ID to filter on. (optional)
      * @param with A comma-separated list of submodels to include. (optional)
+     * @param excludedCategoryIds A comma-separated list of category IDs to exclude. No filter will be applied if empty. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -210,9 +218,9 @@ public class ResourcesDiscoverApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getResourcesDiscoverCategoriesAsync(String categoryId, String with, final ApiCallback<GetResourcesDiscoverCategories200Response> _callback) throws ApiException {
+    public okhttp3.Call getResourcesDiscoverCategoriesAsync(String categoryId, String with, String excludedCategoryIds, final ApiCallback<GetResourcesDiscoverCategories200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getResourcesDiscoverCategoriesValidateBeforeCall(categoryId, with, _callback);
+        okhttp3.Call localVarCall = getResourcesDiscoverCategoriesValidateBeforeCall(categoryId, with, excludedCategoryIds, _callback);
         Type localVarReturnType = new TypeToken<GetResourcesDiscoverCategories200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -230,6 +238,7 @@ public class ResourcesDiscoverApi {
      * @param excludedCreatorIds A comma-separated list of creator IDs to exclude. No filter will be applied if empty. (optional)
      * @param minReferrerRate A minimum referral rate (percent) to filter on. Defaults to 0%. (optional)
      * @param strictMug Whether to enforce strict MUG compliance title/summary keyword exclusions. (optional)
+     * @param excludedCategoryIds A comma-separated list of category IDs to exclude. No filter will be applied if empty. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -241,7 +250,7 @@ public class ResourcesDiscoverApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getResourcesDiscoverResourcesCall(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, Integer minReferrerRate, Boolean strictMug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getResourcesDiscoverResourcesCall(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, Integer minReferrerRate, Boolean strictMug, String excludedCategoryIds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -310,6 +319,10 @@ public class ResourcesDiscoverApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("strict_mug", strictMug));
         }
 
+        if (excludedCategoryIds != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("excluded_category_ids", excludedCategoryIds));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -330,8 +343,8 @@ public class ResourcesDiscoverApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getResourcesDiscoverResourcesValidateBeforeCall(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, Integer minReferrerRate, Boolean strictMug, final ApiCallback _callback) throws ApiException {
-        return getResourcesDiscoverResourcesCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug, _callback);
+    private okhttp3.Call getResourcesDiscoverResourcesValidateBeforeCall(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, Integer minReferrerRate, Boolean strictMug, String excludedCategoryIds, final ApiCallback _callback) throws ApiException {
+        return getResourcesDiscoverResourcesCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug, excludedCategoryIds, _callback);
 
     }
 
@@ -349,6 +362,7 @@ public class ResourcesDiscoverApi {
      * @param excludedCreatorIds A comma-separated list of creator IDs to exclude. No filter will be applied if empty. (optional)
      * @param minReferrerRate A minimum referral rate (percent) to filter on. Defaults to 0%. (optional)
      * @param strictMug Whether to enforce strict MUG compliance title/summary keyword exclusions. (optional)
+     * @param excludedCategoryIds A comma-separated list of category IDs to exclude. No filter will be applied if empty. (optional)
      * @return GetResourcesDiscoverResources200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -359,8 +373,8 @@ public class ResourcesDiscoverApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public GetResourcesDiscoverResources200Response getResourcesDiscoverResources(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, Integer minReferrerRate, Boolean strictMug) throws ApiException {
-        ApiResponse<GetResourcesDiscoverResources200Response> localVarResp = getResourcesDiscoverResourcesWithHttpInfo(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug);
+    public GetResourcesDiscoverResources200Response getResourcesDiscoverResources(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, Integer minReferrerRate, Boolean strictMug, String excludedCategoryIds) throws ApiException {
+        ApiResponse<GetResourcesDiscoverResources200Response> localVarResp = getResourcesDiscoverResourcesWithHttpInfo(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug, excludedCategoryIds);
         return localVarResp.getData();
     }
 
@@ -378,6 +392,7 @@ public class ResourcesDiscoverApi {
      * @param excludedCreatorIds A comma-separated list of creator IDs to exclude. No filter will be applied if empty. (optional)
      * @param minReferrerRate A minimum referral rate (percent) to filter on. Defaults to 0%. (optional)
      * @param strictMug Whether to enforce strict MUG compliance title/summary keyword exclusions. (optional)
+     * @param excludedCategoryIds A comma-separated list of category IDs to exclude. No filter will be applied if empty. (optional)
      * @return ApiResponse&lt;GetResourcesDiscoverResources200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -388,8 +403,8 @@ public class ResourcesDiscoverApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetResourcesDiscoverResources200Response> getResourcesDiscoverResourcesWithHttpInfo(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, Integer minReferrerRate, Boolean strictMug) throws ApiException {
-        okhttp3.Call localVarCall = getResourcesDiscoverResourcesValidateBeforeCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug, null);
+    public ApiResponse<GetResourcesDiscoverResources200Response> getResourcesDiscoverResourcesWithHttpInfo(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, Integer minReferrerRate, Boolean strictMug, String excludedCategoryIds) throws ApiException {
+        okhttp3.Call localVarCall = getResourcesDiscoverResourcesValidateBeforeCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug, excludedCategoryIds, null);
         Type localVarReturnType = new TypeToken<GetResourcesDiscoverResources200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -408,6 +423,7 @@ public class ResourcesDiscoverApi {
      * @param excludedCreatorIds A comma-separated list of creator IDs to exclude. No filter will be applied if empty. (optional)
      * @param minReferrerRate A minimum referral rate (percent) to filter on. Defaults to 0%. (optional)
      * @param strictMug Whether to enforce strict MUG compliance title/summary keyword exclusions. (optional)
+     * @param excludedCategoryIds A comma-separated list of category IDs to exclude. No filter will be applied if empty. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -419,9 +435,9 @@ public class ResourcesDiscoverApi {
         <tr><td> 5XX </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getResourcesDiscoverResourcesAsync(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, Integer minReferrerRate, Boolean strictMug, final ApiCallback<GetResourcesDiscoverResources200Response> _callback) throws ApiException {
+    public okhttp3.Call getResourcesDiscoverResourcesAsync(String categoryId, String with, Object filters, String resourceIds, Integer page, BigDecimal perPage, Boolean noDependencies, String excludedResourceIds, String excludedCreatorIds, Integer minReferrerRate, Boolean strictMug, String excludedCategoryIds, final ApiCallback<GetResourcesDiscoverResources200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getResourcesDiscoverResourcesValidateBeforeCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug, _callback);
+        okhttp3.Call localVarCall = getResourcesDiscoverResourcesValidateBeforeCall(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug, excludedCategoryIds, _callback);
         Type localVarReturnType = new TypeToken<GetResourcesDiscoverResources200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

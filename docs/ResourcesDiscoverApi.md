@@ -15,7 +15,7 @@ All URIs are relative to *https://api.builtbybit.com*
 
 <a id="getResourcesDiscoverCategories"></a>
 # **getResourcesDiscoverCategories**
-> GetResourcesDiscoverCategories200Response getResourcesDiscoverCategories(categoryId, with)
+> GetResourcesDiscoverCategories200Response getResourcesDiscoverCategories(categoryId, with, excludedCategoryIds)
 
 Fetch a list of categories
 
@@ -45,8 +45,9 @@ public class Example {
     ResourcesDiscoverApi apiInstance = new ResourcesDiscoverApi(defaultClient);
     String categoryId = "categoryId_example"; // String | A category ID to filter on.
     String with = "SortOptions"; // String | A comma-separated list of submodels to include.
+    String excludedCategoryIds = "excludedCategoryIds_example"; // String | A comma-separated list of category IDs to exclude. No filter will be applied if empty.
     try {
-      GetResourcesDiscoverCategories200Response result = apiInstance.getResourcesDiscoverCategories(categoryId, with);
+      GetResourcesDiscoverCategories200Response result = apiInstance.getResourcesDiscoverCategories(categoryId, with, excludedCategoryIds);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ResourcesDiscoverApi#getResourcesDiscoverCategories");
@@ -65,6 +66,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **categoryId** | **String**| A category ID to filter on. | [optional] |
 | **with** | **String**| A comma-separated list of submodels to include. | [optional] [enum: SortOptions, FilterOptions] |
+| **excludedCategoryIds** | **String**| A comma-separated list of category IDs to exclude. No filter will be applied if empty. | [optional] |
 
 ### Return type
 
@@ -88,7 +90,7 @@ public class Example {
 
 <a id="getResourcesDiscoverResources"></a>
 # **getResourcesDiscoverResources**
-> GetResourcesDiscoverResources200Response getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug)
+> GetResourcesDiscoverResources200Response getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug, excludedCategoryIds)
 
 Fetch a list of resources
 
@@ -127,8 +129,9 @@ public class Example {
     String excludedCreatorIds = "excludedCreatorIds_example"; // String | A comma-separated list of creator IDs to exclude. No filter will be applied if empty.
     Integer minReferrerRate = 56; // Integer | A minimum referral rate (percent) to filter on. Defaults to 0%.
     Boolean strictMug = true; // Boolean | Whether to enforce strict MUG compliance title/summary keyword exclusions.
+    String excludedCategoryIds = "excludedCategoryIds_example"; // String | A comma-separated list of category IDs to exclude. No filter will be applied if empty.
     try {
-      GetResourcesDiscoverResources200Response result = apiInstance.getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug);
+      GetResourcesDiscoverResources200Response result = apiInstance.getResourcesDiscoverResources(categoryId, with, filters, resourceIds, page, perPage, noDependencies, excludedResourceIds, excludedCreatorIds, minReferrerRate, strictMug, excludedCategoryIds);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ResourcesDiscoverApi#getResourcesDiscoverResources");
@@ -156,6 +159,7 @@ public class Example {
 | **excludedCreatorIds** | **String**| A comma-separated list of creator IDs to exclude. No filter will be applied if empty. | [optional] |
 | **minReferrerRate** | **Integer**| A minimum referral rate (percent) to filter on. Defaults to 0%. | [optional] |
 | **strictMug** | **Boolean**| Whether to enforce strict MUG compliance title/summary keyword exclusions. | [optional] |
+| **excludedCategoryIds** | **String**| A comma-separated list of category IDs to exclude. No filter will be applied if empty. | [optional] |
 
 ### Return type
 

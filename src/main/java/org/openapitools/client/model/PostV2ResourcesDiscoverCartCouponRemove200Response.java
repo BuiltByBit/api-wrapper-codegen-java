@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * PostV2ResourcesDiscoverCartCouponRemove200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-14T08:59:21.522848Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-10-28T16:59:15.744516Z[Etc/UTC]")
 public class PostV2ResourcesDiscoverCartCouponRemove200Response {
   /**
    * Gets or Sets result
